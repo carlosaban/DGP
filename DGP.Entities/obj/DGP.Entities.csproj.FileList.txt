@@ -1,0 +1,17 @@
+bin\Release\DGP.Entities.dll
+bin\Release\DGP.Entities.pdb
+obj\Release\ResolveAssemblyReference.cache
+obj\Release\DGP.Entities.dll
+obj\Release\DGP.Entities.pdb
+obj\Release\DGP.Entities.Reportes.CRHojaCobranza.rpt
+bin\Debug\DGP.Entities.dll.config
+bin\Debug\DGP.Entities.dll
+bin\Debug\DGP.Entities.pdb
+obj\Debug\ResolveAssemblyReference.cache
+obj\Debug\DGP.Entities.Reportes.CRptHojaTablero.rpt
+obj\Debug\DGP.Entities.Reportes.CRHojaCobranza.rpt
+obj\Debug\DGP.Entities.Reportes.CRptReporteTablero.rpt
+obj\Debug\DGP.Entities.Reportes.CRRendicion.rpt
+obj\Debug\DGP.Entities.dll
+obj\Debug\DGP.Entities.pdb
+obj\Debug\DGP.Entities.Reportes.CRptHojaPrecios.rpt

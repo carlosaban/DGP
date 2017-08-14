@@ -1,0 +1,5 @@
+bin\Debug\DGP.Util.dll
+bin\Debug\DGP.Util.pdb
+obj\Debug\ResolveAssemblyReference.cache
+obj\Debug\DGP.Util.dll
+obj\Debug\DGP.Util.pdb
