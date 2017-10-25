@@ -2,7 +2,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.30729</ProductVersion>
+    <ProductVersion>9.0.21022</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{633259E9-B16D-443D-9877-8AB726DB5136}</ProjectGuid>
     <OutputType>Library</OutputType>
@@ -54,6 +54,7 @@
     <Compile Include="Ventas\BLAmortizacionVenta.cs" />
     <Compile Include="Ventas\BLLineaVenta.cs" />
     <Compile Include="Ventas\BLVenta.cs" />
+    <Compile Include="Ventas\BLVueltos.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DGP.DataAccess\DGP.DataAccess.csproj">

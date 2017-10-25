@@ -715,6 +715,7 @@ namespace DGP.Presentation.Ventas {
 
                 loadTipoGasto();
                 loadGastos();
+                CargarUsuarios();
             }
 
             private void ResetearVenta() {
@@ -1443,7 +1444,8 @@ namespace DGP.Presentation.Ventas {
                 if (dialogResult == DialogResult.Yes)
                 {
                     tb_gastoTableAdapter gastoTableAdapter = new tb_gastoTableAdapter();
-                    gastoTableAdapter.Insert(VariablesSession.BECaja.IdPersonal, VariablesSession.BECaja.IdCaja, this.NudGastoMonto.Value, this.txtGastoConcepto.Text, this.txtGastoObservacion.Text, (int?)this.cmbTipoGasto.SelectedValue, DateTime.Now);
+                    int IdPersonal = (this.cmbPersonal.SelectedValue == null) ? VariablesSession.BECaja.IdPersonal : (int)this.cmbPersonal.SelectedValue;
+                    gastoTableAdapter.Insert(IdPersonal, VariablesSession.BECaja.IdCaja, this.NudGastoMonto.Value, this.txtGastoConcepto.Text, this.txtGastoObservacion.Text, (int?)this.cmbTipoGasto.SelectedValue,this.dtFechaGasto.Value.Date);
                     this.loadGastos();
                 }
 
@@ -1608,6 +1610,16 @@ namespace DGP.Presentation.Ventas {
                 }
                 
             }
+        }
+
+        private void cmbPersonal_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

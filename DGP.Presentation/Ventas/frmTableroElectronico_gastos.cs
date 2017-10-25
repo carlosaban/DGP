@@ -8,7 +8,9 @@ using System.Windows.Forms;
 
 using DGP.BusinessLogic.Ventas;
 using DGP.BusinessLogic;
+using DGP.BusinessLogic.Seguridad;
 using DGP.Entities.Ventas;
+using DGP.Entities.Seguridad;
 using DGP.Entities;
 using System.Threading;
 using DGP.Entities.DataSet;
@@ -48,50 +50,15 @@ namespace DGP.Presentation.Ventas
             
 
         }
+        private void CargarUsuarios()
+        {
+            List<BEPersonal> vLista = new BLPersonal().ListarPersonal(new BEPersonal());
+            cmbPersonal.DataSource = vLista;
+            cmbPersonal.DisplayMember = "Login";
+            cmbPersonal.ValueMember = "IdPersonal";
+            cmbPersonal.SelectedValue = VariablesSession.BECaja.IdPersonal;
+        }
 
-
-        //private bool validarEdicionFila(ref string mensaje, int rowIndex)
-        //{
-            
-        //    object objMonto = this.dgvGastos.Rows[rowIndex].Cells["montoDataGridViewTextBoxColumn"].Value;
-        //    object objConcepto = this.dgvGastos.Rows[rowIndex].Cells["conceptoDataGridViewTextBoxColumn"].Value;
-        //    object IdTipoGasto = this.dgvGastos.Rows[rowIndex].Cells["idtipoGastoDataGridViewTextBoxColumn"].Value;
-
-        //    string strFila = string.Empty;
-        //    decimal monto =0;
-        //    bool flag = false;
-        //    //if (objIdPersonal == null || objIdPersonal.ToString() == string.Empty) strFila += ", Personal";
-        //    //if (objIdCaja == null || objIdCaja.ToString() == string.Empty) strFila += ", Caja";
-        //    if (objMonto == null || objMonto.ToString() == string.Empty) strFila += ", Monto";
-        //    else
-        //    {
-        //        if (!decimal.TryParse(objMonto.ToString(), out monto) || monto < 0) strFila += ", Monto debe ser mayor a cero";
-
-        //    }
-
-        //    if (objConcepto == null || objConcepto.ToString() == string.Empty) strFila += ", Concepto";
-        //    if (IdTipoGasto == null || IdTipoGasto.ToString() == string.Empty) strFila += ", Tipo Gasto";
-
-        
-        //    if (strFila == string.Empty)
-        //    {
-        //        mensaje = string.Empty;
-        //        return true;
-
-        //    }
-        //    else
-        //    {
-
-        //        mensaje = "Los Siguientes campos son obligatorios" + strFila + ".";
-        //        return false;
-
-        //    }
-
-
-
-        //}
-
-        
 
     }
 }

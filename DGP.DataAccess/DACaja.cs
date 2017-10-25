@@ -83,7 +83,7 @@ namespace DGP.DataAccess {
                 }
                 if (vLista.Count > 1) throw new Exception("Existe mas de una caja abierta");
 
-                return vLista[0];
+                return (vLista.Count>0) ? vLista[0] : null;
             }
             catch (Exception ex)
             {

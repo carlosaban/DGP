@@ -9,11 +9,14 @@ namespace DGP.Entities.Ventas {
 
         public const string ESTADO_REGISTRADO = "REG";
         public const string ESTADO_ELIMINADO = "ELM";
-
         public const string FORMAPAGO_EFECTIVO = "EFE";
+        public const string FORMAPAGO_NOEFECTIVO = "NEF";
 
         public const string TIPOAMORTIZACION_AMORTIZACION = "AMR";
         public const string TIPOAMORTIZACION_ADELANTO = "ADL";
+        public const string TIPOAMORTIZACION_VUELTO = "VLT";
+        public const string TIPOAMORTIZACION_REDONDEO = "RDN";
+
 
         private int mIdAmortizacionVenta;
         private decimal mMonto;

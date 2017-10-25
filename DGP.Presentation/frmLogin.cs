@@ -61,8 +61,11 @@ namespace DGP.Presentation {
                         BECaja oCajaAbierta = obLCaja.ObtenerCajaAbierta(oBECaja);
                         if (vListaCaja.Count == 0)
                         {
-                            
-                            if (this.dtFechaCaja.Value.Date < oCajaAbierta.Fecha.Date )
+                            if (oCajaAbierta == null){
+
+                                oCajaCreada = obLCaja.CrearCaja(oBECaja);
+                            }
+                            else if (this.dtFechaCaja.Value.Date < oCajaAbierta.Fecha.Date )
                             {
                                 //la fecha no 
                                 if (MessageBox.Show(this, "La Fecha seleccionada es menor a la ultima caja abierta, se Creara una caja cerrada.¿Desea continuar?",

@@ -23,6 +23,7 @@ namespace DGP.Presentation {
         private frmActMasivaClientes ofrmActMasivaClientes = null;
         private frmMantenimientoCliente ofrmMantenimientoCliente = null;
         private frmReporteFiltroPersonal oReportes_frmRptFiltroPersonal = null;
+        private frmVueltos oVentas_frmVueltos = null;
         
 
         public frmMDIPrincipal() {
@@ -176,6 +177,14 @@ namespace DGP.Presentation {
         }
  
         #endregion Methods
+
+        private void aplicarVueltoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            oVentas_frmVueltos = new frmVueltos();
+            oVentas_frmVueltos.MdiParent = this;
+            oVentas_frmVueltos.Show();
+
+        }
         
         
 

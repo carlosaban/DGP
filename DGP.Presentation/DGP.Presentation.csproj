@@ -2,7 +2,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.30729</ProductVersion>
+    <ProductVersion>9.0.21022</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{490582BA-C51D-4244-801B-21F8F0A253F3}</ProjectGuid>
     <OutputType>WinExe</OutputType>
@@ -102,9 +102,11 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\frmReporteResumenCobranza.resx">
       <DependentUpon>frmReporteResumenCobranza.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\frmReporteEstadoCuentaCliente.resx">
       <DependentUpon>frmReporteEstadoCuentaCliente.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\frmReporteFiltrosHojaPrecios.resx">
       <DependentUpon>frmReporteFiltrosHojaPrecios.cs</DependentUpon>
@@ -132,6 +134,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Seguridad\frmMantenimientoUsuario.resx">
       <DependentUpon>frmMantenimientoUsuario.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Ventas\frmActMasivaClientes.resx">
       <SubType>Designer</SubType>
@@ -169,6 +172,10 @@
       <DependentUpon>frmTableroElectronico.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Ventas\frmVueltos.resx">
+      <DependentUpon>frmVueltos.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
@@ -184,6 +191,7 @@
     <None Include="Properties\DataSources\DGP.Entities.DataSet.DSEntitiesClienteTableAdapters.Tb_Cliente_ProveedorTableAdapter.datasource" />
     <None Include="Properties\DataSources\DGP.Entities.DataSet.DSEntitiesTablero+tb_gastoDataTable.datasource" />
     <None Include="Properties\DataSources\DGP.Entities.DataSet.DSEntitiesTablero+Tb_Tipo_GastoDataTable.datasource" />
+    <None Include="Properties\DataSources\DGP.Entities.DataSet.DSVueltos.datasource" />
     <None Include="Properties\DataSources\DGP.Entities.Seguridad.BEPerfil.datasource" />
     <None Include="Properties\DataSources\DGP.Entities.Seguridad.BEPersonal.datasource" />
     <None Include="Properties\Settings.settings">
@@ -305,6 +313,12 @@
     </Compile>
     <Compile Include="Ventas\frmTableroElectronico_gastos.cs">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventas\frmVueltos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventas\frmVueltos.Designer.cs">
+      <DependentUpon>frmVueltos.cs</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

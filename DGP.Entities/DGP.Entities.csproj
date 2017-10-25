@@ -2,7 +2,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.30729</ProductVersion>
+    <ProductVersion>9.0.21022</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{49133B8B-721D-40BE-982C-0BF2AFF11CDA}</ProjectGuid>
     <OutputType>Library</OutputType>
@@ -109,6 +109,15 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>DSRptTablero.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\DSVueltos.cs">
+      <DependentUpon>DSVueltos.xsd</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="DataSet\DSVueltos.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DSVueltos.xsd</DependentUpon>
     </Compile>
     <Compile Include="dgpDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -244,6 +253,17 @@
     </None>
     <None Include="DataSet\DSRptTablero.xss">
       <DependentUpon>DSRptTablero.xsd</DependentUpon>
+    </None>
+    <None Include="DataSet\DSVueltos.xsc">
+      <DependentUpon>DSVueltos.xsd</DependentUpon>
+    </None>
+    <None Include="DataSet\DSVueltos.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DSVueltos.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DataSet\DSVueltos.xss">
+      <DependentUpon>DSVueltos.xsd</DependentUpon>
     </None>
     <None Include="DGP.Entities.snk" />
     <None Include="dgpDataSet.xsc">

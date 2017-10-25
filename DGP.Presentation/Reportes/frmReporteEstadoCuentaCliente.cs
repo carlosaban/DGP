@@ -31,7 +31,7 @@ namespace DGP.Presentation.Reportes
                 //lbClientes.Items.to
 
                 DSRptClientes oDSRptClientes = new BLVenta().ReporteEstadoCuentaCliente(dtpFechaInicial.Value.Date, getClientesList( this.lbClientes));
-                this.MostrarMensaje(getClientesList(this.lbClientes), MessageBoxIcon.Information);
+                //this.MostrarMensaje(getClientesList(this.lbClientes), MessageBoxIcon.Information);
 
                 DGP.Entities.Reportes.CRptEstadoCuentaCliente oCRptEstadoCuentaCliente = new DGP.Entities.Reportes.CRptEstadoCuentaCliente();
                 oCRptEstadoCuentaCliente.Refresh();

@@ -12,3 +12,10 @@ C:\tempcar\DGP_20170419\DGP.DataAccess\bin\Debug\DGP.Entities.pdb
 C:\tempcar\DGP_20170419\DGP.DataAccess\obj\Debug\ResolveAssemblyReference.cache
 C:\tempcar\DGP_20170419\DGP.DataAccess\obj\Debug\DGP.DataAccess.dll
 C:\tempcar\DGP_20170419\DGP.DataAccess\obj\Debug\DGP.DataAccess.pdb
+D:\workspace\DGP\DGP.DataAccess\bin\Debug\DGP.DataAccess.dll
+D:\workspace\DGP\DGP.DataAccess\bin\Debug\DGP.DataAccess.pdb
+D:\workspace\DGP\DGP.DataAccess\bin\Debug\DGP.Entities.dll
+D:\workspace\DGP\DGP.DataAccess\bin\Debug\DGP.Entities.pdb
+D:\workspace\DGP\DGP.DataAccess\obj\Debug\ResolveAssemblyReference.cache
+D:\workspace\DGP\DGP.DataAccess\obj\Debug\DGP.DataAccess.dll
+D:\workspace\DGP\DGP.DataAccess\obj\Debug\DGP.DataAccess.pdb

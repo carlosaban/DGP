@@ -538,10 +538,7 @@ namespace DGP.DataAccess.Ventas {
         {
             DatabaseHelper oDatabaseHelper = new DatabaseHelper();
             DSRptTablero oDSTablero = new DSRptTablero();
-            //            @dtFechaInicial	DATETIME = NULL , 
-            //@dtFechaFinal	DATETIME = NULL ,
-            //@vcListProductos varchar(200),
-            //@vcListZonas	varchar(200)
+            
             try
             {
                 oDatabaseHelper.ClearParameter();

@@ -16,3 +16,12 @@ C:\tempcar\DGP_20170419\DGP.BusinessLogic\bin\Debug\DGP.Entities.pdb
 C:\tempcar\DGP_20170419\DGP.BusinessLogic\obj\Debug\ResolveAssemblyReference.cache
 C:\tempcar\DGP_20170419\DGP.BusinessLogic\obj\Debug\DGP.BusinessLogic.dll
 C:\tempcar\DGP_20170419\DGP.BusinessLogic\obj\Debug\DGP.BusinessLogic.pdb
+D:\workspace\DGP\DGP.BusinessLogic\bin\Debug\DGP.BusinessLogic.dll
+D:\workspace\DGP\DGP.BusinessLogic\bin\Debug\DGP.BusinessLogic.pdb
+D:\workspace\DGP\DGP.BusinessLogic\bin\Debug\DGP.DataAccess.dll
+D:\workspace\DGP\DGP.BusinessLogic\bin\Debug\DGP.Entities.dll
+D:\workspace\DGP\DGP.BusinessLogic\bin\Debug\DGP.DataAccess.pdb
+D:\workspace\DGP\DGP.BusinessLogic\bin\Debug\DGP.Entities.pdb
+D:\workspace\DGP\DGP.BusinessLogic\obj\Debug\ResolveAssemblyReference.cache
+D:\workspace\DGP\DGP.BusinessLogic\obj\Debug\DGP.BusinessLogic.dll
+D:\workspace\DGP\DGP.BusinessLogic\obj\Debug\DGP.BusinessLogic.pdb

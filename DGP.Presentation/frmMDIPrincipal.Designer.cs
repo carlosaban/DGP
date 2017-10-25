@@ -50,6 +50,7 @@
             this.estadoDeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmSalir = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiSalirSistema = new System.Windows.Forms.ToolStripMenuItem();
+            this.aplicarVueltoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.msMenuPrincipal.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -62,7 +63,7 @@
             this.tsmSalir});
             this.msMenuPrincipal.Location = new System.Drawing.Point(0, 0);
             this.msMenuPrincipal.Name = "msMenuPrincipal";
-            this.msMenuPrincipal.Size = new System.Drawing.Size(292, 24);
+            this.msMenuPrincipal.Size = new System.Drawing.Size(597, 24);
             this.msMenuPrincipal.TabIndex = 1;
             // 
             // tsmVentas
@@ -75,7 +76,8 @@
             this.tsmiDevoluciones,
             this.actPrecioVentaMasivoToolStripMenuItem,
             this.mantenimientoDeClienteToolStripMenuItem,
-            this.mantenimientoDeUsuariosToolStripMenuItem});
+            this.mantenimientoDeUsuariosToolStripMenuItem,
+            this.aplicarVueltoToolStripMenuItem});
             this.tsmVentas.Name = "tsmVentas";
             this.tsmVentas.Size = new System.Drawing.Size(54, 20);
             this.tsmVentas.Text = "Ventas";
@@ -204,7 +206,7 @@
             // listaDePreciosToolStripMenuItem
             // 
             this.listaDePreciosToolStripMenuItem.Name = "listaDePreciosToolStripMenuItem";
-            this.listaDePreciosToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
+            this.listaDePreciosToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
             this.listaDePreciosToolStripMenuItem.Text = "Lista de Precios";
             this.listaDePreciosToolStripMenuItem.Click += new System.EventHandler(this.listaDePreciosToolStripMenuItem_Click);
             // 
@@ -229,11 +231,18 @@
             this.tsmiSalirSistema.Size = new System.Drawing.Size(159, 22);
             this.tsmiSalirSistema.Text = "Salir del Sistema";
             // 
+            // aplicarVueltoToolStripMenuItem
+            // 
+            this.aplicarVueltoToolStripMenuItem.Name = "aplicarVueltoToolStripMenuItem";
+            this.aplicarVueltoToolStripMenuItem.Size = new System.Drawing.Size(220, 22);
+            this.aplicarVueltoToolStripMenuItem.Text = "Aplicar Vueltos";
+            this.aplicarVueltoToolStripMenuItem.Click += new System.EventHandler(this.aplicarVueltoToolStripMenuItem_Click);
+            // 
             // frmMDIPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(292, 273);
+            this.ClientSize = new System.Drawing.Size(597, 341);
             this.Controls.Add(this.msMenuPrincipal);
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.msMenuPrincipal;
@@ -273,6 +282,7 @@
         private System.Windows.Forms.ToolStripMenuItem mantenimientoDeUsuariosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem comprasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem mantenimientoDeComprasToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem aplicarVueltoToolStripMenuItem;
 
 
     }
