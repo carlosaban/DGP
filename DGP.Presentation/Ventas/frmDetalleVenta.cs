@@ -1086,8 +1086,9 @@ namespace DGP.Presentation.Ventas {
                 } else {
                     // Validar que sea de tipo Int
                     int intCantidadJavas = 0;
-                    int.TryParse(oCantidad.ToString(), out intCantidadJavas);
-                    if (intCantidadJavas <= 0) {
+                    bool flagValido = int.TryParse(oCantidad.ToString(), out intCantidadJavas);
+                    if (!flagValido || intCantidadJavas < 0)
+                    {
                         boIndicadorCJ = false;
                         pMensaje = "Ingresar cantidad javas válida";
                         GridViewEstablecerValorLineaVenta(vg_strCantidad, pRowIndex, ePosicionLineaDS.CantidadJavas.GetHashCode());
@@ -1104,8 +1105,9 @@ namespace DGP.Presentation.Ventas {
                 } else {
                     // Validar que sea de tipo decimal
                     decimal decPesoJava = decimal.Zero;
-                    decimal.TryParse(oPesoJava.ToString(), out decPesoJava);
-                    if (decPesoJava <= decimal.Zero) {
+                    bool flagValido = decimal.TryParse(oPesoJava.ToString(), out decPesoJava);
+                    if (! flagValido || decPesoJava < decimal.Zero)
+                    {
                         boIndicadorPJ = false;
                         pMensaje = "Ingresar peso javas válido";
                         GridViewEstablecerValorLineaVenta(vg_decTara, pRowIndex, ePosicionLineaDS.PesoJava.GetHashCode());
@@ -1127,8 +1129,9 @@ namespace DGP.Presentation.Ventas {
                 } else {
                     // Validar que sea de tipo decimal
                     decimal decPesoBruto = decimal.Zero;
-                    decimal.TryParse(oPesoBruto.ToString(), out decPesoBruto);
-                    if (decPesoBruto <= decimal.Zero) {
+                    bool flagValido = decimal.TryParse(oPesoBruto.ToString(), out decPesoBruto);
+                    if (!flagValido || decPesoBruto <= decimal.Zero)
+                    {
                         boIndicadorPB = false;
                         pMensaje = "Ingresar peso bruto válido";
                         GridViewEstablecerValorLineaVenta(string.Empty, pRowIndex, ePosicionLineaDS.PesoBruto.GetHashCode());
@@ -1151,8 +1154,8 @@ namespace DGP.Presentation.Ventas {
                 } else {
                     // Validar que sea de tipo decimal
                     decimal decPesoTara = decimal.Zero;
-                    decimal.TryParse(oPesoTara.ToString(), out decPesoTara);
-                    if (decPesoTara <= decimal.Zero) {
+                    bool flagValido = decimal.TryParse(oPesoTara.ToString(), out decPesoTara);
+                    if (decPesoTara < decimal.Zero || !flagValido ) {
                         boIndicadorPT = false;
                         pMensaje = "Ingresar peso tara válido";
                         GridViewEstablecerValorLineaVenta(vg_strPesoTara, pRowIndex, ePosicionLineaDS.PesoTara.GetHashCode());

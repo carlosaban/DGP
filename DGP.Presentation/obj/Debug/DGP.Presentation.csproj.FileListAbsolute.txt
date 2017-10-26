@@ -104,3 +104,13 @@ D:\workspace\DGP\DGP.Presentation\obj\Debug\DGP.Presentation.Ventas.frmProductoC
 D:\workspace\DGP\DGP.Presentation\obj\Debug\DGP.Presentation.Ventas.frmTableroElectronico.resources
 D:\workspace\DGP\DGP.Presentation\obj\Debug\DGP.Presentation.csproj.GenerateResource.Cache
 D:\workspace\DGP\DGP.Presentation\obj\Debug\DGP.Presentation.Ventas.frmVueltos.resources
+D:\workspace\DGP\DGP.Presentation\bin\Debug\CrystalDecisions.CrystalReports.Engine.dll
+D:\workspace\DGP\DGP.Presentation\bin\Debug\CrystalDecisions.Enterprise.Framework.dll
+D:\workspace\DGP\DGP.Presentation\bin\Debug\CrystalDecisions.Enterprise.InfoStore.dll
+D:\workspace\DGP\DGP.Presentation\bin\Debug\CrystalDecisions.ReportSource.dll
+D:\workspace\DGP\DGP.Presentation\bin\Debug\CrystalDecisions.Shared.dll
+D:\workspace\DGP\DGP.Presentation\bin\Debug\CrystalDecisions.Windows.Forms.dll
+D:\workspace\DGP\DGP.Presentation\bin\Debug\CrystalDecisions.CrystalReports.Engine.xml
+D:\workspace\DGP\DGP.Presentation\bin\Debug\CrystalDecisions.Windows.Forms.xml
+D:\workspace\DGP\DGP.Presentation\bin\Debug\CrystalDecisions.Shared.xml
+D:\workspace\DGP\DGP.Presentation\bin\Debug\CrystalDecisions.ReportSource.xml
