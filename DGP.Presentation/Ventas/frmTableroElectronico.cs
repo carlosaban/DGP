@@ -823,10 +823,12 @@ namespace DGP.Presentation.Ventas {
                 if (pValor) {
                     vLista = new BLEmpresa().Listar(new BEEmpresa());
                 }
-                vLista.Insert(0, new BEEmpresa(0, "Todos"));
+                vLista.Insert(0, new BEEmpresa(0, "Seleccione"));
                 cbEmpresa.DataSource = vLista;
                 cbEmpresa.DisplayMember = "RazonSocial";
                 cbEmpresa.ValueMember = "IdEmpresa";
+                cbEmpresa.SelectedIndex = (cbEmpresa.Items.Count > 0) ? 1 : 0;
+
             }
 
             private void CalcularSumaMontos(bool pCalculoPesoBruto, bool pCalculoPesoTara, bool pCalculoPesoNeto) {

@@ -27,11 +27,25 @@ namespace DGP.Presentation.Ventas
 
         private void cmbClientes_Leave(object sender, EventArgs e)
         {
+            try
+            {
+                RefrescarFormulario();
+
+            }
+            catch (Exception ex)
+            {
+                MostrarMensaje(ex.ToString(), MessageBoxIcon.Error);
+            }
+        }
+        private void RefrescarFormulario()
+        {
             if (this.cmbClientes.SelectedIndex >= 0)
             {
                 BEClienteProveedor oBEClienteProveedor = (BEClienteProveedor)this.cmbClientes.SelectedItem;
                 this.CargarVueltos(oBEClienteProveedor);
             }
+        
+        
         }
 
 
@@ -149,6 +163,7 @@ namespace DGP.Presentation.Ventas
                 List<int> idVentasSaldos = this.ObtenerSaldosSeleccionados();
 
                 blVueltos.AplicarVueltos(idVentasVueltos, idVentasSaldos, AplicarVuelto, VariablesSession.BEUsuarioSession.IdPersonal, VariablesSession.BECaja.IdCaja);
+                RefrescarFormulario();
             }
             catch (Exception ex)
             {

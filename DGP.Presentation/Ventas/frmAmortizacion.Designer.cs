@@ -28,23 +28,38 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.cmbClientes = new System.Windows.Forms.ComboBox();
             this.lblSimboloMoneda = new System.Windows.Forms.Label();
             this.nudPrecioAmortizacion = new System.Windows.Forms.NumericUpDown();
             this.btnAplicarMonto = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.cbProducto = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.cbCliente = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.dgrvAmortizacion = new System.Windows.Forms.DataGridView();
+            this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Personal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CancelarVenta = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.dgvBtnEliminar = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.IdEstado = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnGrabar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -64,43 +79,44 @@
             this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Personal = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CancelarVenta = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.dgvBtnEliminar = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.IdEstado = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Detalle = new System.Windows.Forms.GroupBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudPrecioAmortizacion)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgrvAmortizacion)).BeginInit();
             this.groupBox2.SuspendLayout();
+            this.Detalle.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.cmbClientes);
             this.groupBox1.Controls.Add(this.lblSimboloMoneda);
             this.groupBox1.Controls.Add(this.nudPrecioAmortizacion);
             this.groupBox1.Controls.Add(this.btnAplicarMonto);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.cbProducto);
             this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.cbCliente);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Location = new System.Drawing.Point(4, 6);
+            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1024, 54);
+            this.groupBox1.Size = new System.Drawing.Size(1112, 54);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Amortización";
+            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
+            // 
+            // cmbClientes
+            // 
+            this.cmbClientes.FormattingEnabled = true;
+            this.cmbClientes.Location = new System.Drawing.Point(89, 21);
+            this.cmbClientes.Name = "cmbClientes";
+            this.cmbClientes.Size = new System.Drawing.Size(121, 21);
+            this.cmbClientes.TabIndex = 11;
+            this.cmbClientes.SelectedIndexChanged += new System.EventHandler(this.cmbCliente_SelectedIndexChanged);
+            this.cmbClientes.Leave += new System.EventHandler(this.cmbClientes_Leave);
+            this.cmbClientes.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CmbClientes_KeyPress);
+            this.cmbClientes.KeyUp += new System.Windows.Forms.KeyEventHandler(this.cmbClientes_KeyUp);
             // 
             // lblSimboloMoneda
             // 
@@ -173,15 +189,6 @@
             this.label2.TabIndex = 3;
             this.label2.Text = "Producto";
             // 
-            // cbCliente
-            // 
-            this.cbCliente.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbCliente.Location = new System.Drawing.Point(53, 19);
-            this.cbCliente.Name = "cbCliente";
-            this.cbCliente.Size = new System.Drawing.Size(161, 21);
-            this.cbCliente.TabIndex = 2;
-            this.cbCliente.SelectedIndexChanged += new System.EventHandler(this.cbCliente_SelectedIndexChanged);
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -195,20 +202,20 @@
             // 
             this.dgrvAmortizacion.AllowUserToAddRows = false;
             this.dgrvAmortizacion.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle1.Format = "N2";
-            dataGridViewCellStyle1.NullValue = null;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgrvAmortizacion.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgrvAmortizacion.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle15.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle15.Format = "N2";
+            dataGridViewCellStyle15.NullValue = null;
+            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgrvAmortizacion.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle15;
+            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle16.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle16.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle16.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle16.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle16.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgrvAmortizacion.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle16;
             this.dgrvAmortizacion.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgrvAmortizacion.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column11,
@@ -226,221 +233,21 @@
             this.CancelarVenta,
             this.dgvBtnEliminar,
             this.IdEstado});
-            this.dgrvAmortizacion.Location = new System.Drawing.Point(4, 66);
+            this.dgrvAmortizacion.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgrvAmortizacion.Location = new System.Drawing.Point(3, 16);
             this.dgrvAmortizacion.MultiSelect = false;
             this.dgrvAmortizacion.Name = "dgrvAmortizacion";
             this.dgrvAmortizacion.RowHeadersVisible = false;
             this.dgrvAmortizacion.RowHeadersWidth = 20;
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgrvAmortizacion.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle18.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle18.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle18.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgrvAmortizacion.RowsDefaultCellStyle = dataGridViewCellStyle18;
             this.dgrvAmortizacion.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgrvAmortizacion.Size = new System.Drawing.Size(897, 227);
+            this.dgrvAmortizacion.Size = new System.Drawing.Size(1106, 379);
             this.dgrvAmortizacion.TabIndex = 1;
             this.dgrvAmortizacion.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgrvAmortizacion_CellEndEdit);
             this.dgrvAmortizacion.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgrvAmortizacion_CellContentClick);
-            // 
-            // btnGrabar
-            // 
-            this.btnGrabar.Location = new System.Drawing.Point(916, 219);
-            this.btnGrabar.Name = "btnGrabar";
-            this.btnGrabar.Size = new System.Drawing.Size(112, 23);
-            this.btnGrabar.TabIndex = 2;
-            this.btnGrabar.Text = "Aceptar";
-            this.btnGrabar.UseVisualStyleBackColor = true;
-            this.btnGrabar.Click += new System.EventHandler(this.btnGrabar_Click);
-            // 
-            // btnCancelar
-            // 
-            this.btnCancelar.Location = new System.Drawing.Point(916, 248);
-            this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(112, 23);
-            this.btnCancelar.TabIndex = 3;
-            this.btnCancelar.Text = "Cancelar";
-            this.btnCancelar.UseVisualStyleBackColor = true;
-            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.dtpFechaPago);
-            this.groupBox2.Controls.Add(this.label4);
-            this.groupBox2.Controls.Add(this.cbUsuario);
-            this.groupBox2.Location = new System.Drawing.Point(907, 66);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(121, 114);
-            this.groupBox2.TabIndex = 4;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Usuarios";
-            // 
-            // dtpFechaPago
-            // 
-            this.dtpFechaPago.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpFechaPago.Location = new System.Drawing.Point(13, 79);
-            this.dtpFechaPago.Name = "dtpFechaPago";
-            this.dtpFechaPago.Size = new System.Drawing.Size(98, 20);
-            this.dtpFechaPago.TabIndex = 2;
-            this.dtpFechaPago.Value = new System.DateTime(2009, 5, 3, 0, 0, 0, 0);
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(10, 63);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(65, 13);
-            this.label4.TabIndex = 1;
-            this.label4.Text = "Fecha Pago";
-            // 
-            // cbUsuario
-            // 
-            this.cbUsuario.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbUsuario.FormattingEnabled = true;
-            this.cbUsuario.Location = new System.Drawing.Point(7, 19);
-            this.cbUsuario.Name = "cbUsuario";
-            this.cbUsuario.Size = new System.Drawing.Size(104, 21);
-            this.cbUsuario.TabIndex = 0;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "TipoDocumento";
-            this.dataGridViewTextBoxColumn1.Frozen = true;
-            this.dataGridViewTextBoxColumn1.HeaderText = "Tipo Documento";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            this.dataGridViewTextBoxColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewTextBoxColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.dataGridViewTextBoxColumn1.Visible = false;
-            this.dataGridViewTextBoxColumn1.Width = 70;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.DataPropertyName = "Producto";
-            this.dataGridViewTextBoxColumn2.Frozen = true;
-            this.dataGridViewTextBoxColumn2.HeaderText = "Producto";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.ReadOnly = true;
-            this.dataGridViewTextBoxColumn2.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewTextBoxColumn2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.dataGridViewTextBoxColumn2.Visible = false;
-            this.dataGridViewTextBoxColumn2.Width = 70;
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.DataPropertyName = "Fecha";
-            dataGridViewCellStyle5.Format = "d";
-            dataGridViewCellStyle5.NullValue = null;
-            this.dataGridViewTextBoxColumn3.DefaultCellStyle = dataGridViewCellStyle5;
-            this.dataGridViewTextBoxColumn3.Frozen = true;
-            this.dataGridViewTextBoxColumn3.HeaderText = "Fecha";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.ReadOnly = true;
-            this.dataGridViewTextBoxColumn3.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewTextBoxColumn3.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.dataGridViewTextBoxColumn3.Visible = false;
-            this.dataGridViewTextBoxColumn3.Width = 80;
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            this.dataGridViewTextBoxColumn4.DataPropertyName = "CantidadJavas";
-            this.dataGridViewTextBoxColumn4.Frozen = true;
-            this.dataGridViewTextBoxColumn4.HeaderText = "Cantidad Javas";
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            this.dataGridViewTextBoxColumn4.ReadOnly = true;
-            this.dataGridViewTextBoxColumn4.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewTextBoxColumn4.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.dataGridViewTextBoxColumn4.Width = 80;
-            // 
-            // dataGridViewTextBoxColumn5
-            // 
-            this.dataGridViewTextBoxColumn5.DataPropertyName = "PesoNeto";
-            dataGridViewCellStyle6.Format = "d";
-            dataGridViewCellStyle6.NullValue = null;
-            this.dataGridViewTextBoxColumn5.DefaultCellStyle = dataGridViewCellStyle6;
-            this.dataGridViewTextBoxColumn5.HeaderText = "Peso Neto";
-            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            this.dataGridViewTextBoxColumn5.ReadOnly = true;
-            this.dataGridViewTextBoxColumn5.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewTextBoxColumn5.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.dataGridViewTextBoxColumn5.Width = 80;
-            // 
-            // dataGridViewTextBoxColumn6
-            // 
-            this.dataGridViewTextBoxColumn6.DataPropertyName = "Importe";
-            dataGridViewCellStyle7.Format = "d";
-            dataGridViewCellStyle7.NullValue = null;
-            this.dataGridViewTextBoxColumn6.DefaultCellStyle = dataGridViewCellStyle7;
-            this.dataGridViewTextBoxColumn6.HeaderText = "Importe";
-            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
-            this.dataGridViewTextBoxColumn6.ReadOnly = true;
-            this.dataGridViewTextBoxColumn6.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewTextBoxColumn6.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.dataGridViewTextBoxColumn6.Width = 90;
-            // 
-            // dataGridViewTextBoxColumn7
-            // 
-            this.dataGridViewTextBoxColumn7.DataPropertyName = "Saldo";
-            this.dataGridViewTextBoxColumn7.HeaderText = "Saldo";
-            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
-            this.dataGridViewTextBoxColumn7.ReadOnly = true;
-            this.dataGridViewTextBoxColumn7.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewTextBoxColumn7.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.dataGridViewTextBoxColumn7.Width = 90;
-            // 
-            // dataGridViewTextBoxColumn8
-            // 
-            this.dataGridViewTextBoxColumn8.DataPropertyName = "Importe";
-            this.dataGridViewTextBoxColumn8.HeaderText = "Pago a Cuenta";
-            this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
-            this.dataGridViewTextBoxColumn8.ReadOnly = true;
-            this.dataGridViewTextBoxColumn8.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewTextBoxColumn8.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.dataGridViewTextBoxColumn8.Width = 90;
-            // 
-            // dataGridViewTextBoxColumn9
-            // 
-            this.dataGridViewTextBoxColumn9.DataPropertyName = "Saldo";
-            this.dataGridViewTextBoxColumn9.HeaderText = "Saldo";
-            this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
-            this.dataGridViewTextBoxColumn9.ReadOnly = true;
-            this.dataGridViewTextBoxColumn9.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewTextBoxColumn9.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.dataGridViewTextBoxColumn9.Width = 90;
-            // 
-            // dataGridViewTextBoxColumn10
-            // 
-            this.dataGridViewTextBoxColumn10.DataPropertyName = "Saldo";
-            this.dataGridViewTextBoxColumn10.HeaderText = "Pago a Cuenta";
-            this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
-            this.dataGridViewTextBoxColumn10.ReadOnly = true;
-            this.dataGridViewTextBoxColumn10.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewTextBoxColumn10.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.dataGridViewTextBoxColumn10.Width = 90;
-            // 
-            // dataGridViewTextBoxColumn11
-            // 
-            this.dataGridViewTextBoxColumn11.DataPropertyName = "strSaldo";
-            this.dataGridViewTextBoxColumn11.HeaderText = "Pago a Cuenta";
-            this.dataGridViewTextBoxColumn11.Name = "dataGridViewTextBoxColumn11";
-            this.dataGridViewTextBoxColumn11.ReadOnly = true;
-            this.dataGridViewTextBoxColumn11.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewTextBoxColumn11.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.dataGridViewTextBoxColumn11.Width = 90;
-            // 
-            // dataGridViewTextBoxColumn12
-            // 
-            this.dataGridViewTextBoxColumn12.HeaderText = "Pago a Cuenta";
-            this.dataGridViewTextBoxColumn12.Name = "dataGridViewTextBoxColumn12";
-            this.dataGridViewTextBoxColumn12.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewTextBoxColumn12.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.dataGridViewTextBoxColumn12.Width = 90;
-            // 
-            // dataGridViewTextBoxColumn13
-            // 
-            this.dataGridViewTextBoxColumn13.DataPropertyName = "IdEstado";
-            this.dataGridViewTextBoxColumn13.HeaderText = "Estado";
-            this.dataGridViewTextBoxColumn13.Name = "dataGridViewTextBoxColumn13";
-            this.dataGridViewTextBoxColumn13.ReadOnly = true;
-            this.dataGridViewTextBoxColumn13.Visible = false;
             // 
             // Column11
             // 
@@ -497,9 +304,9 @@
             // Column3
             // 
             this.Column3.DataPropertyName = "Fecha";
-            dataGridViewCellStyle3.Format = "d";
-            dataGridViewCellStyle3.NullValue = null;
-            this.Column3.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle17.Format = "d";
+            dataGridViewCellStyle17.NullValue = null;
+            this.Column3.DefaultCellStyle = dataGridViewCellStyle17;
             this.Column3.HeaderText = "Fecha";
             this.Column3.Name = "Column3";
             this.Column3.ReadOnly = true;
@@ -584,15 +391,228 @@
             this.IdEstado.ReadOnly = true;
             this.IdEstado.Visible = false;
             // 
+            // btnGrabar
+            // 
+            this.btnGrabar.Location = new System.Drawing.Point(7, 123);
+            this.btnGrabar.Name = "btnGrabar";
+            this.btnGrabar.Size = new System.Drawing.Size(112, 23);
+            this.btnGrabar.TabIndex = 2;
+            this.btnGrabar.Text = "Aceptar";
+            this.btnGrabar.UseVisualStyleBackColor = true;
+            this.btnGrabar.Click += new System.EventHandler(this.btnGrabar_Click);
+            // 
+            // btnCancelar
+            // 
+            this.btnCancelar.Location = new System.Drawing.Point(7, 161);
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.Size = new System.Drawing.Size(112, 23);
+            this.btnCancelar.TabIndex = 3;
+            this.btnCancelar.Text = "Cancelar";
+            this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.dtpFechaPago);
+            this.groupBox2.Controls.Add(this.label4);
+            this.groupBox2.Controls.Add(this.btnCancelar);
+            this.groupBox2.Controls.Add(this.btnGrabar);
+            this.groupBox2.Controls.Add(this.cbUsuario);
+            this.groupBox2.Dock = System.Windows.Forms.DockStyle.Right;
+            this.groupBox2.Location = new System.Drawing.Point(979, 16);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(130, 379);
+            this.groupBox2.TabIndex = 4;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Usuarios";
+            // 
+            // dtpFechaPago
+            // 
+            this.dtpFechaPago.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpFechaPago.Location = new System.Drawing.Point(13, 79);
+            this.dtpFechaPago.Name = "dtpFechaPago";
+            this.dtpFechaPago.Size = new System.Drawing.Size(98, 20);
+            this.dtpFechaPago.TabIndex = 2;
+            this.dtpFechaPago.Value = new System.DateTime(2009, 5, 3, 0, 0, 0, 0);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(10, 63);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(65, 13);
+            this.label4.TabIndex = 1;
+            this.label4.Text = "Fecha Pago";
+            // 
+            // cbUsuario
+            // 
+            this.cbUsuario.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbUsuario.FormattingEnabled = true;
+            this.cbUsuario.Location = new System.Drawing.Point(7, 19);
+            this.cbUsuario.Name = "cbUsuario";
+            this.cbUsuario.Size = new System.Drawing.Size(104, 21);
+            this.cbUsuario.TabIndex = 0;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "TipoDocumento";
+            this.dataGridViewTextBoxColumn1.Frozen = true;
+            this.dataGridViewTextBoxColumn1.HeaderText = "Tipo Documento";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewTextBoxColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.dataGridViewTextBoxColumn1.Visible = false;
+            this.dataGridViewTextBoxColumn1.Width = 70;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "Producto";
+            this.dataGridViewTextBoxColumn2.Frozen = true;
+            this.dataGridViewTextBoxColumn2.HeaderText = "Producto";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            this.dataGridViewTextBoxColumn2.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewTextBoxColumn2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.dataGridViewTextBoxColumn2.Visible = false;
+            this.dataGridViewTextBoxColumn2.Width = 70;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.DataPropertyName = "Fecha";
+            dataGridViewCellStyle19.Format = "d";
+            dataGridViewCellStyle19.NullValue = null;
+            this.dataGridViewTextBoxColumn3.DefaultCellStyle = dataGridViewCellStyle19;
+            this.dataGridViewTextBoxColumn3.Frozen = true;
+            this.dataGridViewTextBoxColumn3.HeaderText = "Fecha";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.ReadOnly = true;
+            this.dataGridViewTextBoxColumn3.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewTextBoxColumn3.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.dataGridViewTextBoxColumn3.Visible = false;
+            this.dataGridViewTextBoxColumn3.Width = 80;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.DataPropertyName = "CantidadJavas";
+            this.dataGridViewTextBoxColumn4.Frozen = true;
+            this.dataGridViewTextBoxColumn4.HeaderText = "Cantidad Javas";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.ReadOnly = true;
+            this.dataGridViewTextBoxColumn4.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewTextBoxColumn4.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.dataGridViewTextBoxColumn4.Width = 80;
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            this.dataGridViewTextBoxColumn5.DataPropertyName = "PesoNeto";
+            dataGridViewCellStyle20.Format = "d";
+            dataGridViewCellStyle20.NullValue = null;
+            this.dataGridViewTextBoxColumn5.DefaultCellStyle = dataGridViewCellStyle20;
+            this.dataGridViewTextBoxColumn5.HeaderText = "Peso Neto";
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            this.dataGridViewTextBoxColumn5.ReadOnly = true;
+            this.dataGridViewTextBoxColumn5.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewTextBoxColumn5.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.dataGridViewTextBoxColumn5.Width = 80;
+            // 
+            // dataGridViewTextBoxColumn6
+            // 
+            this.dataGridViewTextBoxColumn6.DataPropertyName = "Importe";
+            dataGridViewCellStyle21.Format = "d";
+            dataGridViewCellStyle21.NullValue = null;
+            this.dataGridViewTextBoxColumn6.DefaultCellStyle = dataGridViewCellStyle21;
+            this.dataGridViewTextBoxColumn6.HeaderText = "Importe";
+            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            this.dataGridViewTextBoxColumn6.ReadOnly = true;
+            this.dataGridViewTextBoxColumn6.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewTextBoxColumn6.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.dataGridViewTextBoxColumn6.Width = 90;
+            // 
+            // dataGridViewTextBoxColumn7
+            // 
+            this.dataGridViewTextBoxColumn7.DataPropertyName = "Saldo";
+            this.dataGridViewTextBoxColumn7.HeaderText = "Saldo";
+            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
+            this.dataGridViewTextBoxColumn7.ReadOnly = true;
+            this.dataGridViewTextBoxColumn7.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewTextBoxColumn7.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.dataGridViewTextBoxColumn7.Width = 90;
+            // 
+            // dataGridViewTextBoxColumn8
+            // 
+            this.dataGridViewTextBoxColumn8.DataPropertyName = "Importe";
+            this.dataGridViewTextBoxColumn8.HeaderText = "Pago a Cuenta";
+            this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
+            this.dataGridViewTextBoxColumn8.ReadOnly = true;
+            this.dataGridViewTextBoxColumn8.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewTextBoxColumn8.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.dataGridViewTextBoxColumn8.Width = 90;
+            // 
+            // dataGridViewTextBoxColumn9
+            // 
+            this.dataGridViewTextBoxColumn9.DataPropertyName = "Saldo";
+            this.dataGridViewTextBoxColumn9.HeaderText = "Saldo";
+            this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
+            this.dataGridViewTextBoxColumn9.ReadOnly = true;
+            this.dataGridViewTextBoxColumn9.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewTextBoxColumn9.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.dataGridViewTextBoxColumn9.Width = 90;
+            // 
+            // dataGridViewTextBoxColumn10
+            // 
+            this.dataGridViewTextBoxColumn10.DataPropertyName = "Saldo";
+            this.dataGridViewTextBoxColumn10.HeaderText = "Pago a Cuenta";
+            this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
+            this.dataGridViewTextBoxColumn10.ReadOnly = true;
+            this.dataGridViewTextBoxColumn10.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewTextBoxColumn10.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.dataGridViewTextBoxColumn10.Width = 90;
+            // 
+            // dataGridViewTextBoxColumn11
+            // 
+            this.dataGridViewTextBoxColumn11.DataPropertyName = "strSaldo";
+            this.dataGridViewTextBoxColumn11.HeaderText = "Pago a Cuenta";
+            this.dataGridViewTextBoxColumn11.Name = "dataGridViewTextBoxColumn11";
+            this.dataGridViewTextBoxColumn11.ReadOnly = true;
+            this.dataGridViewTextBoxColumn11.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewTextBoxColumn11.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.dataGridViewTextBoxColumn11.Width = 90;
+            // 
+            // dataGridViewTextBoxColumn12
+            // 
+            this.dataGridViewTextBoxColumn12.HeaderText = "Pago a Cuenta";
+            this.dataGridViewTextBoxColumn12.Name = "dataGridViewTextBoxColumn12";
+            this.dataGridViewTextBoxColumn12.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewTextBoxColumn12.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.dataGridViewTextBoxColumn12.Width = 90;
+            // 
+            // dataGridViewTextBoxColumn13
+            // 
+            this.dataGridViewTextBoxColumn13.DataPropertyName = "IdEstado";
+            this.dataGridViewTextBoxColumn13.HeaderText = "Estado";
+            this.dataGridViewTextBoxColumn13.Name = "dataGridViewTextBoxColumn13";
+            this.dataGridViewTextBoxColumn13.ReadOnly = true;
+            this.dataGridViewTextBoxColumn13.Visible = false;
+            // 
+            // Detalle
+            // 
+            this.Detalle.Controls.Add(this.groupBox2);
+            this.Detalle.Controls.Add(this.dgrvAmortizacion);
+            this.Detalle.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Detalle.Location = new System.Drawing.Point(0, 54);
+            this.Detalle.Name = "Detalle";
+            this.Detalle.Size = new System.Drawing.Size(1112, 398);
+            this.Detalle.TabIndex = 5;
+            this.Detalle.TabStop = false;
+            this.Detalle.Text = "groupBox3";
+            // 
             // frmAmortizacion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1040, 373);
-            this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.btnGrabar);
-            this.Controls.Add(this.btnCancelar);
-            this.Controls.Add(this.dgrvAmortizacion);
+            this.ClientSize = new System.Drawing.Size(1112, 452);
+            this.Controls.Add(this.Detalle);
             this.Controls.Add(this.groupBox1);
             this.Name = "frmAmortizacion";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -604,6 +624,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgrvAmortizacion)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            this.Detalle.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -611,7 +632,6 @@
         #endregion
 
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.ComboBox cbCliente;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox cbProducto;
         private System.Windows.Forms.Label label2;
@@ -654,5 +674,7 @@
         private System.Windows.Forms.DataGridViewCheckBoxColumn CancelarVenta;
         private System.Windows.Forms.DataGridViewButtonColumn dgvBtnEliminar;
         private System.Windows.Forms.DataGridViewTextBoxColumn IdEstado;
+        private System.Windows.Forms.GroupBox Detalle;
+        private System.Windows.Forms.ComboBox cmbClientes;
     }
 }

@@ -28,12 +28,11 @@ namespace DGP.Presentation.Ventas {
             InitializeComponent();
             InicializarFormulario();
             this._frmTableroElectronico = frmTableroElectronico;
-            //this.cbCliente.Refresh();
-            //this.cbCliente.SelectedValue= (object)IdCliente;
+            
         }
         public void SetCliente(int IdCliente , int IdProducto)
         {
-            this.cbCliente.SelectedValue = IdCliente;
+            this.cmbClientes.SelectedValue = IdCliente;
             this.CargarAmortizaciones(IdCliente, IdProducto);
           
         
@@ -61,14 +60,14 @@ namespace DGP.Presentation.Ventas {
                 }
             }
 
-            private void cbCliente_SelectedIndexChanged(object sender, EventArgs e) {
+            private void cmbCliente_SelectedIndexChanged(object sender, EventArgs e) {
                 try {
                     int intIdCliente = 0;
-                    if (cbCliente.SelectedIndex > 0) {
-                        int.TryParse(cbCliente.SelectedValue.ToString(), out intIdCliente);
+                    if (cmbClientes.SelectedIndex > 0) {
+                        int.TryParse(cmbClientes.SelectedValue.ToString(), out intIdCliente);
                         CargarProductoCliente(intIdCliente);
                         DGP_Util.EnabledComboBox(cbProducto, true);
-                        CargarAmortizaciones(Convert.ToInt32(cbCliente.SelectedValue), 0);
+                        CargarAmortizaciones(Convert.ToInt32(cmbClientes.SelectedValue), 0);
                         DGP_Util.EnableControl(nudPrecioAmortizacion, true);
                     } else {
                         ResetearFormulario();
@@ -82,7 +81,7 @@ namespace DGP.Presentation.Ventas {
                 try {
                     int intIdCliente = 0;
                     int intIdProducto = 0;
-                    int.TryParse(cbCliente.SelectedValue.ToString(), out intIdCliente);
+                    int.TryParse(cmbClientes.SelectedValue.ToString(), out intIdCliente);
                     if (cbProducto.SelectedIndex > 0) {
                         intIdProducto = Convert.ToInt32(cbProducto.SelectedValue);
                         CargarAmortizaciones(intIdCliente, intIdProducto);
@@ -150,7 +149,7 @@ namespace DGP.Presentation.Ventas {
                             intResultado = new BLAmortizacionVenta().Insertar(vLista);
                             if (intResultado == 1) {
                                 MostrarMensaje("Se registró la amortización correctamente", MessageBoxIcon.Information);
-                                int intIdCliente = Convert.ToInt32(cbCliente.SelectedValue);
+                                int intIdCliente = Convert.ToInt32(cmbClientes.SelectedValue);
                                 int intIdProducto = Convert.ToInt32(cbProducto.SelectedValue);
                                 CargarAmortizaciones(intIdCliente, intIdProducto);
                             } else {
@@ -183,8 +182,8 @@ namespace DGP.Presentation.Ventas {
             }
 
             private void InicializarFormulario() {
-                DGP_Util.LiberarComboBox(cbCliente);
-                DGP_Util.EnabledComboBox(cbCliente, true);
+                DGP_Util.LiberarComboBox(cmbClientes);
+                DGP_Util.EnabledComboBox(cmbClientes, true);
                 DGP_Util.LiberarComboBox(cbProducto);
                 DGP_Util.EnabledComboBox(cbProducto, false);
                 //DGP_Util.EnableControl(nudPrecioAmortizacion, false);
@@ -192,24 +191,24 @@ namespace DGP.Presentation.Ventas {
                 DGP_Util.EnableControl(btnGrabar, false);
                 DGP_Util.EnableControl(btnCancelar, false);
                 LimpiarFormulario();
-                CargarCliente();
+                //CargarCliente();
                 // Definir al Usuario
                 CargarUsuarios();
                 dtpFechaPago.Value = DateTime.Now.Date;
                 cbUsuario.SelectedValue = VariablesSession.BEUsuarioSession.IdPersonal;
             }
 
-            private void CargarCliente() {
-                List<BEClienteProveedor> vListaCliente = new List<BEClienteProveedor>();
-                BEClienteProveedor oTemp = new BEClienteProveedor();
-                oTemp.IdZona = 0;
-                vListaCliente = new BLClienteProveedor().Listar(oTemp);
-                //vListaCliente.Insert(0, new BEClienteProveedor(0, "CE : Cliente Eventual"));
-                vListaCliente.Insert(0, new BEClienteProveedor(0, "--------Todos--------"));
-                cbCliente.DataSource = vListaCliente;
-                cbCliente.DisplayMember = "Nombre";
-                cbCliente.ValueMember = "IdCliente";
-            }
+            //private void CargarCliente() {
+            //    List<BEClienteProveedor> vListaCliente = new List<BEClienteProveedor>();
+            //    BEClienteProveedor oTemp = new BEClienteProveedor();
+            //    oTemp.IdZona = 0;
+            //    vListaCliente = new BLClienteProveedor().Listar(oTemp);
+            //    //vListaCliente.Insert(0, new BEClienteProveedor(0, "CE : Cliente Eventual"));
+            //    vListaCliente.Insert(0, new BEClienteProveedor(0, "--------Todos--------"));
+            //    cbCliente.DataSource = vListaCliente;
+            //    cbCliente.DisplayMember = "Nombre";
+            //    cbCliente.ValueMember = "IdCliente";
+            //}
 
             private void ResetearFormulario() {
                 if (cbProducto.DataSource != null) {
@@ -372,7 +371,7 @@ namespace DGP.Presentation.Ventas {
                             int intIdCliente = 0;
                             intIdVenta = Convert.ToInt32(vRow.Cells[ePosicionCol.IdVenta.GetHashCode()].Value);
                             intIdProducto = Convert.ToInt32(vRow.Cells[ePosicionCol.IdProducto.GetHashCode()].Value);
-                            intIdCliente = Convert.ToInt32(cbCliente.SelectedValue);
+                            intIdCliente = Convert.ToInt32(this.cmbClientes.SelectedValue);
                             oBEAmortizacionVenta = new BEAmortizacionVenta();
                             oBEAmortizacionVenta.Monto = decPagoCuenta;
                             oBEAmortizacionVenta.NroDocumento = string.Empty;
@@ -430,7 +429,7 @@ namespace DGP.Presentation.Ventas {
 
                             new BLAmortizacionVenta().EliminarAdelantoVenta(bean);
 
-                            int intIdCliente = Convert.ToInt32(cbCliente.SelectedValue);
+                            int intIdCliente = Convert.ToInt32(this.cmbClientes.SelectedValue);
                             int intIdProducto = Convert.ToInt32(cbProducto.SelectedValue);
                             CargarAmortizaciones(intIdCliente, intIdProducto);
                             //this.CargarAmortizaciones(
@@ -451,6 +450,106 @@ namespace DGP.Presentation.Ventas {
                 MessageBox.Show(ex.Message,"Error");
             }
         }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void CmbClientes_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)(Keys.Enter))
+            {
+                e.Handled = true;
+                SendKeys.Send("{TAB}");
+            }
+        }
+
+        private void cmbClientes_KeyUp(object sender, KeyEventArgs e)
+        {
+            try
+            {
+                // Do nothing for certain keys, such as navigation keys.
+                if (
+                    (e.KeyCode == Keys.Escape) ||
+
+                    (e.KeyCode == Keys.Left) ||
+                    (e.KeyCode == Keys.Right) ||
+                    (e.KeyCode == Keys.Up) ||
+                    (e.KeyCode == Keys.Down) ||
+                    (e.KeyCode == Keys.PageUp) ||
+                    (e.KeyCode == Keys.PageDown) ||
+                    (e.KeyCode == Keys.Home) ||
+                    (e.KeyCode == Keys.End) ||
+
+                    (e.KeyCode == Keys.Enter) ||
+
+                    (e.KeyCode == Keys.Multiply) ||
+                    (e.KeyCode == Keys.Divide) ||
+                    (e.KeyCode == Keys.Subtract) ||
+                    (e.KeyCode == Keys.Add) ||
+                    (e.KeyCode == Keys.NumLock)
+                    )
+                {
+                    e.Handled = true;
+                    return;
+                }
+                string actual = cmbClientes.Text;
+                //
+                int intIdZona = 0;
+                BEClienteProveedor oEntidad = new BEClienteProveedor();
+
+                oEntidad.Nombre = actual;
+                oEntidad.IdZona = intIdZona;
+                oEntidad.IdCliente = 0;
+                List<BEClienteProveedor> vTemp = new BLClienteProveedor().Listar(oEntidad);
+                vTemp.Insert(0, new BEClienteProveedor(0, ""));
+                if (vTemp != null && vTemp.Count > 0)
+                {
+                    cmbClientes.Text = string.Empty;
+                    cmbClientes.DataSource = vTemp;
+                    cmbClientes.DisplayMember = "Nombre";
+                    cmbClientes.ValueMember = "IdCliente";
+                    cmbClientes.DroppedDown = true;
+                    cmbClientes.Refresh();
+                    cmbClientes.Text = actual;
+                    if (!string.IsNullOrEmpty(actual))
+                    {
+                        cmbClientes.Select(actual.Length, 0);
+                    }
+                    else
+                    {
+                        cmbClientes.SelectedIndex = -1;
+                    }
+                }
+                else
+                {
+                    cmbClientes.DroppedDown = false;
+                    cmbClientes.SelectedIndex = -1;
+                }
+            }
+            catch (Exception ex)
+            {
+                MostrarMensaje(ex.Message, MessageBoxIcon.Error);
+            }
+        }
+
+
+
+        private void cmbClientes_Leave(object sender, EventArgs e)
+        {
+            if (this.cmbClientes.SelectedIndex >= 0)
+            {
+                BEClienteProveedor oBEClienteProveedor = (BEClienteProveedor)this.cmbClientes.SelectedItem;
+
+                //MostrarMensaje(oBEClienteProveedor.IdCliente.ToString() + oBEClienteProveedor.Nombre, MessageBoxIcon.Information);
+
+            }
+        }
+
+
+        
+
 
     }
 }

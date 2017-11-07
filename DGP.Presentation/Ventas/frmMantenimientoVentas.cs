@@ -14,8 +14,11 @@ using DGP.BusinessLogic.Ventas;
 namespace DGP.Presentation.Ventas {
 
     public partial class frmMantenimientoVentas : Form {
-
+        private System.Windows.Forms.DataGridView dgrvVentas;
+            
         public frmMantenimientoVentas() {
+            this.dgrvVentas = new System.Windows.Forms.DataGridView();
+                    
             InitializeComponent();
             InicializarFormulario();
         }
@@ -24,7 +27,7 @@ namespace DGP.Presentation.Ventas {
         
             private void frmMantenimientoVentas_Load(object sender, EventArgs e) {
                 try {
-                    dgrvVentas.AutoGenerateColumns = false;
+                    this.dgrvVentas.AutoGenerateColumns = false;
                 } catch (Exception ex) {
                     MostrarMensaje(ex.Message, MessageBoxIcon.Error);
                 }
@@ -41,7 +44,10 @@ namespace DGP.Presentation.Ventas {
             private void btnBuscarVentas_Click(object sender, EventArgs e) {
                 try {
                     BEVenta oBEVenta = ObtenerVentaBusqueda();
-                    dgrvVentas.DataSource = new BLVenta().ListarVentaMantenimiento(oBEVenta);
+                    this.bdVentas.DataSource= new BLVenta().ListarVentaMantenimiento(oBEVenta);
+                    this.dgrvVentas.DataSource = this.bdVentas;
+                    
+                    //dgrvVentas.Refresh();
                 } catch (Exception ex) {
                     MostrarMensaje(ex.Message, MessageBoxIcon.Error);
                 }
@@ -49,9 +55,9 @@ namespace DGP.Presentation.Ventas {
 
             private void dgrvVentas_CellDoubleClick(object sender, DataGridViewCellEventArgs e) {
                 try {
-                    object objIDVenta = dgrvVentas[0, e.RowIndex].Value;
-                    frmDetalleVenta frmMantVenta = new frmDetalleVenta(Convert.ToInt32(objIDVenta));
-                    frmMantVenta.ShowDialog();
+                    DGP.Entities.Ventas.VistaVenta objIDVenta = (DGP.Entities.Ventas.VistaVenta) this.dgrvVentas.Rows[e.RowIndex].DataBoundItem;
+                    frmDetalleVenta frmMantVenta = new frmDetalleVenta(objIDVenta.IdVenta);
+                    frmMantVenta.ShowDialog(); 
                 } catch (Exception ex) {
                     MostrarMensaje(ex.Message, MessageBoxIcon.Error);
                 }
@@ -64,18 +70,13 @@ namespace DGP.Presentation.Ventas {
             private void InicializarFormulario() {
                 LimpiarFiltrosBusqueda();
                 CargarTipoDocumento();
-                CargarCliente();
                 CargarProducto();
-                CargarEmpresa();
             }
 
             private void LimpiarFiltrosBusqueda() {
                 txtCodigoVenta.Text = string.Empty;
                 DGP_Util.LiberarComboBox(cbTipoDocumento);
-                txtNroDocumento.Text = string.Empty;
-                DGP_Util.LiberarComboBox(cbCliente);
                 DGP_Util.LiberarComboBox(cbProducto);
-                DGP_Util.LiberarComboBox(cbEmpresa);
                 DGP_Util.SetDateTimeNow(dtpFechaInicial);
                 DGP_Util.SetDateTimeNow(dtpFechaFinal);
                 DGP_Util.LiberarGridView(dgrvVentas);
@@ -92,15 +93,15 @@ namespace DGP.Presentation.Ventas {
                 cbTipoDocumento.ValueMember = "Valor";
             }
 
-            private void CargarCliente() {
-                List<BEClienteProveedor> vListaCliente = new List<BEClienteProveedor>();
-                vListaCliente = new BLClienteProveedor().Listar(new BEClienteProveedor());
-                vListaCliente.Insert(0, new BEClienteProveedor(0, "CE : Cliente Eventual"));
-                vListaCliente.Insert(0, new BEClienteProveedor(-1, "Todos"));
-                cbCliente.DataSource = vListaCliente;
-                cbCliente.DisplayMember = "Nombre";
-                cbCliente.ValueMember = "IdCliente";
-            }
+            //private void CargarCliente() {
+            //    List<BEClienteProveedor> vListaCliente = new List<BEClienteProveedor>();
+            //    vListaCliente = new BLClienteProveedor().Listar(new BEClienteProveedor());
+            //    vListaCliente.Insert(0, new BEClienteProveedor(0, "CE : Cliente Eventual"));
+            //    vListaCliente.Insert(0, new BEClienteProveedor(-1, "Todos"));
+            //    cbCliente.DataSource = vListaCliente;
+            //    cbCliente.DisplayMember = "Nombre";
+            //    cbCliente.ValueMember = "IdCliente";
+            //}
 
             private void CargarProducto() {
                 List<BEProducto> vLista = new List<BEProducto>();
@@ -111,14 +112,7 @@ namespace DGP.Presentation.Ventas {
                 cbProducto.ValueMember = "IdProducto";
             }
 
-            private void CargarEmpresa() {
-                List<BEEmpresa> vLista = new List<BEEmpresa>();
-                vLista = new BLEmpresa().Listar(new BEEmpresa());
-                vLista.Insert(0, new BEEmpresa(0, "Todos"));
-                cbEmpresa.DataSource = vLista;
-                cbEmpresa.DisplayMember = "RazonSocial";
-                cbEmpresa.ValueMember = "IdEmpresa";
-            }
+            
 
             private void MostrarMensaje(string pMensaje, MessageBoxIcon pMsgBoxicon) {
                 MessageBox.Show(pMensaje, "DGP", MessageBoxButtons.OK, pMsgBoxicon);
@@ -130,16 +124,106 @@ namespace DGP.Presentation.Ventas {
                 oBEVenta.strFilterIds = txtCodigoVenta.Text;// string.IsNullOrEmpty(txtCodigoVenta.Text) ? 0 : int.Parse(txtCodigoVenta.Text);
 
                 oBEVenta.IdTipoDocumentoVenta = (cbTipoDocumento.SelectedIndex == 0) ? string.Empty : cbTipoDocumento.SelectedValue.ToString();
-                oBEVenta.NumeroDocumento = string.IsNullOrEmpty(txtNroDocumento.Text) ? string.Empty : txtNroDocumento.Text;
-                oBEVenta.IdCliente = (cbCliente.SelectedIndex == 0) ? -1 : Convert.ToInt32(cbCliente.SelectedValue);
+                oBEVenta.IdCliente = (this.cmbClientes.Text == string.Empty) ? -1 : Convert.ToInt32(cmbClientes.SelectedValue);
                 oBEVenta.IdProducto = (cbProducto.SelectedIndex == 0) ? 0 : Convert.ToInt32(cbProducto.SelectedValue);
-                oBEVenta.IdEmpresa = (cbEmpresa.SelectedIndex == 0) ? 0 : Convert.ToInt32(cbEmpresa.SelectedValue);
                 oBEVenta.FechaInicio = dtpFechaInicial.Value.Date;
                 oBEVenta.FechaFin = dtpFechaFinal.Value.Date;
                 return oBEVenta;
             }
 
         #endregion
+
+            private void CmbClientes_KeyPress(object sender, KeyPressEventArgs e)
+            {
+                if (e.KeyChar == (char)(Keys.Enter))
+                {
+                    e.Handled = true;
+                    SendKeys.Send("{TAB}");
+                }
+            }
+
+            private void cmbClientes_KeyUp(object sender, KeyEventArgs e)
+            {
+                try
+                {
+                    // Do nothing for certain keys, such as navigation keys.
+                    if (
+                        (e.KeyCode == Keys.Escape) ||
+
+                        (e.KeyCode == Keys.Left) ||
+                        (e.KeyCode == Keys.Right) ||
+                        (e.KeyCode == Keys.Up) ||
+                        (e.KeyCode == Keys.Down) ||
+                        (e.KeyCode == Keys.PageUp) ||
+                        (e.KeyCode == Keys.PageDown) ||
+                        (e.KeyCode == Keys.Home) ||
+                        (e.KeyCode == Keys.End) ||
+
+                        (e.KeyCode == Keys.Enter) ||
+
+                        (e.KeyCode == Keys.Multiply) ||
+                        (e.KeyCode == Keys.Divide) ||
+                        (e.KeyCode == Keys.Subtract) ||
+                        (e.KeyCode == Keys.Add) ||
+                        (e.KeyCode == Keys.NumLock)
+                        )
+                    {
+                        e.Handled = true;
+                        return;
+                    }
+                    string actual = cmbClientes.Text;
+                    //
+                    int intIdZona = 0;
+                    BEClienteProveedor oEntidad = new BEClienteProveedor();
+
+                    oEntidad.Nombre = actual;
+                    oEntidad.IdZona = intIdZona;
+                    oEntidad.IdCliente = 0;
+                    List<BEClienteProveedor> vTemp = new BLClienteProveedor().Listar(oEntidad);
+                    vTemp.Insert(0, new BEClienteProveedor(0, ""));
+                    if (vTemp != null && vTemp.Count > 0)
+                    {
+                        cmbClientes.Text = string.Empty;
+                        cmbClientes.DataSource = vTemp;
+                        cmbClientes.DisplayMember = "Nombre";
+                        cmbClientes.ValueMember = "IdCliente";
+                        cmbClientes.DroppedDown = true;
+                        cmbClientes.Refresh();
+                        cmbClientes.Text = actual;
+                        if (!string.IsNullOrEmpty(actual))
+                        {
+                            cmbClientes.Select(actual.Length, 0);
+                        }
+                        else
+                        {
+                            cmbClientes.SelectedIndex = -1;
+                        }
+                    }
+                    else
+                    {
+                        cmbClientes.DroppedDown = false;
+                        cmbClientes.SelectedIndex = -1;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MostrarMensaje(ex.Message, MessageBoxIcon.Error);
+                }
+            }
+            
+
+
+            private void cmbClientes_Leave(object sender, EventArgs e)
+            {
+                if (this.cmbClientes.SelectedIndex >= 0)
+                {
+                    BEClienteProveedor oBEClienteProveedor = (BEClienteProveedor)this.cmbClientes.SelectedItem;
+                    
+                    //MostrarMensaje(oBEClienteProveedor.IdCliente.ToString() + oBEClienteProveedor.Nombre, MessageBoxIcon.Information);
+
+                }
+            }
+
 
     }
 }
