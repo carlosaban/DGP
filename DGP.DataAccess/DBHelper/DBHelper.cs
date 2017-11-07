@@ -13,6 +13,7 @@ using System.IO;
 namespace DBHelper {
 
     public class DatabaseHelper : IDisposable {
+        private const string STRCONNECTION_KEY = "DGP.Entities.Properties.Settings.dgpConnectionString";
         public const bool PARAMETROS_OUT = true;
         public const int MENSAJE_SIZE = 2000;
         public const int INDEX_PARAMETROS_OUT = 0;
@@ -41,7 +42,7 @@ namespace DBHelper {
                     break;
                 case Providers.ConfigDefined:
 
-                    string providername = ConfigurationManager.ConnectionStrings["DGP_cs"].ProviderName;
+                    string providername = ConfigurationManager.ConnectionStrings[STRCONNECTION_KEY].ProviderName;
                     switch (providername) {
                         case "System.Data.SqlClient":
                             objFactory = SqlClientFactory.Instance;
@@ -55,9 +56,9 @@ namespace DBHelper {
             objConnection.ConnectionString = strConnectionString;
             objCommand.Connection = objConnection;
         }
-        public DatabaseHelper(Providers provider) : this(ConfigurationManager.ConnectionStrings["DGP_cs"].ConnectionString, provider) { }
+        public DatabaseHelper(Providers provider) : this(ConfigurationManager.ConnectionStrings[STRCONNECTION_KEY].ConnectionString, provider) { }
         public DatabaseHelper(string connectionstring) : this(connectionstring, Providers.SqlServer) { }
-        public DatabaseHelper() : this(ConfigurationManager.ConnectionStrings["DGP_cs"].ConnectionString, Providers.SqlServer) { }
+        public DatabaseHelper() : this(ConfigurationManager.ConnectionStrings[STRCONNECTION_KEY].ConnectionString, Providers.SqlServer) { }
         public bool HandleErrors {
             get { return boolHandleErrors; }
             set { boolHandleErrors = value; }
