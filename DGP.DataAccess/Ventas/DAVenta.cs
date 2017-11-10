@@ -305,6 +305,8 @@ namespace DGP.DataAccess.Ventas {
                     oDatabaseHelper.AddParameter("@datFechaInicial", pBEVenta.FechaInicio);
                     oDatabaseHelper.AddParameter("@datFechaFinal", pBEVenta.FechaFin);
                     oDatabaseHelper.AddParameter("@varFilterIdVentas", string.IsNullOrEmpty(pBEVenta.strFilterIds) ? (object)DBNull.Value : pBEVenta.strFilterIds);
+                    oDatabaseHelper.AddParameter("@TienePrecioVariable", (!pBEVenta.TienePrecioVariable) ? (object)DBNull.Value : pBEVenta.TienePrecioVariable );
+                    
                     
                     oIDataReader = oDatabaseHelper.ExecuteReader("DGP_Listar_Venta_Cabecera", CommandType.StoredProcedure);
                     
@@ -331,6 +333,9 @@ namespace DGP.DataAccess.Ventas {
                         oVistaVenta.TotalSaldo = decimal.Parse(oIDataReader["Total_Saldo"].ToString());
                         oVistaVenta.Estado = (oIDataReader["Estado"] == (object)DBNull.Value) ? string.Empty : oIDataReader["Estado"].ToString();
                         oVistaVenta.TotalUnidades = (oIDataReader["TotalUnidades"] == (object)DBNull.Value) ? 0 : Convert.ToInt32(oIDataReader["TotalUnidades"].ToString());
+                        oVistaVenta.Margen = (oIDataReader["Margen"] == (object)DBNull.Value) ? (decimal)0.3 : decimal.Parse(oIDataReader["Margen"].ToString());
+
+                        oVistaVenta.TienePrecioVariable = (oIDataReader["TienePrecioVariable"] == (object)DBNull.Value) ? false : bool.Parse( oIDataReader["TienePrecioVariable"].ToString());
                         
                         vLista.Add(oVistaVenta);
                     }
@@ -433,10 +438,7 @@ namespace DGP.DataAccess.Ventas {
             {
                 DatabaseHelper oDatabaseHelper = new DatabaseHelper();
                 DSRptTablero oDSTablero = new DSRptTablero();
-                //            @dtFechaInicial	DATETIME = NULL , 
-                //@dtFechaFinal	DATETIME = NULL ,
-                //@vcListProductos varchar(200),
-                //@vcListZonas	varchar(200)
+                
                 try
                 {
                     oDatabaseHelper.ClearParameter();
@@ -446,7 +448,6 @@ namespace DGP.DataAccess.Ventas {
                     oDatabaseHelper.AddParameter("@vcListZonas", (pFiltroTablero.strListZonas == null) ? (object)DBNull.Value : pFiltroTablero.strListZonas);
                     
                     DataSet ds = oDatabaseHelper.ExecuteDataSet("DGP_Reporte_Tablero2", CommandType.StoredProcedure);
-
 
                     oDSTablero.TABLERO.Merge(ds.Tables[0], true, MissingSchemaAction.Ignore);
                     return oDSTablero;
@@ -566,10 +567,7 @@ namespace DGP.DataAccess.Ventas {
         {
             DatabaseHelper oDatabaseHelper = new DatabaseHelper();
             DSRptTablero oDSTablero = new DSRptTablero();
-            //            @dtFechaInicial	DATETIME = NULL , 
-            //@dtFechaFinal	DATETIME = NULL ,
-            //@vcListProductos varchar(200),
-            //@vcListZonas	varchar(200)
+            
             try
             {
                 oDatabaseHelper.ClearParameter();

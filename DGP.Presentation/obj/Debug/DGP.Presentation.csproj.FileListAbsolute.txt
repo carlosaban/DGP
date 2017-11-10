@@ -114,3 +114,4 @@ D:\workspace\DGP\DGP.Presentation\obj\Debug\DGP.Presentation.Ventas.frmVueltos.r
 D:\workspace\DGP\DGP.Presentation\obj\Debug\DGP.Presentation.csproj.GenerateResource.Cache
 D:\workspace\DGP\DGP.Presentation\obj\Debug\DGP.Presentation.exe
 D:\workspace\DGP\DGP.Presentation\obj\Debug\DGP.Presentation.pdb
+D:\workspace\DGP\DGP.Presentation\obj\Debug\DGP.Presentation.Ventas.frmAplicarPreciosGrupo.resources

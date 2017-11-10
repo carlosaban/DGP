@@ -156,6 +156,10 @@
       <DependentUpon>frmAmortizacion.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Ventas\frmAplicarPreciosGrupo.resx">
+      <DependentUpon>frmAplicarPreciosGrupo.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Ventas\frmDetalleVenta.resx">
       <SubType>Designer</SubType>
       <DependentUpon>frmDetalleVenta.cs</DependentUpon>
@@ -282,6 +286,12 @@
     </Compile>
     <Compile Include="Ventas\frmAmortizacion.Designer.cs">
       <DependentUpon>frmAmortizacion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Ventas\frmAplicarPreciosGrupo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventas\frmAplicarPreciosGrupo.Designer.cs">
+      <DependentUpon>frmAplicarPreciosGrupo.cs</DependentUpon>
     </Compile>
     <Compile Include="Ventas\frmDetalleVenta.cs">
       <SubType>Form</SubType>

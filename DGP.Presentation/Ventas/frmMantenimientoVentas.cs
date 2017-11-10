@@ -28,6 +28,9 @@ namespace DGP.Presentation.Ventas {
             private void frmMantenimientoVentas_Load(object sender, EventArgs e) {
                 try {
                     this.dgrvVentas.AutoGenerateColumns = false;
+                    this.panel1.HorizontalScroll.Enabled = true;
+                    this.panel1.HorizontalScroll.Visible = true;
+                   
                 } catch (Exception ex) {
                     MostrarMensaje(ex.Message, MessageBoxIcon.Error);
                 }
@@ -43,18 +46,28 @@ namespace DGP.Presentation.Ventas {
 
             private void btnBuscarVentas_Click(object sender, EventArgs e) {
                 try {
-                    BEVenta oBEVenta = ObtenerVentaBusqueda();
-                    this.bdVentas.DataSource= new BLVenta().ListarVentaMantenimiento(oBEVenta);
-                    this.dgrvVentas.DataSource = this.bdVentas;
+                    CargarGrilla();
                     
-                    //dgrvVentas.Refresh();
+                    
                 } catch (Exception ex) {
                     MostrarMensaje(ex.Message, MessageBoxIcon.Error);
                 }
             }
+            private void CargarGrilla()
+            {
+                BEVenta oBEVenta = ObtenerVentaBusqueda();
+                this.bdVentas.DataSource = new BLVenta().ListarVentaMantenimiento(oBEVenta);
+                this.dgrvVentas.DataSource = this.bdVentas;
+                    
+            
+            
+            }
 
             private void dgrvVentas_CellDoubleClick(object sender, DataGridViewCellEventArgs e) {
                 try {
+
+                    if (this.dgrvVentas.Columns[e.ColumnIndex].Name == "NuevoPrecio") return;
+
                     DGP.Entities.Ventas.VistaVenta objIDVenta = (DGP.Entities.Ventas.VistaVenta) this.dgrvVentas.Rows[e.RowIndex].DataBoundItem;
                     frmDetalleVenta frmMantVenta = new frmDetalleVenta(objIDVenta.IdVenta);
                     frmMantVenta.ShowDialog(); 
@@ -128,6 +141,7 @@ namespace DGP.Presentation.Ventas {
                 oBEVenta.IdProducto = (cbProducto.SelectedIndex == 0) ? 0 : Convert.ToInt32(cbProducto.SelectedValue);
                 oBEVenta.FechaInicio = dtpFechaInicial.Value.Date;
                 oBEVenta.FechaFin = dtpFechaFinal.Value.Date;
+                oBEVenta.TienePrecioVariable = chkTienePrecioVariable.Checked;
                 return oBEVenta;
             }
 
@@ -219,8 +233,83 @@ namespace DGP.Presentation.Ventas {
                 {
                     BEClienteProveedor oBEClienteProveedor = (BEClienteProveedor)this.cmbClientes.SelectedItem;
                     
-                    //MostrarMensaje(oBEClienteProveedor.IdCliente.ToString() + oBEClienteProveedor.Nombre, MessageBoxIcon.Information);
+                    
+                }
+            }
 
+            private void tabPage1_Click(object sender, EventArgs e)
+            {
+
+            }
+
+            private void gbFooter_Enter(object sender, EventArgs e)
+            {
+
+            }
+
+            private void btnCambioPrecios_Click(object sender, EventArgs e)
+            {
+                frmAplicarPreciosGrupo frmAplicarPreciosGrupo = new frmAplicarPreciosGrupo(this);
+
+                frmAplicarPreciosGrupo.ShowDialog(this);
+
+            }
+            public void AplicarPreciosGrupo(BEProducto producto, decimal precioBase, decimal Margen, int FormaAplicar)
+            {
+                foreach (DataGridViewRow item in this.dgrvVentas.Rows)
+                {
+                    if (producto.IdProducto == (int)item.Cells["IdProducto"].Value)
+                    {
+                        decimal margen = (string.IsNullOrEmpty(item.Cells["Margen"].Value.ToString())) ? Margen : decimal.Parse(item.Cells["Margen"].Value.ToString());
+                        if (FormaAplicar == 2) //clientes precio variable
+                        {
+                            bool tieneMargenVariable = false;
+                            bool.TryParse(item.Cells["TienePrecioVariable"].Value.ToString(), out tieneMargenVariable);
+                            item.Cells["NuevoPrecio"].Value = (tieneMargenVariable) ? (precioBase + margen).ToString() : string.Empty;
+
+                        }
+                        else
+                        {
+                            item.Cells["NuevoPrecio"].Value = precioBase + margen;
+                        }
+
+                    }
+                    
+                    
+                }
+            
+            
+            }
+
+            private void btnAplicar_Click(object sender, EventArgs e)
+            {
+                try
+                {
+                    if ( MessageBox.Show("Se modificaran los precios. Desea Continuar?", "Modificar Precios", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.No) return ;
+
+                    foreach (DataGridViewRow item in this.dgrvVentas.Rows)
+                    {
+                        if (item.Cells["idVenta"].Value == null || item.Cells["NuevoPrecio"].Value== null) continue;
+                        bool bok = false;
+                        int idVenta ;
+                        decimal precio;
+                        bok = int.TryParse (item.Cells["idVenta"].Value.ToString() ,out idVenta);
+                        if (!bok ) continue;
+                        bok = decimal.TryParse (item.Cells["NuevoPrecio"].Value.ToString() ,out precio);
+                        if (!bok ) continue;
+                        
+                        BLVenta blVenta = new BLVenta();
+                        blVenta.ActualizarPrecio(idVenta, precio);
+
+                    }
+                    CargarGrilla();
+
+
+                }
+                catch (Exception ex)
+                {
+
+                    this.MostrarMensaje(ex.Message , MessageBoxIcon.Error);
                 }
             }
 

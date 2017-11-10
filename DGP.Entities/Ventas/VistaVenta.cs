@@ -55,9 +55,10 @@ namespace DGP.Entities.Ventas {
             mFechaInicio = DateTime.Now;
             mFechaFin = DateTime.Now;
             mFecha = DateTime.Now;
-
+            this.Margen = 0;
             mIdZona = 0;
             mZona = string.Empty;
+            this.TienePrecioVariable = false;
         }
 
         public int IdVenta {
@@ -65,6 +66,7 @@ namespace DGP.Entities.Ventas {
             set { mIdVenta = value; }
         }
 
+        
         public decimal Precio {
             get { return mPrecio; }
             set { mPrecio = value; }
@@ -195,6 +197,9 @@ namespace DGP.Entities.Ventas {
             get { return mTotalUnidades; }
             set { mTotalUnidades = value; }
         }
+        public decimal Margen { get; set; }
+
+        public bool TienePrecioVariable { get; set; }
 	
 
     }

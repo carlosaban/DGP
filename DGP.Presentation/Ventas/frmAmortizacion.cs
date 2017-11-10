@@ -98,7 +98,9 @@ namespace DGP.Presentation.Ventas {
 
                     decimal montoTotal = this.nudPrecioAmortizacion.Value;
                     decimal montoAcarreo = 0;
+                    
                     foreach (DataGridViewRow vRow in dgrvAmortizacion.Rows) {
+                       
                         if (montoAcarreo >= montoTotal) break;
 
                         object oIndicador = vRow.Cells[ePosicionCol.Indicador.GetHashCode()].Value;
@@ -107,13 +109,16 @@ namespace DGP.Presentation.Ventas {
                         if (oIndicador.ToString() == "1" && sEstado == BEVenta.REGISTRADO) {
                             
                             decimal montoSaldo = 0;       
-                            decimal.TryParse(vRow.Cells[ePosicionCol.Saldo.GetHashCode()].Value.ToString() , out montoSaldo);
+                            bool okParse = decimal.TryParse(vRow.Cells[ePosicionCol.Saldo.GetHashCode()].Value.ToString() , out montoSaldo);
+                            if (!okParse ||montoSaldo < 0) continue; //excluir a los negativos
                             decimal delta = montoTotal - montoAcarreo;
+                            
                             decimal montoAmortizar = (delta >= montoSaldo) ? montoSaldo : montoTotal - montoAcarreo;
                             vRow.Cells[ePosicionCol.Pago.GetHashCode()].Value = montoAmortizar.ToString();
                             montoAcarreo = montoAcarreo + montoAmortizar;
+
+                             
                         }
-                       
                     }
 
 
@@ -280,15 +285,19 @@ namespace DGP.Presentation.Ventas {
                 bool boResultado = true;
                 int intCantidad = 0;
                 bool bExisteCancelar = false;
+                bool ExisteNegativos = false;
                 foreach (DataGridViewRow vRow in dgrvAmortizacion.Rows) { 
                     // Obtener el indicador
                     object oIndicador = vRow.Cells[ePosicionCol.Indicador.GetHashCode()].Value;
                     if (oIndicador.ToString() == "1") {
                         // Obtener el Pago a Cuenta
-                        decimal decPagoCuenta = decimal.Zero;
+                        decimal decSaldoCuenta = decimal.Zero;
                         object oPagoCuenta = vRow.Cells[ePosicionCol.Pago.GetHashCode()].Value;
+                        
                         if (oPagoCuenta != null && !string.IsNullOrEmpty(oPagoCuenta.ToString())) {
                             intCantidad++;
+                            decimal.TryParse(vRow.Cells[ePosicionCol.Saldo.GetHashCode()].Value.ToString(), out decSaldoCuenta);
+                            ExisteNegativos = ExisteNegativos || (decSaldoCuenta < 0);
                         }
                         //obtener el checkbox cancelado
                         bExisteCancelar = bExisteCancelar || ((bool)vRow.Cells[ePosicionCol.Cancelar.GetHashCode()].Value);
@@ -297,6 +306,11 @@ namespace DGP.Presentation.Ventas {
                 }
                 if (intCantidad <= 0) {
                     pMensaje = "Debe ingresar como mínimo un pago";
+                    boResultado = false;
+                }
+                if (ExisteNegativos)
+                {
+                    pMensaje = "No debe Aplicar Amortizaciones a valores negativos";
                     boResultado = false;
                 }
                 //if (bExisteCancelar)
@@ -416,11 +430,11 @@ namespace DGP.Presentation.Ventas {
                 if (e.RowIndex>-1 && e.ColumnIndex>-1)
                 {
 
-                    if ( this.dgrvAmortizacion.Columns[e.ColumnIndex].Name == "dgvBtnEliminar" )
+                    if ( this.dgrvAmortizacion.Columns[e.ColumnIndex].Name == "dgvBtnEliminar"  )
                     {
                         VistaAmortizacion vistaAmortizacion = (VistaAmortizacion)this.dgrvAmortizacion.Rows[e.RowIndex].DataBoundItem;
 
-                        if (vistaAmortizacion.IdAmortizacion > 0)//esto para saltar las ventas
+                        if (vistaAmortizacion.IdAmortizacion > 0 && MessageBox.Show("Desea Eliminar la amortizacion?", "Eliminar Amortizacion", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)//esto para saltar las ventas
                         {
                             BEAmortizacionVenta bean = new BEAmortizacionVenta();
                             bean.IdAmortizacionVenta = vistaAmortizacion.IdAmortizacion;
@@ -449,11 +463,6 @@ namespace DGP.Presentation.Ventas {
             {
                 MessageBox.Show(ex.Message,"Error");
             }
-        }
-
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
         }
 
         private void CmbClientes_KeyPress(object sender, KeyPressEventArgs e)

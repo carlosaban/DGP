@@ -136,6 +136,7 @@
             this.verCuenta = new System.Windows.Forms.DataGridViewButtonColumn();
             this.dglColumn11 = new System.Windows.Forms.DataGridViewButtonColumn();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.dtFechaGasto = new System.Windows.Forms.DateTimePicker();
             this.cmbPersonal = new System.Windows.Forms.ComboBox();
             this.txtGastoConcepto = new System.Windows.Forms.TextBox();
             this.NudGastoMonto = new System.Windows.Forms.NumericUpDown();
@@ -191,7 +192,6 @@
             this.dataGridViewTextBoxColumn35 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn36 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn37 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dtFechaGasto = new System.Windows.Forms.DateTimePicker();
             this.tcTableroElectronico.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -964,6 +964,13 @@
             this.tabPage3.UseVisualStyleBackColor = true;
             this.tabPage3.Click += new System.EventHandler(this.tabPage3_Click);
             // 
+            // dtFechaGasto
+            // 
+            this.dtFechaGasto.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            resources.ApplyResources(this.dtFechaGasto, "dtFechaGasto");
+            this.dtFechaGasto.Name = "dtFechaGasto";
+            this.dtFechaGasto.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
+            // 
             // cmbPersonal
             // 
             this.cmbPersonal.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -980,7 +987,13 @@
             // 
             // NudGastoMonto
             // 
+            this.NudGastoMonto.DecimalPlaces = 2;
             resources.ApplyResources(this.NudGastoMonto, "NudGastoMonto");
+            this.NudGastoMonto.Maximum = new decimal(new int[] {
+            10000000,
+            0,
+            0,
+            0});
             this.NudGastoMonto.Name = "NudGastoMonto";
             // 
             // txtGastoObservacion
@@ -1424,13 +1437,6 @@
             this.dataGridViewTextBoxColumn37.DataPropertyName = "fecha_gasto";
             resources.ApplyResources(this.dataGridViewTextBoxColumn37, "dataGridViewTextBoxColumn37");
             this.dataGridViewTextBoxColumn37.Name = "dataGridViewTextBoxColumn37";
-            // 
-            // dtFechaGasto
-            // 
-            this.dtFechaGasto.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            resources.ApplyResources(this.dtFechaGasto, "dtFechaGasto");
-            this.dtFechaGasto.Name = "dtFechaGasto";
-            this.dtFechaGasto.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
             // 
             // frmTableroElectronico
             // 

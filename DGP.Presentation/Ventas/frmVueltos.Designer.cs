@@ -49,8 +49,6 @@
             this.precioDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.idVentaDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bsSaldos = new System.Windows.Forms.BindingSource(this.components);
-            this.txtVueltos = new System.Windows.Forms.TextBox();
-            this.txtVentas = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -240,22 +238,6 @@
             this.bsSaldos.DataMember = "DTSaldos";
             this.bsSaldos.DataSource = typeof(DGP.Entities.DataSet.DSVueltos);
             // 
-            // txtVueltos
-            // 
-            this.txtVueltos.Location = new System.Drawing.Point(12, 308);
-            this.txtVueltos.Name = "txtVueltos";
-            this.txtVueltos.ReadOnly = true;
-            this.txtVueltos.Size = new System.Drawing.Size(100, 20);
-            this.txtVueltos.TabIndex = 14;
-            // 
-            // txtVentas
-            // 
-            this.txtVentas.Location = new System.Drawing.Point(473, 308);
-            this.txtVentas.Name = "txtVentas";
-            this.txtVentas.ReadOnly = true;
-            this.txtVentas.Size = new System.Drawing.Size(100, 20);
-            this.txtVentas.TabIndex = 15;
-            // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.dgvVueltos);
@@ -353,8 +335,6 @@
             this.ClientSize = new System.Drawing.Size(935, 351);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.txtVentas);
-            this.Controls.Add(this.txtVueltos);
             this.Controls.Add(this.btnProcesarVuelto);
             this.Controls.Add(this.rbtCancelarVenta);
             this.Controls.Add(this.rbtVuelto);
@@ -381,8 +361,6 @@
         private System.Windows.Forms.RadioButton rbtCancelarVenta;
         private System.Windows.Forms.Button btnProcesarVuelto;
         private System.Windows.Forms.DataGridView dgvSaldos;
-        private System.Windows.Forms.TextBox txtVueltos;
-        private System.Windows.Forms.TextBox txtVentas;
         private System.Windows.Forms.BindingSource bsVueltos;
         private System.Windows.Forms.BindingSource bsSaldos;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;

@@ -28,13 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.cmbClientes = new System.Windows.Forms.ComboBox();
             this.lblSimboloMoneda = new System.Windows.Forms.Label();
@@ -45,27 +45,16 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.dgrvAmortizacion = new System.Windows.Forms.DataGridView();
-            this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Personal = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CancelarVenta = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.dgvBtnEliminar = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.IdEstado = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnGrabar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dtpFechaPago = new System.Windows.Forms.DateTimePicker();
             this.label4 = new System.Windows.Forms.Label();
             this.cbUsuario = new System.Windows.Forms.ComboBox();
+            this.Detalle = new System.Windows.Forms.GroupBox();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -79,12 +68,25 @@
             this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Detalle = new System.Windows.Forms.GroupBox();
+            this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Personal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IdEstado = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudPrecioAmortizacion)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgrvAmortizacion)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.Detalle.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -104,7 +106,6 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Amortización";
-            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // cmbClientes
             // 
@@ -202,20 +203,20 @@
             // 
             this.dgrvAmortizacion.AllowUserToAddRows = false;
             this.dgrvAmortizacion.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle15.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle15.Format = "N2";
-            dataGridViewCellStyle15.NullValue = null;
-            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgrvAmortizacion.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle15;
-            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle16.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle16.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle16.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle16.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle16.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgrvAmortizacion.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle16;
+            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle8.Format = "N2";
+            dataGridViewCellStyle8.NullValue = null;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgrvAmortizacion.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgrvAmortizacion.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
             this.dgrvAmortizacion.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgrvAmortizacion.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column11,
@@ -234,140 +235,20 @@
             this.dgvBtnEliminar,
             this.IdEstado});
             this.dgrvAmortizacion.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgrvAmortizacion.Location = new System.Drawing.Point(3, 16);
+            this.dgrvAmortizacion.Location = new System.Drawing.Point(0, 0);
             this.dgrvAmortizacion.MultiSelect = false;
             this.dgrvAmortizacion.Name = "dgrvAmortizacion";
             this.dgrvAmortizacion.RowHeadersVisible = false;
             this.dgrvAmortizacion.RowHeadersWidth = 20;
-            dataGridViewCellStyle18.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle18.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle18.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgrvAmortizacion.RowsDefaultCellStyle = dataGridViewCellStyle18;
+            dataGridViewCellStyle11.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgrvAmortizacion.RowsDefaultCellStyle = dataGridViewCellStyle11;
             this.dgrvAmortizacion.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgrvAmortizacion.Size = new System.Drawing.Size(1106, 379);
+            this.dgrvAmortizacion.Size = new System.Drawing.Size(976, 379);
             this.dgrvAmortizacion.TabIndex = 1;
             this.dgrvAmortizacion.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgrvAmortizacion_CellEndEdit);
             this.dgrvAmortizacion.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgrvAmortizacion_CellContentClick);
-            // 
-            // Column11
-            // 
-            this.Column11.DataPropertyName = "Indicador";
-            this.Column11.Frozen = true;
-            this.Column11.HeaderText = "Indicador";
-            this.Column11.Name = "Column11";
-            this.Column11.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.Column11.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.Column11.Visible = false;
-            this.Column11.Width = 50;
-            // 
-            // Column9
-            // 
-            this.Column9.DataPropertyName = "IdVenta";
-            this.Column9.Frozen = true;
-            this.Column9.HeaderText = "IdVenta";
-            this.Column9.Name = "Column9";
-            this.Column9.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.Column9.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.Column9.Visible = false;
-            this.Column9.Width = 70;
-            // 
-            // Column10
-            // 
-            this.Column10.DataPropertyName = "IdProducto";
-            this.Column10.Frozen = true;
-            this.Column10.HeaderText = "IdProducto";
-            this.Column10.Name = "Column10";
-            this.Column10.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.Column10.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.Column10.Visible = false;
-            this.Column10.Width = 70;
-            // 
-            // Column1
-            // 
-            this.Column1.DataPropertyName = "TipoDocumento";
-            this.Column1.Frozen = true;
-            this.Column1.HeaderText = "Tipo Documento";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            this.Column1.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.Column1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // Column2
-            // 
-            this.Column2.DataPropertyName = "Producto";
-            this.Column2.HeaderText = "Producto";
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
-            this.Column2.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.Column2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // Column3
-            // 
-            this.Column3.DataPropertyName = "Fecha";
-            dataGridViewCellStyle17.Format = "d";
-            dataGridViewCellStyle17.NullValue = null;
-            this.Column3.DefaultCellStyle = dataGridViewCellStyle17;
-            this.Column3.HeaderText = "Fecha";
-            this.Column3.Name = "Column3";
-            this.Column3.ReadOnly = true;
-            this.Column3.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.Column3.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.Column3.Width = 80;
-            // 
-            // Personal
-            // 
-            this.Personal.DataPropertyName = "Personal";
-            this.Personal.HeaderText = "Responsable";
-            this.Personal.Name = "Personal";
-            this.Personal.ReadOnly = true;
-            // 
-            // Column4
-            // 
-            this.Column4.DataPropertyName = "strCantidadJavas";
-            this.Column4.HeaderText = "Cantidad Javas";
-            this.Column4.Name = "Column4";
-            this.Column4.ReadOnly = true;
-            this.Column4.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.Column4.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.Column4.Width = 80;
-            // 
-            // Column5
-            // 
-            this.Column5.DataPropertyName = "strPesoNeto";
-            this.Column5.HeaderText = "Peso Neto";
-            this.Column5.Name = "Column5";
-            this.Column5.ReadOnly = true;
-            this.Column5.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.Column5.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.Column5.Width = 80;
-            // 
-            // Column6
-            // 
-            this.Column6.DataPropertyName = "Importe";
-            this.Column6.HeaderText = "Importe";
-            this.Column6.Name = "Column6";
-            this.Column6.ReadOnly = true;
-            this.Column6.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.Column6.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.Column6.Width = 90;
-            // 
-            // Column7
-            // 
-            this.Column7.DataPropertyName = "strSaldo";
-            this.Column7.HeaderText = "Saldo";
-            this.Column7.Name = "Column7";
-            this.Column7.ReadOnly = true;
-            this.Column7.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.Column7.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.Column7.Width = 90;
-            // 
-            // Column8
-            // 
-            this.Column8.HeaderText = "Pago a Cuenta";
-            this.Column8.Name = "Column8";
-            this.Column8.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.Column8.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.Column8.Width = 90;
             // 
             // CancelarVenta
             // 
@@ -382,14 +263,6 @@
             // 
             this.dgvBtnEliminar.HeaderText = "Eliminar";
             this.dgvBtnEliminar.Name = "dgvBtnEliminar";
-            // 
-            // IdEstado
-            // 
-            this.IdEstado.DataPropertyName = "IdEstado";
-            this.IdEstado.HeaderText = "Estado";
-            this.IdEstado.Name = "IdEstado";
-            this.IdEstado.ReadOnly = true;
-            this.IdEstado.Visible = false;
             // 
             // btnGrabar
             // 
@@ -453,6 +326,28 @@
             this.cbUsuario.Size = new System.Drawing.Size(104, 21);
             this.cbUsuario.TabIndex = 0;
             // 
+            // Detalle
+            // 
+            this.Detalle.Controls.Add(this.panel1);
+            this.Detalle.Controls.Add(this.groupBox2);
+            this.Detalle.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Detalle.Location = new System.Drawing.Point(0, 54);
+            this.Detalle.Name = "Detalle";
+            this.Detalle.Size = new System.Drawing.Size(1112, 398);
+            this.Detalle.TabIndex = 5;
+            this.Detalle.TabStop = false;
+            this.Detalle.Text = "groupBox3";
+            // 
+            // panel1
+            // 
+            this.panel1.AutoScroll = true;
+            this.panel1.Controls.Add(this.dgrvAmortizacion);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(3, 16);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(976, 379);
+            this.panel1.TabIndex = 5;
+            // 
             // dataGridViewTextBoxColumn1
             // 
             this.dataGridViewTextBoxColumn1.DataPropertyName = "TipoDocumento";
@@ -480,9 +375,9 @@
             // dataGridViewTextBoxColumn3
             // 
             this.dataGridViewTextBoxColumn3.DataPropertyName = "Fecha";
-            dataGridViewCellStyle19.Format = "d";
-            dataGridViewCellStyle19.NullValue = null;
-            this.dataGridViewTextBoxColumn3.DefaultCellStyle = dataGridViewCellStyle19;
+            dataGridViewCellStyle12.Format = "d";
+            dataGridViewCellStyle12.NullValue = null;
+            this.dataGridViewTextBoxColumn3.DefaultCellStyle = dataGridViewCellStyle12;
             this.dataGridViewTextBoxColumn3.Frozen = true;
             this.dataGridViewTextBoxColumn3.HeaderText = "Fecha";
             this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
@@ -506,9 +401,9 @@
             // dataGridViewTextBoxColumn5
             // 
             this.dataGridViewTextBoxColumn5.DataPropertyName = "PesoNeto";
-            dataGridViewCellStyle20.Format = "d";
-            dataGridViewCellStyle20.NullValue = null;
-            this.dataGridViewTextBoxColumn5.DefaultCellStyle = dataGridViewCellStyle20;
+            dataGridViewCellStyle13.Format = "d";
+            dataGridViewCellStyle13.NullValue = null;
+            this.dataGridViewTextBoxColumn5.DefaultCellStyle = dataGridViewCellStyle13;
             this.dataGridViewTextBoxColumn5.HeaderText = "Peso Neto";
             this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
             this.dataGridViewTextBoxColumn5.ReadOnly = true;
@@ -519,9 +414,9 @@
             // dataGridViewTextBoxColumn6
             // 
             this.dataGridViewTextBoxColumn6.DataPropertyName = "Importe";
-            dataGridViewCellStyle21.Format = "d";
-            dataGridViewCellStyle21.NullValue = null;
-            this.dataGridViewTextBoxColumn6.DefaultCellStyle = dataGridViewCellStyle21;
+            dataGridViewCellStyle14.Format = "d";
+            dataGridViewCellStyle14.NullValue = null;
+            this.dataGridViewTextBoxColumn6.DefaultCellStyle = dataGridViewCellStyle14;
             this.dataGridViewTextBoxColumn6.HeaderText = "Importe";
             this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
             this.dataGridViewTextBoxColumn6.ReadOnly = true;
@@ -595,17 +490,133 @@
             this.dataGridViewTextBoxColumn13.ReadOnly = true;
             this.dataGridViewTextBoxColumn13.Visible = false;
             // 
-            // Detalle
+            // Column11
             // 
-            this.Detalle.Controls.Add(this.groupBox2);
-            this.Detalle.Controls.Add(this.dgrvAmortizacion);
-            this.Detalle.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Detalle.Location = new System.Drawing.Point(0, 54);
-            this.Detalle.Name = "Detalle";
-            this.Detalle.Size = new System.Drawing.Size(1112, 398);
-            this.Detalle.TabIndex = 5;
-            this.Detalle.TabStop = false;
-            this.Detalle.Text = "groupBox3";
+            this.Column11.DataPropertyName = "Indicador";
+            this.Column11.Frozen = true;
+            this.Column11.HeaderText = "Indicador";
+            this.Column11.Name = "Column11";
+            this.Column11.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Column11.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Column11.Visible = false;
+            this.Column11.Width = 50;
+            // 
+            // Column9
+            // 
+            this.Column9.DataPropertyName = "IdVenta";
+            this.Column9.Frozen = true;
+            this.Column9.HeaderText = "IdVenta";
+            this.Column9.Name = "Column9";
+            this.Column9.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Column9.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Column9.Visible = false;
+            this.Column9.Width = 70;
+            // 
+            // Column10
+            // 
+            this.Column10.DataPropertyName = "IdProducto";
+            this.Column10.Frozen = true;
+            this.Column10.HeaderText = "IdProducto";
+            this.Column10.Name = "Column10";
+            this.Column10.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Column10.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Column10.Visible = false;
+            this.Column10.Width = 70;
+            // 
+            // Column1
+            // 
+            this.Column1.DataPropertyName = "TipoDocumento";
+            this.Column1.Frozen = true;
+            this.Column1.HeaderText = "Tipo Documento";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            this.Column1.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Column1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // Column2
+            // 
+            this.Column2.DataPropertyName = "Producto";
+            this.Column2.HeaderText = "Producto";
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            this.Column2.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Column2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // Column3
+            // 
+            this.Column3.DataPropertyName = "Fecha";
+            dataGridViewCellStyle10.Format = "d";
+            dataGridViewCellStyle10.NullValue = null;
+            this.Column3.DefaultCellStyle = dataGridViewCellStyle10;
+            this.Column3.HeaderText = "Fecha";
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
+            this.Column3.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Column3.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Column3.Width = 80;
+            // 
+            // Personal
+            // 
+            this.Personal.DataPropertyName = "Personal";
+            this.Personal.HeaderText = "Responsable";
+            this.Personal.Name = "Personal";
+            this.Personal.ReadOnly = true;
+            // 
+            // Column4
+            // 
+            this.Column4.DataPropertyName = "strCantidadJavas";
+            this.Column4.HeaderText = "Cantidad Javas";
+            this.Column4.Name = "Column4";
+            this.Column4.ReadOnly = true;
+            this.Column4.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Column4.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Column4.Width = 80;
+            // 
+            // Column5
+            // 
+            this.Column5.DataPropertyName = "strPesoNeto";
+            this.Column5.HeaderText = "Peso Neto";
+            this.Column5.Name = "Column5";
+            this.Column5.ReadOnly = true;
+            this.Column5.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Column5.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Column5.Width = 80;
+            // 
+            // Column6
+            // 
+            this.Column6.DataPropertyName = "Importe";
+            this.Column6.HeaderText = "Importe";
+            this.Column6.Name = "Column6";
+            this.Column6.ReadOnly = true;
+            this.Column6.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Column6.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Column6.Width = 90;
+            // 
+            // Column7
+            // 
+            this.Column7.DataPropertyName = "strSaldo";
+            this.Column7.HeaderText = "Saldo";
+            this.Column7.Name = "Column7";
+            this.Column7.ReadOnly = true;
+            this.Column7.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Column7.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Column7.Width = 90;
+            // 
+            // Column8
+            // 
+            this.Column8.HeaderText = "Pago a Cuenta";
+            this.Column8.Name = "Column8";
+            this.Column8.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Column8.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Column8.Width = 90;
+            // 
+            // IdEstado
+            // 
+            this.IdEstado.DataPropertyName = "IdEstado";
+            this.IdEstado.HeaderText = "Estado";
+            this.IdEstado.Name = "IdEstado";
+            this.IdEstado.ReadOnly = true;
+            this.IdEstado.Visible = false;
             // 
             // frmAmortizacion
             // 
@@ -625,6 +636,7 @@
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.Detalle.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -676,5 +688,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn IdEstado;
         private System.Windows.Forms.GroupBox Detalle;
         private System.Windows.Forms.ComboBox cmbClientes;
+        private System.Windows.Forms.Panel panel1;
     }
 }

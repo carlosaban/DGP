@@ -336,6 +336,14 @@ namespace DGP.BusinessLogic.Ventas {
             }
         }
 
+        public void ActualizarPrecio(int IdVenta, decimal NuevoPrecio)
+        {
+            DBHelper.DatabaseHelper dbh = new DatabaseHelper();
+            DAVenta daVenta = new DAVenta();
+            daVenta.InsertarVentaFinal(new BEVenta() { IdVenta = IdVenta, Precio = NuevoPrecio }, dbh);
+
+        }
+
 
         #endregion
 

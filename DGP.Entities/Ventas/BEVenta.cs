@@ -271,7 +271,7 @@ namespace DGP.Entities.Ventas {
             get { return _TotalUnidades; }
             set { _TotalUnidades = value; }
         }
-	
+        public bool TienePrecioVariable { get; set; }
 	
 
 
