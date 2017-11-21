@@ -599,7 +599,13 @@ namespace DGP.Presentation.Ventas {
 
             private void dgvListaVenta_CellContentClick(object sender, DataGridViewCellEventArgs e) {
                 try {
-                    if (e.ColumnIndex == ePosicionLista.BottonPagar.GetHashCode() && e.RowIndex >= 0) {
+                    if (e.ColumnIndex == ePosicionLista.BottonPagar.GetHashCode() && e.RowIndex >= 0 ) {
+
+                        if (VariablesSession.Privilegios.Exists(t => t.IdPrivilegio == DGP.Entities.Seguridad.BEPrivilegio.Tablero_Registrar_Venta))
+                        {
+                            throw new Exception("Ud no tiene privilegios para amortizar cuentas");
+                        
+                        }
                         DataGridViewButtonCell objeto = (DataGridViewButtonCell)dgvListaVenta[e.ColumnIndex, e.RowIndex];
                         decimal decPago = decimal.Zero;
                         decimal decSaldo = decimal.Zero;
@@ -716,6 +722,8 @@ namespace DGP.Presentation.Ventas {
                 loadTipoGasto();
                 loadGastos();
                 CargarUsuarios();
+                AplicarPrivilegios();
+
             }
 
             private void ResetearVenta() {
@@ -872,17 +880,17 @@ namespace DGP.Presentation.Ventas {
                 bool vResultado = true;
                 if (cbProducto.SelectedIndex == 0) {
                     pMensaje = "- Seleccionar Producto\n";
-                    vResultado = false;
+                    vResultado = vResultado && false;
                 }
-                if (cbTipoDocumento.SelectedIndex > 0 && string.IsNullOrEmpty(txtNroDocumento.Text.Trim())) {
-                    pMensaje += "- Ingresar número documento\n";
-                }
-                if (cbTipoDocumento.SelectedIndex == 0 && !string.IsNullOrEmpty(txtNroDocumento.Text.Trim())) {
-                    pMensaje += "- Seleccionar tipo documento\n";
-                }
+                //if (cbTipoDocumento.SelectedIndex > 0 && string.IsNullOrEmpty(txtNroDocumento.Text.Trim())) {
+                //    pMensaje += "- Ingresar número documento\n";
+                //}
+                //if (cbTipoDocumento.SelectedIndex == 0 && !string.IsNullOrEmpty(txtNroDocumento.Text.Trim())) {
+                //    pMensaje += "- Seleccionar tipo documento\n";
+                //}
                 if (cbEmpresa.SelectedIndex == 0) {
                     pMensaje += "- Seleccionar empresa\n";
-                    vResultado = false;
+                    vResultado = vResultado &&  false;
                 }
                 if (cbVenta.SelectedValue.Equals(0)) {
                     int intCont = 0;
@@ -893,9 +901,18 @@ namespace DGP.Presentation.Ventas {
                     }
                     if (intCont == 0) {
                         pMensaje += "- Ingresar mínimo una línea de venta";
-                        vResultado = false;                        
+                        vResultado = vResultado && false;                        
                     }
                 }
+
+                if (!VariablesSession.Privilegios.Exists(t => t.IdPrivilegio == DGP.Entities.Seguridad.BEPrivilegio.Tablero_Registrar_Venta)) 
+                {
+                    pMensaje += "- Uds no tiene privilegios para ingresar ventas";
+                    vResultado = vResultado && false;
+                
+                
+                }
+            
                 return vResultado;
             }
 
@@ -1622,6 +1639,14 @@ namespace DGP.Presentation.Ventas {
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
         {
 
+        }
+        public void AplicarPrivilegios() { 
+        
+            //17,18,19
+            //if (VariablesSession.Privilegios.Exists(t => t.IdPrivilegio == DGP.Entities.Seguridad.BEPrivilegio.Tablero_Registrar_Venta)) this.tabPage1.Hide();
+            //if (VariablesSession.Privilegios.Exists(t => t.IdPrivilegio == DGP.Entities.Seguridad.BEPrivilegio.Tablero_Lista_de_ventas)) this.tabPage2.Hide();
+            //if (VariablesSession.Privilegios.Exists(t => t.IdPrivilegio == DGP.Entities.Seguridad.BEPrivilegio.Tablero_Registrar_Gastos)) this.tabPage3.Hide();
+            
         }
     }
 }

@@ -84,6 +84,7 @@ namespace DGP.Presentation.Ventas {
                 LimpiarFiltrosBusqueda();
                 CargarTipoDocumento();
                 CargarProducto();
+                CargarPrivilegios();
             }
 
             private void LimpiarFiltrosBusqueda() {
@@ -311,6 +312,15 @@ namespace DGP.Presentation.Ventas {
 
                     this.MostrarMensaje(ex.Message , MessageBoxIcon.Error);
                 }
+            }
+
+
+            private void CargarPrivilegios() {
+
+                this.gbCambiarPrecios.Visible = VariablesSession.Privilegios.Exists(t => t.IdPrivilegio == DGP.Entities.Seguridad.BEPrivilegio.Act_Precio_Venta_Masivo);
+                
+            
+            
             }
 
 

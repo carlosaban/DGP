@@ -201,6 +201,7 @@ namespace DGP.Presentation.Ventas {
                 CargarUsuarios();
                 dtpFechaPago.Value = DateTime.Now.Date;
                 cbUsuario.SelectedValue = VariablesSession.BEUsuarioSession.IdPersonal;
+                this.AplicarPrivilegios();
             }
 
             //private void CargarCliente() {
@@ -554,6 +555,18 @@ namespace DGP.Presentation.Ventas {
                 //MostrarMensaje(oBEClienteProveedor.IdCliente.ToString() + oBEClienteProveedor.Nombre, MessageBoxIcon.Information);
 
             }
+        }
+
+        private void groupBox2_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void AplicarPrivilegios()
+        {
+            this.cbUsuario.Enabled = VariablesSession.Privilegios.Exists(t => t.IdPrivilegio == DGP.Entities.Seguridad.BEPrivilegio.Amortizacion_Cambio_Cobrador);
+            this.dtpFechaPago.Enabled = VariablesSession.Privilegios.Exists(t => t.IdPrivilegio == DGP.Entities.Seguridad.BEPrivilegio.Amortizacion_Cambio_Fecha_de_Pago);
+            
         }
 
 
