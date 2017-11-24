@@ -30,6 +30,9 @@ namespace DGP.Presentation.Ventas
         {
             this.components = new System.ComponentModel.Container();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnBuscar = new System.Windows.Forms.Button();
+            this.lblCliente = new System.Windows.Forms.Label();
+            this.txtCliente = new System.Windows.Forms.TextBox();
             this.dgvCliente = new System.Windows.Forms.DataGridView();
             this.tipoClienteDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.idZonaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
@@ -59,19 +62,54 @@ namespace DGP.Presentation.Ventas
             this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCliente)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsZona)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsClientes)).BeginInit();
+            this.panel1.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
-            this.groupBox1.Location = new System.Drawing.Point(24, 12);
+            this.groupBox1.Controls.Add(this.btnBuscar);
+            this.groupBox1.Controls.Add(this.lblCliente);
+            this.groupBox1.Controls.Add(this.txtCliente);
+            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(746, 100);
+            this.groupBox1.Size = new System.Drawing.Size(783, 100);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "groupBox1";
+            // 
+            // btnBuscar
+            // 
+            this.btnBuscar.Location = new System.Drawing.Point(208, 27);
+            this.btnBuscar.Name = "btnBuscar";
+            this.btnBuscar.Size = new System.Drawing.Size(75, 23);
+            this.btnBuscar.TabIndex = 2;
+            this.btnBuscar.Text = "Buscar";
+            this.btnBuscar.UseVisualStyleBackColor = true;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
+            // 
+            // lblCliente
+            // 
+            this.lblCliente.AutoSize = true;
+            this.lblCliente.Location = new System.Drawing.Point(24, 33);
+            this.lblCliente.Name = "lblCliente";
+            this.lblCliente.Size = new System.Drawing.Size(39, 13);
+            this.lblCliente.TabIndex = 1;
+            this.lblCliente.Text = "Cliente";
+            this.lblCliente.Click += new System.EventHandler(this.label1_Click);
+            // 
+            // txtCliente
+            // 
+            this.txtCliente.Location = new System.Drawing.Point(89, 30);
+            this.txtCliente.Name = "txtCliente";
+            this.txtCliente.Size = new System.Drawing.Size(100, 20);
+            this.txtCliente.TabIndex = 0;
             // 
             // dgvCliente
             // 
@@ -92,9 +130,10 @@ namespace DGP.Presentation.Ventas
             this.fechaModificacionDataGridViewTextBoxColumn,
             this.btnEliminarFila});
             this.dgvCliente.DataSource = this.bdsClientes;
-            this.dgvCliente.Location = new System.Drawing.Point(24, 131);
+            this.dgvCliente.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvCliente.Location = new System.Drawing.Point(0, 0);
             this.dgvCliente.Name = "dgvCliente";
-            this.dgvCliente.Size = new System.Drawing.Size(746, 180);
+            this.dgvCliente.Size = new System.Drawing.Size(783, 292);
             this.dgvCliente.TabIndex = 1;
             this.dgvCliente.UserAddedRow += new System.Windows.Forms.DataGridViewRowEventHandler(this.dgvCliente_UserAddedRow);
             this.dgvCliente.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCliente_CellContentDoubleClick);
@@ -211,7 +250,7 @@ namespace DGP.Presentation.Ventas
             // 
             // btnAceptar
             // 
-            this.btnAceptar.Location = new System.Drawing.Point(656, 331);
+            this.btnAceptar.Location = new System.Drawing.Point(330, 43);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(114, 23);
             this.btnAceptar.TabIndex = 2;
@@ -300,19 +339,41 @@ namespace DGP.Presentation.Ventas
             this.dataGridViewTextBoxColumn12.HeaderText = "FechaModificacion";
             this.dataGridViewTextBoxColumn12.Name = "dataGridViewTextBoxColumn12";
             // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.dgvCliente);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(0, 100);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(783, 292);
+            this.panel1.TabIndex = 3;
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.btnAceptar);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel2.Location = new System.Drawing.Point(0, 292);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(783, 100);
+            this.panel2.TabIndex = 4;
+            // 
             // frmMantenimientoCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(783, 392);
-            this.Controls.Add(this.btnAceptar);
-            this.Controls.Add(this.dgvCliente);
+            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.groupBox1);
             this.Name = "frmMantenimientoCliente";
             this.Text = "frmMantenimientoCliente";
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCliente)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsZona)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsClientes)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -349,5 +410,10 @@ namespace DGP.Presentation.Ventas
         private System.Windows.Forms.DataGridViewTextBoxColumn usuarioModificacionDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn fechaModificacionDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewButtonColumn btnEliminarFila;
+        private System.Windows.Forms.Label lblCliente;
+        private System.Windows.Forms.TextBox txtCliente;
+        private System.Windows.Forms.Button btnBuscar;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panel2;
     }
 }

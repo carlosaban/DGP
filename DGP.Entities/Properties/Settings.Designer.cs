@@ -26,8 +26,8 @@ namespace DGP.Entities.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=192.168.1.1;Initial Catalog=DVGP_CITAVALx;user id=CITAVAL; password=A" +
-            "dmin456")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=USER-PC\\SQLEXPRESS;Initial Catalog=DVGP_CITAVAL;user id=sa; password=" +
+            "Admin456")]
         public string dgpConnectionString {
             get {
                 return ((string)(this["dgpConnectionString"]));

@@ -21,12 +21,6 @@ namespace DGP.Presentation.Ventas
             Tb_ZonaTableAdapter zonaAdapter = new Tb_ZonaTableAdapter();
             this.bdsZona.DataSource = zonaAdapter.GetData();
             load();
-            
-
-             //this.
-
-           
-
         }
         private void refresh()
         {
@@ -49,11 +43,7 @@ namespace DGP.Presentation.Ventas
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-            //string  x = this.dgvCliente.DataSource.GetType().ToString();
-
-            //DSEntitiesCliente.Tb_Cliente_ProveedorRow[] filarNuevas = (DSEntitiesCliente.Tb_Cliente_ProveedorRow[])dt.Select("", "", DataViewRowState.Added);
-            //DSEntitiesCliente.Tb_Cliente_ProveedorRow[] filarModificadas = (DSEntitiesCliente.Tb_Cliente_ProveedorRow[])dt.Select("", "", DataViewRowState.ModifiedCurrent);
-
+            
             try
             {
                 Tb_Cliente_ProveedorTableAdapter ClienteAdapter = new Tb_Cliente_ProveedorTableAdapter();
@@ -303,6 +293,31 @@ namespace DGP.Presentation.Ventas
 
                 MessageBox.Show(this, ex.Message, "dgvCliente_CellClick");
             }
+
+        }
+
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Tb_Cliente_ProveedorTableAdapter ClienteAdapter = new Tb_Cliente_ProveedorTableAdapter();
+                dt = ClienteAdapter.GetDataBy(this.txtCliente.Text);
+
+                this.bdsClientes.DataSource = dt;
+
+                this.dgvCliente.Refresh();
+
+            }
+            catch (Exception ex)
+            {
+                
+                throw;
+            }
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
 
         }
 

@@ -104,6 +104,7 @@ namespace DGP.Presentation {
                         //Agregar privilegios
 
                         VariablesSession.Privilegios = (new BLPrivilegio()).ObtenerPrivilegios(txtLogin.Text);
+                        AplicarPrivilegios();
 
                         //
                         VariablesSession.BECaja = oCajaCreada;
@@ -119,6 +120,17 @@ namespace DGP.Presentation {
                 }
             }
 
+            private void AplicarPrivilegios()
+            {
+
+                if (this.dtFechaCaja.Value.Date != DateTime.Now.Date && !VariablesSession.Privilegios.Exists(t=> t.IdPrivilegio == DGP.Entities.Seguridad.BEPrivilegio.Ventas_Iniciar_sesion_fuera_fecha))
+                {
+                    throw new Exception("Ud no tiene privilegios para cambiar la fecha de la caja");
+                
+                }
+            
+            
+            }
         #endregion
  
     }

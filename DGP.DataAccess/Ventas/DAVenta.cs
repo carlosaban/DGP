@@ -419,6 +419,8 @@ namespace DGP.DataAccess.Ventas {
                                             , oIDataReader["TIPO_CLIENTE"].ToString()
                                             , oIDataReader["PRODUCTO"].ToString()
                                             ,string.Empty
+                                            , (oIDataReader["PesoNeto"] == DBNull.Value)? 0 : Convert.ToDecimal(oIDataReader["PesoNeto"])
+                                            , oIDataReader["EsSaldo"].ToString()
                                             );
                     }
                     oDSHojaCobranza.COBRANZA.AcceptChanges();

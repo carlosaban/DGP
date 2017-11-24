@@ -3,5 +3,8 @@
 
     partial class DSHojaCobranza
     {
+        partial class COBRANZADataTable
+        {
+        }
     }
 }
