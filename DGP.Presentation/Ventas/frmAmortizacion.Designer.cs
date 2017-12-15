@@ -55,6 +55,9 @@
             this.cbUsuario = new System.Windows.Forms.ComboBox();
             this.Detalle = new System.Windows.Forms.GroupBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.nudVuelto = new System.Windows.Forms.NumericUpDown();
+            this.label5 = new System.Windows.Forms.Label();
+            this.btnAplicarVuelto = new System.Windows.Forms.Button();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -87,10 +90,14 @@
             this.groupBox2.SuspendLayout();
             this.Detalle.SuspendLayout();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudVuelto)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btnAplicarVuelto);
+            this.groupBox1.Controls.Add(this.label5);
+            this.groupBox1.Controls.Add(this.nudVuelto);
             this.groupBox1.Controls.Add(this.cmbClientes);
             this.groupBox1.Controls.Add(this.lblSimboloMoneda);
             this.groupBox1.Controls.Add(this.nudPrecioAmortizacion);
@@ -102,15 +109,16 @@
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1112, 54);
+            this.groupBox1.Size = new System.Drawing.Size(1112, 83);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Amortización";
+            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // cmbClientes
             // 
             this.cmbClientes.FormattingEnabled = true;
-            this.cmbClientes.Location = new System.Drawing.Point(89, 21);
+            this.cmbClientes.Location = new System.Drawing.Point(106, 21);
             this.cmbClientes.Name = "cmbClientes";
             this.cmbClientes.Size = new System.Drawing.Size(121, 21);
             this.cmbClientes.TabIndex = 11;
@@ -146,11 +154,6 @@
             this.nudPrecioAmortizacion.Size = new System.Drawing.Size(118, 20);
             this.nudPrecioAmortizacion.TabIndex = 9;
             this.nudPrecioAmortizacion.ThousandsSeparator = true;
-            this.nudPrecioAmortizacion.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
             // 
             // btnAplicarMonto
             // 
@@ -175,7 +178,7 @@
             // 
             this.cbProducto.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbProducto.FormattingEnabled = true;
-            this.cbProducto.Location = new System.Drawing.Point(405, 19);
+            this.cbProducto.Location = new System.Drawing.Point(313, 19);
             this.cbProducto.Name = "cbProducto";
             this.cbProducto.Size = new System.Drawing.Size(121, 21);
             this.cbProducto.TabIndex = 4;
@@ -184,7 +187,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(349, 22);
+            this.label2.Location = new System.Drawing.Point(247, 22);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(50, 13);
             this.label2.TabIndex = 3;
@@ -245,7 +248,7 @@
             dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black;
             this.dgrvAmortizacion.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dgrvAmortizacion.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgrvAmortizacion.Size = new System.Drawing.Size(976, 379);
+            this.dgrvAmortizacion.Size = new System.Drawing.Size(976, 350);
             this.dgrvAmortizacion.TabIndex = 1;
             this.dgrvAmortizacion.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgrvAmortizacion_CellEndEdit);
             this.dgrvAmortizacion.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgrvAmortizacion_CellContentClick);
@@ -294,7 +297,7 @@
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Right;
             this.groupBox2.Location = new System.Drawing.Point(979, 16);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(130, 379);
+            this.groupBox2.Size = new System.Drawing.Size(130, 350);
             this.groupBox2.TabIndex = 4;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Usuarios";
@@ -332,12 +335,11 @@
             this.Detalle.Controls.Add(this.panel1);
             this.Detalle.Controls.Add(this.groupBox2);
             this.Detalle.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Detalle.Location = new System.Drawing.Point(0, 54);
+            this.Detalle.Location = new System.Drawing.Point(0, 83);
             this.Detalle.Name = "Detalle";
-            this.Detalle.Size = new System.Drawing.Size(1112, 398);
+            this.Detalle.Size = new System.Drawing.Size(1112, 369);
             this.Detalle.TabIndex = 5;
             this.Detalle.TabStop = false;
-            this.Detalle.Text = "groupBox3";
             // 
             // panel1
             // 
@@ -346,8 +348,46 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(3, 16);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(976, 379);
+            this.panel1.Size = new System.Drawing.Size(976, 350);
             this.panel1.TabIndex = 5;
+            // 
+            // nudVuelto
+            // 
+            this.nudVuelto.DecimalPlaces = 2;
+            this.nudVuelto.Increment = new decimal(new int[] {
+            5,
+            0,
+            0,
+            131072});
+            this.nudVuelto.Location = new System.Drawing.Point(108, 55);
+            this.nudVuelto.Maximum = new decimal(new int[] {
+            10000000,
+            0,
+            0,
+            0});
+            this.nudVuelto.Name = "nudVuelto";
+            this.nudVuelto.ReadOnly = true;
+            this.nudVuelto.Size = new System.Drawing.Size(120, 20);
+            this.nudVuelto.TabIndex = 12;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(12, 57);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(94, 13);
+            this.label5.TabIndex = 13;
+            this.label5.Text = "A favor por Aplicar";
+            // 
+            // btnAplicarVuelto
+            // 
+            this.btnAplicarVuelto.Location = new System.Drawing.Point(250, 55);
+            this.btnAplicarVuelto.Name = "btnAplicarVuelto";
+            this.btnAplicarVuelto.Size = new System.Drawing.Size(75, 23);
+            this.btnAplicarVuelto.TabIndex = 14;
+            this.btnAplicarVuelto.Text = "Vuelto";
+            this.btnAplicarVuelto.UseVisualStyleBackColor = true;
+            this.btnAplicarVuelto.Click += new System.EventHandler(this.btnAplicarVuelto_Click);
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -638,6 +678,7 @@
             this.groupBox2.PerformLayout();
             this.Detalle.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.nudVuelto)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -690,5 +731,8 @@
         private System.Windows.Forms.GroupBox Detalle;
         private System.Windows.Forms.ComboBox cmbClientes;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Button btnAplicarVuelto;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.NumericUpDown nudVuelto;
     }
 }

@@ -29,7 +29,7 @@ namespace DGP.BusinessLogic.Ventas {
                 }                
             }
 
-            public int RegistrarLineaVentaMantenimientoDependiente(BEVenta pBEVenta, dsLineaVenta.DTLineaVentaDataTable pDTLineasVentas, dsLineaVenta.DTLineaVentaDataTable pDTEliminados) {
+            public int RegistrarLineaVentaMantenimientoDependiente(BEVenta pBEVenta, dsLineaVenta.DTLineaVentaDataTable pDTLineasVentas, dsLineaVenta.DTLineaVentaDataTable pDTEliminados , bool HayCambioPrecio) {
                 DatabaseHelper dbh = new DatabaseHelper();
                 int intResultado = 0;
                 try {
@@ -54,6 +54,8 @@ namespace DGP.BusinessLogic.Ventas {
                         }
                     }
                     intResultado += (intContadorLV == intContadorAll) ? 1 : 0;
+
+                    //if (HayCambioPrecio) new DAAmortizacionVenta().AnularAmortizacionVenta(pBEVenta); //.ReaplicarAmortizacion(pBEVenta);
 
                     // Insertar Venta Final
                     intResultado += new DAVenta().InsertarVentaFinal(pBEVenta, dbh);

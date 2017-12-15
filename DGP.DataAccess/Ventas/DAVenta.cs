@@ -1,7 +1,6 @@
 using System;   
 using System.Collections.Generic;
 using System.Text;
-
 using DGP.Entities.DataSet;
 using DGP.Entities.Ventas;
 using DGP.Entities;
@@ -283,7 +282,7 @@ namespace DGP.DataAccess.Ventas {
                     pDatabaseHelper.AddParameter("@intIdVenta", pIdVenta);
                     pDatabaseHelper.AddParameter("@intCancelarVenta", pbCancelar.GetHashCode());
                     vResultado = pDatabaseHelper.ExecuteNonQuery("DGP_Actualizar_EstadoVenta", CommandType.StoredProcedure, DBHelper.ConnectionState.KeepOpen);
-                    return vResultado;
+                    return 1;
                 } catch (Exception ex) {
                     throw ex;
                 }
@@ -501,31 +500,11 @@ namespace DGP.DataAccess.Ventas {
                 oDatabaseHelper.ClearParameter();
                 oDatabaseHelper.AddParameter("@fechaInicio", (fechaInicio == null) ? (object)DBNull.Value : fechaInicio);
                 oDatabaseHelper.AddParameter("@clientes", (string.IsNullOrEmpty(clientes)) ? (object)DBNull.Value : clientes);
-                DataSet ds = oDatabaseHelper.ExecuteDataSet("DGP_Rpt_Estado_CuentaCliente_v2", CommandType.StoredProcedure);
+                DataSet ds = oDatabaseHelper.ExecuteDataSet("DGP_Rpt_Estado_CuentaCliente_v3", CommandType.StoredProcedure);
                 dSRptClientes.DGP_Rpt_Estado_CuentaCliente.Merge(ds.Tables[0], true, MissingSchemaAction.Ignore);
+                dSRptClientes.DGP_Rpt_Estado_CuentaCliente.GenerarAcumulado();
 
-                //string clienteAnterior = string.Empty;
-                //decimal saldoAnterior = 0;
-               // dSRptClientes.DGP_Rpt_Estado_CuentaCliente.DefaultView.Sort = "";
-                //for (int i = 0; i < dSRptClientes.DGP_Rpt_Estado_CuentaCliente.Count; i++)
-                //{
-                //    if (clienteAnterior != dSRptClientes.DGP_Rpt_Estado_CuentaCliente[i].CLIENTE)
-                //    {
-                //         clienteAnterior = dSRptClientes.DGP_Rpt_Estado_CuentaCliente[i].CLIENTE;
-                //         saldoAnterior = dSRptClientes.DGP_Rpt_Estado_CuentaCliente[i].MONTO; 
-                //         dSRptClientes.DGP_Rpt_Estado_CuentaCliente[i].SALDO = saldoAnterior;
-
-                //    }
-                //    else {
-                //        dSRptClientes.DGP_Rpt_Estado_CuentaCliente[i].SALDO = saldoAnterior + dSRptClientes.DGP_Rpt_Estado_CuentaCliente[i].MONTO;
-                //        saldoAnterior = dSRptClientes.DGP_Rpt_Estado_CuentaCliente[i].SALDO;
-                //        clienteAnterior = dSRptClientes.DGP_Rpt_Estado_CuentaCliente[i].CLIENTE;
-                    
-                //    }
-
-                //}
-                //dSRptClientes.AcceptChanges();
-                return dSRptClientes;
+          return dSRptClientes;
             }
             catch (Exception ex)
             {

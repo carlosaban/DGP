@@ -69,6 +69,7 @@ namespace DGP.Presentation.Ventas {
                         DGP_Util.EnabledComboBox(cbProducto, true);
                         CargarAmortizaciones(Convert.ToInt32(cmbClientes.SelectedValue), 0);
                         DGP_Util.EnableControl(nudPrecioAmortizacion, true);
+                        CargarAmortizacionesSinAplicar(intIdCliente);
                     } else {
                         ResetearFormulario();
                     }
@@ -151,8 +152,19 @@ namespace DGP.Presentation.Ventas {
 
                             List<BEAmortizacionVenta> vLista = ObtenerAmortizaciones(boIndicador);
                             int intResultado = 0;
-                            intResultado = new BLAmortizacionVenta().Insertar(vLista);
-                            if (intResultado == 1) {
+
+                            BEDocumento documento = new BEDocumento();
+                            documento.BEUsuarioLogin = VariablesSession.BEUsuarioSession;
+                            documento.Fecha = this.dtpFechaPago.Value.Date;
+                            documento.IdTipoDocumento = BEDocumento.TIPO_AMORTIZACION_AMR;
+                            documento.IdCliente = int.Parse( this.cmbClientes.SelectedValue.ToString() );
+                            documento.IdPersonal = int.Parse( cbUsuario.SelectedValue.ToString());
+                            documento.delleAmortizacion = vLista;
+
+
+                            bool bOk = new BLAmortizacionVenta().Insertar(documento);
+                            if (bOk)
+                            {
                                 MostrarMensaje("Se registró la amortización correctamente", MessageBoxIcon.Information);
                                 int intIdCliente = Convert.ToInt32(cmbClientes.SelectedValue);
                                 int intIdProducto = Convert.ToInt32(cbProducto.SelectedValue);
@@ -231,6 +243,7 @@ namespace DGP.Presentation.Ventas {
 
             private void LimpiarFormulario() {
                 nudPrecioAmortizacion.Value = 1;
+                nudVuelto.Value = 0;
             }
 
             private void CargarProductoCliente(int pIdCliente) {
@@ -435,21 +448,19 @@ namespace DGP.Presentation.Ventas {
                     {
                         VistaAmortizacion vistaAmortizacion = (VistaAmortizacion)this.dgrvAmortizacion.Rows[e.RowIndex].DataBoundItem;
 
-                        if (vistaAmortizacion.IdAmortizacion > 0 && MessageBox.Show("Desea Eliminar la amortizacion?", "Eliminar Amortizacion", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)//esto para saltar las ventas
+                        if (vistaAmortizacion.IdAmortizacion > 0 && MessageBox.Show("Usted Eliminara todo el documento de Pago asociado a esta amortizacion. Desea continuar?", "Eliminar Amortizacion", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)//esto para saltar las ventas
                         {
                             BEAmortizacionVenta bean = new BEAmortizacionVenta();
                             bean.IdAmortizacionVenta = vistaAmortizacion.IdAmortizacion;
                             bean.BEUsuarioLogin = VariablesSession.BEUsuarioSession;
 
-
+                            //elimina todo el detalle de amortizacion y libera el documento
                             new BLAmortizacionVenta().EliminarAdelantoVenta(bean);
 
                             int intIdCliente = Convert.ToInt32(this.cmbClientes.SelectedValue);
                             int intIdProducto = Convert.ToInt32(cbProducto.SelectedValue);
                             CargarAmortizaciones(intIdCliente, intIdProducto);
-                            //this.CargarAmortizaciones(
-                        
-                        
+
                         }
                     
                     
@@ -567,6 +578,43 @@ namespace DGP.Presentation.Ventas {
             this.cbUsuario.Enabled = VariablesSession.Privilegios.Exists(t => t.IdPrivilegio == DGP.Entities.Seguridad.BEPrivilegio.Amortizacion_Cambio_Cobrador);
             this.dtpFechaPago.Enabled = VariablesSession.Privilegios.Exists(t => t.IdPrivilegio == DGP.Entities.Seguridad.BEPrivilegio.Amortizacion_Cambio_Fecha_de_Pago);
             
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void CargarAmortizacionesSinAplicar(int IdCliente){
+
+            this.nudVuelto.Value = new BLAmortizacionVenta().ObtenerAmortizacionSinAplicar(IdCliente); 
+        
+        
+        
+        }
+
+        private void btnAplicarVuelto_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (this.cmbClientes.SelectedValue== null) return;
+
+               // VistaAmortizacion vistaAmortizacion = (VistaAmortizacion)this.dgrvAmortizacion.Rows[0].DataBoundItem;
+                int IdCliente = int.Parse ( this.cmbClientes.SelectedValue.ToString());
+                bool bOk = new BLAmortizacionVenta().ReaplicarAmortizacion(new BEVenta() { BEUsuarioLogin = VariablesSession.BEUsuarioSession, IdCliente = IdCliente });
+                if (bOk)
+                {
+                    int intIdCliente = Convert.ToInt32(cmbClientes.SelectedValue);
+                    int intIdProducto = Convert.ToInt32(cbProducto.SelectedValue);
+                    CargarAmortizaciones(intIdCliente, intIdProducto);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                
+                MostrarMensaje("Error Controlado: " + ex.Message , MessageBoxIcon.Error);
+            }
         }
 
 

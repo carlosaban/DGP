@@ -76,7 +76,8 @@ namespace DGP.DataAccess.Ventas {
                 }
             }
 
-            public int InsertarDependiente(BEAmortizacionVenta pBEAmortizacionVenta, DatabaseHelper pDatabaseHelper) {
+            public bool InsertarDependiente(BEDocumento pBEDocumento, BEAmortizacionVenta pBEAmortizacionVenta, DatabaseHelper pDatabaseHelper)
+            {
                 int vResultado = 0;
                 try {
                     pDatabaseHelper.ClearParameter();
@@ -92,9 +93,10 @@ namespace DGP.DataAccess.Ventas {
                     pDatabaseHelper.AddParameter("@intIdPersonal", pBEAmortizacionVenta.IdPersonal);
                     pDatabaseHelper.AddParameter("@intIdUsuarioCreacion", pBEAmortizacionVenta.BEUsuarioLogin.IdPersonal);
                     pDatabaseHelper.AddParameter("@intIdCaja", pBEAmortizacionVenta.BEUsuarioLogin.IdCaja);
+                    pDatabaseHelper.AddParameter("@intIdDocumento", pBEDocumento.IdDocumento);
                     
                     vResultado = pDatabaseHelper.ExecuteNonQuery("DGP_Insertar_AmortizacionVenta", CommandType.StoredProcedure, DBHelper.ConnectionState.KeepOpen);
-                    return vResultado;
+                    return (vResultado>0);
                 } catch (Exception ex) {
                     throw ex;
                 }
@@ -123,6 +125,133 @@ namespace DGP.DataAccess.Ventas {
             }
 
         #endregion
+        #region "Métodos de Documentos"
+            public bool InsertarCabeceraDocumento(BEDocumento beDocumento)
+            {
+                return this.InsertarCabeceraDocumento(beDocumento, null);
+            
+            }
 
+            public bool InsertarCabeceraDocumento(BEDocumento beDocumento, DatabaseHelper pDatabaseHelper)
+            {
+                DatabaseHelper oDatabaseHelper = (pDatabaseHelper == null) ? new DatabaseHelper() : pDatabaseHelper;
+                
+                try
+                {
+                    oDatabaseHelper.ClearParameter();
+                    oDatabaseHelper.AddParameter("@IdTipoDocumento", beDocumento.IdTipoDocumento);
+                    oDatabaseHelper.AddParameter("@Fecha", beDocumento.Fecha.Date);
+                    oDatabaseHelper.AddParameter("@Monto", beDocumento.Monto);
+                    //oDatabaseHelper.AddParameter("@Estado", beDocumento.Estado);
+                    //oDatabaseHelper.AddParameter("@EsEliminado", beDocumento.EsEliminado);
+                    oDatabaseHelper.AddParameter("@Usuario", beDocumento.BEUsuarioLogin.IdPersonal);
+                    oDatabaseHelper.AddParameter("@IdCaja", beDocumento.BEUsuarioLogin.IdCaja);
+                    oDatabaseHelper.AddParameter("@IdCliente", beDocumento.IdCliente);
+                    oDatabaseHelper.AddParameter("@IdPersonal", beDocumento.IdPersonal);
+
+                    object vResultado = oDatabaseHelper.ExecuteScalar("InsertarDocumento", CommandType.StoredProcedure, (pDatabaseHelper == null) ? DBHelper.ConnectionState.CloseOnExit : DBHelper.ConnectionState.KeepOpen);
+                    beDocumento.IdDocumento = int.Parse(vResultado.ToString());
+                    return (vResultado != null);
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+                finally {
+
+                    if (pDatabaseHelper== null) oDatabaseHelper.Dispose();
+                }
+            
+            }
+
+            public bool ReaplicarAmortizacion(BEVenta beVenta)
+            {
+
+                return this.ReaplicarAmortizacion(beVenta, null);
+            
+            }
+            public bool ReaplicarAmortizacion(BEVenta beVenta, DatabaseHelper pDatabaseHelper)
+            {
+
+                DatabaseHelper oDatabaseHelper = (pDatabaseHelper == null) ? new DatabaseHelper() : pDatabaseHelper;
+
+                try
+                {
+                    oDatabaseHelper.ClearParameter();
+                    oDatabaseHelper.AddParameter("@IdCliente", beVenta.IdCliente);
+                    oDatabaseHelper.AddParameter("@idUsuario", beVenta.BEUsuarioLogin.IdPersonal);
+                    oDatabaseHelper.AddParameter("@IdCaja", beVenta.BEUsuarioLogin.IdCaja);
+
+                    int vResultado = oDatabaseHelper.ExecuteNonQuery("DGP_ReAplicar Amortizaciones", CommandType.StoredProcedure, (pDatabaseHelper == null) ? DBHelper.ConnectionState.CloseOnExit : DBHelper.ConnectionState.KeepOpen);
+                 
+                    return (vResultado >0);
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+                finally
+                {
+
+                    if (pDatabaseHelper == null) oDatabaseHelper.Dispose();
+                }
+            
+            
+            }
+
+            public bool AnularAmortizacionVenta(BEVenta beVenta, DatabaseHelper pDatabaseHelper)
+            {
+
+                DatabaseHelper oDatabaseHelper = (pDatabaseHelper == null) ? new DatabaseHelper() : pDatabaseHelper;
+
+                try
+                {
+                    oDatabaseHelper.ClearParameter();
+                    oDatabaseHelper.AddParameter("@idVenta", beVenta.IdVenta);
+                    oDatabaseHelper.AddParameter("@idUsuario", beVenta.BEUsuarioLogin.IdPersonal);
+                    
+                    int vResultado = oDatabaseHelper.ExecuteNonQuery("DGP_AnularAmortizacionesVenta", CommandType.StoredProcedure, (pDatabaseHelper == null) ? DBHelper.ConnectionState.CloseOnExit : DBHelper.ConnectionState.KeepOpen);
+
+                    return (true);
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+                finally
+                {
+
+                    if (pDatabaseHelper == null) oDatabaseHelper.Dispose();
+                }
+
+
+            }
+            
+            public decimal ObtenerAmortizacionSinAplicar(int IdCliente)
+            {
+                DatabaseHelper oDatabaseHelper = new DatabaseHelper();
+                object vResultado ;
+                try
+                {
+                    oDatabaseHelper.ClearParameter();
+                    oDatabaseHelper.AddParameter("@IdCliente", IdCliente);
+                    vResultado = oDatabaseHelper.ExecuteScalar("DGP_ObtenerAmortizacionSinAplicar", CommandType.StoredProcedure, DBHelper.ConnectionState.CloseOnExit);
+                    decimal result = 0;
+                    decimal.TryParse(vResultado.ToString(), out result);
+
+                    return result;
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+                finally
+                {
+                    oDatabaseHelper.Dispose();
+                }
+            }
+        #endregion
+
+           
     }
 }

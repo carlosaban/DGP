@@ -180,9 +180,9 @@ namespace DGP.Presentation {
 
         private void aplicarVueltoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            oVentas_frmVueltos = new frmVueltos();
-            oVentas_frmVueltos.MdiParent = this;
-            oVentas_frmVueltos.Show();
+            //oVentas_frmVueltos = new frmVueltos();
+            //oVentas_frmVueltos.MdiParent = this;
+            //oVentas_frmVueltos.Show();
 
         }
         

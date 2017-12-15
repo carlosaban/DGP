@@ -10,9 +10,9 @@ C:\tempcar\DGP_20170419\DGP.Entities\bin\Debug\DGP.Entities.pdb
 C:\tempcar\DGP_20170419\DGP.Entities\obj\Debug\ResolveAssemblyReference.cache
 C:\tempcar\DGP_20170419\DGP.Entities\obj\Debug\DGP.Entities.dll
 C:\tempcar\DGP_20170419\DGP.Entities\obj\Debug\DGP.Entities.pdb
+D:\workspace\DGP\DGP.Entities\obj\Debug\ResolveAssemblyReference.cache
 D:\workspace\DGP\DGP.Entities\bin\Debug\DGP.Entities.dll.config
 D:\workspace\DGP\DGP.Entities\bin\Debug\DGP.Entities.dll
 D:\workspace\DGP\DGP.Entities\bin\Debug\DGP.Entities.pdb
-D:\workspace\DGP\DGP.Entities\obj\Debug\ResolveAssemblyReference.cache
 D:\workspace\DGP\DGP.Entities\obj\Debug\DGP.Entities.dll
 D:\workspace\DGP\DGP.Entities\obj\Debug\DGP.Entities.pdb
