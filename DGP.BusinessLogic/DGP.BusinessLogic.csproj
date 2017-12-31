@@ -52,6 +52,7 @@
     <Compile Include="Seguridad\BLPersonal.cs" />
     <Compile Include="Seguridad\BLPrivilegio.cs" />
     <Compile Include="Ventas\BLAmortizacionVenta.cs" />
+    <Compile Include="Ventas\BLDocumentoPago.cs" />
     <Compile Include="Ventas\BLLineaVenta.cs" />
     <Compile Include="Ventas\BLVenta.cs" />
     <Compile Include="Ventas\BLVueltos.cs" />

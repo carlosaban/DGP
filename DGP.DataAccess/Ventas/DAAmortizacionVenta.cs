@@ -146,8 +146,8 @@ namespace DGP.DataAccess.Ventas {
                     //oDatabaseHelper.AddParameter("@EsEliminado", beDocumento.EsEliminado);
                     oDatabaseHelper.AddParameter("@Usuario", beDocumento.BEUsuarioLogin.IdPersonal);
                     oDatabaseHelper.AddParameter("@IdCaja", beDocumento.BEUsuarioLogin.IdCaja);
-                    oDatabaseHelper.AddParameter("@IdCliente", beDocumento.IdCliente);
-                    oDatabaseHelper.AddParameter("@IdPersonal", beDocumento.IdPersonal);
+                    oDatabaseHelper.AddParameter("@IdCliente", beDocumento.Cliente.IdCliente);
+                    oDatabaseHelper.AddParameter("@IdPersonal", beDocumento.Personal.IdPersonal);
 
                     object vResultado = oDatabaseHelper.ExecuteScalar("InsertarDocumento", CommandType.StoredProcedure, (pDatabaseHelper == null) ? DBHelper.ConnectionState.CloseOnExit : DBHelper.ConnectionState.KeepOpen);
                     beDocumento.IdDocumento = int.Parse(vResultado.ToString());

@@ -1,21 +1,21 @@
 declare @Cliente varchar(100)
 declare @IdCliente int
-set @Cliente = 'van'
+set @Cliente = 'delia'
 
 declare @FechaInicial date
 
-set @FechaInicial = '2017-10-13'
+set @FechaInicial = '2017-09-30'
 
 select * from dbo.Tb_Cliente_Proveedor where Nombres like  '%' + @Cliente + '%' 
-select @IdCliente = Id_Cliente from dbo.Tb_Cliente_Proveedor where Nombres like  @Cliente + '%' 
+select @IdCliente = Id_Cliente from dbo.Tb_Cliente_Proveedor where Id_Cliente =24
 
 select caj.fecha , v.* from Tb_Venta v 
 inner join tb_caja caj on caj.Id_caja = v.id_caja
-where v.id_cliente = 445
+where v.id_cliente = @IdCliente
 
 select c.Fecha , v.* from dbo.Tb_Venta v
 inner join dbo.Tb_Caja c on c.Id_Caja = v.Id_Caja
-where Id_cliente = 14
+where Id_cliente = @IdCliente
 and v.IdEstado  not in ('ANL' )
 order by c.fecha
 

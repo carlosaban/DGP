@@ -296,8 +296,8 @@ namespace DGP.Presentation.Ventas {
                         documento.Fecha = VariablesSession.BECaja.Fecha; 
                         documento.IdTipoDocumento = BEDocumento.TIPO_AMORTIZACION_AMR;
                         documento.delleAmortizacion = vLista;
-                        documento.IdCliente = vg_BEVenta.IdCliente;
-                        documento.IdPersonal = VariablesSession.BEUsuarioSession.IdPersonal;
+                        documento.Cliente.IdCliente = vg_BEVenta.IdCliente;
+                        documento.Personal.IdPersonal = VariablesSession.BEUsuarioSession.IdPersonal;
 
                         bOk = new BLAmortizacionVenta().Insertar(documento);
 

@@ -709,8 +709,8 @@ namespace DGP.Presentation.Ventas {
                                     documento.delleAmortizacion = vLista;
                                     int IdCliente;
                                     bool flag = int.TryParse(this.cbCliente.SelectedValue.ToString(),  out IdCliente);
-                                    documento.IdCliente = (flag) ? IdCliente : 0;
-                                    documento.IdPersonal = VariablesSession.BEUsuarioSession.IdPersonal;
+                                    documento.Cliente.IdCliente = (flag) ? IdCliente : 0;
+                                    documento.Personal.IdPersonal = VariablesSession.BEUsuarioSession.IdPersonal;
 
                                     vLista.Add(oBEAmortizacionVenta);
                                     bool bOk = new BLAmortizacionVenta().Insertar(documento);

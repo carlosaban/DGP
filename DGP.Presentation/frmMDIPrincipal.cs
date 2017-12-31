@@ -185,6 +185,14 @@ namespace DGP.Presentation {
             //oVentas_frmVueltos.Show();
 
         }
+
+        private void mantenimientoDeDocPagosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmMantenimientoDocumentoPago frm = new frmMantenimientoDocumentoPago();
+            frm.MdiParent = this;
+            frm.Show();
+
+        }
         
         
 

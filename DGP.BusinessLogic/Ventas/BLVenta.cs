@@ -114,8 +114,8 @@ namespace DGP.BusinessLogic.Ventas {
                         documento.Fecha = tmppBEVenta.FechaInicio;
                         documento.IdTipoDocumento = BEDocumento.TIPO_AMORTIZACION_AMR;
                         documento.delleAmortizacion = lista;
-                        documento.IdCliente = tmppBEVenta.IdCliente;
-                        documento.IdPersonal = pBEVenta.BEUsuarioLogin.IdPersonal;
+                        documento.Cliente.IdCliente = tmppBEVenta.IdCliente;
+                        documento.Personal.IdPersonal = pBEVenta.BEUsuarioLogin.IdPersonal;
 
                         new BLAmortizacionVenta().Insertar(documento, dbh);
                         //Actualizar la venta

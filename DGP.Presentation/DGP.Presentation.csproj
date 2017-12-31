@@ -168,9 +168,17 @@
       <DependentUpon>frmDevoluciones.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Ventas\frmDocumentoPago.resx">
+      <DependentUpon>frmDocumentoPago.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Ventas\frmMantenimientoCliente.resx">
       <SubType>Designer</SubType>
       <DependentUpon>frmMantenimientoCliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventas\frmMantenimientoDocumentoPago.resx">
+      <DependentUpon>frmMantenimientoDocumentoPago.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Ventas\frmMantenimientoVentas.resx">
       <DependentUpon>frmMantenimientoVentas.cs</DependentUpon>
@@ -210,6 +218,7 @@
     <None Include="Properties\DataSources\DGP.Entities.DataSet.DSVueltos.datasource" />
     <None Include="Properties\DataSources\DGP.Entities.Seguridad.BEPerfil.datasource" />
     <None Include="Properties\DataSources\DGP.Entities.Seguridad.BEPersonal.datasource" />
+    <None Include="Properties\DataSources\DGP.Entities.Ventas.BEDocumento.datasource" />
     <None Include="Properties\DataSources\DGP.Entities.Ventas.BEVenta.datasource" />
     <None Include="Properties\DataSources\DGP.Entities.Ventas.VistaVenta.datasource" />
     <None Include="Properties\Settings.settings">
@@ -305,11 +314,23 @@
     <Compile Include="Ventas\frmDevoluciones.Designer.cs">
       <DependentUpon>frmDevoluciones.cs</DependentUpon>
     </Compile>
+    <Compile Include="Ventas\frmDocumentoPago.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventas\frmDocumentoPago.Designer.cs">
+      <DependentUpon>frmDocumentoPago.cs</DependentUpon>
+    </Compile>
     <Compile Include="Ventas\frmMantenimientoCliente.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Ventas\frmMantenimientoCliente.Designer.cs">
       <DependentUpon>frmMantenimientoCliente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Ventas\frmMantenimientoDocumentoPago.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventas\frmMantenimientoDocumentoPago.Designer.cs">
+      <DependentUpon>frmMantenimientoDocumentoPago.cs</DependentUpon>
     </Compile>
     <Compile Include="Ventas\frmMantenimientoVentas.cs">
       <SubType>Form</SubType>
@@ -378,6 +399,12 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{967B4E0D-AD0C-4609-AB67-0FA40C0206D8}" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\saveIcon.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\plusIcon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

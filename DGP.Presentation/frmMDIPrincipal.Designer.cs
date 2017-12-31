@@ -38,6 +38,7 @@
             this.actPrecioVentaMasivoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mantenimientoDeClienteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mantenimientoDeUsuariosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.aplicarVueltoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.comprasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mantenimientoDeComprasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reportesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -50,7 +51,7 @@
             this.estadoDeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmSalir = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiSalirSistema = new System.Windows.Forms.ToolStripMenuItem();
-            this.aplicarVueltoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mantenimientoDeDocPagosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.msMenuPrincipal.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -71,6 +72,7 @@
             this.tsmVentas.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tstmiVentas_TableroElectronico,
             this.tsmiDetalleVenta,
+            this.mantenimientoDeDocPagosToolStripMenuItem,
             this.tsmiAmortizacion,
             this.tsmiPagoAdelanto,
             this.tsmiDevoluciones,
@@ -139,6 +141,13 @@
             this.mantenimientoDeUsuariosToolStripMenuItem.Size = new System.Drawing.Size(220, 22);
             this.mantenimientoDeUsuariosToolStripMenuItem.Text = "Mantenimiento de Usuarios";
             this.mantenimientoDeUsuariosToolStripMenuItem.Click += new System.EventHandler(this.mantenimientoDeUsuariosToolStripMenuItem_Click);
+            // 
+            // aplicarVueltoToolStripMenuItem
+            // 
+            this.aplicarVueltoToolStripMenuItem.Name = "aplicarVueltoToolStripMenuItem";
+            this.aplicarVueltoToolStripMenuItem.Size = new System.Drawing.Size(220, 22);
+            this.aplicarVueltoToolStripMenuItem.Text = "Aplicar Vueltos";
+            this.aplicarVueltoToolStripMenuItem.Click += new System.EventHandler(this.aplicarVueltoToolStripMenuItem_Click);
             // 
             // comprasToolStripMenuItem
             // 
@@ -231,12 +240,12 @@
             this.tsmiSalirSistema.Size = new System.Drawing.Size(159, 22);
             this.tsmiSalirSistema.Text = "Salir del Sistema";
             // 
-            // aplicarVueltoToolStripMenuItem
+            // mantenimientoDeDocPagosToolStripMenuItem
             // 
-            this.aplicarVueltoToolStripMenuItem.Name = "aplicarVueltoToolStripMenuItem";
-            this.aplicarVueltoToolStripMenuItem.Size = new System.Drawing.Size(220, 22);
-            this.aplicarVueltoToolStripMenuItem.Text = "Aplicar Vueltos";
-            this.aplicarVueltoToolStripMenuItem.Click += new System.EventHandler(this.aplicarVueltoToolStripMenuItem_Click);
+            this.mantenimientoDeDocPagosToolStripMenuItem.Name = "mantenimientoDeDocPagosToolStripMenuItem";
+            this.mantenimientoDeDocPagosToolStripMenuItem.Size = new System.Drawing.Size(234, 22);
+            this.mantenimientoDeDocPagosToolStripMenuItem.Text = "Mantenimiento de Doc. Pagos";
+            this.mantenimientoDeDocPagosToolStripMenuItem.Click += new System.EventHandler(this.mantenimientoDeDocPagosToolStripMenuItem_Click);
             // 
             // frmMDIPrincipal
             // 
@@ -283,6 +292,7 @@
         private System.Windows.Forms.ToolStripMenuItem comprasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem mantenimientoDeComprasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aplicarVueltoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem mantenimientoDeDocPagosToolStripMenuItem;
 
 
     }

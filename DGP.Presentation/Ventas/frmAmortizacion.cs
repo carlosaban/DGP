@@ -68,7 +68,7 @@ namespace DGP.Presentation.Ventas {
                         CargarProductoCliente(intIdCliente);
                         DGP_Util.EnabledComboBox(cbProducto, true);
                         CargarAmortizaciones(Convert.ToInt32(cmbClientes.SelectedValue), 0);
-                        DGP_Util.EnableControl(nudPrecioAmortizacion, true);
+                        DGP_Util.EnableControl(nudMontoDocumento, true);
                         CargarAmortizacionesSinAplicar(intIdCliente);
                     } else {
                         ResetearFormulario();
@@ -97,7 +97,7 @@ namespace DGP.Presentation.Ventas {
             private void btnAplicarMonto_Click(object sender, EventArgs e) {
                 try {
 
-                    decimal montoTotal = this.nudPrecioAmortizacion.Value;
+                    decimal montoTotal = this.nudMontoDocumento.Value;
                     decimal montoAcarreo = 0;
                     
                     foreach (DataGridViewRow vRow in dgrvAmortizacion.Rows) {
@@ -130,11 +130,42 @@ namespace DGP.Presentation.Ventas {
             }
 
             private void dgrvAmortizacion_CellEndEdit(object sender, DataGridViewCellEventArgs e) {
-                string strMensaje = string.Empty;
-                if (!ValidarCampos(ref strMensaje, e.RowIndex, e.ColumnIndex)) {
-                    MostrarMensaje(strMensaje, MessageBoxIcon.Exclamation);
+                try
+                {
+                    string strMensaje = string.Empty;
+                    if (!ValidarCampos(ref strMensaje, e.RowIndex, e.ColumnIndex))
+                    {
+                        MostrarMensaje(strMensaje, MessageBoxIcon.Exclamation);
+                    }
+                    else
+                    {
+                        this.nudMontoAplicadoDocumento.Value = SumaAmortizaciones();
+
+
+                    }
+
                 }
+                catch (Exception ex)
+                {
+                    
+                     MostrarMensaje(ex.Message, MessageBoxIcon.Error);;
+                }
+                
             }
+            private decimal SumaAmortizaciones()
+            {
+                decimal montoResult= 0;
+                foreach (DataGridViewRow vRow in dgrvAmortizacion.Rows) {
+                    bool bok;
+                    decimal tempValue;
+                    if ( vRow.Cells[ePosicionCol.Pago.GetHashCode()].Value == null) continue;
+                    bok = decimal.TryParse(vRow.Cells[ePosicionCol.Pago.GetHashCode()].Value.ToString() , out tempValue);
+                    montoResult += (bok)?tempValue: 0;
+                }
+
+                return montoResult;
+            } 
+
 
             private void btnGrabar_Click(object sender, EventArgs e) {
                 string strMensaje = string.Empty;
@@ -157,9 +188,10 @@ namespace DGP.Presentation.Ventas {
                             documento.BEUsuarioLogin = VariablesSession.BEUsuarioSession;
                             documento.Fecha = this.dtpFechaPago.Value.Date;
                             documento.IdTipoDocumento = BEDocumento.TIPO_AMORTIZACION_AMR;
-                            documento.IdCliente = int.Parse( this.cmbClientes.SelectedValue.ToString() );
-                            documento.IdPersonal = int.Parse( cbUsuario.SelectedValue.ToString());
+                            documento.Cliente.IdCliente = int.Parse( this.cmbClientes.SelectedValue.ToString() );
+                            documento.Personal.IdPersonal = int.Parse( cbUsuario.SelectedValue.ToString());
                             documento.delleAmortizacion = vLista;
+                            documento.Monto = this.nudMontoDocumento.Value;
 
 
                             bool bOk = new BLAmortizacionVenta().Insertar(documento);
@@ -168,6 +200,7 @@ namespace DGP.Presentation.Ventas {
                                 MostrarMensaje("Se registró la amortización correctamente", MessageBoxIcon.Information);
                                 int intIdCliente = Convert.ToInt32(cmbClientes.SelectedValue);
                                 int intIdProducto = Convert.ToInt32(cbProducto.SelectedValue);
+                                LimpiarFormulario();
                                 CargarAmortizaciones(intIdCliente, intIdProducto);
                             } else {
                                 MostrarMensaje("No se pudo registrar la venta, intentelo de nuevo", MessageBoxIcon.Exclamation);                        
@@ -242,8 +275,9 @@ namespace DGP.Presentation.Ventas {
             }
 
             private void LimpiarFormulario() {
-                nudPrecioAmortizacion.Value = 1;
+                nudMontoDocumento.Value = 0;
                 nudVuelto.Value = 0;
+                this.nudMontoAplicadoDocumento.Value = 0;
             }
 
             private void CargarProductoCliente(int pIdCliente) {
@@ -300,6 +334,7 @@ namespace DGP.Presentation.Ventas {
                 int intCantidad = 0;
                 bool bExisteCancelar = false;
                 bool ExisteNegativos = false;
+                bool ExisteAmortizacionMayorSaldo = false;
                 foreach (DataGridViewRow vRow in dgrvAmortizacion.Rows) { 
                     // Obtener el indicador
                     object oIndicador = vRow.Cells[ePosicionCol.Indicador.GetHashCode()].Value;
@@ -312,14 +347,27 @@ namespace DGP.Presentation.Ventas {
                             intCantidad++;
                             decimal.TryParse(vRow.Cells[ePosicionCol.Saldo.GetHashCode()].Value.ToString(), out decSaldoCuenta);
                             ExisteNegativos = ExisteNegativos || (decSaldoCuenta < 0);
+                            decimal tempPagoAcuenta = 0;
+                            decimal.TryParse(oPagoCuenta.ToString(), out tempPagoAcuenta);
+                            ExisteAmortizacionMayorSaldo = ExisteAmortizacionMayorSaldo || (tempPagoAcuenta > decSaldoCuenta);
                         }
                         //obtener el checkbox cancelado
                         bExisteCancelar = bExisteCancelar || ((bool)vRow.Cells[ePosicionCol.Cancelar.GetHashCode()].Value);
                         
                     }
                 }
-                if (intCantidad <= 0) {
-                    pMensaje = "Debe ingresar como mínimo un pago";
+                //if (intCantidad <= 0) {
+                //    pMensaje = "Debe ingresar como mínimo un pago";
+                //    boResultado = false;
+                //}
+                if (this.nudMontoDocumento.Value < nudMontoAplicadoDocumento.Value)
+                {
+                    pMensaje = "El Monto del documento debe ser mayor o igual al monto Aplicado";
+                    boResultado = false;
+                }
+                if (this.nudMontoDocumento.Value <= 0 )
+                {
+                    pMensaje = "Debe Ingresar un monto de Documento de Pago";
                     boResultado = false;
                 }
                 if (ExisteNegativos)
@@ -327,11 +375,13 @@ namespace DGP.Presentation.Ventas {
                     pMensaje = "No debe Aplicar Amortizaciones a valores negativos";
                     boResultado = false;
                 }
-                //if (bExisteCancelar)
-                //{
-                //    pMensaje = "Debe ingresar como mínimo un pago";
-                //    boResultado = false;
-                //}
+                if (ExisteAmortizacionMayorSaldo)
+                {
+                    pMensaje = "Monto a Aplicar no debe ser mayor al saldo";
+                    boResultado = false;
+                }
+               
+               
                 return boResultado;
             }
 

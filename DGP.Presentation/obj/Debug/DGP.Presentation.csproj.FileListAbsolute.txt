@@ -115,3 +115,5 @@ D:\workspace\DGP\DGP.Presentation\bin\Debug\CrystalDecisions.ReportSource.xml
 D:\workspace\DGP\DGP.Presentation\bin\Debug\DGP.Entities.pdb
 D:\workspace\DGP\DGP.Presentation\obj\Debug\DGP.Presentation.exe
 D:\workspace\DGP\DGP.Presentation\obj\Debug\DGP.Presentation.pdb
+D:\workspace\DGP\DGP.Presentation\obj\Debug\DGP.Presentation.Ventas.frmDocumentoPago.resources
+D:\workspace\DGP\DGP.Presentation\obj\Debug\DGP.Presentation.Ventas.frmMantenimientoDocumentoPago.resources

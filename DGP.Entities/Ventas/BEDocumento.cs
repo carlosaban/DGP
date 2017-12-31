@@ -13,30 +13,41 @@ namespace DGP.Entities.Ventas
         public const string TIPO_AMORTIZACION_REDONDEO = "RDO";
 
 
-        public const string DOCUMENTO_ESTADO_REGISTRADO = "REG";
-        public const string DOCUMENTO_ESTADO_ANULADO = "ANL";
         public string IdTipoDocumento { get; set; }
         public DateTime Fecha { get; set; }
-        public decimal Monto { 
-            get {
-                decimal localMonto = 0;
-                this.delleAmortizacion.ForEach(t => localMonto += t.Monto);
-                return localMonto;
-            } 
+        private decimal? _Monto; 
+        public decimal Monto
+        {
+            get
+            {
+                if (_Monto == null)
+                {
+                    decimal localMonto = 0;
+                    this.delleAmortizacion.ForEach(t => localMonto += t.Monto);
+                    return localMonto;
+                }
+                else return (decimal)_Monto;
+            }
+            set {
+                _Monto = value;
+            }
+
         }
-        public string Estado { get; set;} 
-        public bool EsEliminado { get; set; }
+        public int Estado { get; set;} 
         public BEPersonal BEUsuarioLogin { get; set; }
         public List<BEAmortizacionVenta> delleAmortizacion { get; set; }
         public int IdDocumento { get; set; }
 
-        public int IdCliente { get; set; }
-        public int IdPersonal { get; set; }
+       // public int IdCliente { get; set; }
+        public BEClienteProveedor Cliente { get; set; }
+        public BEPersonal Personal { get; set; }
         public BEDocumento()
         {
           
             delleAmortizacion = new List<BEAmortizacionVenta>();
-            this.Estado = DOCUMENTO_ESTADO_REGISTRADO;
+            this.Cliente = new BEClienteProveedor();
+            this.Personal = new BEPersonal();
+           // this.Estado = DOCUMENTO_ESTADO_REGISTRADO;
         
         }
 
