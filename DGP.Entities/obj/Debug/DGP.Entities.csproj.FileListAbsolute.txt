@@ -16,3 +16,9 @@ D:\workspace\DGP\DGP.Entities\bin\Debug\DGP.Entities.dll
 D:\workspace\DGP\DGP.Entities\bin\Debug\DGP.Entities.pdb
 D:\workspace\DGP\DGP.Entities\obj\Debug\DGP.Entities.dll
 D:\workspace\DGP\DGP.Entities\obj\Debug\DGP.Entities.pdb
+D:\workspace\DGP\DGP\DGP.Entities\bin\Debug\DGP.Entities.dll.config
+D:\workspace\DGP\DGP\DGP.Entities\bin\Debug\DGP.Entities.dll
+D:\workspace\DGP\DGP\DGP.Entities\bin\Debug\DGP.Entities.pdb
+D:\workspace\DGP\DGP\DGP.Entities\obj\Debug\ResolveAssemblyReference.cache
+D:\workspace\DGP\DGP\DGP.Entities\obj\Debug\DGP.Entities.dll
+D:\workspace\DGP\DGP\DGP.Entities\obj\Debug\DGP.Entities.pdb
