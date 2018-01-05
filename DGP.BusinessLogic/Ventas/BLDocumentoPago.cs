@@ -6,6 +6,7 @@ namespace DGP.BusinessLogic.Ventas
 {
     public class BLDocumentoPago
     {
+      
 
     }
 }
