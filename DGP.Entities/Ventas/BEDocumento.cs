@@ -9,10 +9,7 @@ namespace DGP.Entities.Ventas
     {
         public const string TIPO_AMORTIZACION_AMR = "AMR";
         public const string TIPO_AMORTIZACION_VUELTO = "VLT";
-
         public const string TIPO_AMORTIZACION_REDONDEO = "RDO";
-
-
         public string IdTipoDocumento { get; set; }
         public DateTime Fecha { get; set; }
         private decimal? _Monto; 
@@ -33,7 +30,8 @@ namespace DGP.Entities.Ventas
             }
 
         }
-        public int Estado { get; set;} 
+        public string Estado { get; set;}
+ 
         public BEPersonal BEUsuarioLogin { get; set; }
         public List<BEAmortizacionVenta> delleAmortizacion { get; set; }
         public int IdDocumento { get; set; }
