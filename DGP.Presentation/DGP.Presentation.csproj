@@ -172,12 +172,20 @@
       <DependentUpon>frmDocumentoPago.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Ventas\frmDocumentoPagoCompra.resx">
+      <DependentUpon>frmDocumentoPagoCompra.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Ventas\frmMantenimientoCliente.resx">
       <SubType>Designer</SubType>
       <DependentUpon>frmMantenimientoCliente.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Ventas\frmMantenimientoDocumentoPago.resx">
       <DependentUpon>frmMantenimientoDocumentoPago.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventas\frmMantenimientoDocumentoPagoCompra.resx">
+      <DependentUpon>frmMantenimientoDocumentoPagoCompra.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Ventas\frmMantenimientoVentas.resx">
@@ -320,6 +328,12 @@
     <Compile Include="Ventas\frmDocumentoPago.Designer.cs">
       <DependentUpon>frmDocumentoPago.cs</DependentUpon>
     </Compile>
+    <Compile Include="Ventas\frmDocumentoPagoCompra.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventas\frmDocumentoPagoCompra.Designer.cs">
+      <DependentUpon>frmDocumentoPagoCompra.cs</DependentUpon>
+    </Compile>
     <Compile Include="Ventas\frmMantenimientoCliente.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -331,6 +345,12 @@
     </Compile>
     <Compile Include="Ventas\frmMantenimientoDocumentoPago.Designer.cs">
       <DependentUpon>frmMantenimientoDocumentoPago.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Ventas\frmMantenimientoDocumentoPagoCompra.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventas\frmMantenimientoDocumentoPagoCompra.Designer.cs">
+      <DependentUpon>frmMantenimientoDocumentoPagoCompra.cs</DependentUpon>
     </Compile>
     <Compile Include="Ventas\frmMantenimientoVentas.cs">
       <SubType>Form</SubType>

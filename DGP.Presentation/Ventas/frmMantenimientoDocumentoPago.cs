@@ -27,8 +27,17 @@ namespace DGP.Presentation.Ventas
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
-
+            listarDocumentos();
         }
+
+        private void listarDocumentos()
+        {
+           BLDocumentoPago BLDP = new BLDocumentoPago();
+           int codigo = Convert.ToInt32(cmbClientes.SelectedValue);
+           this.bsDocumetosPago.DataSource = BLDP.Listar(codigo, dtFechaInicial.Value.Date, dtFechaFinal.Value.Date);
+           this.dgvDocumentoPago.DataSource = this.bsDocumetosPago;
+        }
+
         private void CmbClientes_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == (char)(Keys.Enter))
@@ -124,6 +133,18 @@ namespace DGP.Presentation.Ventas
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void dgvDocumentoPago_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            frmDocumentoPago edicion = new frmDocumentoPago(this.bsDocumetosPago);
+            edicion.Show();
+
+        }
+
+        private void tsbEliminar_Click(object sender, EventArgs e)
         {
 
         }

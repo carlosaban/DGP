@@ -14,13 +14,13 @@ namespace DGP.DataAccess.Ventas
 
         public List<BEDocumento> ListarDocumento(BEDocumento beDocumento)
         {
-            return this.ListarDocumento(beDocumento , null,null, null);
+            return this.ListarDocumento(beDocumento , null,null);
 
         }
 
-        public List<BEDocumento> ListarDocumento(BEDocumento beDocumento, DateTime? FechaInicio, DateTime? FechaFinal, DatabaseHelper pDatabaseHelper)
+        public List<BEDocumento> ListarDocumento(BEDocumento beDocumento, DateTime? FechaInicio, DateTime? FechaFinal)
         {
-            DatabaseHelper oDatabaseHelper = (pDatabaseHelper == null) ? new DatabaseHelper() : pDatabaseHelper;
+            DatabaseHelper oDatabaseHelper = new DatabaseHelper();
 
             List<BEDocumento> vLista = new List<BEDocumento>();
             IDataReader oIDataReader = null;
@@ -34,7 +34,7 @@ namespace DGP.DataAccess.Ventas
                 oDatabaseHelper.AddParameter("@FechaFinal", FechaFinal );
                 oDatabaseHelper.AddParameter("@IdCliente", (beDocumento.Cliente.IdCliente == 0) ? DBNull.Value : (object)beDocumento.Cliente.IdCliente);
 
-                oIDataReader = oDatabaseHelper.ExecuteReader("ListarDocumento", CommandType.StoredProcedure, (pDatabaseHelper == null) ? DBHelper.ConnectionState.CloseOnExit : DBHelper.ConnectionState.KeepOpen);
+                oIDataReader = oDatabaseHelper.ExecuteReader("ListarDocumento", CommandType.StoredProcedure);
                 while (oIDataReader.Read())
                 {
                     vLista.Add(new BEDocumento()
@@ -54,12 +54,86 @@ namespace DGP.DataAccess.Ventas
             {
                 throw ex;
             }
-            finally
-            {
 
-                if (pDatabaseHelper == null) oDatabaseHelper.Dispose();
+        }
+
+        public List<BEDocumento> ListarDocumentoPago(int codCliProv, DateTime? FechaInicio, DateTime? FechaFinal)
+        {
+            DatabaseHelper oDatabaseHelper = new DatabaseHelper();
+
+            List<BEDocumento> vLista = new List<BEDocumento>();
+            IDataReader oIDataReader = null;
+            try
+            {
+                oDatabaseHelper.ClearParameter();
+                oDatabaseHelper.AddParameter("@FechaInicio", FechaInicio);
+                oDatabaseHelper.AddParameter("@FechaFinal", FechaFinal);
+                oDatabaseHelper.AddParameter("@IdCliente", codCliProv);
+
+                oIDataReader = oDatabaseHelper.ExecuteReader("ListarDocumentosPago", CommandType.StoredProcedure);
+                while (oIDataReader.Read())
+                {
+                    vLista.Add(new BEDocumento()
+                    {
+                        IdDocumento = (int)oIDataReader["IdDocumento"],
+                        Fecha = Convert.ToDateTime(oIDataReader["Fecha"]),
+                        IdTipoDocumento = oIDataReader["IdTipoDocumento"].ToString(),
+                        Monto = decimal.Parse(oIDataReader["Monto"].ToString()),
+                        Estado = (int)oIDataReader["estado"],
+                    });
+
+                }
+                return (vLista);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
             }
 
+        }
+
+        public List<BEAmortizacionVenta> ListarDetalle(int idDocumento)
+        {
+            DatabaseHelper oDBH = new DatabaseHelper();
+            List<BEAmortizacionVenta> vLista = new List<BEAmortizacionVenta>();
+            BEAmortizacionVenta oBEAmortizacionVenta = null;
+            IDataReader oIDataReader = null;
+            try
+            {
+                oDBH.ClearParameter();
+                oDBH.AddParameter("@IdDocumento", (idDocumento <= 0) ? (object)DBNull.Value : idDocumento);
+                oIDataReader = oDBH.ExecuteReader("ListarAmortVenta", CommandType.StoredProcedure);
+
+                while (oIDataReader.Read())
+                {
+                    oBEAmortizacionVenta = new BEAmortizacionVenta();
+                    oBEAmortizacionVenta.IdAmortizacionVenta = Convert.ToInt32(oIDataReader["Id_Amort_Venta"]);
+                    oBEAmortizacionVenta.Monto = (oIDataReader["Monto"] == (object)DBNull.Value) ? decimal.Zero : Convert.ToDecimal(oIDataReader["Monto"]);
+                    oBEAmortizacionVenta.NroDocumento = oIDataReader["NumeroDocumento"].ToString();
+                    oBEAmortizacionVenta.IdFormaPago = oIDataReader["IdFormaPago"].ToString();
+                    oBEAmortizacionVenta.FechaPago = Convert.ToDateTime(oIDataReader["FechaPago"]);
+                    oBEAmortizacionVenta.IdTipoAmortizacion = oIDataReader["IdTipoAmortizacion"].ToString();
+                    oBEAmortizacionVenta.Observacion = oIDataReader["Observacion"].ToString();
+                    oBEAmortizacionVenta.IdEstado = oIDataReader["IdEstado"].ToString();
+                    oBEAmortizacionVenta.IdVenta = (oIDataReader["Id_Venta"] == (object)DBNull.Value) ? 0 : Convert.ToInt32(oIDataReader["Id_Venta"]);
+                    oBEAmortizacionVenta.IdCliente = (oIDataReader["Id_Cliente"] == (object)DBNull.Value) ? 0 : Convert.ToInt32(oIDataReader["Id_Cliente"]);
+                    oBEAmortizacionVenta.IdDocumento = (oIDataReader["IdDocumento"] == (object)DBNull.Value) ? 0 : Convert.ToInt32(oIDataReader["IdDocumento"]);
+
+
+
+                    vLista.Add(oBEAmortizacionVenta);
+
+                }
+                return vLista;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                oDBH.Dispose();
+            }
         }
 
         public bool InsertarCabeceraDocumento(BEDocumento beDocumento)

@@ -193,8 +193,15 @@ namespace DGP.Presentation {
             frm.Show();
 
         }
-        
-        
 
+        private void msMenuPrincipal_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
+        }
+
+        private void mantenimientoDeDocPagosCompraToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
