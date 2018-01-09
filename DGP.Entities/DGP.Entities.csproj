@@ -65,6 +65,13 @@
     <Compile Include="BEClienteProveedor.cs" />
     <Compile Include="BEEmpresa.cs" />
     <Compile Include="BEParametroDetalle.cs" />
+    <Compile Include="Compras\BEAmortizacionCompra.cs" />
+    <Compile Include="Compras\BECompra.cs" />
+    <Compile Include="Compras\BEDocumentoPagoCompra.cs" />
+    <Compile Include="Compras\BELineaCompra.cs" />
+    <Compile Include="Compras\eCompraEsSobrante.cs" />
+    <Compile Include="Compras\VistaAmortizacionCompra.cs" />
+    <Compile Include="Compras\VistaCompra.cs" />
     <Compile Include="DataSet\DSEntitiesCliente.cs">
       <DependentUpon>DSEntitiesCliente.xsd</DependentUpon>
       <SubType>Component</SubType>

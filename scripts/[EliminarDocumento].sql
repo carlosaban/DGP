@@ -2,7 +2,7 @@
 
 
 
-CREATE   PROCEDURE [dbo].[EliminarDocumento](
+ALTER  PROCEDURE [dbo].[EliminarDocumento](
 
 @IdDocumento int
 

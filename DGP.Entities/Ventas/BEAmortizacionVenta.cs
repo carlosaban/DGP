@@ -5,7 +5,8 @@ using DGP.Entities.Seguridad;
 
 namespace DGP.Entities.Ventas {
 
-    public class BEAmortizacionVenta {
+    public class BEAmortizacionVenta
+    {
 
         public const string ESTADO_REGISTRADO = "REG";
         public const string ESTADO_ELIMINADO = "ELM";
@@ -31,7 +32,8 @@ namespace DGP.Entities.Ventas {
         private int mIdPersonal;
         private BEPersonal mBEUsuarioLogin;
 
-        public BEAmortizacionVenta() {
+        public BEAmortizacionVenta()
+        {
             mIdAmortizacionVenta = 0;
             mMonto = 0;
             mNroDocumento = string.Empty;
@@ -46,62 +48,74 @@ namespace DGP.Entities.Ventas {
             mBEUsuarioLogin = new BEPersonal();
         }
 
-        public int IdAmortizacionVenta {
+        public int IdAmortizacionVenta
+        {
             get { return mIdAmortizacionVenta; }
             set { mIdAmortizacionVenta = value; }
         }
 
-        public decimal Monto {
+        public decimal Monto
+        {
             get { return mMonto; }
             set { mMonto = value; }
         }
 
-        public string NroDocumento {
+        public string NroDocumento
+        {
             get { return mNroDocumento; }
             set { mNroDocumento = value; }
         }
 
-        public string IdFormaPago {
+        public string IdFormaPago
+        {
             get { return mIdFormaPago; }
             set { mIdFormaPago = value; }
         }
 
-        public DateTime FechaPago {
+        public DateTime FechaPago
+        {
             get { return mFechaPago; }
             set { mFechaPago = value; }
         }
 
-        public string IdTipoAmortizacion {
+        public string IdTipoAmortizacion
+        {
             get { return mIdTipoAmortizacion; }
             set { mIdTipoAmortizacion = value; }
         }
 
-        public string Observacion {
+        public string Observacion
+        {
             get { return mObservacion; }
             set { mObservacion = value; }
         }
 
-        public string IdEstado {
+        public string IdEstado
+        {
             get { return mIdEstado; }
             set { mIdEstado = value; }
         }
 
-        public int IdVenta {
+        public int IdVenta
+        {
             get { return mIdVenta; }
             set { mIdVenta = value; }
         }
 
-        public int IdCliente {
+        public int IdCliente
+        {
             get { return mIdCliente; }
             set { mIdCliente = value; }
         }
 
-        public int IdPersonal {
+        public int IdPersonal
+        {
             get { return mIdPersonal; }
             set { mIdPersonal = value; }
         }
-	
-        public BEPersonal BEUsuarioLogin {
+
+        public BEPersonal BEUsuarioLogin
+        {
             get { return mBEUsuarioLogin; }
             set { mBEUsuarioLogin = value; }
         }
@@ -113,16 +127,12 @@ namespace DGP.Entities.Ventas {
             set { mCaja = value; }
         }
 
-        private bool _CancelarVenta =false;
+        private bool _CancelarVenta = false;
 
         public bool CancelarVenta
         {
             get { return _CancelarVenta; }
             set { _CancelarVenta = value; }
         }
-
-	
-	
-
     }
 }

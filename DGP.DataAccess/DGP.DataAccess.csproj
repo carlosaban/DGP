@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Compra\DAAmortizacionCompra.cs" />
     <Compile Include="DACaja.cs" />
     <Compile Include="DAClienteProveedor.cs" />
     <Compile Include="DAEmpresa.cs" />

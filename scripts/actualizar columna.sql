@@ -1,6 +1,7 @@
-ALTER TABLE Tb_documento ALTER COLUMN estado varchar(3)
+ALTER TABLE Tb_documento ALTER COLUMN IdEstado varchar(3)
+go
 
-EXEC sp_rename 'Tb_documento.estado', 'IdEstado', 'COLUMN'
+EXEC sp_rename 'Tb_documento.IdEstado', 'IdEstado', 'COLUMN'
 go
 
 update Tb_documento set

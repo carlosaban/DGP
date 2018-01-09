@@ -8,6 +8,7 @@ using System.Windows.Forms;
 
 using DGP.Presentation.Ventas;
 using DGP.Presentation.Reportes;
+using DGP.Presentation.Compras;
 
 namespace DGP.Presentation {
 
@@ -191,10 +192,13 @@ namespace DGP.Presentation {
             frmMantenimientoDocumentoPago frm = new frmMantenimientoDocumentoPago();
             frm.MdiParent = this;
             frm.Show();
-
         }
-        
-        
 
+        private void mantenimientoDeComprasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmMantenimientoCompras frm = new frmMantenimientoCompras();
+            frm.MdiParent = this;
+            frm.Show();
+        }
     }
 }
