@@ -31,6 +31,7 @@ namespace DGP.Entities.Ventas {
         private int mIdCliente;
         private int mIdPersonal;
         private BEPersonal mBEUsuarioLogin;
+        private int mIdDocumento;
 
         public BEAmortizacionVenta()
         {
@@ -46,6 +47,7 @@ namespace DGP.Entities.Ventas {
             mIdCliente = 0;
             mIdPersonal = 0;
             mBEUsuarioLogin = new BEPersonal();
+            mIdDocumento = 0;
         }
 
         public int IdAmortizacionVenta
@@ -134,5 +136,16 @@ namespace DGP.Entities.Ventas {
             get { return _CancelarVenta; }
             set { _CancelarVenta = value; }
         }
+<<<<<<< HEAD
+=======
+
+
+        public int IdDocumento
+        {
+            get { return mIdDocumento; }
+            set { mIdDocumento = value; }
+        }
+
+>>>>>>> 143d40cc1cbc6540aabddf10be213937f59d6af4
     }
 }

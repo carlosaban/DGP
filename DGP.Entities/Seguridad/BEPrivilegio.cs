@@ -41,6 +41,7 @@ namespace DGP.Entities.Seguridad
             public const int Aplicar_Vueltos = 33 ;
             public const int Ventas_Iniciar_sesion_fuera_fecha = 34;
             public const int Ventas_Documentos_Pago = 35;
+            public const int Compras_Documentos_Pago = 36 ;
 
         public int IdPrivilegio { get; set; }
         public string Descripcion { get; set; }

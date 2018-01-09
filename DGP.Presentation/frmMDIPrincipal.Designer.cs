@@ -52,6 +52,11 @@
             this.estadoDeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmSalir = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiSalirSistema = new System.Windows.Forms.ToolStripMenuItem();
+<<<<<<< HEAD
+=======
+            this.mantenimientoDeDocPagosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mantenimientoDeDocPagosCompraToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+>>>>>>> 143d40cc1cbc6540aabddf10be213937f59d6af4
             this.msMenuPrincipal.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -66,6 +71,7 @@
             this.msMenuPrincipal.Name = "msMenuPrincipal";
             this.msMenuPrincipal.Size = new System.Drawing.Size(597, 24);
             this.msMenuPrincipal.TabIndex = 1;
+            this.msMenuPrincipal.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.msMenuPrincipal_ItemClicked);
             // 
             // tsmVentas
             // 
@@ -81,7 +87,7 @@
             this.mantenimientoDeUsuariosToolStripMenuItem,
             this.aplicarVueltoToolStripMenuItem});
             this.tsmVentas.Name = "tsmVentas";
-            this.tsmVentas.Size = new System.Drawing.Size(54, 20);
+            this.tsmVentas.Size = new System.Drawing.Size(53, 20);
             this.tsmVentas.Text = "Ventas";
             // 
             // tstmiVentas_TableroElectronico
@@ -159,7 +165,8 @@
             // comprasToolStripMenuItem
             // 
             this.comprasToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.mantenimientoDeComprasToolStripMenuItem});
+            this.mantenimientoDeComprasToolStripMenuItem,
+            this.mantenimientoDeDocPagosCompraToolStripMenuItem});
             this.comprasToolStripMenuItem.Name = "comprasToolStripMenuItem";
             this.comprasToolStripMenuItem.Size = new System.Drawing.Size(67, 20);
             this.comprasToolStripMenuItem.Text = "Compras";
@@ -216,14 +223,14 @@
             // hojaTableroToolStripMenuItem
             // 
             this.hojaTableroToolStripMenuItem.Name = "hojaTableroToolStripMenuItem";
-            this.hojaTableroToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
+            this.hojaTableroToolStripMenuItem.Size = new System.Drawing.Size(157, 22);
             this.hojaTableroToolStripMenuItem.Text = "Hoja de Tablero";
             this.hojaTableroToolStripMenuItem.Click += new System.EventHandler(this.hojaTableroToolStripMenuItem_Click);
             // 
             // listaDePreciosToolStripMenuItem
             // 
             this.listaDePreciosToolStripMenuItem.Name = "listaDePreciosToolStripMenuItem";
-            this.listaDePreciosToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
+            this.listaDePreciosToolStripMenuItem.Size = new System.Drawing.Size(157, 22);
             this.listaDePreciosToolStripMenuItem.Text = "Lista de Precios";
             this.listaDePreciosToolStripMenuItem.Click += new System.EventHandler(this.listaDePreciosToolStripMenuItem_Click);
             // 
@@ -248,6 +255,23 @@
             this.tsmiSalirSistema.Size = new System.Drawing.Size(159, 22);
             this.tsmiSalirSistema.Text = "Salir del Sistema";
             // 
+<<<<<<< HEAD
+=======
+            // mantenimientoDeDocPagosToolStripMenuItem
+            // 
+            this.mantenimientoDeDocPagosToolStripMenuItem.Name = "mantenimientoDeDocPagosToolStripMenuItem";
+            this.mantenimientoDeDocPagosToolStripMenuItem.Size = new System.Drawing.Size(266, 22);
+            this.mantenimientoDeDocPagosToolStripMenuItem.Text = "Mantenimiento de Doc. Pagos Venta";
+            this.mantenimientoDeDocPagosToolStripMenuItem.Click += new System.EventHandler(this.mantenimientoDeDocPagosToolStripMenuItem_Click);
+            // 
+            // mantenimientoDeDocPagosCompraToolStripMenuItem
+            // 
+            this.mantenimientoDeDocPagosCompraToolStripMenuItem.Name = "mantenimientoDeDocPagosCompraToolStripMenuItem";
+            this.mantenimientoDeDocPagosCompraToolStripMenuItem.Size = new System.Drawing.Size(280, 22);
+            this.mantenimientoDeDocPagosCompraToolStripMenuItem.Text = "Mantenimiento de Doc. Pagos Compra";
+            this.mantenimientoDeDocPagosCompraToolStripMenuItem.Click += new System.EventHandler(this.mantenimientoDeDocPagosCompraToolStripMenuItem_Click);
+            // 
+>>>>>>> 143d40cc1cbc6540aabddf10be213937f59d6af4
             // frmMDIPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -294,6 +318,7 @@
         private System.Windows.Forms.ToolStripMenuItem mantenimientoDeComprasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aplicarVueltoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem mantenimientoDeDocPagosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem mantenimientoDeDocPagosCompraToolStripMenuItem;
 
 
     }

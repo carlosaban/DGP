@@ -194,11 +194,22 @@ namespace DGP.Presentation {
             frm.Show();
         }
 
+<<<<<<< HEAD
         private void mantenimientoDeComprasToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmMantenimientoCompras frm = new frmMantenimientoCompras();
             frm.MdiParent = this;
             frm.Show();
+=======
+        private void msMenuPrincipal_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
+        }
+
+        private void mantenimientoDeDocPagosCompraToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+>>>>>>> 143d40cc1cbc6540aabddf10be213937f59d6af4
         }
     }
 }
