@@ -18,3 +18,4 @@ DGP.BusinessLogic/bin/Debug/DGP.BusinessLogic.dll
 *.dll
 *.dll
 *.dll
+DGP.DataAccess\bin\Debug\*.dll
