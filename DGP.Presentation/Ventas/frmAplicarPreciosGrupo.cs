@@ -28,17 +28,12 @@ namespace DGP.Presentation.Ventas
             {
                 CargarListaProducto();
                 CargarAplicarPrecios();
-
-
             }
             catch (Exception ex)
             {
-                
                 throw;
             }
         }
-
-        
 
         private void numericUpDown1_ValueChanged(object sender, EventArgs e)
         {
@@ -64,8 +59,8 @@ namespace DGP.Presentation.Ventas
                 
                 this.MostrarMensaje(ex.Message , MessageBoxIcon.Error);
             }
-
         }
+
         private void MostrarMensaje(string pMensaje, MessageBoxIcon pMsgBoxicon)
         {
             MessageBox.Show(pMensaje, "DGP", MessageBoxButtons.OK, pMsgBoxicon);
@@ -79,10 +74,10 @@ namespace DGP.Presentation.Ventas
             }
             catch (Exception ex)
             {
-                
                 throw;
             }
         }
+
         private void CargarListaProducto()
         {
             List<BEProducto> vLista = new List<BEProducto>();

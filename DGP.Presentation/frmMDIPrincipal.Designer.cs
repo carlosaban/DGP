@@ -32,6 +32,7 @@
             this.tsmVentas = new System.Windows.Forms.ToolStripMenuItem();
             this.tstmiVentas_TableroElectronico = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiDetalleVenta = new System.Windows.Forms.ToolStripMenuItem();
+            this.mantenimientoDeDocPagosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiAmortizacion = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiPagoAdelanto = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiDevoluciones = new System.Windows.Forms.ToolStripMenuItem();
@@ -51,8 +52,11 @@
             this.estadoDeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmSalir = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiSalirSistema = new System.Windows.Forms.ToolStripMenuItem();
+<<<<<<< HEAD
+=======
             this.mantenimientoDeDocPagosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mantenimientoDeDocPagosCompraToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+>>>>>>> 143d40cc1cbc6540aabddf10be213937f59d6af4
             this.msMenuPrincipal.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -99,6 +103,13 @@
             this.tsmiDetalleVenta.Size = new System.Drawing.Size(234, 22);
             this.tsmiDetalleVenta.Text = "Mantenimiento de Venta";
             this.tsmiDetalleVenta.Click += new System.EventHandler(this.tsmiDetalleVenta_Click);
+            // 
+            // mantenimientoDeDocPagosToolStripMenuItem
+            // 
+            this.mantenimientoDeDocPagosToolStripMenuItem.Name = "mantenimientoDeDocPagosToolStripMenuItem";
+            this.mantenimientoDeDocPagosToolStripMenuItem.Size = new System.Drawing.Size(234, 22);
+            this.mantenimientoDeDocPagosToolStripMenuItem.Text = "Mantenimiento de Doc. Pagos";
+            this.mantenimientoDeDocPagosToolStripMenuItem.Click += new System.EventHandler(this.mantenimientoDeDocPagosToolStripMenuItem_Click);
             // 
             // tsmiAmortizacion
             // 
@@ -165,6 +176,7 @@
             this.mantenimientoDeComprasToolStripMenuItem.Name = "mantenimientoDeComprasToolStripMenuItem";
             this.mantenimientoDeComprasToolStripMenuItem.Size = new System.Drawing.Size(223, 22);
             this.mantenimientoDeComprasToolStripMenuItem.Text = "Mantenimiento de Compras";
+            this.mantenimientoDeComprasToolStripMenuItem.Click += new System.EventHandler(this.mantenimientoDeComprasToolStripMenuItem_Click);
             // 
             // reportesToolStripMenuItem
             // 
@@ -243,6 +255,8 @@
             this.tsmiSalirSistema.Size = new System.Drawing.Size(159, 22);
             this.tsmiSalirSistema.Text = "Salir del Sistema";
             // 
+<<<<<<< HEAD
+=======
             // mantenimientoDeDocPagosToolStripMenuItem
             // 
             this.mantenimientoDeDocPagosToolStripMenuItem.Name = "mantenimientoDeDocPagosToolStripMenuItem";
@@ -257,6 +271,7 @@
             this.mantenimientoDeDocPagosCompraToolStripMenuItem.Text = "Mantenimiento de Doc. Pagos Compra";
             this.mantenimientoDeDocPagosCompraToolStripMenuItem.Click += new System.EventHandler(this.mantenimientoDeDocPagosCompraToolStripMenuItem_Click);
             // 
+>>>>>>> 143d40cc1cbc6540aabddf10be213937f59d6af4
             // frmMDIPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);

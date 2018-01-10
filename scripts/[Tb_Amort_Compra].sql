@@ -1,6 +1,6 @@
 
 
-CREATE TABLE [dbo].[Tb_Amort_Compra](
+create TABLE [dbo].[Tb_Amort_Compra](
 	[IdAmortCompra] [int] IDENTITY(1,1) NOT NULL,
 	[Monto] [decimal](18, 2) NOT NULL,
 	[NumeroDocumento] [varchar](20) NULL,
