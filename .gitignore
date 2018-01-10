@@ -19,3 +19,14 @@ DGP.BusinessLogic/bin/Debug/DGP.BusinessLogic.dll
 *.dll
 *.dll
 DGP.DataAccess\bin\Debug\*.dll
+DGP.BusinessLogic/bin/Debug/DGP.BusinessLogic.dll
+DGP.BusinessLogic/bin/Debug/DGP.BusinessLogic.dll
+DGP.BusinessLogic/bin/Debug/DGP.BusinessLogic.pdb
+DGP.BusinessLogic/bin/Debug/DGP.DataAccess.dll
+DGP.BusinessLogic/bin/Debug/DGP.Entities.dll
+DGP.BusinessLogic/bin/Debug/DGP.Entities.pdb
+DGP.BusinessLogic/obj/Debug/DGP.BusinessLogic.dll
+DGP.BusinessLogic/obj/Debug/DGP.BusinessLogic.pdb
+DGP.BusinessLogic/obj/Debug/ResolveAssemblyReference.cache
+DGP.DataAccess/bin/Debug/DGP.DataAccess.dll
+DGP.DataAccess/bin/Debug/DGP.DataAccess.pdb
