@@ -1,2 +1,8 @@
 DGP.Presentation\bin
 DGP.Presentation/bin
+DGP.Presentation\obj
+DGP.Presentation/obj
+*.dll
+*.pdb
+*.txt
+DGP.BusinessLogic/obj/Debug/ResolveAssemblyReference.cache

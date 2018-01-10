@@ -1,21 +1,9 @@
-<<<<<<< HEAD
-C:\Users\User\Documents\GitHub\DGP\DGP.BusinessLogic\bin\Debug\DGP.BusinessLogic.dll
-C:\Users\User\Documents\GitHub\DGP\DGP.BusinessLogic\bin\Debug\DGP.BusinessLogic.pdb
-C:\Users\User\Documents\GitHub\DGP\DGP.BusinessLogic\bin\Debug\DGP.DataAccess.dll
-C:\Users\User\Documents\GitHub\DGP\DGP.BusinessLogic\bin\Debug\DGP.Entities.dll
-C:\Users\User\Documents\GitHub\DGP\DGP.BusinessLogic\bin\Debug\DGP.DataAccess.pdb
-C:\Users\User\Documents\GitHub\DGP\DGP.BusinessLogic\bin\Debug\DGP.Entities.pdb
-C:\Users\User\Documents\GitHub\DGP\DGP.BusinessLogic\obj\Debug\ResolveAssemblyReference.cache
-C:\Users\User\Documents\GitHub\DGP\DGP.BusinessLogic\obj\Debug\DGP.BusinessLogic.dll
-C:\Users\User\Documents\GitHub\DGP\DGP.BusinessLogic\obj\Debug\DGP.BusinessLogic.pdb
-=======
-E:\GitHub\Projecto\DGP\DGP.BusinessLogic\bin\Debug\DGP.BusinessLogic.dll
-E:\GitHub\Projecto\DGP\DGP.BusinessLogic\bin\Debug\DGP.BusinessLogic.pdb
-E:\GitHub\Projecto\DGP\DGP.BusinessLogic\bin\Debug\DGP.DataAccess.dll
-E:\GitHub\Projecto\DGP\DGP.BusinessLogic\bin\Debug\DGP.Entities.dll
-E:\GitHub\Projecto\DGP\DGP.BusinessLogic\bin\Debug\DGP.DataAccess.pdb
-E:\GitHub\Projecto\DGP\DGP.BusinessLogic\bin\Debug\DGP.Entities.pdb
-E:\GitHub\Projecto\DGP\DGP.BusinessLogic\obj\Debug\ResolveAssemblyReference.cache
-E:\GitHub\Projecto\DGP\DGP.BusinessLogic\obj\Debug\DGP.BusinessLogic.dll
-E:\GitHub\Projecto\DGP\DGP.BusinessLogic\obj\Debug\DGP.BusinessLogic.pdb
->>>>>>> 143d40cc1cbc6540aabddf10be213937f59d6af4
+D:\workspace\DGP\DGP\DGP.BusinessLogic\obj\Debug\ResolveAssemblyReference.cache
+D:\workspace\DGP\DGP\DGP.BusinessLogic\bin\Debug\DGP.BusinessLogic.dll
+D:\workspace\DGP\DGP\DGP.BusinessLogic\bin\Debug\DGP.BusinessLogic.pdb
+D:\workspace\DGP\DGP\DGP.BusinessLogic\bin\Debug\DGP.DataAccess.dll
+D:\workspace\DGP\DGP\DGP.BusinessLogic\bin\Debug\DGP.Entities.dll
+D:\workspace\DGP\DGP\DGP.BusinessLogic\bin\Debug\DGP.DataAccess.pdb
+D:\workspace\DGP\DGP\DGP.BusinessLogic\bin\Debug\DGP.Entities.pdb
+D:\workspace\DGP\DGP\DGP.BusinessLogic\obj\Debug\DGP.BusinessLogic.dll
+D:\workspace\DGP\DGP\DGP.BusinessLogic\obj\Debug\DGP.BusinessLogic.pdb
