@@ -30,7 +30,7 @@ namespace DGP.Entities.Ventas
             }
 
         }
-        public string Estado { get; set;}
+        public string idEstado { get; set;}
  
         public BEPersonal BEUsuarioLogin { get; set; }
         public List<BEAmortizacionVenta> delleAmortizacion { get; set; }
@@ -48,7 +48,6 @@ namespace DGP.Entities.Ventas
            // this.Estado = DOCUMENTO_ESTADO_REGISTRADO;
         
         }
-
-
+        public string Observacion { get; set; }
     }
 }

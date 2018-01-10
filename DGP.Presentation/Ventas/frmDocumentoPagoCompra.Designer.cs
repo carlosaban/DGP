@@ -315,7 +315,7 @@
             this.Controls.Add(this.txtIdDocumento);
             this.Controls.Add(this.lblIdDocumento);
             this.Name = "frmDocumentoPagoCompra";
-            this.Text = "frmDocumentoPagoCompra";
+            this.Text = "frmDocumentoPagoVenta";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator1)).EndInit();

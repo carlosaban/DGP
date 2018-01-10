@@ -27,13 +27,14 @@ namespace DGP.Presentation.Ventas
             txtIdDocumento.DataBindings.Add("Text", bsDocumentos, "IdDocumento");
             txtTipoDoc.DataBindings.Add("Text", bsDocumentos, "IdTipoDocumento");
             dtFecha.DataBindings.Add("Text", bsDocumentos, "Fecha");
-            txtEstado.DataBindings.Add("Text", bsDocumentos, "estado");
+            txtEstado.DataBindings.Add("Text", bsDocumentos, "idEstado");
             numericUpDown1.DataBindings.Add("Text", bsDocumentos, "Monto");
+            listarDetalle();
         }
 
         private void btnMostrarDetalle_Click(object sender, EventArgs e)
         {
-            listarDetalle();
+            
         }
 
         private void listarDetalle()
@@ -61,7 +62,7 @@ namespace DGP.Presentation.Ventas
 
         private void bindingNavigatorMoveNextItem_Click(object sender, EventArgs e)
         {
-
+            listarDetalle();
         }
 
 

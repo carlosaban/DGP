@@ -54,20 +54,6 @@
             this.txtTipoDoc = new System.Windows.Forms.TextBox();
             this.txtEstado = new System.Windows.Forms.TextBox();
             this.dgvDetalle = new System.Windows.Forms.DataGridView();
-            this.dtFecha = new System.Windows.Forms.DateTimePicker();
-            this.btnMostrarDetalle = new System.Windows.Forms.Button();
-            this.bsDetalle = new System.Windows.Forms.BindingSource(this.components);
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -79,6 +65,20 @@
             this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bsDetalle = new System.Windows.Forms.BindingSource(this.components);
+            this.dtFecha = new System.Windows.Forms.DateTimePicker();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator1)).BeginInit();
             this.bindingNavigator1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bsDocumentos)).BeginInit();
@@ -113,7 +113,7 @@
             this.bindingNavigator1.MovePreviousItem = this.bindingNavigatorMovePreviousItem;
             this.bindingNavigator1.Name = "bindingNavigator1";
             this.bindingNavigator1.PositionItem = this.bindingNavigatorPositionItem;
-            this.bindingNavigator1.Size = new System.Drawing.Size(740, 25);
+            this.bindingNavigator1.Size = new System.Drawing.Size(941, 25);
             this.bindingNavigator1.TabIndex = 0;
             this.bindingNavigator1.TabStop = true;
             this.bindingNavigator1.Text = "bindingNavigator1";
@@ -298,6 +298,7 @@
             // 
             // dgvDetalle
             // 
+            this.dgvDetalle.AutoGenerateColumns = false;
             this.dgvDetalle.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDetalle.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
@@ -311,11 +312,83 @@
             this.Column9,
             this.Column10,
             this.Column11});
-            this.dgvDetalle.Location = new System.Drawing.Point(263, 39);
+            this.dgvDetalle.DataSource = this.bsDetalle;
+            this.dgvDetalle.Location = new System.Drawing.Point(263, 81);
             this.dgvDetalle.Name = "dgvDetalle";
-            this.dgvDetalle.Size = new System.Drawing.Size(465, 364);
+            this.dgvDetalle.Size = new System.Drawing.Size(666, 342);
             this.dgvDetalle.TabIndex = 14;
             this.dgvDetalle.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDetalle_CellContentClick);
+            // 
+            // Column1
+            // 
+            this.Column1.DataPropertyName = "Id_Amort_Venta";
+            this.Column1.HeaderText = "Id Amortizacion venta";
+            this.Column1.Name = "Column1";
+            // 
+            // Column2
+            // 
+            this.Column2.DataPropertyName = "Monto";
+            this.Column2.HeaderText = "Monto";
+            this.Column2.Name = "Column2";
+            // 
+            // Column3
+            // 
+            this.Column3.DataPropertyName = "NumeroDocumento";
+            this.Column3.HeaderText = "NumeroDocumento";
+            this.Column3.Name = "Column3";
+            // 
+            // Column4
+            // 
+            this.Column4.DataPropertyName = "IdFormaPago";
+            this.Column4.HeaderText = "IdFormaPago";
+            this.Column4.Name = "Column4";
+            // 
+            // Column5
+            // 
+            this.Column5.DataPropertyName = "FechaPago";
+            this.Column5.HeaderText = "FechaPago";
+            this.Column5.Name = "Column5";
+            // 
+            // Column6
+            // 
+            this.Column6.DataPropertyName = "IdTipoAmortizacion";
+            this.Column6.HeaderText = "IdTipoAmortizacion";
+            this.Column6.Name = "Column6";
+            // 
+            // Column7
+            // 
+            this.Column7.DataPropertyName = "IdEstado";
+            this.Column7.HeaderText = "IdEstado";
+            this.Column7.Name = "Column7";
+            // 
+            // Column8
+            // 
+            this.Column8.DataPropertyName = "Id_Venta";
+            this.Column8.HeaderText = "Id Venta";
+            this.Column8.Name = "Column8";
+            // 
+            // Column9
+            // 
+            this.Column9.DataPropertyName = "Id_Cliente";
+            this.Column9.HeaderText = "Id Cliente";
+            this.Column9.Name = "Column9";
+            // 
+            // Column10
+            // 
+            this.Column10.DataPropertyName = "IdDocumento";
+            this.Column10.HeaderText = "IdDocumento";
+            this.Column10.Name = "Column10";
+            // 
+            // Column11
+            // 
+            this.Column11.DataPropertyName = "Observacion";
+            this.Column11.HeaderText = "Observacion";
+            this.Column11.Name = "Column11";
+            // 
+            // bsDetalle
+            // 
+            this.bsDetalle.AllowNew = false;
+            this.bsDetalle.CurrentChanged += new System.EventHandler(this.bsDetalle_CurrentChanged);
             // 
             // dtFecha
             // 
@@ -325,20 +398,6 @@
             this.dtFecha.Name = "dtFecha";
             this.dtFecha.Size = new System.Drawing.Size(122, 20);
             this.dtFecha.TabIndex = 15;
-            // 
-            // btnMostrarDetalle
-            // 
-            this.btnMostrarDetalle.Location = new System.Drawing.Point(98, 274);
-            this.btnMostrarDetalle.Name = "btnMostrarDetalle";
-            this.btnMostrarDetalle.Size = new System.Drawing.Size(75, 40);
-            this.btnMostrarDetalle.TabIndex = 16;
-            this.btnMostrarDetalle.Text = "Mostrar detalle";
-            this.btnMostrarDetalle.UseVisualStyleBackColor = true;
-            this.btnMostrarDetalle.Click += new System.EventHandler(this.btnMostrarDetalle_Click);
-            // 
-            // bsDetalle
-            // 
-            this.bsDetalle.CurrentChanged += new System.EventHandler(this.bsDetalle_CurrentChanged);
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -406,78 +465,21 @@
             this.dataGridViewTextBoxColumn11.HeaderText = "Observacion";
             this.dataGridViewTextBoxColumn11.Name = "dataGridViewTextBoxColumn11";
             // 
-            // Column1
+            // button1
             // 
-            this.Column1.DataPropertyName = "Id_Amort_Venta";
-            this.Column1.HeaderText = "Id Amortizacion venta";
-            this.Column1.Name = "Column1";
-            // 
-            // Column2
-            // 
-            this.Column2.DataPropertyName = "Monto";
-            this.Column2.HeaderText = "Monto";
-            this.Column2.Name = "Column2";
-            // 
-            // Column3
-            // 
-            this.Column3.DataPropertyName = "NumeroDocumento";
-            this.Column3.HeaderText = "NumeroDocumento";
-            this.Column3.Name = "Column3";
-            // 
-            // Column4
-            // 
-            this.Column4.DataPropertyName = "IdFormaPago";
-            this.Column4.HeaderText = "IdFormaPago";
-            this.Column4.Name = "Column4";
-            // 
-            // Column5
-            // 
-            this.Column5.DataPropertyName = "FechaPago";
-            this.Column5.HeaderText = "FechaPago";
-            this.Column5.Name = "Column5";
-            // 
-            // Column6
-            // 
-            this.Column6.DataPropertyName = "IdTipoAmortizacion";
-            this.Column6.HeaderText = "IdTipoAmortizacion";
-            this.Column6.Name = "Column6";
-            // 
-            // Column7
-            // 
-            this.Column7.DataPropertyName = "IdEstado";
-            this.Column7.HeaderText = "IdEstado";
-            this.Column7.Name = "Column7";
-            // 
-            // Column8
-            // 
-            this.Column8.DataPropertyName = "Id_Venta";
-            this.Column8.HeaderText = "Id_Venta";
-            this.Column8.Name = "Column8";
-            // 
-            // Column9
-            // 
-            this.Column9.DataPropertyName = "Id_Cliente";
-            this.Column9.HeaderText = "Id_Cliente";
-            this.Column9.Name = "Column9";
-            // 
-            // Column10
-            // 
-            this.Column10.DataPropertyName = "IdDocumento";
-            this.Column10.HeaderText = "IdDocumento";
-            this.Column10.Name = "Column10";
-            // 
-            // Column11
-            // 
-            this.Column11.DataPropertyName = "Observacion";
-            this.Column11.HeaderText = "Observacion";
-            this.Column11.Name = "Column11";
+            this.button1.Location = new System.Drawing.Point(828, 28);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(101, 47);
+            this.button1.TabIndex = 16;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
             // 
             // frmDocumentoPago
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(740, 415);
-            this.Controls.Add(this.btnMostrarDetalle);
+            this.ClientSize = new System.Drawing.Size(941, 435);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.dtFecha);
             this.Controls.Add(this.dgvDetalle);
             this.Controls.Add(this.txtEstado);
@@ -529,11 +531,8 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtTipoDoc;
         private System.Windows.Forms.TextBox txtEstado;
-        private System.Windows.Forms.DataGridView dgvDetalle;
         private System.Windows.Forms.BindingSource bsDocumentos;
         private System.Windows.Forms.DateTimePicker dtFecha;
-        private System.Windows.Forms.Button btnMostrarDetalle;
-        private System.Windows.Forms.BindingSource bsDetalle;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
@@ -545,6 +544,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn11;
+        private System.Windows.Forms.DataGridView dgvDetalle;
+        private System.Windows.Forms.BindingSource bsDetalle;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
@@ -556,5 +557,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column11;
+        private System.Windows.Forms.Button button1;
     }
 }

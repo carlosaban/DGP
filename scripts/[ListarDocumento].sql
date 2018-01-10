@@ -80,7 +80,7 @@ BEGIN
 
 	  AND IdPersonal= ISNULL(@IdPersonal , IdPersonal)
 
-	  AND IdTipoPago =  ISNULL(@IdTipoPago , @IdTipoPago)
+	  AND IdTipoPago =  ISNULL(@IdTipoPago , IdTipoPago)
 
 
 
@@ -89,7 +89,7 @@ BEGIN
 END
 
 
+go
 
-
-
+exec ListarDocumento null,null,'01-01-2017','01-01-2018',null,196,null,''
 

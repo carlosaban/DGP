@@ -17,7 +17,7 @@ namespace DGP.BusinessLogic.Ventas
         {
             try
             {
-                return new DADocumentoPago().ListarDocumentoPago(codClientProv, FechaInicio, FechaFinal);
+                return new DADocumentoPago().ListarDocumento(codClientProv, FechaInicio, FechaFinal);
             }
             catch (Exception ex)
             {
@@ -29,6 +29,19 @@ namespace DGP.BusinessLogic.Ventas
             try
             {
                 return new DADocumentoPago().ListarDetalle(idDocumento);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+
+        public bool EliminarCabecera(BEDocumento beDocumento)
+        {
+            try
+            {
+                return new DADocumentoPago().EliminarCabeceraDocumento(beDocumento);
             }
             catch (Exception ex)
             {

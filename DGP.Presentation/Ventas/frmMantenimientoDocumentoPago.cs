@@ -34,8 +34,8 @@ namespace DGP.Presentation.Ventas
         {
            BLDocumentoPago BLDP = new BLDocumentoPago();
            int codigo = Convert.ToInt32(cmbClientes.SelectedValue);
-           this.bsDocumetosPago.DataSource = BLDP.Listar(codigo, dtFechaInicial.Value.Date, dtFechaFinal.Value.Date);
-           this.dgvDocumentoPago.DataSource = this.bsDocumetosPago;
+           this.bsDocumentosPagoVenta.DataSource = BLDP.Listar(codigo, dtFechaInicial.Value.Date, dtFechaFinal.Value.Date);
+           this.dgvDocumentoPago.DataSource = this.bsDocumentosPagoVenta;
         }
 
         private void CmbClientes_KeyPress(object sender, KeyPressEventArgs e)
@@ -139,14 +139,16 @@ namespace DGP.Presentation.Ventas
 
         private void dgvDocumentoPago_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            frmDocumentoPago edicion = new frmDocumentoPago(this.bsDocumetosPago);
+            frmDocumentoPago edicion = new frmDocumentoPago(this.bsDocumentosPagoVenta);
             edicion.Show();
 
         }
 
         private void tsbEliminar_Click(object sender, EventArgs e)
         {
-
+            BLDocumentoPago BLDP = new BLDocumentoPago();
+            MessageBox.Show(dgvDocumentoPago.CurrentRow.Cells[0].Value.ToString());
+            
         }
 
     }
