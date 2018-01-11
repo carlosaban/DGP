@@ -31,3 +31,4 @@ DGP.BusinessLogic/obj/Debug/ResolveAssemblyReference.cache
 DGP.DataAccess/bin/Debug/DGP.DataAccess.dll
 DGP.DataAccess/bin/Debug/DGP.DataAccess.pdb
 
+*.cache
