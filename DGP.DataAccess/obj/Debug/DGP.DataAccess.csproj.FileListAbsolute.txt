@@ -1,7 +1,0 @@
-D:\workspace\DGP\DGP\DGP.DataAccess\obj\Debug\ResolveAssemblyReference.cache
-D:\workspace\DGP\DGP\DGP.DataAccess\bin\Debug\DGP.DataAccess.dll
-D:\workspace\DGP\DGP\DGP.DataAccess\bin\Debug\DGP.DataAccess.pdb
-D:\workspace\DGP\DGP\DGP.DataAccess\bin\Debug\DGP.Entities.dll
-D:\workspace\DGP\DGP\DGP.DataAccess\bin\Debug\DGP.Entities.pdb
-D:\workspace\DGP\DGP\DGP.DataAccess\obj\Debug\DGP.DataAccess.dll
-D:\workspace\DGP\DGP\DGP.DataAccess\obj\Debug\DGP.DataAccess.pdb
