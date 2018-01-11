@@ -1,5 +1,0 @@
-agregar
-entidad bancaria
-numero de operacion y referencia de base de datos
-forma de pago (tabla documento compra)
-

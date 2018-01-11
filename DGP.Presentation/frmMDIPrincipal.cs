@@ -199,7 +199,12 @@ namespace DGP.Presentation {
             frmMantenimientoCompras frm = new frmMantenimientoCompras();
             frm.MdiParent = this;
             frm.Show();
+<<<<<<< HEAD
         }
+=======
+
+        }   
+>>>>>>> a4ac178c1b1fac58bf218b849a6083c863dfb185
         private void msMenuPrincipal_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
 

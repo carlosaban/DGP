@@ -136,9 +136,6 @@ namespace DGP.Entities.Ventas {
             get { return _CancelarVenta; }
             set { _CancelarVenta = value; }
         }
-<<<<<<< HEAD
-=======
-
 
         public int IdDocumento
         {
@@ -146,6 +143,6 @@ namespace DGP.Entities.Ventas {
             set { mIdDocumento = value; }
         }
 
->>>>>>> 143d40cc1cbc6540aabddf10be213937f59d6af4
+
     }
 }
