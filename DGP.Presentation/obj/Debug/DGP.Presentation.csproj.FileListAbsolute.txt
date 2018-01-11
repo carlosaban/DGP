@@ -106,3 +106,6 @@ E:\GitHub\Projecto\DGP\DGP.Presentation\obj\Debug\DGP.Presentation.pdb
 E:\GitHub\Projecto\DGP\DGP.Presentation\obj\Debug\DGP.Presentation.Ventas.frmDocumentoPagoCompra.resources
 E:\GitHub\Projecto\DGP\DGP.Presentation\obj\Debug\DGP.Presentation.Ventas.frmMantenimientoDocumentoPagoCompra.resources
 >>>>>>> 143d40cc1cbc6540aabddf10be213937f59d6af4
+E:\GitHub\Projecto\DGP\DGP.Presentation\obj\Debug\DGP.Presentation.Compras.frmAplicarPreciosGrupo.resources
+E:\GitHub\Projecto\DGP\DGP.Presentation\obj\Debug\DGP.Presentation.Compras.frmMantenimientoCompras.resources
+E:\GitHub\Projecto\DGP\DGP.Presentation\obj\Debug\DGP.Presentation.Compras.frmMantenimientoDocumentoPagoCompra.resources

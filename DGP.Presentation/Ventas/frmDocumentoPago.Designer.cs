@@ -113,7 +113,7 @@
             this.bindingNavigator1.MovePreviousItem = this.bindingNavigatorMovePreviousItem;
             this.bindingNavigator1.Name = "bindingNavigator1";
             this.bindingNavigator1.PositionItem = this.bindingNavigatorPositionItem;
-            this.bindingNavigator1.Size = new System.Drawing.Size(941, 25);
+            this.bindingNavigator1.Size = new System.Drawing.Size(1477, 25);
             this.bindingNavigator1.TabIndex = 0;
             this.bindingNavigator1.TabStop = true;
             this.bindingNavigator1.Text = "bindingNavigator1";
@@ -315,7 +315,7 @@
             this.dgvDetalle.DataSource = this.bsDetalle;
             this.dgvDetalle.Location = new System.Drawing.Point(263, 81);
             this.dgvDetalle.Name = "dgvDetalle";
-            this.dgvDetalle.Size = new System.Drawing.Size(666, 342);
+            this.dgvDetalle.Size = new System.Drawing.Size(1202, 342);
             this.dgvDetalle.TabIndex = 14;
             this.dgvDetalle.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDetalle_CellContentClick);
             // 
@@ -467,7 +467,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(828, 28);
+            this.button1.Location = new System.Drawing.Point(1364, 25);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(101, 47);
             this.button1.TabIndex = 16;
@@ -478,7 +478,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(941, 435);
+            this.ClientSize = new System.Drawing.Size(1477, 435);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.dtFecha);
             this.Controls.Add(this.dgvDetalle);
