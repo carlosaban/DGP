@@ -14,7 +14,7 @@ CREATE PROCEDURE [dbo].[DGP_Listar_Compra](
 BEGIN
 	SELECT	C.IdCompra
 		,C.IdTipoDocumentoCompra
-		,[TipoDocumentoVenta] = PD.Texto
+		,[TipoDocumentoCompra] = PD.Texto
 		,C.NumeroDocumento
 		,C.TotalPeso_Bruto
 		,C.TotalPeso_Tara
@@ -49,7 +49,7 @@ BEGIN
 			ON (C.IdEmpresa = EM.Id_Empresa)
 	WHERE C.IdCompra = ISNULL(@intIdCompra, C.IdCompra)
 		AND C.IdCaja = ISNULL(@intIdCaja, C.IdCaja)
-		AND C.IdEstado != dbo.DGP_VENTA_ESTADO_ANULADO()
+		AND C.IdEstado != dbo.DGP_COMPRA_ESTADO_ANULADO()
              order by CP.Nombres
 END
 GO
@@ -165,7 +165,7 @@ BEGIN
 
   ,[intIdProducto] = P.Id_Producto  
 
-  ,[varTipoDocumento] = 'Venta'  
+  ,[varTipoDocumento] = 'Compra'  
 
   ,[varProducto] = P.Nombre  
 
@@ -216,7 +216,7 @@ BEGIN
 
    [intIdAmortizacion] = AC.IdAmortCompra  
 
-  ,[intIdVenta] = AC.IdCompra  
+  ,[intIdCompra] = AC.IdCompra  
 
   ,[intIdCliente] = C.IdCliente  
 
@@ -454,7 +454,7 @@ BEGIN
 	begin
 	 select @intIdCompra = IdCompra from @TmpCompras where posicion =@i
 
-	 execute dbo.DGP_Insertar_Venta_Final @intIdCompra, null ;
+	 execute dbo.DGP_Insertar_Compra_Final @intIdCompra, null ;
 
 	 set @i = @i + 1 ;
 
@@ -633,11 +633,11 @@ BEGIN
 	FROM dbo.Tb_ParametroDetalle
 	WHERE Id_Parametro = 6;
 
-	SELECT @decPrecio = isnull ( @decPrecioCompra , Precio ) , @PrecioCompraBD = Precio  --// Valor de dbo.Tb_Venta
+	SELECT @decPrecio = isnull ( @decPrecioCompra , Precio ) , @PrecioCompraBD = Precio  --// Valor de dbo.Tbcompra
 	FROM dbo.TbCompra
 	WHERE IdCompra = @intIdCompra;
 
-	/** Obtener los Pesos de la Linea de Ventas **/
+	/** Obtener los Pesos de la Linea de Compras **/
 	SET @varEsDevolucion = 'N';
 	SELECT 	
 		@decTotalPesoBruto = ISNULL(SUM(PesoBruto), 0)
@@ -686,7 +686,7 @@ BEGIN
 	SET @decTotalAmortizacion = 0;
 	SET @decTotalAmortizacion = dbo.DGP_Obtener_TotalAmortizacionesCompra(@intIdCompra);
 	print cast(@decTotalAmortizacion as varchar(100))
-	/** Actualizar la Venta **/
+	/** Actualizar la Compra **/
 	UPDATE dbo.TbCompra SET
 		Precio	= @decPrecio
 		,TotalJabas = @decTotalJabas
@@ -868,7 +868,7 @@ begin
 select @tmpIdCompra = IdCompra  ,@tmpMontoCompra = monto-AmortizacionesAcumulado
 from @TmpCompra WHERE posicion = @i
 
-exec [dbo].[DGP_Insertar_Venta_Final] @tmpIdCompra
+exec [dbo].[DGP_Insertar_Compra_Final] @tmpIdCompra
 
 set @i =@i +1
 
