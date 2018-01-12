@@ -80,16 +80,12 @@ BEGIN
 
 	  AND IdPersonal= ISNULL(@IdPersonal , IdPersonal)
 
-	  AND IdTipoPago =  ISNULL(@IdTipoPago , IdTipoPago)
-
-
-
-
+	 --AND isnull(IdTipoPago, '-1') =  ISNULL(@IdTipoPago , isnull(IdTipoPago, '-1'))
 
 END
 
 
 go
 
-exec ListarDocumento null,null,'01-01-2017','01-01-2018',null,196,null,''
+exec ListarDocumento null,null,'01-01-2017','01-01-2018',null,null,null,''
 

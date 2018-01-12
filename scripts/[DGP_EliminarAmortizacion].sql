@@ -80,11 +80,8 @@ BEGIN
 
 	update dbo.Tb_documento set
 
-<<<<<<< HEAD
-		idEstado = dbo.DGP_VENTA_ESTADO_ANULADO()
-=======
+
 		idestado = dbo.DGP_VENTA_ESTADO_ANULADO()
->>>>>>> 807eba88f591034e66f1bb47dc8098b7e41e360c
 
 		, UsuarioEliminacion = @intIdUsuario
 
