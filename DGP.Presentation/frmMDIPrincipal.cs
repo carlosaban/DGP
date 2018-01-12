@@ -200,6 +200,7 @@ namespace DGP.Presentation {
             frm.MdiParent = this;
             frm.Show();
 
+
         }   
         private void msMenuPrincipal_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
