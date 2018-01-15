@@ -32,6 +32,7 @@ BEGIN
 	WHERE C.IdEstado = dbo.DGP_COMPRA_ESTADO_REGISTRADO()
 		AND C.IdCliente = @intIdCliente;
 END
+go
 
 CREATE PROCEDURE [dbo].[DGP_Obtener_Compra](
 @intIdCompra	INT

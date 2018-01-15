@@ -145,10 +145,15 @@ namespace DGP.Presentation.Ventas
         }
 
         private void tsbEliminar_Click(object sender, EventArgs e)
-        {
+        {//ojo revisar esto
             BLDocumentoPago BLDP = new BLDocumentoPago();
             MessageBox.Show(dgvDocumentoPago.CurrentRow.Cells[0].Value.ToString());
             
+        }
+
+        private void frmMantenimientoDocumentoPago_Load(object sender, EventArgs e)
+        {
+
         }
 
     }

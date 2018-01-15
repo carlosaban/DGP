@@ -39,6 +39,7 @@
             this.cmbClientes = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.dgvDocumentoPago = new System.Windows.Forms.DataGridView();
+            this.bsDocumentosPagoVenta = new System.Windows.Forms.BindingSource(this.components);
             this.tsbAgregar = new System.Windows.Forms.ToolStripButton();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.tsbEliminar = new System.Windows.Forms.ToolStripButton();
@@ -49,7 +50,7 @@
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.bsDocumentosPagoVenta = new System.Windows.Forms.BindingSource(this.components);
+            this.Seleccionado = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.idDocumentoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.idTipoDocumentoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fechaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -57,8 +58,8 @@
             this.idEstadoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDocumentoPago)).BeginInit();
-            this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bsDocumentosPagoVenta)).BeginInit();
+            this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -144,10 +145,13 @@
             // 
             // dgvDocumentoPago
             // 
+            this.dgvDocumentoPago.AllowUserToAddRows = false;
             this.dgvDocumentoPago.AutoGenerateColumns = false;
+            this.dgvDocumentoPago.CausesValidation = false;
             this.dgvDocumentoPago.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.dgvDocumentoPago.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDocumentoPago.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Seleccionado,
             this.idDocumentoDataGridViewTextBoxColumn,
             this.idTipoDocumentoDataGridViewTextBoxColumn,
             this.fechaDataGridViewTextBoxColumn,
@@ -160,6 +164,10 @@
             this.dgvDocumentoPago.Size = new System.Drawing.Size(700, 251);
             this.dgvDocumentoPago.TabIndex = 1;
             this.dgvDocumentoPago.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDocumentoPago_CellContentDoubleClick);
+            // 
+            // bsDocumentosPagoVenta
+            // 
+            this.bsDocumentosPagoVenta.DataSource = typeof(DGP.Entities.Ventas.BEDocumento);
             // 
             // tsbAgregar
             // 
@@ -234,9 +242,10 @@
             this.dataGridViewTextBoxColumn7.HeaderText = "IdPersonal";
             this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
             // 
-            // bsDocumentosPagoVenta
+            // Seleccionado
             // 
-            this.bsDocumentosPagoVenta.DataSource = typeof(DGP.Entities.Ventas.BEDocumento);
+            this.Seleccionado.HeaderText = "Seleccionar";
+            this.Seleccionado.Name = "Seleccionado";
             // 
             // idDocumentoDataGridViewTextBoxColumn
             // 
@@ -278,12 +287,13 @@
             this.Controls.Add(this.panel1);
             this.Name = "frmMantenimientoDocumentoPago";
             this.Text = "frmMantenimientoDocumentoPago";
+            this.Load += new System.EventHandler(this.frmMantenimientoDocumentoPago_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDocumentoPago)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bsDocumentosPagoVenta)).EndInit();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.bsDocumentosPagoVenta)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -313,6 +323,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
         private System.Windows.Forms.ToolStripButton tsbEliminar;
         private System.Windows.Forms.BindingSource bsDocumentosPagoVenta;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Seleccionado;
         private System.Windows.Forms.DataGridViewTextBoxColumn idDocumentoDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn idTipoDocumentoDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn fechaDataGridViewTextBoxColumn;

@@ -13,11 +13,11 @@ using DGP.BusinessLogic.Compra;
 
 namespace DGP.Presentation.Compras
 {
-    public partial class frmMantenimientoCompras : Form
+    public partial class frmMantenimientoComprasV2: Form
     {
-        BLCompra blCompra = new BLCompra( );
+        BLCompra blCompra = new BLCompra();
 
-        public frmMantenimientoCompras()
+        public frmMantenimientoComprasV2()
         {
             InitializeComponent();
             InicializarFormulario();
@@ -27,10 +27,7 @@ namespace DGP.Presentation.Compras
         {
             try
             {
-                this.dgrvCompras.AutoGenerateColumns = false;
-                this.panel1.HorizontalScroll.Enabled = true;
-                this.panel1.HorizontalScroll.Visible = true;
-
+                
             }
             catch (Exception ex)
             {
@@ -52,8 +49,8 @@ namespace DGP.Presentation.Compras
 
         private void CargarGrilla()
         {
-            BECompra oBECompra = ObtenerCompraBusqueda();
-            //this.bdCompras.DataSource = blCompra.ListarCompra();
+            BECompra oBECompraFiltros = ObtenerCompraBusqueda();
+
         }
 
         /**/
@@ -123,7 +120,6 @@ namespace DGP.Presentation.Compras
             //oBECompra.IdProducto = (cbProducto.SelectedIndex == 0) ? 0 : Convert.ToInt32(cbProducto.SelectedValue);
             //oBECompra.FechaInicio = dtpFechaInicial.Value.Date;
             //oBECompra.FechaFin = dtpFechaFinal.Value.Date;
-            //oBECompra.TienePrecioVariable = chkTienePrecioVariable.Checked;
             return oBECompra;
         }
         /**/
@@ -174,6 +170,7 @@ namespace DGP.Presentation.Compras
                 oEntidad.Nombre = actual;
                 oEntidad.IdZona = intIdZona;
                 oEntidad.IdCliente = 0;
+
                 List<BEClienteProveedor> vTemp = new BLClienteProveedor().Listar(oEntidad);
                 vTemp.Insert(0, new BEClienteProveedor(0, ""));
                 if (vTemp != null && vTemp.Count > 0)
@@ -218,37 +215,10 @@ namespace DGP.Presentation.Compras
 
         private void CargarPrivilegios()
         {
-            this.gbCambiarPrecios.Visible = VariablesSession.Privilegios.Exists(t => t.IdPrivilegio == DGP.Entities.Seguridad.BEPrivilegio.Act_Precio_Venta_Masivo);
+            //this.gbCambiarPrecios.Visible = VariablesSession.Privilegios.Exists(t => t.IdPrivilegio == DGP.Entities.Seguridad.BEPrivilegio.Act_Precio_Venta_Masivo);
         }
 
-        private void btnCambioPrecios_Click(object sender, EventArgs e)
-        {
-            frmAplicarPreciosGrupo frmAplicarPreciosGrupo = new frmAplicarPreciosGrupo(this);
-
-            frmAplicarPreciosGrupo.ShowDialog(this);
-        }
-
-        public void AplicarPreciosGrupo(BEProducto producto, decimal precioBase, decimal Margen, int FormaAplicar)
-        {
-            foreach (DataGridViewRow item in this.dgrvCompras.Rows)
-            {
-                if (producto.IdProducto == (int)item.Cells["IdProducto"].Value)
-                {
-                    decimal margen = (string.IsNullOrEmpty(item.Cells["Margen"].Value.ToString())) ? Margen : decimal.Parse(item.Cells["Margen"].Value.ToString());
-
-                    if (FormaAplicar == 2) //clientes precio variable
-                    {
-                        bool tieneMargenVariable = false;
-                        bool.TryParse(item.Cells["TienePrecioVariable"].Value.ToString(), out tieneMargenVariable);
-                        item.Cells["NuevoPrecio"].Value = (tieneMargenVariable) ? (precioBase + margen).ToString() : string.Empty;
-
-                    }
-                    else
-                    {
-                        item.Cells["NuevoPrecio"].Value = precioBase + margen;
-                    }
-                }
-            }
-        }
+        
+       
     }
 }

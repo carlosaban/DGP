@@ -9,13 +9,13 @@ namespace DGP.Entities.Compras
     public class BEAmortizacionCompra
     {
         public const string ESTADO_REGISTRADO = "REG";
-        public const string ESTADO_ELIMINADO = "ELM";
+        public const string ESTADO_ANULADO = "ANL";
         public const string FORMAPAGO_EFECTIVO = "EFE";
-        public const string FORMAPAGO_NOEFECTIVO = "NEF";
+        public const string FORMAPAGO_DEPOSITO = "DEP";
+        public const string FORMAPAGO_DEPOSITO_PROVEEDOR = "DPT";
 
         public const string TIPOAMORTIZACION_AMORTIZACION = "AMR";
-        public const string TIPOAMORTIZACION_ADELANTO = "ADL";
-        public const string TIPOAMORTIZACION_VUELTO = "VLT";
+        public const string TIPOAMORTIZACION_ADELANTO = "NCR";
         public const string TIPOAMORTIZACION_REDONDEO = "RDN";
 
         private int mIdAmortizacionCompra;
@@ -106,12 +106,12 @@ namespace DGP.Entities.Compras
             get { return mIdCliente; }
             set { mIdCliente = value; }
         }
-
-        public int IdPersonal
-        {
-            get { return mIdPersonal; }
-            set { mIdPersonal = value; }
-        }
+        public BEPersonal bePersonal { get; set; }
+        //public int IdPersonal
+        //{
+        //    get { return mIdPersonal; }
+        //    set { mIdPersonal = value; }
+        //}
 
         public BEPersonal BEUsuarioLogin
         {

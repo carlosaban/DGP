@@ -6,7 +6,9 @@ using DGP.Entities.Seguridad;
 namespace DGP.Entities {
 
     public class BEClienteProveedor {
-
+        public const string Proveedor = "PRV";
+        public const string Minorista = "MIN";
+        public const string Mayorista = "MAY";
         private int mIdCliente;
         private string mNombre;
         private string mTipoCliente;
