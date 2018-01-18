@@ -60,25 +60,25 @@ AS
 BEGIN
 	RETURN 'REG'
 END
-
+go
 CREATE FUNCTION [dbo].[DGP_COMPRA_ESTADO_CANCELADO] () RETURNS CHAR(3)
 AS
 BEGIN
 	RETURN 'CAN'
 END
-
+go
 CREATE FUNCTION [dbo].[DGP_COMPRA_ESTADO_CONGELADO] () RETURNS CHAR(3)
 AS
 BEGIN
 	RETURN 'CON'
 END
-
+go
 CREATE FUNCTION [dbo].[DGP_COMPRA_ESTADO_ANULADO] () RETURNS CHAR(3)
 AS
 BEGIN
 	RETURN 'ANL'
 END
-
+go
 /*FUNCION OBTENER CANTIDAD JAVAS*/
 CREATE FUNCTION [dbo].[DGP_Obtener_CantidadJavasCompra] (
 @intIdCompra	INT
@@ -105,7 +105,7 @@ BEGIN
 	RETURN (@intCantidadLineasCompra - @intDevolucion)
 
 END
-
+go
 /*LISTAR AMORTIZACION COMPRA*/
 CREATE PROCEDURE [dbo].[DGP_Listar_Amortizacion_Compra] (  
 
@@ -311,7 +311,7 @@ BEGIN
 		,GETDATE()
 	);
 END
-
+go
 /*INSERTAR AMORTIZACION COMPRA*/
 CREATE PROCEDURE [dbo].[DGP_Insertar_AmortizacionCompra](
 
@@ -403,7 +403,7 @@ BEGIN
 	);
 
 END
-
+go
 /*Eliminar amortizacion*/
 CREATE PROCEDURE [dbo].[DGP_Eliminar_AmortizacionCompra] (
 
@@ -461,7 +461,7 @@ BEGIN
 	end;
 
 END
-
+go
 /*Anular amortizacion compra*/
 CREATE PROCEDURE [dbo].[DGP_AnularAmortizacionesCompra] (
 @IdCompra	INT

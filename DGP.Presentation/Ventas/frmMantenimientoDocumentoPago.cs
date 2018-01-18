@@ -146,7 +146,7 @@ namespace DGP.Presentation.Ventas
         }
 
         private void tsbEliminar_Click(object sender, EventArgs e)
-        {
+        {//ojo revisar esto
             BLDocumentoPago BLDP = new BLDocumentoPago();
             BEDocumento beDocumento = new BEDocumento();
             beDocumento.IdDocumento = Convert.ToInt32(dgvDocumentoPago.CurrentRow.Cells[0].Value.ToString());
@@ -164,6 +164,7 @@ namespace DGP.Presentation.Ventas
 
         }
 
+<<<<<<< HEAD
         private void tsbAgregar_Click(object sender, EventArgs e)
         {
             BindingSource bs = new BindingSource();
@@ -172,5 +173,7 @@ namespace DGP.Presentation.Ventas
             from.Show();
         }
 
+=======
+>>>>>>> 9b64e68fd3baa578c3e7640cae9a9cecb882dc40
     }
 }

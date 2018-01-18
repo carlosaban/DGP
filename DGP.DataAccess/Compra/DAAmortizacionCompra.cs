@@ -103,7 +103,7 @@ namespace DGP.DataAccess.Compra
                 pDatabaseHelper.AddParameter("@varIdEstado", pBEAmortizacionCompra.IdEstado);
                 pDatabaseHelper.AddParameter("@@intIdCompra", pBEAmortizacionCompra.IdCompra);
                 pDatabaseHelper.AddParameter("@intIdCliente", (pBEAmortizacionCompra.IdCliente <= 0) ? (object)DBNull.Value : pBEAmortizacionCompra.IdCliente);
-                pDatabaseHelper.AddParameter("@intIdPersonal", pBEAmortizacionCompra.IdPersonal);
+                pDatabaseHelper.AddParameter("@intIdPersonal", pBEAmortizacionCompra.bePersonal.IdPersonal);
                 pDatabaseHelper.AddParameter("@intIdUsuarioCreacion", pBEAmortizacionCompra.BEUsuarioLogin.IdPersonal);
                 pDatabaseHelper.AddParameter("@intIdCaja", pBEAmortizacionCompra.BEUsuarioLogin.IdCaja);
                 pDatabaseHelper.AddParameter("@intIdDocumento", pBEDocumento.IdDocumento);
@@ -192,7 +192,7 @@ namespace DGP.DataAccess.Compra
             try
             {
                 oDatabaseHelper.ClearParameter();
-                oDatabaseHelper.AddParameter("@IdCliente", beCompra.IdCliente);
+                oDatabaseHelper.AddParameter("@IdCliente", beCompra.Proveedor.IdCliente);
                 oDatabaseHelper.AddParameter("@idUsuario", beCompra.BEUsuarioLogin.IdPersonal);
                 oDatabaseHelper.AddParameter("@IdCaja", beCompra.BEUsuarioLogin.IdCaja);
 

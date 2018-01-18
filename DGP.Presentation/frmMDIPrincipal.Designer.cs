@@ -102,10 +102,24 @@
             // 
             // mantenimientoDeDocPagosToolStripMenuItem
             // 
+<<<<<<< HEAD
             this.mantenimientoDeDocPagosToolStripMenuItem.Name = "mantenimientoDeDocPagosToolStripMenuItem";
             this.mantenimientoDeDocPagosToolStripMenuItem.Size = new System.Drawing.Size(266, 22);
             this.mantenimientoDeDocPagosToolStripMenuItem.Text = "Mantenimiento de Doc. Pagos Venta";
             this.mantenimientoDeDocPagosToolStripMenuItem.Click += new System.EventHandler(this.mantenimientoDeDocPagosToolStripMenuItem_Click);
+=======
+
+            //this.mantenimientoDeDocPagosToolStripMenuItem.Name = "mantenimientoDeDocPagosToolStripMenuItem";
+            //this.mantenimientoDeDocPagosToolStripMenuItem.Size = new System.Drawing.Size(266, 22);
+            //this.mantenimientoDeDocPagosToolStripMenuItem.Text = "Mantenimiento de Doc. Pagos Venta";
+            //this.mantenimientoDeDocPagosToolStripMenuItem.Click += new System.EventHandler(this.mantenimientoDeDocPagosToolStripMenuItem_Click);
+
+            //this.mantenimientoDeDocPagosToolStripMenuItem.Name = "mantenimientoDeDocPagosToolStripMenuItem";
+            //this.mantenimientoDeDocPagosToolStripMenuItem.Size = new System.Drawing.Size(234, 22);
+            //this.mantenimientoDeDocPagosToolStripMenuItem.Text = "Mantenimiento de Doc. Pagos";
+            //this.mantenimientoDeDocPagosToolStripMenuItem.Click += new System.EventHandler(this.mantenimientoDeDocPagosToolStripMenuItem_Click);
+
+>>>>>>> 9b64e68fd3baa578c3e7640cae9a9cecb882dc40
             // 
             // tsmiAmortizacion
             // 

@@ -68,8 +68,6 @@
     <Reference Include="CrystalDecisions.Windows.Forms, Version=10.5.3700.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
       <Private>True</Private>
     </Reference>
-    <Reference Include="Microsoft.ReportViewer.Common, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-    <Reference Include="Microsoft.ReportViewer.WinForms, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
@@ -85,6 +83,18 @@
     </Compile>
     <Compile Include="Clases\DGP_Util.cs" />
     <Compile Include="Clases\VariablesSession.cs" />
+    <Compile Include="Compras\frmDetalleCompra.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Compras\frmDetalleCompra.Designer.cs">
+      <DependentUpon>frmDetalleCompra.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Compras\frmMantenimientoComprasV2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Compras\frmMantenimientoComprasV2.Designer.cs">
+      <DependentUpon>frmMantenimientoComprasV2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Compras\frmAplicarPreciosGrupo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -117,6 +127,14 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Compras\frmDetalleCompra.resx">
+      <DependentUpon>frmDetalleCompra.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Compras\frmMantenimientoComprasV2.resx">
+      <DependentUpon>frmMantenimientoComprasV2.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Compras\frmAplicarPreciosGrupo.resx">
       <DependentUpon>frmAplicarPreciosGrupo.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -464,6 +482,7 @@
     <None Include="Resources\saveIcon.jpg" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Properties\DataSources\DGP.Entities.Compras.BELineaCompra.datasource" />
     <None Include="Resources\plusIcon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

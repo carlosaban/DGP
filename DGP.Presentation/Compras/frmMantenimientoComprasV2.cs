@@ -7,18 +7,17 @@ using System.Text;
 using System.Windows.Forms;
 
 using DGP.Entities;
+using DGP.Entities.Compras;
 using DGP.BusinessLogic;
+using DGP.BusinessLogic.Compra;
 
 namespace DGP.Presentation.Compras
 {
-    public partial class frmMantenimientoCompras : Form
+    public partial class frmMantenimientoComprasV2: Form
     {
-<<<<<<< HEAD
-=======
-        BLCompra blCompra = new BLCompra( );
+        BLCompra blCompra = new BLCompra();
 
->>>>>>> 9b64e68fd3baa578c3e7640cae9a9cecb882dc40
-        public frmMantenimientoCompras()
+        public frmMantenimientoComprasV2()
         {
             InitializeComponent();
             InicializarFormulario();
@@ -28,10 +27,7 @@ namespace DGP.Presentation.Compras
         {
             try
             {
-                this.dgrvVentas.AutoGenerateColumns = false;
-                this.panel1.HorizontalScroll.Enabled = true;
-                this.panel1.HorizontalScroll.Visible = true;
-
+                
             }
             catch (Exception ex)
             {
@@ -39,7 +35,7 @@ namespace DGP.Presentation.Compras
             }
         }
 
-        private void btnBuscarVentas_Click(object sender, EventArgs e)
+        private void btnBuscarCompras_Click(object sender, EventArgs e)
         {
             try
             {
@@ -53,6 +49,7 @@ namespace DGP.Presentation.Compras
 
         private void CargarGrilla()
         {
+            BECompra oBECompraFiltros = ObtenerCompraBusqueda();
 
         }
 
@@ -67,12 +64,12 @@ namespace DGP.Presentation.Compras
 
         private void LimpiarFiltrosBusqueda()
         {
-            txtCodigoVenta.Text = string.Empty;
+            txtCodigoCompra.Text = string.Empty;
             DGP_Util.LiberarComboBox(cbTipoDocumento);
             DGP_Util.LiberarComboBox(cbProducto);
             DGP_Util.SetDateTimeNow(dtpFechaInicial);
             DGP_Util.SetDateTimeNow(dtpFechaFinal);
-            DGP_Util.LiberarGridView(dgrvVentas);
+            DGP_Util.LiberarGridView(dgrvCompras);
         }
 
         private void CargarTipoDocumento()
@@ -111,8 +108,6 @@ namespace DGP.Presentation.Compras
         {
             MessageBox.Show(pMensaje, "DGP", MessageBoxButtons.OK, pMsgBoxicon);
         }
-<<<<<<< HEAD
-=======
 
         private BECompra ObtenerCompraBusqueda()
         {
@@ -125,10 +120,8 @@ namespace DGP.Presentation.Compras
             //oBECompra.IdProducto = (cbProducto.SelectedIndex == 0) ? 0 : Convert.ToInt32(cbProducto.SelectedValue);
             //oBECompra.FechaInicio = dtpFechaInicial.Value.Date;
             //oBECompra.FechaFin = dtpFechaFinal.Value.Date;
-            //oBECompra.TienePrecioVariable = chkTienePrecioVariable.Checked;
             return oBECompra;
         }
->>>>>>> 9b64e68fd3baa578c3e7640cae9a9cecb882dc40
         /**/
 
         private void CmbClientes_KeyPress(object sender, KeyPressEventArgs e)
@@ -177,6 +170,7 @@ namespace DGP.Presentation.Compras
                 oEntidad.Nombre = actual;
                 oEntidad.IdZona = intIdZona;
                 oEntidad.IdCliente = 0;
+
                 List<BEClienteProveedor> vTemp = new BLClienteProveedor().Listar(oEntidad);
                 vTemp.Insert(0, new BEClienteProveedor(0, ""));
                 if (vTemp != null && vTemp.Count > 0)
@@ -221,37 +215,10 @@ namespace DGP.Presentation.Compras
 
         private void CargarPrivilegios()
         {
-            this.gbCambiarPrecios.Visible = VariablesSession.Privilegios.Exists(t => t.IdPrivilegio == DGP.Entities.Seguridad.BEPrivilegio.Act_Precio_Venta_Masivo);
+            //this.gbCambiarPrecios.Visible = VariablesSession.Privilegios.Exists(t => t.IdPrivilegio == DGP.Entities.Seguridad.BEPrivilegio.Act_Precio_Venta_Masivo);
         }
 
-        private void btnCambioPrecios_Click(object sender, EventArgs e)
-        {
-            frmAplicarPreciosGrupo frmAplicarPreciosGrupo = new frmAplicarPreciosGrupo(this);
-
-            frmAplicarPreciosGrupo.ShowDialog(this);
-        }
-
-        public void AplicarPreciosGrupo(BEProducto producto, decimal precioBase, decimal Margen, int FormaAplicar)
-        {
-            foreach (DataGridViewRow item in this.dgrvVentas.Rows)
-            {
-                if (producto.IdProducto == (int)item.Cells["IdProducto"].Value)
-                {
-                    decimal margen = (string.IsNullOrEmpty(item.Cells["Margen"].Value.ToString())) ? Margen : decimal.Parse(item.Cells["Margen"].Value.ToString());
-
-                    if (FormaAplicar == 2) //clientes precio variable
-                    {
-                        bool tieneMargenVariable = false;
-                        bool.TryParse(item.Cells["TienePrecioVariable"].Value.ToString(), out tieneMargenVariable);
-                        item.Cells["NuevoPrecio"].Value = (tieneMargenVariable) ? (precioBase + margen).ToString() : string.Empty;
-
-                    }
-                    else
-                    {
-                        item.Cells["NuevoPrecio"].Value = precioBase + margen;
-                    }
-                }
-            }
-        }
+        
+       
     }
 }
