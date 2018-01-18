@@ -7,16 +7,12 @@ using System.Text;
 using System.Windows.Forms;
 
 using DGP.Entities;
-using DGP.Entities.Compras;
 using DGP.BusinessLogic;
-using DGP.BusinessLogic.Compra;
 
 namespace DGP.Presentation.Compras
 {
     public partial class frmMantenimientoCompras : Form
     {
-        BLCompra blCompra = new BLCompra();
-
         public frmMantenimientoCompras()
         {
             InitializeComponent();
@@ -27,7 +23,7 @@ namespace DGP.Presentation.Compras
         {
             try
             {
-                this.dgrvCompras.AutoGenerateColumns = false;
+                this.dgrvVentas.AutoGenerateColumns = false;
                 this.panel1.HorizontalScroll.Enabled = true;
                 this.panel1.HorizontalScroll.Visible = true;
 
@@ -38,7 +34,7 @@ namespace DGP.Presentation.Compras
             }
         }
 
-        private void btnBuscarCompras_Click(object sender, EventArgs e)
+        private void btnBuscarVentas_Click(object sender, EventArgs e)
         {
             try
             {
@@ -52,8 +48,7 @@ namespace DGP.Presentation.Compras
 
         private void CargarGrilla()
         {
-            BECompra oBECompra = ObtenerCompraBusqueda();
-            //this.bdCompras.DataSource = blCompra.ListarCompra();
+
         }
 
         /**/
@@ -67,12 +62,12 @@ namespace DGP.Presentation.Compras
 
         private void LimpiarFiltrosBusqueda()
         {
-            txtCodigoCompra.Text = string.Empty;
+            txtCodigoVenta.Text = string.Empty;
             DGP_Util.LiberarComboBox(cbTipoDocumento);
             DGP_Util.LiberarComboBox(cbProducto);
             DGP_Util.SetDateTimeNow(dtpFechaInicial);
             DGP_Util.SetDateTimeNow(dtpFechaFinal);
-            DGP_Util.LiberarGridView(dgrvCompras);
+            DGP_Util.LiberarGridView(dgrvVentas);
         }
 
         private void CargarTipoDocumento()
@@ -110,21 +105,6 @@ namespace DGP.Presentation.Compras
         private void MostrarMensaje(string pMensaje, MessageBoxIcon pMsgBoxicon)
         {
             MessageBox.Show(pMensaje, "DGP", MessageBoxButtons.OK, pMsgBoxicon);
-        }
-
-        private BECompra ObtenerCompraBusqueda()
-        {
-            BECompra oBECompra = new BECompra();
-
-            oBECompra.strFilterIds = txtCodigoVenta.Text;// string.IsNullOrEmpty(txtCodigoVenta.Text) ? 0 : int.Parse(txtCodigoVenta.Text);
-
-            oBECompra.IdTipoDocumentoVenta = (cbTipoDocumento.SelectedIndex == 0) ? string.Empty : cbTipoDocumento.SelectedValue.ToString();
-            oBECompra.IdCliente = (this.cmbClientes.Text == string.Empty) ? -1 : Convert.ToInt32(cmbClientes.SelectedValue);
-            oBECompra.IdProducto = (cbProducto.SelectedIndex == 0) ? 0 : Convert.ToInt32(cbProducto.SelectedValue);
-            oBECompra.FechaInicio = dtpFechaInicial.Value.Date;
-            oBECompra.FechaFin = dtpFechaFinal.Value.Date;
-            oBECompra.TienePrecioVariable = chkTienePrecioVariable.Checked;
-            return oBECompra;
         }
         /**/
 
@@ -230,7 +210,7 @@ namespace DGP.Presentation.Compras
 
         public void AplicarPreciosGrupo(BEProducto producto, decimal precioBase, decimal Margen, int FormaAplicar)
         {
-            foreach (DataGridViewRow item in this.dgrvCompras.Rows)
+            foreach (DataGridViewRow item in this.dgrvVentas.Rows)
             {
                 if (producto.IdProducto == (int)item.Cells["IdProducto"].Value)
                 {

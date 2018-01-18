@@ -139,16 +139,37 @@ namespace DGP.Presentation.Ventas
 
         private void dgvDocumentoPago_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            frmDocumentoPago edicion = new frmDocumentoPago(this.bsDocumentosPagoVenta);
-            edicion.Show();
+            int cli = Convert.ToInt32(cmbClientes.SelectedValue);
+            frmDocumentoPago from = new frmDocumentoPago(this.bsDocumentosPagoVenta, "actualizar", cli);
+            from.Show();
 
         }
 
         private void tsbEliminar_Click(object sender, EventArgs e)
         {
             BLDocumentoPago BLDP = new BLDocumentoPago();
-            MessageBox.Show(dgvDocumentoPago.CurrentRow.Cells[0].Value.ToString());
+            BEDocumento beDocumento = new BEDocumento();
+            beDocumento.IdDocumento = Convert.ToInt32(dgvDocumentoPago.CurrentRow.Cells[0].Value.ToString());
+            beDocumento.BEUsuarioLogin = VariablesSession.BEUsuarioSession;
+            beDocumento.Observacion = "";
+            BLDP.EliminarCabecera(beDocumento);
+            int codigo = Convert.ToInt32(cmbClientes.SelectedValue);
+            this.bsDocumentosPagoVenta.DataSource = BLDP.Listar(codigo, dtFechaInicial.Value.Date, dtFechaFinal.Value.Date);
+            this.dgvDocumentoPago.DataSource = this.bsDocumentosPagoVenta;
             
+        }
+
+        private void frmMantenimientoDocumentoPago_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tsbAgregar_Click(object sender, EventArgs e)
+        {
+            BindingSource bs = new BindingSource();
+            int cli = Convert.ToInt32(cmbClientes.SelectedValue);
+            frmDocumentoPago from = new frmDocumentoPago(bs, "insertar", cli);
+            from.Show();
         }
 
     }

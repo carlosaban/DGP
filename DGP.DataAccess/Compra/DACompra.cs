@@ -106,7 +106,7 @@ namespace DGP.DataAccess.Compra
             }
         }
 
-        public List<VistaCompra> ListarCompraMantenimiento(BECompra pBECompra)
+        /*public List<VistaCompra> ListarCompraMantenimiento(BECompra pBECompra)
         {
             DatabaseHelper oDatabaseHelper = new DatabaseHelper();
             List<VistaVenta> vLista = new List<VistaVenta>();
@@ -171,7 +171,7 @@ namespace DGP.DataAccess.Compra
                 oIDataReader.Dispose();
                 oDatabaseHelper.Dispose();
             }
-        }
+        }*/
 
         public List<BEProducto> ListarProductoCliente(int pIdCliente)
         {

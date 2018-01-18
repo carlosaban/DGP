@@ -48,6 +48,42 @@ namespace DGP.BusinessLogic.Ventas
                 throw ex;
             }
         }
+
+        public bool ActualizarCabecera(BEDocumento beDocumento)
+        {
+            try
+            {
+                return new DADocumentoPago().ActualizarCabeceraDocumento(beDocumento);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public bool InsertarCabecera(BEDocumento beDocumento)
+        {
+            try
+            {
+                return new DADocumentoPago().InsertarCabeceraDocumento(beDocumento);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public List<BEVenta> ListarVentaXCliente(int idCliente)
+        {
+            try
+            {
+                return new DADocumentoPago().ListarVentasXCliente(idCliente);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
         /*
         public dsLineaVenta ListarDS(BELineaVenta pBELineaVenta)
         {
