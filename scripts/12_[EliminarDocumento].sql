@@ -21,7 +21,7 @@ BEGIN
 insert into @TmpVentas (IdVenta)
 select a.Id_Venta 
 from dbo.Tb_Amort_Venta a
-where  a.IdEstado not in ('ANL') 
+where  a.IdEstado not in ( dbo.DGP_VENTA_ESTADO_ANULADO()  ) 
 and a.IdDocumento =@IdDocumento 
 
 
@@ -35,13 +35,14 @@ WHERE IdDocumento = @IdDocumento
 
 UPDATE [dbo].[Tb_Amort_Venta] SET 
 		[IdEstado] = dbo.DGP_VENTA_ESTADO_ANULADO() 
-	   ,[FechaEliminacion] = GETDATE()
-	   ,[UsuarioEliminacion] = @Usuario
+	   ,[FechaModificacion] = GETDATE()
+	   ,[UsuarioModificacion] = @Usuario
  WHERE IdDocumento = @IdDocumento
 
 
 declare @maxVentas int ;
 declare @i int;
+declare @intIdVenta int;
 set @i =1;
 select @maxVentas =COUNT(*) from @TmpVentas
 while (@i <=@maxVentas ) 
