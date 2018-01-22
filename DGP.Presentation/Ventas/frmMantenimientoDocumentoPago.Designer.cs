@@ -39,14 +39,12 @@
             this.cmbClientes = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.dgvDocumentoPago = new System.Windows.Forms.DataGridView();
-<<<<<<< HEAD
+            this.Seleccionado = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.idDocumentoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.idTipoDocumentoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fechaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.montoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.idEstadoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-=======
->>>>>>> 9b64e68fd3baa578c3e7640cae9a9cecb882dc40
             this.bsDocumentosPagoVenta = new System.Windows.Forms.BindingSource(this.components);
             this.tsbAgregar = new System.Windows.Forms.ToolStripButton();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
@@ -58,15 +56,6 @@
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-<<<<<<< HEAD
-=======
-            this.Seleccionado = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.idDocumentoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.idTipoDocumentoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.fechaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.montoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.idEstadoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
->>>>>>> 9b64e68fd3baa578c3e7640cae9a9cecb882dc40
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDocumentoPago)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsDocumentosPagoVenta)).BeginInit();
@@ -176,7 +165,11 @@
             this.dgvDocumentoPago.TabIndex = 1;
             this.dgvDocumentoPago.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDocumentoPago_CellContentDoubleClick);
             // 
-<<<<<<< HEAD
+            // Seleccionado
+            // 
+            this.Seleccionado.HeaderText = "Seleccionar";
+            this.Seleccionado.Name = "Seleccionado";
+            // 
             // idDocumentoDataGridViewTextBoxColumn
             // 
             this.idDocumentoDataGridViewTextBoxColumn.DataPropertyName = "IdDocumento";
@@ -207,8 +200,6 @@
             this.idEstadoDataGridViewTextBoxColumn.HeaderText = "idEstado";
             this.idEstadoDataGridViewTextBoxColumn.Name = "idEstadoDataGridViewTextBoxColumn";
             // 
-=======
->>>>>>> 9b64e68fd3baa578c3e7640cae9a9cecb882dc40
             // bsDocumentosPagoVenta
             // 
             this.bsDocumentosPagoVenta.DataSource = typeof(DGP.Entities.Ventas.BEDocumento);
@@ -287,44 +278,6 @@
             this.dataGridViewTextBoxColumn7.HeaderText = "IdPersonal";
             this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
             // 
-<<<<<<< HEAD
-=======
-            // Seleccionado
-            // 
-            this.Seleccionado.HeaderText = "Seleccionar";
-            this.Seleccionado.Name = "Seleccionado";
-            // 
-            // idDocumentoDataGridViewTextBoxColumn
-            // 
-            this.idDocumentoDataGridViewTextBoxColumn.DataPropertyName = "IdDocumento";
-            this.idDocumentoDataGridViewTextBoxColumn.HeaderText = "IdDocumento";
-            this.idDocumentoDataGridViewTextBoxColumn.Name = "idDocumentoDataGridViewTextBoxColumn";
-            // 
-            // idTipoDocumentoDataGridViewTextBoxColumn
-            // 
-            this.idTipoDocumentoDataGridViewTextBoxColumn.DataPropertyName = "IdTipoDocumento";
-            this.idTipoDocumentoDataGridViewTextBoxColumn.HeaderText = "IdTipoDocumento";
-            this.idTipoDocumentoDataGridViewTextBoxColumn.Name = "idTipoDocumentoDataGridViewTextBoxColumn";
-            // 
-            // fechaDataGridViewTextBoxColumn
-            // 
-            this.fechaDataGridViewTextBoxColumn.DataPropertyName = "Fecha";
-            this.fechaDataGridViewTextBoxColumn.HeaderText = "Fecha";
-            this.fechaDataGridViewTextBoxColumn.Name = "fechaDataGridViewTextBoxColumn";
-            // 
-            // montoDataGridViewTextBoxColumn
-            // 
-            this.montoDataGridViewTextBoxColumn.DataPropertyName = "Monto";
-            this.montoDataGridViewTextBoxColumn.HeaderText = "Monto";
-            this.montoDataGridViewTextBoxColumn.Name = "montoDataGridViewTextBoxColumn";
-            // 
-            // idEstadoDataGridViewTextBoxColumn
-            // 
-            this.idEstadoDataGridViewTextBoxColumn.DataPropertyName = "idEstado";
-            this.idEstadoDataGridViewTextBoxColumn.HeaderText = "idEstado";
-            this.idEstadoDataGridViewTextBoxColumn.Name = "idEstadoDataGridViewTextBoxColumn";
-            // 
->>>>>>> 9b64e68fd3baa578c3e7640cae9a9cecb882dc40
             // frmMantenimientoDocumentoPago
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);

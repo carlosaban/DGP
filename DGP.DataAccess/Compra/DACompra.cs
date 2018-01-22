@@ -214,7 +214,6 @@ namespace DGP.DataAccess.Compra
             throw new NotImplementedException();
         }
 
-<<<<<<< HEAD
         /*public List<VistaCompra> ListarCompraMantenimiento(BECompra pBECompra)
         {
             DatabaseHelper oDatabaseHelper = new DatabaseHelper();
@@ -281,12 +280,10 @@ namespace DGP.DataAccess.Compra
                 oDatabaseHelper.Dispose();
             }
         }*/
-=======
         public bool Actualizar(BECompra bECompra, out string mensaje)
         {
             throw new NotImplementedException();
         }
->>>>>>> 9b64e68fd3baa578c3e7640cae9a9cecb882dc40
 
         public List<BECompra> Listar(BECompraFilter pBECompra)
         {
