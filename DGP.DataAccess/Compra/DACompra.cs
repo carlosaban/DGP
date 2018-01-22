@@ -214,7 +214,10 @@ namespace DGP.DataAccess.Compra
             throw new NotImplementedException();
         }
 
+<<<<<<< HEAD
+=======
 
+>>>>>>> b6ee30bea750bd095abc945472cf2a773f2210c4
         /*public List<VistaCompra> ListarCompraMantenimiento(BECompra pBECompra)
         {
             DatabaseHelper oDatabaseHelper = new DatabaseHelper();
@@ -281,12 +284,18 @@ namespace DGP.DataAccess.Compra
                 oDatabaseHelper.Dispose();
             }
         }*/
+<<<<<<< HEAD
+=======
 
+>>>>>>> b6ee30bea750bd095abc945472cf2a773f2210c4
         public bool Actualizar(BECompra bECompra, out string mensaje)
         {
             throw new NotImplementedException();
         }
+<<<<<<< HEAD
+=======
 
+>>>>>>> b6ee30bea750bd095abc945472cf2a773f2210c4
 
         public List<BECompra> Listar(BECompraFilter pBECompra)
         {

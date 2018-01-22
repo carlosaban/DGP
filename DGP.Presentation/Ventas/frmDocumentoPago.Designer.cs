@@ -61,6 +61,11 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.numMontoAplica = new System.Windows.Forms.NumericUpDown();
+<<<<<<< HEAD
+            this.btnEliminar = new System.Windows.Forms.Button();
+            this.btnActualizar = new System.Windows.Forms.Button();
+=======
+>>>>>>> b6ee30bea750bd095abc945472cf2a773f2210c4
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -72,6 +77,20 @@
             this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+<<<<<<< HEAD
+            this.Seleccionado = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.IdAmortizacionVenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Monto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NumeroDocumento = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IdFormaPago = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FechaPago = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IdTipoAmortizacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IdEstado = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IdVenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IdCliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IdDocumento = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Observacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+=======
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -84,6 +103,7 @@
             this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panelleft = new System.Windows.Forms.Panel();
+>>>>>>> b6ee30bea750bd095abc945472cf2a773f2210c4
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator1)).BeginInit();
             this.bindingNavigator1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bsDocumentos)).BeginInit();
@@ -286,17 +306,18 @@
             this.dgvDetalle.AutoGenerateColumns = false;
             this.dgvDetalle.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDetalle.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column1,
-            this.Column2,
-            this.Column3,
-            this.Column4,
-            this.Column5,
-            this.Column6,
-            this.Column7,
-            this.Column8,
-            this.Column9,
-            this.Column10,
-            this.Column11});
+            this.Seleccionado,
+            this.IdAmortizacionVenta,
+            this.Monto,
+            this.NumeroDocumento,
+            this.IdFormaPago,
+            this.FechaPago,
+            this.IdTipoAmortizacion,
+            this.IdEstado,
+            this.IdVenta,
+            this.IdCliente,
+            this.IdDocumento,
+            this.Observacion});
             this.dgvDetalle.DataSource = this.bsDetalle;
             this.dgvDetalle.Location = new System.Drawing.Point(309, 59);
             this.dgvDetalle.Name = "dgvDetalle";
@@ -378,7 +399,11 @@
             // label6
             // 
             this.label6.AutoSize = true;
+<<<<<<< HEAD
+            this.label6.Location = new System.Drawing.Point(648, 14);
+=======
             this.label6.Location = new System.Drawing.Point(316, 25);
+>>>>>>> b6ee30bea750bd095abc945472cf2a773f2210c4
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(80, 13);
             this.label6.TabIndex = 23;
@@ -387,16 +412,46 @@
             // numMontoAplica
             // 
             this.numMontoAplica.DecimalPlaces = 2;
+<<<<<<< HEAD
+            this.numMontoAplica.Location = new System.Drawing.Point(756, 12);
+=======
             this.numMontoAplica.Location = new System.Drawing.Point(402, 28);
+>>>>>>> b6ee30bea750bd095abc945472cf2a773f2210c4
             this.numMontoAplica.Maximum = new decimal(new int[] {
             1000000000,
             0,
             0,
             0});
             this.numMontoAplica.Name = "numMontoAplica";
+<<<<<<< HEAD
+            this.numMontoAplica.Size = new System.Drawing.Size(120, 20);
+            this.numMontoAplica.TabIndex = 22;
+            // 
+            // btnEliminar
+            // 
+            this.btnEliminar.Location = new System.Drawing.Point(1056, 12);
+            this.btnEliminar.Name = "btnEliminar";
+            this.btnEliminar.Size = new System.Drawing.Size(116, 25);
+            this.btnEliminar.TabIndex = 24;
+            this.btnEliminar.Text = "Eliminar Amortizacion";
+            this.btnEliminar.UseVisualStyleBackColor = true;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
+            // 
+            // btnActualizar
+            // 
+            this.btnActualizar.Location = new System.Drawing.Point(1197, 12);
+            this.btnActualizar.Name = "btnActualizar";
+            this.btnActualizar.Size = new System.Drawing.Size(124, 25);
+            this.btnActualizar.TabIndex = 25;
+            this.btnActualizar.Text = "Actualizar Amortizacion";
+            this.btnActualizar.UseVisualStyleBackColor = true;
+            this.btnActualizar.Click += new System.EventHandler(this.btnActualizar_Click);
+            // 
+=======
             this.numMontoAplica.Size = new System.Drawing.Size(116, 20);
             this.numMontoAplica.TabIndex = 22;
             // 
+>>>>>>> b6ee30bea750bd095abc945472cf2a773f2210c4
             // dataGridViewTextBoxColumn1
             // 
             this.dataGridViewTextBoxColumn1.DataPropertyName = "Id_Amort_Venta";
@@ -463,6 +518,78 @@
             this.dataGridViewTextBoxColumn11.HeaderText = "Observacion";
             this.dataGridViewTextBoxColumn11.Name = "dataGridViewTextBoxColumn11";
             // 
+<<<<<<< HEAD
+            // Seleccionado
+            // 
+            this.Seleccionado.HeaderText = "Seleccionado";
+            this.Seleccionado.Name = "Seleccionado";
+            // 
+            // IdAmortizacionVenta
+            // 
+            this.IdAmortizacionVenta.DataPropertyName = "IdAmortizacionVenta";
+            this.IdAmortizacionVenta.HeaderText = "Id Amortizacion venta";
+            this.IdAmortizacionVenta.Name = "IdAmortizacionVenta";
+            // 
+            // Monto
+            // 
+            this.Monto.DataPropertyName = "Monto";
+            this.Monto.HeaderText = "Monto";
+            this.Monto.Name = "Monto";
+            // 
+            // NumeroDocumento
+            // 
+            this.NumeroDocumento.DataPropertyName = "NroDocumento";
+            this.NumeroDocumento.HeaderText = "NumeroDocumento";
+            this.NumeroDocumento.Name = "NumeroDocumento";
+            // 
+            // IdFormaPago
+            // 
+            this.IdFormaPago.DataPropertyName = "IdFormaPago";
+            this.IdFormaPago.HeaderText = "IdFormaPago";
+            this.IdFormaPago.Name = "IdFormaPago";
+            // 
+            // FechaPago
+            // 
+            this.FechaPago.DataPropertyName = "FechaPago";
+            this.FechaPago.HeaderText = "FechaPago";
+            this.FechaPago.Name = "FechaPago";
+            // 
+            // IdTipoAmortizacion
+            // 
+            this.IdTipoAmortizacion.DataPropertyName = "IdTipoAmortizacion";
+            this.IdTipoAmortizacion.HeaderText = "IdTipoAmortizacion";
+            this.IdTipoAmortizacion.Name = "IdTipoAmortizacion";
+            // 
+            // IdEstado
+            // 
+            this.IdEstado.DataPropertyName = "IdEstado";
+            this.IdEstado.HeaderText = "IdEstado";
+            this.IdEstado.Name = "IdEstado";
+            // 
+            // IdVenta
+            // 
+            this.IdVenta.DataPropertyName = "IdVenta";
+            this.IdVenta.HeaderText = "Id Venta";
+            this.IdVenta.Name = "IdVenta";
+            // 
+            // IdCliente
+            // 
+            this.IdCliente.DataPropertyName = "IdCliente";
+            this.IdCliente.HeaderText = "Id Cliente";
+            this.IdCliente.Name = "IdCliente";
+            // 
+            // IdDocumento
+            // 
+            this.IdDocumento.DataPropertyName = "IdDocumento";
+            this.IdDocumento.HeaderText = "IdDocumento";
+            this.IdDocumento.Name = "IdDocumento";
+            // 
+            // Observacion
+            // 
+            this.Observacion.DataPropertyName = "Observacion";
+            this.Observacion.HeaderText = "Observacion";
+            this.Observacion.Name = "Observacion";
+=======
             // Column1
             // 
             this.Column1.DataPropertyName = "IdAmortizacionVenta";
@@ -548,12 +675,19 @@
             this.panelleft.Name = "panelleft";
             this.panelleft.Size = new System.Drawing.Size(292, 410);
             this.panelleft.TabIndex = 24;
+>>>>>>> b6ee30bea750bd095abc945472cf2a773f2210c4
             // 
             // frmDocumentoPago
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+<<<<<<< HEAD
+            this.ClientSize = new System.Drawing.Size(1477, 435);
+            this.Controls.Add(this.btnActualizar);
+            this.Controls.Add(this.btnEliminar);
+=======
             this.ClientSize = new System.Drawing.Size(854, 435);
+>>>>>>> b6ee30bea750bd095abc945472cf2a773f2210c4
             this.Controls.Add(this.label6);
             this.Controls.Add(this.numMontoAplica);
             this.Controls.Add(this.btnDetalle);
@@ -615,17 +749,6 @@
         private System.Windows.Forms.DataGridView dgvDetalle;
         private System.Windows.Forms.BindingSource bsDetalle;
         private System.Windows.Forms.Button btnDetalle;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column11;
         private System.Windows.Forms.ComboBox cmbTipoDocumento;
         private System.Windows.Forms.TextBox txtObservacion;
         private System.Windows.Forms.Label label2;
@@ -633,6 +756,23 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.NumericUpDown numMontoAplica;
+<<<<<<< HEAD
+        private System.Windows.Forms.Button btnEliminar;
+        private System.Windows.Forms.Button btnActualizar;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Seleccionado;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IdAmortizacionVenta;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Monto;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NumeroDocumento;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IdFormaPago;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FechaPago;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IdTipoAmortizacion;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IdEstado;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IdVenta;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IdCliente;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IdDocumento;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Observacion;
+=======
         private System.Windows.Forms.Panel panelleft;
+>>>>>>> b6ee30bea750bd095abc945472cf2a773f2210c4
     }
 }
