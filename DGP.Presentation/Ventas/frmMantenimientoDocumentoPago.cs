@@ -147,24 +147,43 @@ namespace DGP.Presentation.Ventas
 
         private void tsbEliminar_Click(object sender, EventArgs e)
         {//ojo revisar esto
-            BLDocumentoPago BLDP = new BLDocumentoPago();
-            BEDocumento beDocumento = new BEDocumento();
-            beDocumento.IdDocumento = Convert.ToInt32(dgvDocumentoPago.CurrentRow.Cells[0].Value.ToString());
-            beDocumento.BEUsuarioLogin = VariablesSession.BEUsuarioSession;
-            beDocumento.Observacion = "";
-            BLDP.EliminarCabecera(beDocumento);
-            int codigo = Convert.ToInt32(cmbClientes.SelectedValue);
-            this.bsDocumentosPagoVenta.DataSource = BLDP.Listar(codigo, dtFechaInicial.Value.Date, dtFechaFinal.Value.Date);
-            this.dgvDocumentoPago.DataSource = this.bsDocumentosPagoVenta;
+            try
+            {
+                BLDocumentoPago BLDP = new BLDocumentoPago();
+
+
+                for (int i = 0; i < this.dgvDocumentoPago.RowCount; i++)
+                {
+                    bool Selecionado = (dgvDocumentoPago["Seleccionado", i].Value == null) ? false : (bool) dgvDocumentoPago["Seleccionado", i].Value;
+                    if (!Selecionado) continue;
+
+                    BEDocumento beDocumento = new BEDocumento();
+                    beDocumento.IdDocumento = Convert.ToInt32(dgvDocumentoPago["IdDocumento" , i].Value.ToString());
+                    beDocumento.BEUsuarioLogin = VariablesSession.BEUsuarioSession;
+                    beDocumento.Observacion = "";
+                    BLDP.EliminarCabecera(beDocumento);
+                }
+                
+
+
+                CargarDocumentos();
+
+            }
+            catch (Exception ex)
+            {
+                
+                MostrarMensaje( ex.Message ,MessageBoxIcon.Error);
+            }
             
         }
 
         private void frmMantenimientoDocumentoPago_Load(object sender, EventArgs e)
         {
 
+
         }
 
-<<<<<<< HEAD
+
         private void tsbAgregar_Click(object sender, EventArgs e)
         {
             BindingSource bs = new BindingSource();
@@ -172,8 +191,29 @@ namespace DGP.Presentation.Ventas
             frmDocumentoPago from = new frmDocumentoPago(bs, "insertar", cli);
             from.Show();
         }
+        private void CargarDocumentos()
+        {
+            int codigo = Convert.ToInt32(cmbClientes.SelectedValue);
+            this.bsDocumentosPagoVenta.DataSource = (new BLDocumentoPago()).Listar(codigo, dtFechaInicial.Value.Date, dtFechaFinal.Value.Date);
+            this.dgvDocumentoPago.DataSource = this.bsDocumentosPagoVenta;
+            
+ 
+        
+        
+        }
 
-=======
->>>>>>> 9b64e68fd3baa578c3e7640cae9a9cecb882dc40
+        private void dgvDocumentoPago_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void dgvDocumentoPago_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == this.dgvDocumentoPago.Columns["Seleccionado"].Index)
+            {
+                dgvDocumentoPago.EndEdit();
+            }
+        }
+
     }
 }

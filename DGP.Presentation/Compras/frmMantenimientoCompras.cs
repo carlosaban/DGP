@@ -8,16 +8,16 @@ using System.Windows.Forms;
 
 using DGP.Entities;
 using DGP.BusinessLogic;
+using DGP.BusinessLogic.Compra;
+using DGP.Entities.Compras;
 
 namespace DGP.Presentation.Compras
 {
     public partial class frmMantenimientoCompras : Form
     {
-<<<<<<< HEAD
-=======
+
         BLCompra blCompra = new BLCompra( );
 
->>>>>>> 9b64e68fd3baa578c3e7640cae9a9cecb882dc40
         public frmMantenimientoCompras()
         {
             InitializeComponent();
@@ -111,8 +111,7 @@ namespace DGP.Presentation.Compras
         {
             MessageBox.Show(pMensaje, "DGP", MessageBoxButtons.OK, pMsgBoxicon);
         }
-<<<<<<< HEAD
-=======
+
 
         private BECompra ObtenerCompraBusqueda()
         {
@@ -128,7 +127,7 @@ namespace DGP.Presentation.Compras
             //oBECompra.TienePrecioVariable = chkTienePrecioVariable.Checked;
             return oBECompra;
         }
->>>>>>> 9b64e68fd3baa578c3e7640cae9a9cecb882dc40
+
         /**/
 
         private void CmbClientes_KeyPress(object sender, KeyPressEventArgs e)
