@@ -139,21 +139,106 @@ namespace DGP.Presentation.Ventas
 
         private void dgvDocumentoPago_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            frmDocumentoPago edicion = new frmDocumentoPago(this.bsDocumentosPagoVenta);
-            edicion.Show();
+            BEClienteProveedor cliente = new BEClienteProveedor();
+            cliente.IdCliente = Convert.ToInt32(cmbClientes.SelectedValue);
+            cliente.Nombre = cmbClientes.Text;
+            int cell = dgvDocumentoPago.CurrentRow.Index;
+            frmDocumentoPago from = new frmDocumentoPago(this.bsDocumentosPagoVenta, "actualizar", cliente,cell);
+            from.Show();
 
         }
 
         private void tsbEliminar_Click(object sender, EventArgs e)
         {//ojo revisar esto
+<<<<<<< HEAD
             BLDocumentoPago BLDP = new BLDocumentoPago();
-            MessageBox.Show(dgvDocumentoPago.CurrentRow.Cells[0].Value.ToString());
+            List<BEDocumento> lista = new List<BEDocumento>();
+            
+            foreach (DataGridViewRow dgvRow in dgvDocumentoPago.Rows)
+            {
+                if(Convert.ToBoolean(dgvRow.Cells["Seleccionado"].Value).Equals(true)){
+                    BEDocumento beDocumento = new BEDocumento();
+                    beDocumento.IdDocumento = Convert.ToInt32(dgvRow.Cells["idDocumentoDataGridViewTextBoxColumn"].Value.ToString());
+=======
+            try
+            {
+                BLDocumentoPago BLDP = new BLDocumentoPago();
+
+
+                for (int i = 0; i < this.dgvDocumentoPago.RowCount; i++)
+                {
+                    bool Selecionado = (dgvDocumentoPago["Seleccionado", i].Value == null) ? false : (bool) dgvDocumentoPago["Seleccionado", i].Value;
+                    if (!Selecionado) continue;
+
+                    BEDocumento beDocumento = new BEDocumento();
+                    beDocumento.IdDocumento = Convert.ToInt32(dgvDocumentoPago["IdDocumento" , i].Value.ToString());
+>>>>>>> b6ee30bea750bd095abc945472cf2a773f2210c4
+                    beDocumento.BEUsuarioLogin = VariablesSession.BEUsuarioSession;
+                    beDocumento.Observacion = "";
+                    BLDP.EliminarCabecera(beDocumento);
+                }
+<<<<<<< HEAD
+            }
+            int codigo = Convert.ToInt32(cmbClientes.SelectedValue);
+            this.bsDocumentosPagoVenta.DataSource = BLDP.Listar(codigo, dtFechaInicial.Value.Date, dtFechaFinal.Value.Date);
+            this.dgvDocumentoPago.DataSource = this.bsDocumentosPagoVenta;
+=======
+                
+
+
+                CargarDocumentos();
+
+            }
+            catch (Exception ex)
+            {
+                
+                MostrarMensaje( ex.Message ,MessageBoxIcon.Error);
+            }
+>>>>>>> b6ee30bea750bd095abc945472cf2a773f2210c4
             
         }
 
         private void frmMantenimientoDocumentoPago_Load(object sender, EventArgs e)
         {
 
+
+        }
+
+<<<<<<< HEAD
+=======
+
+>>>>>>> b6ee30bea750bd095abc945472cf2a773f2210c4
+        private void tsbAgregar_Click(object sender, EventArgs e)
+        {
+            BindingSource bs = new BindingSource();
+            BEClienteProveedor cliente = new BEClienteProveedor();
+            cliente.IdCliente = Convert.ToInt32(cmbClientes.SelectedValue);
+            cliente.Nombre = cmbClientes.SelectedText;
+            frmDocumentoPago from = new frmDocumentoPago(bs, "insertar", cliente);
+            from.Show();
+        }
+        private void CargarDocumentos()
+        {
+            int codigo = Convert.ToInt32(cmbClientes.SelectedValue);
+            this.bsDocumentosPagoVenta.DataSource = (new BLDocumentoPago()).Listar(codigo, dtFechaInicial.Value.Date, dtFechaFinal.Value.Date);
+            this.dgvDocumentoPago.DataSource = this.bsDocumentosPagoVenta;
+            
+ 
+        
+        
+        }
+
+        private void dgvDocumentoPago_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void dgvDocumentoPago_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == this.dgvDocumentoPago.Columns["Seleccionado"].Index)
+            {
+                dgvDocumentoPago.EndEdit();
+            }
         }
 
     }

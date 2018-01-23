@@ -7,14 +7,23 @@ using System.Text;
 using System.Windows.Forms;
 
 using DGP.Entities;
-using DGP.Entities.Compras;
 using DGP.BusinessLogic;
+<<<<<<< HEAD
+using DGP.Entities.Compras;
 using DGP.BusinessLogic.Compra;
+=======
+using DGP.BusinessLogic.Compra;
+using DGP.Entities.Compras;
+>>>>>>> b6ee30bea750bd095abc945472cf2a773f2210c4
 
 namespace DGP.Presentation.Compras
 {
     public partial class frmMantenimientoCompras : Form
     {
+<<<<<<< HEAD
+=======
+
+>>>>>>> b6ee30bea750bd095abc945472cf2a773f2210c4
         BLCompra blCompra = new BLCompra( );
 
         public frmMantenimientoCompras()
@@ -27,7 +36,7 @@ namespace DGP.Presentation.Compras
         {
             try
             {
-                this.dgrvCompras.AutoGenerateColumns = false;
+                this.dgrvVentas.AutoGenerateColumns = false;
                 this.panel1.HorizontalScroll.Enabled = true;
                 this.panel1.HorizontalScroll.Visible = true;
 
@@ -38,7 +47,7 @@ namespace DGP.Presentation.Compras
             }
         }
 
-        private void btnBuscarCompras_Click(object sender, EventArgs e)
+        private void btnBuscarVentas_Click(object sender, EventArgs e)
         {
             try
             {
@@ -52,8 +61,7 @@ namespace DGP.Presentation.Compras
 
         private void CargarGrilla()
         {
-            BECompra oBECompra = ObtenerCompraBusqueda();
-            //this.bdCompras.DataSource = blCompra.ListarCompra();
+
         }
 
         /**/
@@ -67,12 +75,12 @@ namespace DGP.Presentation.Compras
 
         private void LimpiarFiltrosBusqueda()
         {
-            txtCodigoCompra.Text = string.Empty;
+            txtCodigoVenta.Text = string.Empty;
             DGP_Util.LiberarComboBox(cbTipoDocumento);
             DGP_Util.LiberarComboBox(cbProducto);
             DGP_Util.SetDateTimeNow(dtpFechaInicial);
             DGP_Util.SetDateTimeNow(dtpFechaFinal);
-            DGP_Util.LiberarGridView(dgrvCompras);
+            DGP_Util.LiberarGridView(dgrvVentas);
         }
 
         private void CargarTipoDocumento()
@@ -111,6 +119,10 @@ namespace DGP.Presentation.Compras
         {
             MessageBox.Show(pMensaje, "DGP", MessageBoxButtons.OK, pMsgBoxicon);
         }
+<<<<<<< HEAD
+=======
+
+>>>>>>> b6ee30bea750bd095abc945472cf2a773f2210c4
 
         private BECompra ObtenerCompraBusqueda()
         {
@@ -126,6 +138,10 @@ namespace DGP.Presentation.Compras
             //oBECompra.TienePrecioVariable = chkTienePrecioVariable.Checked;
             return oBECompra;
         }
+<<<<<<< HEAD
+=======
+
+>>>>>>> b6ee30bea750bd095abc945472cf2a773f2210c4
         /**/
 
         private void CmbClientes_KeyPress(object sender, KeyPressEventArgs e)
@@ -230,7 +246,7 @@ namespace DGP.Presentation.Compras
 
         public void AplicarPreciosGrupo(BEProducto producto, decimal precioBase, decimal Margen, int FormaAplicar)
         {
-            foreach (DataGridViewRow item in this.dgrvCompras.Rows)
+            foreach (DataGridViewRow item in this.dgrvVentas.Rows)
             {
                 if (producto.IdProducto == (int)item.Cells["IdProducto"].Value)
                 {

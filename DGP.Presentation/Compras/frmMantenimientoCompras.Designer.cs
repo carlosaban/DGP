@@ -29,20 +29,18 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.gbCambiarPrecios = new System.Windows.Forms.GroupBox();
             this.btnCambioPrecios = new System.Windows.Forms.Button();
             this.btnAplicar = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.dgrvCompras = new System.Windows.Forms.DataGridView();
+            this.dgrvVentas = new System.Windows.Forms.DataGridView();
             this.TienePrecioVariable = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.NuevoPrecio = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Margen = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.chkTienePrecioVariable = new System.Windows.Forms.CheckBox();
             this.cmbClientes = new System.Windows.Forms.ComboBox();
-            this.txtCodigoCompra = new System.Windows.Forms.TextBox();
+            this.txtCodigoVenta = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.dtpFechaFinal = new System.Windows.Forms.DateTimePicker();
@@ -51,16 +49,18 @@
             this.cbProducto = new System.Windows.Forms.ComboBox();
             this.dtpFechaInicial = new System.Windows.Forms.DateTimePicker();
             this.label6 = new System.Windows.Forms.Label();
-            this.btnBuscarCompra = new System.Windows.Forms.Button();
+            this.btnBuscarVentas = new System.Windows.Forms.Button();
             this.cbTipoDocumento = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.bdCompras = new System.Windows.Forms.BindingSource(this.components);
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NuevoPrecio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Margen = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.gbCambiarPrecios.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgrvCompras)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgrvVentas)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bdCompras)).BeginInit();
             this.SuspendLayout();
@@ -110,43 +110,41 @@
             // panel1
             // 
             this.panel1.AutoScroll = true;
-            this.panel1.Controls.Add(this.dgrvCompras);
+            this.panel1.Controls.Add(this.dgrvVentas);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(3, 16);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(950, 267);
             this.panel1.TabIndex = 1;
             // 
-            // dgrvCompras
+            // dgrvVentas
             // 
-            this.dgrvCompras.AllowUserToAddRows = false;
-            this.dgrvCompras.AllowUserToDeleteRows = false;
-            this.dgrvCompras.AllowUserToResizeColumns = false;
-            this.dgrvCompras.AllowUserToResizeRows = false;
-            this.dgrvCompras.AutoGenerateColumns = false;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgrvCompras.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.dgrvCompras.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgrvCompras.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgrvVentas.AllowUserToAddRows = false;
+            this.dgrvVentas.AllowUserToDeleteRows = false;
+            this.dgrvVentas.AllowUserToResizeColumns = false;
+            this.dgrvVentas.AllowUserToResizeRows = false;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgrvVentas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgrvVentas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgrvVentas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.TienePrecioVariable,
             this.NuevoPrecio,
             this.Margen});
-            this.dgrvCompras.DataSource = this.bdCompras;
-            this.dgrvCompras.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgrvCompras.ImeMode = System.Windows.Forms.ImeMode.Off;
-            this.dgrvCompras.Location = new System.Drawing.Point(0, 0);
-            this.dgrvCompras.MultiSelect = false;
-            this.dgrvCompras.Name = "dgrvCompras";
-            this.dgrvCompras.RowHeadersVisible = false;
-            this.dgrvCompras.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgrvCompras.Size = new System.Drawing.Size(950, 267);
-            this.dgrvCompras.TabIndex = 0;
+            this.dgrvVentas.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgrvVentas.ImeMode = System.Windows.Forms.ImeMode.Off;
+            this.dgrvVentas.Location = new System.Drawing.Point(0, 0);
+            this.dgrvVentas.MultiSelect = false;
+            this.dgrvVentas.Name = "dgrvVentas";
+            this.dgrvVentas.RowHeadersVisible = false;
+            this.dgrvVentas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgrvVentas.Size = new System.Drawing.Size(950, 267);
+            this.dgrvVentas.TabIndex = 0;
             // 
             // TienePrecioVariable
             // 
@@ -156,24 +154,11 @@
             this.TienePrecioVariable.ReadOnly = true;
             this.TienePrecioVariable.Visible = false;
             // 
-            // NuevoPrecio
-            // 
-            this.NuevoPrecio.HeaderText = "Nuevo Precio";
-            this.NuevoPrecio.Name = "NuevoPrecio";
-            // 
-            // Margen
-            // 
-            this.Margen.DataPropertyName = "Margen";
-            this.Margen.HeaderText = "Margen";
-            this.Margen.Name = "Margen";
-            this.Margen.ReadOnly = true;
-            this.Margen.Visible = false;
-            // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.chkTienePrecioVariable);
             this.groupBox1.Controls.Add(this.cmbClientes);
-            this.groupBox1.Controls.Add(this.txtCodigoCompra);
+            this.groupBox1.Controls.Add(this.txtCodigoVenta);
             this.groupBox1.Controls.Add(this.label13);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.dtpFechaFinal);
@@ -182,7 +167,7 @@
             this.groupBox1.Controls.Add(this.cbProducto);
             this.groupBox1.Controls.Add(this.dtpFechaInicial);
             this.groupBox1.Controls.Add(this.label6);
-            this.groupBox1.Controls.Add(this.btnBuscarCompra);
+            this.groupBox1.Controls.Add(this.btnBuscarVentas);
             this.groupBox1.Controls.Add(this.cbTipoDocumento);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
@@ -214,12 +199,12 @@
             this.cmbClientes.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CmbClientes_KeyPress);
             this.cmbClientes.KeyUp += new System.Windows.Forms.KeyEventHandler(this.cmbClientes_KeyUp);
             // 
-            // txtCodigoCompra
+            // txtCodigoVenta
             // 
-            this.txtCodigoCompra.Location = new System.Drawing.Point(84, 19);
-            this.txtCodigoCompra.Name = "txtCodigoCompra";
-            this.txtCodigoCompra.Size = new System.Drawing.Size(138, 20);
-            this.txtCodigoCompra.TabIndex = 16;
+            this.txtCodigoVenta.Location = new System.Drawing.Point(84, 19);
+            this.txtCodigoVenta.Name = "txtCodigoVenta";
+            this.txtCodigoVenta.Size = new System.Drawing.Size(138, 20);
+            this.txtCodigoVenta.TabIndex = 16;
             // 
             // label13
             // 
@@ -291,15 +276,14 @@
             this.label6.TabIndex = 11;
             this.label6.Text = "Fecha Inicial";
             // 
-            // btnBuscarCompra
+            // btnBuscarVentas
             // 
-            this.btnBuscarCompra.Location = new System.Drawing.Point(789, 16);
-            this.btnBuscarCompra.Name = "btnBuscarCompra";
-            this.btnBuscarCompra.Size = new System.Drawing.Size(102, 23);
-            this.btnBuscarCompra.TabIndex = 10;
-            this.btnBuscarCompra.Text = "Buscar Compra";
-            this.btnBuscarCompra.UseVisualStyleBackColor = true;
-            this.btnBuscarCompra.Click += new System.EventHandler(this.btnBuscarCompras_Click);
+            this.btnBuscarVentas.Location = new System.Drawing.Point(789, 16);
+            this.btnBuscarVentas.Name = "btnBuscarVentas";
+            this.btnBuscarVentas.Size = new System.Drawing.Size(102, 23);
+            this.btnBuscarVentas.TabIndex = 10;
+            this.btnBuscarVentas.Text = "Buscar Compra";
+            this.btnBuscarVentas.UseVisualStyleBackColor = true;
             // 
             // cbTipoDocumento
             // 
@@ -332,6 +316,19 @@
             this.dataGridViewTextBoxColumn2.ReadOnly = true;
             this.dataGridViewTextBoxColumn2.Visible = false;
             // 
+            // NuevoPrecio
+            // 
+            this.NuevoPrecio.HeaderText = "Nuevo Precio";
+            this.NuevoPrecio.Name = "NuevoPrecio";
+            // 
+            // Margen
+            // 
+            this.Margen.DataPropertyName = "Margen";
+            this.Margen.HeaderText = "Margen";
+            this.Margen.Name = "Margen";
+            this.Margen.ReadOnly = true;
+            this.Margen.Visible = false;
+            // 
             // frmMantenimientoCompras
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -345,7 +342,7 @@
             this.gbCambiarPrecios.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgrvCompras)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgrvVentas)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bdCompras)).EndInit();
@@ -360,14 +357,14 @@
         private System.Windows.Forms.Button btnAplicar;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.DataGridView dgrvCompras;
+        private System.Windows.Forms.DataGridView dgrvVentas;
         private System.Windows.Forms.DataGridViewCheckBoxColumn TienePrecioVariable;
         private System.Windows.Forms.DataGridViewTextBoxColumn NuevoPrecio;
         private System.Windows.Forms.DataGridViewTextBoxColumn Margen;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.CheckBox chkTienePrecioVariable;
         private System.Windows.Forms.ComboBox cmbClientes;
-        private System.Windows.Forms.TextBox txtCodigoCompra;
+        private System.Windows.Forms.TextBox txtCodigoVenta;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DateTimePicker dtpFechaFinal;
@@ -376,7 +373,7 @@
         private System.Windows.Forms.ComboBox cbProducto;
         private System.Windows.Forms.DateTimePicker dtpFechaInicial;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Button btnBuscarCompra;
+        private System.Windows.Forms.Button btnBuscarVentas;
         private System.Windows.Forms.ComboBox cbTipoDocumento;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.BindingSource bdCompras;

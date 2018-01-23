@@ -39,23 +39,35 @@
             this.cmbClientes = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.dgvDocumentoPago = new System.Windows.Forms.DataGridView();
-            this.bsDocumentosPagoVenta = new System.Windows.Forms.BindingSource(this.components);
-            this.tsbAgregar = new System.Windows.Forms.ToolStripButton();
-            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.tsbEliminar = new System.Windows.Forms.ToolStripButton();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+<<<<<<< HEAD
             this.Seleccionado = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.idDocumentoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.idTipoDocumentoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fechaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.montoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.idEstadoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+=======
+>>>>>>> b6ee30bea750bd095abc945472cf2a773f2210c4
+            this.bsDocumentosPagoVenta = new System.Windows.Forms.BindingSource(this.components);
+            this.tsbAgregar = new System.Windows.Forms.ToolStripButton();
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.tsbEliminar = new System.Windows.Forms.ToolStripButton();
+            this.Seleccionado = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+<<<<<<< HEAD
+=======
+            this.IdDocumento = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idTipoDocumentoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fechaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.montoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idEstadoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+>>>>>>> b6ee30bea750bd095abc945472cf2a773f2210c4
+            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDocumentoPago)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsDocumentosPagoVenta)).BeginInit();
@@ -146,13 +158,16 @@
             // dgvDocumentoPago
             // 
             this.dgvDocumentoPago.AllowUserToAddRows = false;
+            this.dgvDocumentoPago.AllowUserToDeleteRows = false;
+            this.dgvDocumentoPago.AllowUserToResizeRows = false;
             this.dgvDocumentoPago.AutoGenerateColumns = false;
+            this.dgvDocumentoPago.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvDocumentoPago.CausesValidation = false;
             this.dgvDocumentoPago.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.dgvDocumentoPago.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDocumentoPago.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Seleccionado,
-            this.idDocumentoDataGridViewTextBoxColumn,
+            this.IdDocumento,
             this.idTipoDocumentoDataGridViewTextBoxColumn,
             this.fechaDataGridViewTextBoxColumn,
             this.montoDataGridViewTextBoxColumn,
@@ -164,84 +179,10 @@
             this.dgvDocumentoPago.Size = new System.Drawing.Size(700, 251);
             this.dgvDocumentoPago.TabIndex = 1;
             this.dgvDocumentoPago.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDocumentoPago_CellContentDoubleClick);
+            this.dgvDocumentoPago.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDocumentoPago_CellEndEdit);
+            this.dgvDocumentoPago.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDocumentoPago_CellContentClick);
             // 
-            // bsDocumentosPagoVenta
-            // 
-            this.bsDocumentosPagoVenta.DataSource = typeof(DGP.Entities.Ventas.BEDocumento);
-            // 
-            // tsbAgregar
-            // 
-            this.tsbAgregar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbAgregar.Image = global::DGP.Presentation.Properties.Resources.plusIcon;
-            this.tsbAgregar.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbAgregar.Name = "tsbAgregar";
-            this.tsbAgregar.Size = new System.Drawing.Size(23, 22);
-            this.tsbAgregar.Text = "toolStripButton1";
-            // 
-            // toolStrip1
-            // 
-            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsbAgregar,
-            this.tsbEliminar});
-            this.toolStrip1.Location = new System.Drawing.Point(0, 107);
-            this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(700, 25);
-            this.toolStrip1.TabIndex = 2;
-            this.toolStrip1.Text = "toolStrip1";
-            this.toolStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.toolStrip1_ItemClicked);
-            // 
-            // tsbEliminar
-            // 
-            this.tsbEliminar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbEliminar.Image = ((System.Drawing.Image)(resources.GetObject("tsbEliminar.Image")));
-            this.tsbEliminar.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbEliminar.Name = "tsbEliminar";
-            this.tsbEliminar.Size = new System.Drawing.Size(23, 22);
-            this.tsbEliminar.Text = "toolStripButton2";
-            this.tsbEliminar.Click += new System.EventHandler(this.tsbEliminar_Click);
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "IdDocumento";
-            this.dataGridViewTextBoxColumn1.HeaderText = "IdDocumento";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.DataPropertyName = "Fecha";
-            this.dataGridViewTextBoxColumn2.HeaderText = "Fecha";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.DataPropertyName = "IdTipoDocumento";
-            this.dataGridViewTextBoxColumn3.HeaderText = "IdTipoDocumento";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            this.dataGridViewTextBoxColumn4.DataPropertyName = "Monto";
-            this.dataGridViewTextBoxColumn4.HeaderText = "Monto";
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            // 
-            // dataGridViewTextBoxColumn5
-            // 
-            this.dataGridViewTextBoxColumn5.DataPropertyName = "Estado";
-            this.dataGridViewTextBoxColumn5.HeaderText = "Estado";
-            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            // 
-            // dataGridViewTextBoxColumn6
-            // 
-            this.dataGridViewTextBoxColumn6.DataPropertyName = "IdCliente";
-            this.dataGridViewTextBoxColumn6.HeaderText = "IdCliente";
-            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
-            // 
-            // dataGridViewTextBoxColumn7
-            // 
-            this.dataGridViewTextBoxColumn7.DataPropertyName = "IdPersonal";
-            this.dataGridViewTextBoxColumn7.HeaderText = "IdPersonal";
-            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
-            // 
+<<<<<<< HEAD
             // Seleccionado
             // 
             this.Seleccionado.HeaderText = "Seleccionar";
@@ -276,6 +217,134 @@
             this.idEstadoDataGridViewTextBoxColumn.DataPropertyName = "idEstado";
             this.idEstadoDataGridViewTextBoxColumn.HeaderText = "idEstado";
             this.idEstadoDataGridViewTextBoxColumn.Name = "idEstadoDataGridViewTextBoxColumn";
+            // 
+=======
+>>>>>>> b6ee30bea750bd095abc945472cf2a773f2210c4
+            // bsDocumentosPagoVenta
+            // 
+            this.bsDocumentosPagoVenta.DataSource = typeof(DGP.Entities.Ventas.BEDocumento);
+            // 
+            // tsbAgregar
+            // 
+            this.tsbAgregar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbAgregar.Image = global::DGP.Presentation.Properties.Resources.plusIcon;
+            this.tsbAgregar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbAgregar.Name = "tsbAgregar";
+            this.tsbAgregar.Size = new System.Drawing.Size(23, 22);
+            this.tsbAgregar.Text = "toolStripButton1";
+            this.tsbAgregar.Click += new System.EventHandler(this.tsbAgregar_Click);
+            // 
+            // toolStrip1
+            // 
+            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsbAgregar,
+            this.tsbEliminar});
+            this.toolStrip1.Location = new System.Drawing.Point(0, 107);
+            this.toolStrip1.Name = "toolStrip1";
+            this.toolStrip1.Size = new System.Drawing.Size(700, 25);
+            this.toolStrip1.TabIndex = 2;
+            this.toolStrip1.Text = "toolStrip1";
+            this.toolStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.toolStrip1_ItemClicked);
+            // 
+            // tsbEliminar
+            // 
+            this.tsbEliminar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbEliminar.Image = ((System.Drawing.Image)(resources.GetObject("tsbEliminar.Image")));
+            this.tsbEliminar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbEliminar.Name = "tsbEliminar";
+            this.tsbEliminar.Size = new System.Drawing.Size(23, 22);
+            this.tsbEliminar.Text = "toolStripButton2";
+            this.tsbEliminar.Click += new System.EventHandler(this.tsbEliminar_Click);
+            // 
+            // Seleccionado
+            // 
+            this.Seleccionado.HeaderText = "Seleccionar";
+            this.Seleccionado.Name = "Seleccionado";
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "IdDocumento";
+            this.dataGridViewTextBoxColumn1.HeaderText = "IdDocumento";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "Fecha";
+            this.dataGridViewTextBoxColumn2.HeaderText = "Fecha";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.DataPropertyName = "IdTipoDocumento";
+            this.dataGridViewTextBoxColumn3.HeaderText = "IdTipoDocumento";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.DataPropertyName = "Monto";
+            this.dataGridViewTextBoxColumn4.HeaderText = "Monto";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            this.dataGridViewTextBoxColumn5.DataPropertyName = "Estado";
+            this.dataGridViewTextBoxColumn5.HeaderText = "Estado";
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            this.dataGridViewTextBoxColumn5.ReadOnly = true;
+            // 
+            // IdDocumento
+            // 
+<<<<<<< HEAD
+=======
+            this.IdDocumento.DataPropertyName = "IdDocumento";
+            this.IdDocumento.HeaderText = "IdDocumento";
+            this.IdDocumento.Name = "IdDocumento";
+            this.IdDocumento.ReadOnly = true;
+            // 
+            // idTipoDocumentoDataGridViewTextBoxColumn
+            // 
+            this.idTipoDocumentoDataGridViewTextBoxColumn.DataPropertyName = "IdTipoDocumento";
+            this.idTipoDocumentoDataGridViewTextBoxColumn.HeaderText = "IdTipoDocumento";
+            this.idTipoDocumentoDataGridViewTextBoxColumn.Name = "idTipoDocumentoDataGridViewTextBoxColumn";
+            this.idTipoDocumentoDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // fechaDataGridViewTextBoxColumn
+            // 
+            this.fechaDataGridViewTextBoxColumn.DataPropertyName = "Fecha";
+            this.fechaDataGridViewTextBoxColumn.HeaderText = "Fecha";
+            this.fechaDataGridViewTextBoxColumn.Name = "fechaDataGridViewTextBoxColumn";
+            this.fechaDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // montoDataGridViewTextBoxColumn
+            // 
+            this.montoDataGridViewTextBoxColumn.DataPropertyName = "Monto";
+            this.montoDataGridViewTextBoxColumn.HeaderText = "Monto";
+            this.montoDataGridViewTextBoxColumn.Name = "montoDataGridViewTextBoxColumn";
+            this.montoDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // idEstadoDataGridViewTextBoxColumn
+            // 
+            this.idEstadoDataGridViewTextBoxColumn.DataPropertyName = "idEstado";
+            this.idEstadoDataGridViewTextBoxColumn.HeaderText = "idEstado";
+            this.idEstadoDataGridViewTextBoxColumn.Name = "idEstadoDataGridViewTextBoxColumn";
+            this.idEstadoDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn6
+            // 
+            this.dataGridViewTextBoxColumn6.DataPropertyName = "IdCliente";
+            this.dataGridViewTextBoxColumn6.HeaderText = "IdCliente";
+            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            // 
+            // dataGridViewTextBoxColumn7
+            // 
+>>>>>>> b6ee30bea750bd095abc945472cf2a773f2210c4
+            this.dataGridViewTextBoxColumn7.DataPropertyName = "IdPersonal";
+            this.dataGridViewTextBoxColumn7.HeaderText = "IdPersonal";
+            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
             // 
             // frmMantenimientoDocumentoPago
             // 
@@ -324,7 +393,7 @@
         private System.Windows.Forms.ToolStripButton tsbEliminar;
         private System.Windows.Forms.BindingSource bsDocumentosPagoVenta;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Seleccionado;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idDocumentoDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IdDocumento;
         private System.Windows.Forms.DataGridViewTextBoxColumn idTipoDocumentoDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn fechaDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn montoDataGridViewTextBoxColumn;

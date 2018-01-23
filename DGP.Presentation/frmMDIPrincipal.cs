@@ -199,17 +199,19 @@ namespace DGP.Presentation {
             frmMantenimientoComprasV2 frm = new frmMantenimientoComprasV2();
             frm.MdiParent = this;
             frm.Show();
+        }
 
-
-        }   
         private void msMenuPrincipal_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
-
+        
         }
 
         private void mantenimientoDeDocPagosCompraToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+        
         }
-    }
+
+        }   
+
+    
 }

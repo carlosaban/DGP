@@ -12,6 +12,9 @@ namespace DGP.Entities.Ventas
         public const string TIPO_AMORTIZACION_REDONDEO = "RDO";
         public string IdTipoDocumento { get; set; }
         public DateTime Fecha { get; set; }
+        public string Observacion { get; set; }
+        public string IdTipoPago { get; set; }
+       
         private decimal? _Monto; 
         public decimal Monto
         {
@@ -48,6 +51,6 @@ namespace DGP.Entities.Ventas
            // this.Estado = DOCUMENTO_ESTADO_REGISTRADO;
         
         }
-        public string Observacion { get; set; }
+        
     }
 }
