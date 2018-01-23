@@ -207,7 +207,7 @@ namespace DGP.DataAccess.Compra
         //    }
         //}
 
-
+        DatabaseHelper DBconexiones = new DatabaseHelper();
 
         public bool Insertar(BECompra bECompra, out string mensaje)
         {
@@ -221,8 +221,62 @@ namespace DGP.DataAccess.Compra
 
         public List<BECompra> Listar(BECompraFilter pBECompra)
         {
-            throw new NotImplementedException();
-        }
+            List<BECompra> lista = new List<BECompra>();
+            IDataReader DRlista = null;
 
+            try
+            {
+                DBconexiones.ClearParameter();
+                DBconexiones.AddParameter("@intIdCompra", pBECompra.IdCompra);
+                DBconexiones.AddParameter("@varIdTipoDocumento", pBECompra.IdCompra);
+                DBconexiones.AddParameter("@intIdCliente", pBECompra.IdCompra);
+                DBconexiones.AddParameter("@intIdProducto", pBECompra.IdCompra);
+                DBconexiones.AddParameter("@fechaIni", pBECompra.IdCompra);
+                DBconexiones.AddParameter("@fechaFin", pBECompra.IdCompra);
+                DRlista = DBconexiones.ExecuteReader("DGP_Listar_Compra", CommandType.StoredProcedure);
+
+                while (DRlista.Read())
+                {
+                    BECompraFilter compra = new BECompraFilter();
+                    compra.IdCompra = (int)DRlista["IdCompra"];
+                    compra.IdTipoDocumentoCompra = (string)DRlista["IdTipoDocumentoCompra"];
+                    compra.TipoDocumentoCompra = (string)DRlista["TipoDocumentoCompra"];
+                    compra.NumeroDocumento = (string)DRlista["NumeroDocumento"];
+                    compra.TotalPesoBruto = (decimal)DRlista["TotalPeso_Bruto"];
+                    compra.TotalPesoTara = (decimal)DRlista["TotalPeso_Tara"];
+                    compra.TotalPesoNeto = (decimal)DRlista["TotalPeso_Neto"];
+                    compra.Precio = (decimal)DRlista["Precio"];
+                    compra.MontoSubTotal = (decimal)DRlista["MontoSubTotal"];
+                    compra.MontoIGV = (decimal)DRlista["MontoIgv"];
+                    compra.MontoTotal = (decimal)DRlista["MontoTotal"];
+                    compra.TotalDevolucion = (decimal)DRlista["TotalDevolucion"];
+                    compra.TotalAmortizacion = (decimal)DRlista["TotalAmortizacion"];
+                    compra.TotalSaldo = (decimal)DRlista["TotalSaldo"];
+                    compra.Observacion = (string)DRlista["Observacion"];
+                    compra.IdEstado = (string)DRlista["IdEstado"];
+                    compra.IdEmpresa = (int)DRlista["IdEmpresa"];
+                    compra.Empresa = (string)DRlista["Empresa"];
+                    compra.IdProducto = (int)DRlista["IdProducto"];
+                    compra.Producto = (string)DRlista["Producto"];
+                    compra.IdProveedor = (int)DRlista["IdCliente"];
+                    compra.Proveedor = (string)DRlista["Cliente"];
+                    compra.IdPersonal = (int)DRlista["IdPersonal"];
+                    compra.FechaCreacion = (DateTime)DRlista["FechaCreacion"];
+                    compra.TotalUnidades = (int)DRlista["TotalUnidades"];
+                    lista.Add(compra);
+                }
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+            finally
+            {
+                if (!DRlista.IsClosed) DRlista.Close();
+                DRlista.Dispose();
+                DBconexiones.Dispose();
+            }
+            return lista;
+        }
     }
 }
