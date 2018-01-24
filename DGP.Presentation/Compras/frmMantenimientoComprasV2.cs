@@ -49,9 +49,8 @@ namespace DGP.Presentation.Compras
 
         private void CargarGrilla()
         {
-            BECompraFilter oBECompraFiltros = ObtenerCompraBusqueda();
-            this.bdCompras.DataSource = blCompra.Listar(oBECompraFiltros);
-            this.dgrvCompras.DataSource = this.bdCompras;
+            BECompra oBECompraFiltros = ObtenerCompraBusqueda();
+
         }
 
         /**/
@@ -110,22 +109,22 @@ namespace DGP.Presentation.Compras
             MessageBox.Show(pMensaje, "DGP", MessageBoxButtons.OK, pMsgBoxicon);
         }
 
-        private BECompraFilter ObtenerCompraBusqueda()
+        private BECompra ObtenerCompraBusqueda()
         {
-            BECompraFilter oBECompra = new BECompraFilter();
+            BECompra oBECompra = new BECompra();
 
-            oBECompra.IdCompra = int.Parse(txtCodigoCompra.Text);// string.IsNullOrEmpty(txtCodigoVenta.Text) ? 0 : int.Parse(txtCodigoVenta.Text);
-            oBECompra.IdTipoDocumentoCompra = cbTipoDocumento.SelectedIndex.ToString();
-            oBECompra.IdProveedor = cmbClientes.SelectedIndex;
-            oBECompra.IdProducto = cbProducto.SelectedIndex;
-            oBECompra.FechaInicio = dtpFechaInicial.Value.Date;
-            oBECompra.FechaFin = dtpFechaFinal.Value.Date;
+            //oBECompra.strFilterIds = txtCodigoVenta.Text;// string.IsNullOrEmpty(txtCodigoVenta.Text) ? 0 : int.Parse(txtCodigoVenta.Text);
 
+            //oBECompra.IdTipoDocumentoVenta = (cbTipoDocumento.SelectedIndex == 0) ? string.Empty : cbTipoDocumento.SelectedValue.ToString();
+            //oBECompra.IdCliente = (this.cmbClientes.Text == string.Empty) ? -1 : Convert.ToInt32(cmbClientes.SelectedValue);
+            //oBECompra.IdProducto = (cbProducto.SelectedIndex == 0) ? 0 : Convert.ToInt32(cbProducto.SelectedValue);
+            //oBECompra.FechaInicio = dtpFechaInicial.Value.Date;
+            //oBECompra.FechaFin = dtpFechaFinal.Value.Date;
             return oBECompra;
         }
         /**/
 
-        private void cmbClientes_KeyPress(object sender, KeyPressEventArgs e)
+        private void CmbClientes_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == (char)(Keys.Enter))
             {
@@ -219,10 +218,7 @@ namespace DGP.Presentation.Compras
             //this.gbCambiarPrecios.Visible = VariablesSession.Privilegios.Exists(t => t.IdPrivilegio == DGP.Entities.Seguridad.BEPrivilegio.Act_Precio_Venta_Masivo);
         }
 
-        private void dgrvCompras_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            frmDetalleCompra detalle = new frmDetalleCompra(bdCompras);
-            detalle.ShowDialog();
-        }
+        
+       
     }
 }

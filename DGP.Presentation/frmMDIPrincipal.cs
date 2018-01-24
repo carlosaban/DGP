@@ -196,7 +196,7 @@ namespace DGP.Presentation {
 
         private void mantenimientoDeComprasToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmMantenimientoComprasV2 frm = new frmMantenimientoComprasV2();
+            frmMantenimientoCompras frm = new frmMantenimientoCompras();
             frm.MdiParent = this;
             frm.Show();
         }

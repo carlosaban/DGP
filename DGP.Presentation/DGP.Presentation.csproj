@@ -482,8 +482,6 @@
     <None Include="Resources\saveIcon.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Properties\DataSources\DGP.Entities.Compras.BECompra.datasource" />
-    <None Include="Properties\DataSources\DGP.Entities.Compras.BECompraFilter.datasource" />
     <None Include="Properties\DataSources\DGP.Entities.Compras.BELineaCompra.datasource" />
     <None Include="Resources\plusIcon.png" />
   </ItemGroup>
