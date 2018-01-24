@@ -195,8 +195,9 @@ namespace DGP.DataAccess.Ventas
                 oDatabaseHelper.AddParameter("@intIdUsuarioCreacion", beAmortizacionVenta.IdPersonal);
                 oDatabaseHelper.AddParameter("@intIdCaja", beAmortizacionVenta.Caja.IdCaja);
                 oDatabaseHelper.AddParameter("@intIdDocumento", beAmortizacionVenta.IdDocumento);
+                oDatabaseHelper.AddParameter("@varIdEstado", beAmortizacionVenta.IdEstado);
 
-                object vResultado = oDatabaseHelper.ExecuteScalar("InsertarAmortizacionVenta", CommandType.StoredProcedure, (pDatabaseHelper == null) ? DBHelper.ConnectionState.CloseOnExit : DBHelper.ConnectionState.KeepOpen);
+                oDatabaseHelper.ExecuteScalar("InsertarAmortizacionVenta", CommandType.StoredProcedure, (pDatabaseHelper == null) ? DBHelper.ConnectionState.CloseOnExit : DBHelper.ConnectionState.KeepOpen);
 
                 return true;
             }
@@ -211,6 +212,45 @@ namespace DGP.DataAccess.Ventas
             }
 
         }
+        public bool ActualizarAmortizacionVenta(BEAmortizacionVenta beAmortizacionVenta)
+        {
+            return this.ActualizarAmortizacionVenta(beAmortizacionVenta, null);
+
+        }
+
+
+        public bool ActualizarAmortizacionVenta(BEAmortizacionVenta beAmortizacionVenta, DatabaseHelper pDatabaseHelper)
+        {
+            DatabaseHelper oDatabaseHelper = (pDatabaseHelper == null) ? new DatabaseHelper() : pDatabaseHelper;
+
+            try
+            {
+                oDatabaseHelper.ClearParameter();
+                oDatabaseHelper.AddParameter("@decMonto", beAmortizacionVenta.Monto);
+                oDatabaseHelper.AddParameter("@varNumeroDocumento", beAmortizacionVenta.NroDocumento);
+                oDatabaseHelper.AddParameter("@varObservacion", beAmortizacionVenta.Observacion);
+                oDatabaseHelper.AddParameter("@intIdVenta", beAmortizacionVenta.IdVenta);
+                oDatabaseHelper.AddParameter("@intIdPersonal", beAmortizacionVenta.BEUsuarioLogin.IdPersonal);
+                oDatabaseHelper.AddParameter("@intIdUsuarioModificacion", beAmortizacionVenta.BEUsuarioLogin.IdPersonal);
+                oDatabaseHelper.AddParameter("@intIdAmortVenta", beAmortizacionVenta.IdAmortizacionVenta);
+                oDatabaseHelper.AddParameter("@varIdEstado", beAmortizacionVenta.IdEstado);
+
+                oDatabaseHelper.ExecuteScalar("ActualizarAmortizacionVenta", CommandType.StoredProcedure, (pDatabaseHelper == null) ? DBHelper.ConnectionState.CloseOnExit : DBHelper.ConnectionState.KeepOpen);
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+
+                if (pDatabaseHelper == null) oDatabaseHelper.Dispose();
+            }
+
+        }
+
 
         public bool ActualizarCabeceraDocumento(BEDocumento beDocumento)
         {
@@ -274,6 +314,37 @@ namespace DGP.DataAccess.Ventas
             {
 
                 oDatabaseHelper.Dispose();
+            }
+
+        }
+
+        public bool EliminarAmortizacionVenta(BEAmortizacionVenta beAmortizacionVenta)
+        {
+            return this.EliminarAmortizacionVenta(beAmortizacionVenta, null);
+
+        }
+
+        public bool EliminarAmortizacionVenta(BEAmortizacionVenta beAmortizacionVenta, DatabaseHelper pDatabaseHelper)
+        {
+            DatabaseHelper oDatabaseHelper = (pDatabaseHelper == null) ? new DatabaseHelper() : pDatabaseHelper;
+
+            try
+            {
+                oDatabaseHelper.ClearParameter();
+                oDatabaseHelper.AddParameter("@idAmortizacionVenta", beAmortizacionVenta.IdAmortizacionVenta);
+
+                oDatabaseHelper.ExecuteScalar("EliminarAmortizacionVenta", CommandType.StoredProcedure, (pDatabaseHelper == null) ? DBHelper.ConnectionState.CloseOnExit : DBHelper.ConnectionState.KeepOpen);
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+
+                if (pDatabaseHelper == null) oDatabaseHelper.Dispose();
             }
 
         }
