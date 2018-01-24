@@ -192,7 +192,7 @@ namespace DGP.DataAccess.Compra
             try
             {
                 oDatabaseHelper.ClearParameter();
-                oDatabaseHelper.AddParameter("@IdCliente", beCompra.Proveedor.IdCliente);
+                oDatabaseHelper.AddParameter("@IdCliente", beCompra.IdProveedor);
                 oDatabaseHelper.AddParameter("@idUsuario", beCompra.BEUsuarioLogin.IdPersonal);
                 oDatabaseHelper.AddParameter("@IdCaja", beCompra.BEUsuarioLogin.IdCaja);
 

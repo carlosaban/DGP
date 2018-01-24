@@ -15,16 +15,12 @@ namespace DGP.BusinessLogic.Compra
 
         public BLCompra()
         {
-
             this.BECompra = new BECompra();
-
         }
 
         public BLCompra(BECompra beCompra)
         {
-
             this.BECompra = beCompra;
-        
         }
         
         public bool ValidarCompra(out string mensaje) {
@@ -51,13 +47,11 @@ namespace DGP.BusinessLogic.Compra
              if ( ValidarLineaCompra(out mensaje) ) this.BECompra.ListaLineaCompra.Add(beLineaCompra);
 
              return (mensaje == string.Empty);
-         
-         
          }
+
          public bool addLineaDevolucion(BELineaCompra beLineaCompra, out string mensaje)
          {
              if (ValidarLineaDevolucion(out mensaje)) this.BECompra.ListaDevolucion.Add(beLineaCompra);
-
              return (mensaje == string.Empty);
          }
 
@@ -99,7 +93,7 @@ namespace DGP.BusinessLogic.Compra
 
 
 
-        public static  List<BECompra> Listar(BECompraFilter pBECompra)
+        public List<BECompra> Listar(BECompraFilter pBECompra)
         {
             try
             {
@@ -134,17 +128,5 @@ namespace DGP.BusinessLogic.Compra
         //        throw ex;
         //    }
         //}
-
-        /*public List<BECompra> ListarVenta(int pIdVenta, int pIdCaja, int pIdZona, int pIdProducto, int pIdCliente)
-        {
-            try
-            {
-                //return new DACompra().ListarCompra(pIdVenta, pIdCaja, pIdZona, pIdProducto, pIdCliente);
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }*/
     }
 }

@@ -121,7 +121,15 @@
     <value>True</value>
   </metadata>
   <metadata name="bsDocumentosPagoVenta.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+<<<<<<< HEAD
     <value>181, 29</value>
+=======
+<<<<<<< HEAD
+    <value>181, 29</value>
+=======
+    <value>288, 27</value>
+>>>>>>> b6ee30bea750bd095abc945472cf2a773f2210c4
+>>>>>>> cb12352013250c1275d17ffec9809e72fe04bab7
   </metadata>
   <metadata name="toolStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>44, 28</value>

@@ -9,7 +9,6 @@ GO
 /*LISTAR COMPRA*/
 CREATE PROCEDURE [dbo].[DGP_Listar_Compra](
 @intIdCompra INT = NULL
-,@intIdCaja	INT = NULL
 ) AS
 BEGIN
 	SELECT	C.IdCompra
@@ -28,7 +27,6 @@ BEGIN
 		,C.TotalSaldo --// Saldo Anterior
 		,C.Observacion
 		,C.IdEstado
-		,C.IdCaja
 		,C.IdEmpresa
 		,[Empresa] = EM.RazonSocial
 		,C.IdProducto
@@ -48,7 +46,6 @@ BEGIN
 		INNER JOIN dbo.Tb_Empresa AS EM
 			ON (C.IdEmpresa = EM.Id_Empresa)
 	WHERE C.IdCompra = ISNULL(@intIdCompra, C.IdCompra)
-		AND C.IdCaja = ISNULL(@intIdCaja, C.IdCaja)
 		AND C.IdEstado != dbo.DGP_COMPRA_ESTADO_ANULADO()
              order by CP.Nombres
 END

@@ -8,13 +8,30 @@ using System.Windows.Forms;
 
 using DGP.Entities;
 using DGP.BusinessLogic;
+<<<<<<< HEAD
 using DGP.Entities.Compras;
 using DGP.BusinessLogic.Compra;
+=======
+<<<<<<< HEAD
+using DGP.Entities.Compras;
+using DGP.BusinessLogic.Compra;
+=======
+using DGP.BusinessLogic.Compra;
+using DGP.Entities.Compras;
+>>>>>>> b6ee30bea750bd095abc945472cf2a773f2210c4
+>>>>>>> cb12352013250c1275d17ffec9809e72fe04bab7
 
 namespace DGP.Presentation.Compras
 {
     public partial class frmMantenimientoCompras : Form
     {
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+
+>>>>>>> b6ee30bea750bd095abc945472cf2a773f2210c4
+>>>>>>> cb12352013250c1275d17ffec9809e72fe04bab7
         BLCompra blCompra = new BLCompra( );
 
         public frmMantenimientoCompras()
@@ -111,6 +128,8 @@ namespace DGP.Presentation.Compras
             MessageBox.Show(pMensaje, "DGP", MessageBoxButtons.OK, pMsgBoxicon);
         }
 
+>>>>>>> b6ee30bea750bd095abc945472cf2a773f2210c4
+
         private BECompra ObtenerCompraBusqueda()
         {
             BECompra oBECompra = new BECompra();
@@ -125,6 +144,13 @@ namespace DGP.Presentation.Compras
             //oBECompra.TienePrecioVariable = chkTienePrecioVariable.Checked;
             return oBECompra;
         }
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+
+>>>>>>> b6ee30bea750bd095abc945472cf2a773f2210c4
+>>>>>>> cb12352013250c1275d17ffec9809e72fe04bab7
         /**/
 
         private void CmbClientes_KeyPress(object sender, KeyPressEventArgs e)

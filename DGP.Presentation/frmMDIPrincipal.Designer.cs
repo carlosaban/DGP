@@ -102,6 +102,13 @@
             // 
             // mantenimientoDeDocPagosToolStripMenuItem
             // 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+
+>>>>>>> b6ee30bea750bd095abc945472cf2a773f2210c4
+>>>>>>> cb12352013250c1275d17ffec9809e72fe04bab7
             this.mantenimientoDeDocPagosToolStripMenuItem.Name = "mantenimientoDeDocPagosToolStripMenuItem";
             this.mantenimientoDeDocPagosToolStripMenuItem.Size = new System.Drawing.Size(266, 22);
             this.mantenimientoDeDocPagosToolStripMenuItem.Text = "Mantenimiento de Doc. Pagos Venta";
@@ -118,6 +125,13 @@
             //this.mantenimientoDeDocPagosToolStripMenuItem.Text = "Mantenimiento de Doc. Pagos";
             //this.mantenimientoDeDocPagosToolStripMenuItem.Click += new System.EventHandler(this.mantenimientoDeDocPagosToolStripMenuItem_Click);
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+
+>>>>>>> b6ee30bea750bd095abc945472cf2a773f2210c4
+>>>>>>> cb12352013250c1275d17ffec9809e72fe04bab7
             // 
             // tsmiAmortizacion
             // 
