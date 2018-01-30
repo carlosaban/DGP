@@ -1,11 +1,5 @@
-USE [DVGP_CITAVAL]
-GO
 
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-alter     PROCEDURE [dbo].[ActualizarAmortizacionVenta](
+CREATE     PROCEDURE [dbo].[ActualizarAmortizacionVenta](
 
 @decMonto		DECIMAL(8,2)
 

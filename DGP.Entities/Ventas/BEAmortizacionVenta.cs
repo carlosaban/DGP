@@ -142,6 +142,7 @@ namespace DGP.Entities.Ventas {
             get { return mIdDocumento; }
             set { mIdDocumento = value; }
         }
+        public decimal SaldoMaximoVenta { get; set; }
 
 
     }

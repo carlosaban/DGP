@@ -10,6 +10,8 @@ using DGP.Entities;
 using DGP.Entities.Ventas;
 using DGP.BusinessLogic;
 using DGP.BusinessLogic.Ventas;
+using DGP.Entities.Seguridad;
+using DGP.BusinessLogic.Seguridad;
 
 namespace DGP.Presentation.Ventas
 {
@@ -23,6 +25,10 @@ namespace DGP.Presentation.Ventas
         public frmDocumentoPago(BindingSource bs,string accion,BEClienteProveedor cliente,int cell)
         {
             InitializeComponent();
+            
+            CargarUsuarios();
+            CargarFormaDePago();
+            CargarEntidadBancaria();
 
             this.bsDocumentos.DataSource = bs.DataSource;
             this.accion = accion;
@@ -32,6 +38,10 @@ namespace DGP.Presentation.Ventas
         public frmDocumentoPago(BindingSource bs, string accion, BEClienteProveedor cliente)
         {
             InitializeComponent();
+
+            CargarUsuarios();
+            CargarFormaDePago();
+            CargarEntidadBancaria();
 
             this.bsDocumentos.DataSource = bs.DataSource;
             this.accion = accion;
@@ -77,12 +87,16 @@ namespace DGP.Presentation.Ventas
                 BLDocumentoPago BLDP = new BLDocumentoPago();
                 BEDocumento documento = new BEDocumento();
                 documento.IdDocumento = Convert.ToInt32(txtIdDocumento.Text);
-                documento.IdTipoDocumento = cmbTipoDocumento.SelectedItem.ToString();
+                documento.IdTipoDocumento = cmbTipoDocumento.SelectedValue.ToString();
                 documento.Fecha = dtFecha.Value.Date;
                 documento.Monto = numMonto.Value;
                 documento.BEUsuarioLogin = VariablesSession.BEUsuarioSession;
                 documento.Cliente.IdCliente = Cliente.IdCliente;
                 documento.Observacion = txtObservacion.Text;
+                documento.Banco.IdEntidadBancaria = (int)this.cmbEntidadBancaria.SelectedValue;
+                documento.CodigoReferencia = this.txtCodigoReferencia.Text;
+                documento.IdTipoPago = this.cmbTipoPago.SelectedItem.ToString();
+
                 BLDP.ActualizarCabecera(documento);
             }
 
@@ -140,9 +154,9 @@ namespace DGP.Presentation.Ventas
 
         private void btnDetalle_Click(object sender, EventArgs e)
         {
-            montoAplicar = numMontoAplica.Value;
+            montoAplicar = 100; //numMontoAplica.Value;
             int idDocumento = Convert.ToInt32(txtIdDocumento.Text);
-            frmDocumentoPagoDetalle from = new frmDocumentoPagoDetalle(Cliente, montoAplicar, idDocumento);
+            frmDocumentoPagoDetalle from = new frmDocumentoPagoDetalle(Cliente, montoAplicar, idDocumento, (int)this.cmbPersonal.SelectedValue);
             from.Show();
         }
 
@@ -212,6 +226,47 @@ namespace DGP.Presentation.Ventas
                 }
             }
             MostrarMensaje("Se elimino la amortización correctamente", MessageBoxIcon.Information);
+        }
+
+        private void bindingNavigatorAddNewItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void CargarUsuarios()
+        {
+            List<BEPersonal> vLista = new BLPersonal().ListarPersonal(new BEPersonal());
+            this.cmbPersonal.DataSource = vLista;
+            cmbPersonal.DisplayMember = "Nombre";
+            cmbPersonal.ValueMember = "IdPersonal";
+        }
+        private void CargarFormaDePago()
+        {
+            List<BEParametroDetalle> vLista = new BLParametroDetalle().Listar(new BEParametroDetalle() { IdParametro = 7 } );
+            this.cmbTipoPago.DataSource = vLista ;
+            cmbTipoPago.DisplayMember = "Texto";
+            cmbTipoPago.ValueMember = "Valor";
+        }
+
+        private void CargarEntidadBancaria()
+        {
+            List<BEEntidadBancaria> vLista = new BLEntidadBancaria().Listar(new BEEntidadBancaria());
+            this.cmbEntidadBancaria.DataSource = vLista;
+            cmbEntidadBancaria.DisplayMember = "Nombre";
+            cmbEntidadBancaria.ValueMember = "Siglas";
+        }
+
+        private void CargarTipoDocumento()
+        {
+            List<BEParametroDetalle> vLista = new BLParametroDetalle().Listar(new BEParametroDetalle() { IdParametro = 8 });
+            this.cmbTipoDocumento.DataSource = vLista;
+            cmbTipoDocumento.DisplayMember = "Texto";
+            cmbTipoDocumento.ValueMember = "Valor";
+        }
+
+        private void bindingNavigatorDeleteItem_Click(object sender, EventArgs e)
+        {
+
         }
     }
     

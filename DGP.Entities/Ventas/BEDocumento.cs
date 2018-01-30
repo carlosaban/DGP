@@ -51,6 +51,10 @@ namespace DGP.Entities.Ventas
            // this.Estado = DOCUMENTO_ESTADO_REGISTRADO;
         
         }
+
+        public BEEntidadBancaria Banco { get; set; }
+        public string CodigoReferencia { get; set; }
+
         
     }
 }

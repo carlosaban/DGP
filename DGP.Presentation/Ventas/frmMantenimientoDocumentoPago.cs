@@ -184,5 +184,20 @@ namespace DGP.Presentation.Ventas
             from.Show();
         }
 
+        private void dgvDocumentoPago_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void dgvDocumentoPago_Leave(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dgvDocumentoPago_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            this.dgvDocumentoPago.EndEdit();
+        }
+
     }
 }

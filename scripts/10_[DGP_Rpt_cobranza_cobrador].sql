@@ -1,11 +1,5 @@
 
 
-
-
-
-
-
-
     alter                PROCEDURE [dbo].[DGP_Rpt_cobranza_cobrador] (  
 
 

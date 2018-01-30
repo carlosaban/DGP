@@ -35,8 +35,6 @@ namespace DGP.BusinessLogic.Ventas
                 throw ex;
             }
         }
-
-
         public bool EliminarCabecera(BEDocumento beDocumento)
         {
             try
@@ -108,11 +106,11 @@ namespace DGP.BusinessLogic.Ventas
             }
         }
 
-        public List<BEVenta> ListarVentaXCliente(int idCliente)
+        public List<BEVenta> ListarVentaXCliente(int idCliente, int idDocumento)
         {
             try
             {
-                return new DADocumentoPago().ListarVentasXCliente(idCliente);
+                return new DADocumentoPago().ListarVentasXCliente(idCliente, idDocumento);
             }
             catch (Exception ex)
             {

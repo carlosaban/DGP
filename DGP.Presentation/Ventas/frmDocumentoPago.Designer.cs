@@ -46,21 +46,48 @@
             this.btnAgregar = new System.Windows.Forms.ToolStripButton();
             this.lblIdDocumento = new System.Windows.Forms.Label();
             this.txtIdDocumento = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblTipoDocumento = new System.Windows.Forms.Label();
             this.numMonto = new System.Windows.Forms.NumericUpDown();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
+            this.lblFecha = new System.Windows.Forms.Label();
+            this.lblMonto = new System.Windows.Forms.Label();
             this.dgvDetalle = new System.Windows.Forms.DataGridView();
+            this.Seleccionado = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.IdAmortizacionVenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SaldoMaximoVenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Monto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IdVenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IdEstado = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Observacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NumeroDocumento = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IdFormaPago = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FechaPago = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IdTipoAmortizacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IdCliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IdDocumento = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idAmortizacionVentaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.montoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nroDocumentoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idFormaPagoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fechaPagoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idTipoAmortizacionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.observacionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idEstadoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idVentaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idClienteDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idPersonalDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bEUsuarioLoginDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cajaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cancelarVentaDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.idDocumentoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bsDetalle = new System.Windows.Forms.BindingSource(this.components);
             this.dtFecha = new System.Windows.Forms.DateTimePicker();
             this.btnDetalle = new System.Windows.Forms.Button();
             this.cmbTipoDocumento = new System.Windows.Forms.ComboBox();
             this.txtObservacion = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
+            this.lblObservacion = new System.Windows.Forms.Label();
             this.cmbTipoPago = new System.Windows.Forms.ComboBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.numMontoAplica = new System.Windows.Forms.NumericUpDown();
+            this.bEParametroDetalleBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.lblFormaPago = new System.Windows.Forms.Label();
             this.btnEliminar = new System.Windows.Forms.Button();
             this.btnActualizar = new System.Windows.Forms.Button();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -74,25 +101,24 @@
             this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Seleccionado = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.IdAmortizacionVenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Monto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NumeroDocumento = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.IdFormaPago = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FechaPago = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.IdTipoAmortizacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.IdEstado = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.IdVenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.IdCliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.IdDocumento = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Observacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lblPersonal = new System.Windows.Forms.Label();
+            this.cmbPersonal = new System.Windows.Forms.ComboBox();
+            this.lblEntidadBancaria = new System.Windows.Forms.Label();
+            this.cmbEntidadBancaria = new System.Windows.Forms.ComboBox();
+            this.bEEntidadBancariaBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.lblCodigoReferencia = new System.Windows.Forms.Label();
+            this.txtCodigoReferencia = new System.Windows.Forms.TextBox();
+            this.toolStripSplitButton1 = new System.Windows.Forms.ToolStripSplitButton();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.subirImagenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator1)).BeginInit();
             this.bindingNavigator1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bsDocumentos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numMonto)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDetalle)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsDetalle)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numMontoAplica)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bEParametroDetalleBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bEEntidadBancariaBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // bindingNavigator1
@@ -113,7 +139,8 @@
             this.bindingNavigatorSeparator2,
             this.bindingNavigatorAddNewItem,
             this.bindingNavigatorDeleteItem,
-            this.btnAgregar});
+            this.btnAgregar,
+            this.toolStripSplitButton1});
             this.bindingNavigator1.Location = new System.Drawing.Point(0, 0);
             this.bindingNavigator1.MoveFirstItem = this.bindingNavigatorMoveFirstItem;
             this.bindingNavigator1.MoveLastItem = this.bindingNavigatorMoveLastItem;
@@ -121,7 +148,7 @@
             this.bindingNavigator1.MovePreviousItem = this.bindingNavigatorMovePreviousItem;
             this.bindingNavigator1.Name = "bindingNavigator1";
             this.bindingNavigator1.PositionItem = this.bindingNavigatorPositionItem;
-            this.bindingNavigator1.Size = new System.Drawing.Size(1477, 25);
+            this.bindingNavigator1.Size = new System.Drawing.Size(968, 25);
             this.bindingNavigator1.TabIndex = 0;
             this.bindingNavigator1.TabStop = true;
             this.bindingNavigator1.Text = "bindingNavigator1";
@@ -135,6 +162,7 @@
             this.bindingNavigatorAddNewItem.RightToLeftAutoMirrorImage = true;
             this.bindingNavigatorAddNewItem.Size = new System.Drawing.Size(23, 22);
             this.bindingNavigatorAddNewItem.Text = "Add new";
+            this.bindingNavigatorAddNewItem.Click += new System.EventHandler(this.bindingNavigatorAddNewItem_Click);
             // 
             // bindingNavigatorCountItem
             // 
@@ -151,6 +179,7 @@
             this.bindingNavigatorDeleteItem.RightToLeftAutoMirrorImage = true;
             this.bindingNavigatorDeleteItem.Size = new System.Drawing.Size(23, 22);
             this.bindingNavigatorDeleteItem.Text = "Delete";
+            this.bindingNavigatorDeleteItem.Click += new System.EventHandler(this.bindingNavigatorDeleteItem_Click);
             // 
             // bindingNavigatorMoveFirstItem
             // 
@@ -242,19 +271,19 @@
             this.txtIdDocumento.Size = new System.Drawing.Size(121, 20);
             this.txtIdDocumento.TabIndex = 2;
             // 
-            // label1
+            // lblTipoDocumento
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(15, 84);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(101, 13);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "Tipo de Documento";
+            this.lblTipoDocumento.AutoSize = true;
+            this.lblTipoDocumento.Location = new System.Drawing.Point(15, 84);
+            this.lblTipoDocumento.Name = "lblTipoDocumento";
+            this.lblTipoDocumento.Size = new System.Drawing.Size(101, 13);
+            this.lblTipoDocumento.TabIndex = 4;
+            this.lblTipoDocumento.Text = "Tipo de Documento";
             // 
             // numMonto
             // 
             this.numMonto.DecimalPlaces = 2;
-            this.numMonto.Location = new System.Drawing.Point(123, 154);
+            this.numMonto.Location = new System.Drawing.Point(123, 138);
             this.numMonto.Maximum = new decimal(new int[] {
             1000000000,
             0,
@@ -264,23 +293,23 @@
             this.numMonto.Size = new System.Drawing.Size(120, 20);
             this.numMonto.TabIndex = 8;
             // 
-            // label3
+            // lblFecha
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(15, 123);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(37, 13);
-            this.label3.TabIndex = 9;
-            this.label3.Text = "Fecha";
+            this.lblFecha.AutoSize = true;
+            this.lblFecha.Location = new System.Drawing.Point(15, 115);
+            this.lblFecha.Name = "lblFecha";
+            this.lblFecha.Size = new System.Drawing.Size(37, 13);
+            this.lblFecha.TabIndex = 9;
+            this.lblFecha.Text = "Fecha";
             // 
-            // label4
+            // lblMonto
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(15, 156);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(37, 13);
-            this.label4.TabIndex = 10;
-            this.label4.Text = "Monto";
+            this.lblMonto.AutoSize = true;
+            this.lblMonto.Location = new System.Drawing.Point(15, 140);
+            this.lblMonto.Name = "lblMonto";
+            this.lblMonto.Size = new System.Drawing.Size(37, 13);
+            this.lblMonto.TabIndex = 10;
+            this.lblMonto.Text = "Monto";
             // 
             // dgvDetalle
             // 
@@ -289,39 +318,230 @@
             this.dgvDetalle.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Seleccionado,
             this.IdAmortizacionVenta,
+            this.SaldoMaximoVenta,
             this.Monto,
+            this.IdVenta,
+            this.IdEstado,
+            this.Observacion,
             this.NumeroDocumento,
             this.IdFormaPago,
             this.FechaPago,
             this.IdTipoAmortizacion,
-            this.IdEstado,
-            this.IdVenta,
             this.IdCliente,
             this.IdDocumento,
-            this.Observacion});
+            this.idAmortizacionVentaDataGridViewTextBoxColumn,
+            this.montoDataGridViewTextBoxColumn,
+            this.nroDocumentoDataGridViewTextBoxColumn,
+            this.idFormaPagoDataGridViewTextBoxColumn,
+            this.fechaPagoDataGridViewTextBoxColumn,
+            this.idTipoAmortizacionDataGridViewTextBoxColumn,
+            this.observacionDataGridViewTextBoxColumn,
+            this.idEstadoDataGridViewTextBoxColumn,
+            this.idVentaDataGridViewTextBoxColumn,
+            this.idClienteDataGridViewTextBoxColumn,
+            this.idPersonalDataGridViewTextBoxColumn,
+            this.bEUsuarioLoginDataGridViewTextBoxColumn,
+            this.cajaDataGridViewTextBoxColumn,
+            this.cancelarVentaDataGridViewCheckBoxColumn,
+            this.idDocumentoDataGridViewTextBoxColumn});
             this.dgvDetalle.DataSource = this.bsDetalle;
-            this.dgvDetalle.Location = new System.Drawing.Point(263, 52);
+            this.dgvDetalle.Location = new System.Drawing.Point(268, 52);
             this.dgvDetalle.Name = "dgvDetalle";
-            this.dgvDetalle.Size = new System.Drawing.Size(1202, 371);
+            this.dgvDetalle.Size = new System.Drawing.Size(647, 345);
             this.dgvDetalle.TabIndex = 14;
             this.dgvDetalle.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDetalle_CellContentClick);
+            // 
+            // Seleccionado
+            // 
+            this.Seleccionado.HeaderText = "Seleccionado";
+            this.Seleccionado.Name = "Seleccionado";
+            // 
+            // IdAmortizacionVenta
+            // 
+            this.IdAmortizacionVenta.DataPropertyName = "IdAmortizacionVenta";
+            this.IdAmortizacionVenta.HeaderText = "Id Amortizacion venta";
+            this.IdAmortizacionVenta.Name = "IdAmortizacionVenta";
+            // 
+            // SaldoMaximoVenta
+            // 
+            this.SaldoMaximoVenta.DataPropertyName = "SaldoMaximoVenta";
+            this.SaldoMaximoVenta.HeaderText = "SaldoMaximoAsignar";
+            this.SaldoMaximoVenta.Name = "SaldoMaximoVenta";
+            // 
+            // Monto
+            // 
+            this.Monto.DataPropertyName = "Monto";
+            this.Monto.HeaderText = "Monto";
+            this.Monto.Name = "Monto";
+            // 
+            // IdVenta
+            // 
+            this.IdVenta.DataPropertyName = "IdVenta";
+            this.IdVenta.HeaderText = "Id Venta";
+            this.IdVenta.Name = "IdVenta";
+            this.IdVenta.ReadOnly = true;
+            // 
+            // IdEstado
+            // 
+            this.IdEstado.DataPropertyName = "IdEstado";
+            this.IdEstado.HeaderText = "IdEstado";
+            this.IdEstado.Name = "IdEstado";
+            this.IdEstado.ReadOnly = true;
+            // 
+            // Observacion
+            // 
+            this.Observacion.DataPropertyName = "Observacion";
+            this.Observacion.HeaderText = "Observacion";
+            this.Observacion.Name = "Observacion";
+            // 
+            // NumeroDocumento
+            // 
+            this.NumeroDocumento.DataPropertyName = "NroDocumento";
+            this.NumeroDocumento.HeaderText = "NumeroDocumento";
+            this.NumeroDocumento.Name = "NumeroDocumento";
+            this.NumeroDocumento.Visible = false;
+            // 
+            // IdFormaPago
+            // 
+            this.IdFormaPago.DataPropertyName = "IdFormaPago";
+            this.IdFormaPago.HeaderText = "IdFormaPago";
+            this.IdFormaPago.Name = "IdFormaPago";
+            this.IdFormaPago.Visible = false;
+            // 
+            // FechaPago
+            // 
+            this.FechaPago.DataPropertyName = "FechaPago";
+            this.FechaPago.HeaderText = "FechaPago";
+            this.FechaPago.Name = "FechaPago";
+            this.FechaPago.Visible = false;
+            // 
+            // IdTipoAmortizacion
+            // 
+            this.IdTipoAmortizacion.DataPropertyName = "IdTipoAmortizacion";
+            this.IdTipoAmortizacion.HeaderText = "IdTipoAmortizacion";
+            this.IdTipoAmortizacion.Name = "IdTipoAmortizacion";
+            this.IdTipoAmortizacion.Visible = false;
+            // 
+            // IdCliente
+            // 
+            this.IdCliente.DataPropertyName = "IdCliente";
+            this.IdCliente.HeaderText = "Id Cliente";
+            this.IdCliente.Name = "IdCliente";
+            this.IdCliente.Visible = false;
+            // 
+            // IdDocumento
+            // 
+            this.IdDocumento.DataPropertyName = "IdDocumento";
+            this.IdDocumento.HeaderText = "IdDocumento";
+            this.IdDocumento.Name = "IdDocumento";
+            // 
+            // idAmortizacionVentaDataGridViewTextBoxColumn
+            // 
+            this.idAmortizacionVentaDataGridViewTextBoxColumn.DataPropertyName = "IdAmortizacionVenta";
+            this.idAmortizacionVentaDataGridViewTextBoxColumn.HeaderText = "IdAmortizacionVenta";
+            this.idAmortizacionVentaDataGridViewTextBoxColumn.Name = "idAmortizacionVentaDataGridViewTextBoxColumn";
+            // 
+            // montoDataGridViewTextBoxColumn
+            // 
+            this.montoDataGridViewTextBoxColumn.DataPropertyName = "Monto";
+            this.montoDataGridViewTextBoxColumn.HeaderText = "Monto";
+            this.montoDataGridViewTextBoxColumn.Name = "montoDataGridViewTextBoxColumn";
+            // 
+            // nroDocumentoDataGridViewTextBoxColumn
+            // 
+            this.nroDocumentoDataGridViewTextBoxColumn.DataPropertyName = "NroDocumento";
+            this.nroDocumentoDataGridViewTextBoxColumn.HeaderText = "NroDocumento";
+            this.nroDocumentoDataGridViewTextBoxColumn.Name = "nroDocumentoDataGridViewTextBoxColumn";
+            // 
+            // idFormaPagoDataGridViewTextBoxColumn
+            // 
+            this.idFormaPagoDataGridViewTextBoxColumn.DataPropertyName = "IdFormaPago";
+            this.idFormaPagoDataGridViewTextBoxColumn.HeaderText = "IdFormaPago";
+            this.idFormaPagoDataGridViewTextBoxColumn.Name = "idFormaPagoDataGridViewTextBoxColumn";
+            // 
+            // fechaPagoDataGridViewTextBoxColumn
+            // 
+            this.fechaPagoDataGridViewTextBoxColumn.DataPropertyName = "FechaPago";
+            this.fechaPagoDataGridViewTextBoxColumn.HeaderText = "FechaPago";
+            this.fechaPagoDataGridViewTextBoxColumn.Name = "fechaPagoDataGridViewTextBoxColumn";
+            // 
+            // idTipoAmortizacionDataGridViewTextBoxColumn
+            // 
+            this.idTipoAmortizacionDataGridViewTextBoxColumn.DataPropertyName = "IdTipoAmortizacion";
+            this.idTipoAmortizacionDataGridViewTextBoxColumn.HeaderText = "IdTipoAmortizacion";
+            this.idTipoAmortizacionDataGridViewTextBoxColumn.Name = "idTipoAmortizacionDataGridViewTextBoxColumn";
+            // 
+            // observacionDataGridViewTextBoxColumn
+            // 
+            this.observacionDataGridViewTextBoxColumn.DataPropertyName = "Observacion";
+            this.observacionDataGridViewTextBoxColumn.HeaderText = "Observacion";
+            this.observacionDataGridViewTextBoxColumn.Name = "observacionDataGridViewTextBoxColumn";
+            // 
+            // idEstadoDataGridViewTextBoxColumn
+            // 
+            this.idEstadoDataGridViewTextBoxColumn.DataPropertyName = "IdEstado";
+            this.idEstadoDataGridViewTextBoxColumn.HeaderText = "IdEstado";
+            this.idEstadoDataGridViewTextBoxColumn.Name = "idEstadoDataGridViewTextBoxColumn";
+            // 
+            // idVentaDataGridViewTextBoxColumn
+            // 
+            this.idVentaDataGridViewTextBoxColumn.DataPropertyName = "IdVenta";
+            this.idVentaDataGridViewTextBoxColumn.HeaderText = "IdVenta";
+            this.idVentaDataGridViewTextBoxColumn.Name = "idVentaDataGridViewTextBoxColumn";
+            // 
+            // idClienteDataGridViewTextBoxColumn
+            // 
+            this.idClienteDataGridViewTextBoxColumn.DataPropertyName = "IdCliente";
+            this.idClienteDataGridViewTextBoxColumn.HeaderText = "IdCliente";
+            this.idClienteDataGridViewTextBoxColumn.Name = "idClienteDataGridViewTextBoxColumn";
+            // 
+            // idPersonalDataGridViewTextBoxColumn
+            // 
+            this.idPersonalDataGridViewTextBoxColumn.DataPropertyName = "IdPersonal";
+            this.idPersonalDataGridViewTextBoxColumn.HeaderText = "IdPersonal";
+            this.idPersonalDataGridViewTextBoxColumn.Name = "idPersonalDataGridViewTextBoxColumn";
+            // 
+            // bEUsuarioLoginDataGridViewTextBoxColumn
+            // 
+            this.bEUsuarioLoginDataGridViewTextBoxColumn.DataPropertyName = "BEUsuarioLogin";
+            this.bEUsuarioLoginDataGridViewTextBoxColumn.HeaderText = "BEUsuarioLogin";
+            this.bEUsuarioLoginDataGridViewTextBoxColumn.Name = "bEUsuarioLoginDataGridViewTextBoxColumn";
+            // 
+            // cajaDataGridViewTextBoxColumn
+            // 
+            this.cajaDataGridViewTextBoxColumn.DataPropertyName = "Caja";
+            this.cajaDataGridViewTextBoxColumn.HeaderText = "Caja";
+            this.cajaDataGridViewTextBoxColumn.Name = "cajaDataGridViewTextBoxColumn";
+            // 
+            // cancelarVentaDataGridViewCheckBoxColumn
+            // 
+            this.cancelarVentaDataGridViewCheckBoxColumn.DataPropertyName = "CancelarVenta";
+            this.cancelarVentaDataGridViewCheckBoxColumn.HeaderText = "CancelarVenta";
+            this.cancelarVentaDataGridViewCheckBoxColumn.Name = "cancelarVentaDataGridViewCheckBoxColumn";
+            // 
+            // idDocumentoDataGridViewTextBoxColumn
+            // 
+            this.idDocumentoDataGridViewTextBoxColumn.DataPropertyName = "IdDocumento";
+            this.idDocumentoDataGridViewTextBoxColumn.HeaderText = "IdDocumento";
+            this.idDocumentoDataGridViewTextBoxColumn.Name = "idDocumentoDataGridViewTextBoxColumn";
             // 
             // bsDetalle
             // 
             this.bsDetalle.AllowNew = false;
+            this.bsDetalle.DataSource = typeof(DGP.Entities.Ventas.BEAmortizacionVenta);
             this.bsDetalle.CurrentChanged += new System.EventHandler(this.bsDetalle_CurrentChanged);
             // 
             // dtFecha
             // 
             this.dtFecha.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtFecha.Location = new System.Drawing.Point(123, 117);
+            this.dtFecha.Location = new System.Drawing.Point(123, 108);
             this.dtFecha.Name = "dtFecha";
             this.dtFecha.Size = new System.Drawing.Size(122, 20);
             this.dtFecha.TabIndex = 15;
             // 
             // btnDetalle
             // 
-            this.btnDetalle.Location = new System.Drawing.Point(1349, 12);
+            this.btnDetalle.Location = new System.Drawing.Point(799, 21);
             this.btnDetalle.Name = "btnDetalle";
             this.btnDetalle.Size = new System.Drawing.Size(116, 25);
             this.btnDetalle.TabIndex = 16;
@@ -333,9 +553,8 @@
             // 
             this.cmbTipoDocumento.FormattingEnabled = true;
             this.cmbTipoDocumento.Items.AddRange(new object[] {
-            "VLT",
-            "RDO",
-            "AMR"});
+            "AMR",
+            "NCR"});
             this.cmbTipoDocumento.Location = new System.Drawing.Point(124, 81);
             this.cmbTipoDocumento.Name = "cmbTipoDocumento";
             this.cmbTipoDocumento.Size = new System.Drawing.Size(121, 21);
@@ -343,65 +562,48 @@
             // 
             // txtObservacion
             // 
-            this.txtObservacion.Location = new System.Drawing.Point(34, 266);
+            this.txtObservacion.Location = new System.Drawing.Point(20, 333);
             this.txtObservacion.Multiline = true;
             this.txtObservacion.Name = "txtObservacion";
-            this.txtObservacion.Size = new System.Drawing.Size(198, 111);
+            this.txtObservacion.Size = new System.Drawing.Size(227, 75);
             this.txtObservacion.TabIndex = 19;
             // 
-            // label2
+            // lblObservacion
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(15, 236);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(67, 13);
-            this.label2.TabIndex = 18;
-            this.label2.Text = "Observacion";
+            this.lblObservacion.AutoSize = true;
+            this.lblObservacion.Location = new System.Drawing.Point(17, 304);
+            this.lblObservacion.Name = "lblObservacion";
+            this.lblObservacion.Size = new System.Drawing.Size(67, 13);
+            this.lblObservacion.TabIndex = 18;
+            this.lblObservacion.Text = "Observacion";
             // 
             // cmbTipoPago
             // 
+            this.cmbTipoPago.DataSource = this.bEParametroDetalleBindingSource;
+            this.cmbTipoPago.DisplayMember = "Texto";
             this.cmbTipoPago.FormattingEnabled = true;
-            this.cmbTipoPago.Items.AddRange(new object[] {
-            "EFE"});
-            this.cmbTipoPago.Location = new System.Drawing.Point(122, 191);
+            this.cmbTipoPago.Location = new System.Drawing.Point(124, 196);
             this.cmbTipoPago.Name = "cmbTipoPago";
             this.cmbTipoPago.Size = new System.Drawing.Size(121, 21);
             this.cmbTipoPago.TabIndex = 21;
+            this.cmbTipoPago.ValueMember = "Valor";
             // 
-            // label5
+            // bEParametroDetalleBindingSource
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(15, 194);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(71, 13);
-            this.label5.TabIndex = 20;
-            this.label5.Text = "Tipo de Pago";
+            this.bEParametroDetalleBindingSource.DataSource = typeof(DGP.Entities.BEParametroDetalle);
             // 
-            // label6
+            // lblFormaPago
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(648, 14);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(80, 13);
-            this.label6.TabIndex = 23;
-            this.label6.Text = "Monto a aplicar";
-            // 
-            // numMontoAplica
-            // 
-            this.numMontoAplica.DecimalPlaces = 2;
-            this.numMontoAplica.Location = new System.Drawing.Point(756, 12);
-            this.numMontoAplica.Maximum = new decimal(new int[] {
-            1000000000,
-            0,
-            0,
-            0});
-            this.numMontoAplica.Name = "numMontoAplica";
-            this.numMontoAplica.Size = new System.Drawing.Size(120, 20);
-            this.numMontoAplica.TabIndex = 22;
+            this.lblFormaPago.AutoSize = true;
+            this.lblFormaPago.Location = new System.Drawing.Point(17, 199);
+            this.lblFormaPago.Name = "lblFormaPago";
+            this.lblFormaPago.Size = new System.Drawing.Size(79, 13);
+            this.lblFormaPago.TabIndex = 20;
+            this.lblFormaPago.Text = "Forma de Pago";
             // 
             // btnEliminar
             // 
-            this.btnEliminar.Location = new System.Drawing.Point(1056, 12);
+            this.btnEliminar.Location = new System.Drawing.Point(547, 21);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(116, 25);
             this.btnEliminar.TabIndex = 24;
@@ -411,7 +613,7 @@
             // 
             // btnActualizar
             // 
-            this.btnActualizar.Location = new System.Drawing.Point(1197, 12);
+            this.btnActualizar.Location = new System.Drawing.Point(669, 21);
             this.btnActualizar.Name = "btnActualizar";
             this.btnActualizar.Size = new System.Drawing.Size(124, 25);
             this.btnActualizar.TabIndex = 25;
@@ -485,98 +687,113 @@
             this.dataGridViewTextBoxColumn11.HeaderText = "Observacion";
             this.dataGridViewTextBoxColumn11.Name = "dataGridViewTextBoxColumn11";
             // 
-            // Seleccionado
+            // lblPersonal
             // 
-            this.Seleccionado.HeaderText = "Seleccionado";
-            this.Seleccionado.Name = "Seleccionado";
+            this.lblPersonal.AutoSize = true;
+            this.lblPersonal.Location = new System.Drawing.Point(15, 169);
+            this.lblPersonal.Name = "lblPersonal";
+            this.lblPersonal.Size = new System.Drawing.Size(48, 13);
+            this.lblPersonal.TabIndex = 26;
+            this.lblPersonal.Text = "Personal";
             // 
-            // IdAmortizacionVenta
+            // cmbPersonal
             // 
-            this.IdAmortizacionVenta.DataPropertyName = "IdAmortizacionVenta";
-            this.IdAmortizacionVenta.HeaderText = "Id Amortizacion venta";
-            this.IdAmortizacionVenta.Name = "IdAmortizacionVenta";
+            this.cmbPersonal.FormattingEnabled = true;
+            this.cmbPersonal.Location = new System.Drawing.Point(124, 169);
+            this.cmbPersonal.Name = "cmbPersonal";
+            this.cmbPersonal.Size = new System.Drawing.Size(121, 21);
+            this.cmbPersonal.TabIndex = 27;
             // 
-            // Monto
+            // lblEntidadBancaria
             // 
-            this.Monto.DataPropertyName = "Monto";
-            this.Monto.HeaderText = "Monto";
-            this.Monto.Name = "Monto";
+            this.lblEntidadBancaria.AutoSize = true;
+            this.lblEntidadBancaria.Location = new System.Drawing.Point(15, 223);
+            this.lblEntidadBancaria.Name = "lblEntidadBancaria";
+            this.lblEntidadBancaria.Size = new System.Drawing.Size(88, 13);
+            this.lblEntidadBancaria.TabIndex = 28;
+            this.lblEntidadBancaria.Text = "Entidad Bancaria";
             // 
-            // NumeroDocumento
+            // cmbEntidadBancaria
             // 
-            this.NumeroDocumento.DataPropertyName = "NroDocumento";
-            this.NumeroDocumento.HeaderText = "NumeroDocumento";
-            this.NumeroDocumento.Name = "NumeroDocumento";
+            this.cmbEntidadBancaria.DataSource = this.bEEntidadBancariaBindingSource;
+            this.cmbEntidadBancaria.DisplayMember = "Nombre";
+            this.cmbEntidadBancaria.FormattingEnabled = true;
+            this.cmbEntidadBancaria.Location = new System.Drawing.Point(124, 223);
+            this.cmbEntidadBancaria.Name = "cmbEntidadBancaria";
+            this.cmbEntidadBancaria.Size = new System.Drawing.Size(121, 21);
+            this.cmbEntidadBancaria.TabIndex = 29;
+            this.cmbEntidadBancaria.ValueMember = "Siglas";
             // 
-            // IdFormaPago
+            // bEEntidadBancariaBindingSource
             // 
-            this.IdFormaPago.DataPropertyName = "IdFormaPago";
-            this.IdFormaPago.HeaderText = "IdFormaPago";
-            this.IdFormaPago.Name = "IdFormaPago";
+            this.bEEntidadBancariaBindingSource.DataSource = typeof(DGP.Entities.Ventas.BEEntidadBancaria);
             // 
-            // FechaPago
+            // lblCodigoReferencia
             // 
-            this.FechaPago.DataPropertyName = "FechaPago";
-            this.FechaPago.HeaderText = "FechaPago";
-            this.FechaPago.Name = "FechaPago";
+            this.lblCodigoReferencia.AutoSize = true;
+            this.lblCodigoReferencia.Location = new System.Drawing.Point(15, 266);
+            this.lblCodigoReferencia.Name = "lblCodigoReferencia";
+            this.lblCodigoReferencia.Size = new System.Drawing.Size(95, 13);
+            this.lblCodigoReferencia.TabIndex = 30;
+            this.lblCodigoReferencia.Text = "Codigo Referencia";
             // 
-            // IdTipoAmortizacion
+            // txtCodigoReferencia
             // 
-            this.IdTipoAmortizacion.DataPropertyName = "IdTipoAmortizacion";
-            this.IdTipoAmortizacion.HeaderText = "IdTipoAmortizacion";
-            this.IdTipoAmortizacion.Name = "IdTipoAmortizacion";
+            this.txtCodigoReferencia.Enabled = false;
+            this.txtCodigoReferencia.Location = new System.Drawing.Point(123, 259);
+            this.txtCodigoReferencia.Name = "txtCodigoReferencia";
+            this.txtCodigoReferencia.Size = new System.Drawing.Size(121, 20);
+            this.txtCodigoReferencia.TabIndex = 31;
             // 
-            // IdEstado
+            // toolStripSplitButton1
             // 
-            this.IdEstado.DataPropertyName = "IdEstado";
-            this.IdEstado.HeaderText = "IdEstado";
-            this.IdEstado.Name = "IdEstado";
+            this.toolStripSplitButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripSplitButton1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem1,
+            this.subirImagenToolStripMenuItem});
+            this.toolStripSplitButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripSplitButton1.Image")));
+            this.toolStripSplitButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripSplitButton1.Name = "toolStripSplitButton1";
+            this.toolStripSplitButton1.Size = new System.Drawing.Size(32, 22);
+            this.toolStripSplitButton1.Text = "toolStripSplitButton1";
             // 
-            // IdVenta
+            // toolStripMenuItem1
             // 
-            this.IdVenta.DataPropertyName = "IdVenta";
-            this.IdVenta.HeaderText = "Id Venta";
-            this.IdVenta.Name = "IdVenta";
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.toolStripMenuItem1.Text = "Ver Imagen";
             // 
-            // IdCliente
+            // subirImagenToolStripMenuItem
             // 
-            this.IdCliente.DataPropertyName = "IdCliente";
-            this.IdCliente.HeaderText = "Id Cliente";
-            this.IdCliente.Name = "IdCliente";
-            // 
-            // IdDocumento
-            // 
-            this.IdDocumento.DataPropertyName = "IdDocumento";
-            this.IdDocumento.HeaderText = "IdDocumento";
-            this.IdDocumento.Name = "IdDocumento";
-            // 
-            // Observacion
-            // 
-            this.Observacion.DataPropertyName = "Observacion";
-            this.Observacion.HeaderText = "Observacion";
-            this.Observacion.Name = "Observacion";
+            this.subirImagenToolStripMenuItem.Name = "subirImagenToolStripMenuItem";
+            this.subirImagenToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.subirImagenToolStripMenuItem.Text = "Subir Imagen";
             // 
             // frmDocumentoPago
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1477, 435);
+            this.ClientSize = new System.Drawing.Size(968, 462);
+            this.Controls.Add(this.txtCodigoReferencia);
+            this.Controls.Add(this.lblCodigoReferencia);
+            this.Controls.Add(this.cmbEntidadBancaria);
+            this.Controls.Add(this.lblEntidadBancaria);
+            this.Controls.Add(this.cmbPersonal);
+            this.Controls.Add(this.lblPersonal);
             this.Controls.Add(this.btnActualizar);
             this.Controls.Add(this.btnEliminar);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.numMontoAplica);
             this.Controls.Add(this.cmbTipoPago);
-            this.Controls.Add(this.label5);
+            this.Controls.Add(this.lblFormaPago);
             this.Controls.Add(this.txtObservacion);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.lblObservacion);
             this.Controls.Add(this.cmbTipoDocumento);
             this.Controls.Add(this.btnDetalle);
             this.Controls.Add(this.dtFecha);
             this.Controls.Add(this.dgvDetalle);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
+            this.Controls.Add(this.lblMonto);
+            this.Controls.Add(this.lblFecha);
             this.Controls.Add(this.numMonto);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lblTipoDocumento);
             this.Controls.Add(this.txtIdDocumento);
             this.Controls.Add(this.lblIdDocumento);
             this.Controls.Add(this.bindingNavigator1);
@@ -590,7 +807,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.numMonto)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDetalle)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsDetalle)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numMontoAplica)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bEParametroDetalleBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bEEntidadBancariaBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -612,11 +830,11 @@
         private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator2;
         private System.Windows.Forms.Label lblIdDocumento;
         private System.Windows.Forms.TextBox txtIdDocumento;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblTipoDocumento;
         private System.Windows.Forms.ToolStripButton btnAgregar;
         private System.Windows.Forms.NumericUpDown numMonto;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label lblFecha;
+        private System.Windows.Forms.Label lblMonto;
         private System.Windows.Forms.BindingSource bsDocumentos;
         private System.Windows.Forms.DateTimePicker dtFecha;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
@@ -635,24 +853,49 @@
         private System.Windows.Forms.Button btnDetalle;
         private System.Windows.Forms.ComboBox cmbTipoDocumento;
         private System.Windows.Forms.TextBox txtObservacion;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lblObservacion;
         private System.Windows.Forms.ComboBox cmbTipoPago;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.NumericUpDown numMontoAplica;
+        private System.Windows.Forms.Label lblFormaPago;
         private System.Windows.Forms.Button btnEliminar;
         private System.Windows.Forms.Button btnActualizar;
+        private System.Windows.Forms.Label lblPersonal;
+        private System.Windows.Forms.ComboBox cmbPersonal;
+        private System.Windows.Forms.Label lblEntidadBancaria;
+        private System.Windows.Forms.ComboBox cmbEntidadBancaria;
+        private System.Windows.Forms.Label lblCodigoReferencia;
+        private System.Windows.Forms.TextBox txtCodigoReferencia;
+        private System.Windows.Forms.BindingSource bEEntidadBancariaBindingSource;
+        private System.Windows.Forms.BindingSource bEParametroDetalleBindingSource;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Seleccionado;
         private System.Windows.Forms.DataGridViewTextBoxColumn IdAmortizacionVenta;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SaldoMaximoVenta;
         private System.Windows.Forms.DataGridViewTextBoxColumn Monto;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IdVenta;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IdEstado;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Observacion;
         private System.Windows.Forms.DataGridViewTextBoxColumn NumeroDocumento;
         private System.Windows.Forms.DataGridViewTextBoxColumn IdFormaPago;
         private System.Windows.Forms.DataGridViewTextBoxColumn FechaPago;
         private System.Windows.Forms.DataGridViewTextBoxColumn IdTipoAmortizacion;
-        private System.Windows.Forms.DataGridViewTextBoxColumn IdEstado;
-        private System.Windows.Forms.DataGridViewTextBoxColumn IdVenta;
         private System.Windows.Forms.DataGridViewTextBoxColumn IdCliente;
         private System.Windows.Forms.DataGridViewTextBoxColumn IdDocumento;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Observacion;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idAmortizacionVentaDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn montoDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nroDocumentoDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idFormaPagoDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn fechaPagoDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idTipoAmortizacionDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn observacionDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idEstadoDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idVentaDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idClienteDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idPersonalDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn bEUsuarioLoginDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cajaDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn cancelarVentaDataGridViewCheckBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idDocumentoDataGridViewTextBoxColumn;
+        private System.Windows.Forms.ToolStripSplitButton toolStripSplitButton1;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem subirImagenToolStripMenuItem;
     }
 }

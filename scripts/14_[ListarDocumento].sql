@@ -2,7 +2,7 @@
 
 
 
-alter PROCEDURE [dbo].[ListarDocumento](
+create PROCEDURE [dbo].[ListarDocumento](
 
 @IdDocumento int = null
 
@@ -87,5 +87,4 @@ END
 
 go
 
-exec ListarDocumento null,null,'01-01-2017','01-01-2018',null,null,null,''
 

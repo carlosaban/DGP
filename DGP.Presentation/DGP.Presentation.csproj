@@ -482,7 +482,10 @@
     <None Include="Resources\saveIcon.jpg" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Properties\DataSources\DGP.Entities.BEParametroDetalle.datasource" />
     <None Include="Properties\DataSources\DGP.Entities.Compras.BELineaCompra.datasource" />
+    <None Include="Properties\DataSources\DGP.Entities.Ventas.BEAmortizacionVenta.datasource" />
+    <None Include="Properties\DataSources\DGP.Entities.Ventas.BEEntidadBancaria.datasource" />
     <None Include="Resources\plusIcon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

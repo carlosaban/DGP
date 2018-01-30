@@ -17,36 +17,32 @@ namespace DGP.Presentation.Ventas
 {
     public partial class frmDocumentoPagoDetalle : Form
     {
-        BEClienteProveedor Cliente;
-        decimal montoAplicar;
-        int idDocumento;
-
-        public frmDocumentoPagoDetalle(BEClienteProveedor Cliente, decimal montoAplicar, int idDocumento)
+        private BEClienteProveedor Cliente;
+        private decimal montoAplicar;
+        private int IdDocumento;
+        private int IdPersonal;
+        public frmDocumentoPagoDetalle(BEClienteProveedor Cliente, decimal montoAplicar, int idDocumento , int IdPersonal)
         {
             InitializeComponent();
             this.Cliente = Cliente;
             this.montoAplicar = montoAplicar;
-            this.idDocumento =idDocumento;
+            this.IdDocumento =idDocumento;
             inicializarFormulario();
         }
 
         private void inicializarFormulario()
         {
-            CargarUsuarios();
-            cbUsuario.SelectedValue = VariablesSession.BEUsuarioSession.IdPersonal;
+            this.nudMontoAplicar.Maximum = this.montoAplicar;
         }
 
         private void frmDocumentoPagoDetalle_Load(object sender, EventArgs e)
         {
             try
             {
-                dgvDetalle.AutoGenerateColumns = false;
                 BLDocumentoPago BLDP = new BLDocumentoPago();
                 txtCliente.Text = Cliente.Nombre;
-                cmbIdVenta.DataSource = BLDP.ListarVentaXCliente(Cliente.IdCliente);
+                this.dgvDetalle.DataSource = BLDP.ListarVentaXCliente(Cliente.IdCliente , this.IdDocumento);
 
-                cmbIdVenta.ValueMember = "MontoTotal";
-                cmbIdVenta.DisplayMember = "IdVenta";
             }
             catch (Exception ex)
             {
@@ -62,20 +58,14 @@ namespace DGP.Presentation.Ventas
             MessageBox.Show(pMensaje, "DGP", MessageBoxButtons.OK, pMsgBoxicon);
         }
 
-        private void CargarUsuarios()
-        {
-            List<BEPersonal> vLista = new BLPersonal().ListarPersonal(new BEPersonal());
-            cbUsuario.DataSource = vLista;
-            cbUsuario.DisplayMember = "Login";
-            cbUsuario.ValueMember = "IdPersonal";
-        }
+        
         private void GrabarDetalle()
         {
             try
             {
-                    int intIdUsuario = 0;
+                    int intIdUsuario = this.IdPersonal;
                     bool boIndicador = true;
-                    int.TryParse(cbUsuario.SelectedValue.ToString(), out intIdUsuario);
+                   
                     if (intIdUsuario > 0 && intIdUsuario != VariablesSession.BEUsuarioSession.IdPersonal)
                     {
                         boIndicador = (MessageBox.Show("La amortización se va a registrar con otro usuario, desea continuar?", "DGP", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes);
@@ -108,16 +98,16 @@ namespace DGP.Presentation.Ventas
             foreach (DataGridViewRow vRow in dgvDetalle.Rows)
             {
                         oBEAmortizacionVenta = new BEAmortizacionVenta();
-                        oBEAmortizacionVenta.Monto = Convert.ToDecimal(vRow.Cells["Monto"].Value.ToString());
-                        oBEAmortizacionVenta.NroDocumento = vRow.Cells["NumeroDocumento"].Value.ToString();
-                        oBEAmortizacionVenta.Observacion = vRow.Cells["Observacion"].Value.ToString();
-                        oBEAmortizacionVenta.IdEstado = vRow.Cells["IdEstado"].Value.ToString();
-                        oBEAmortizacionVenta.IdVenta = Convert.ToInt32(vRow.Cells["IdVenta"].Value.ToString());
-                        oBEAmortizacionVenta.IdCliente = Convert.ToInt32(vRow.Cells["idCliente"].Value.ToString());
-                        oBEAmortizacionVenta.IdPersonal = Convert.ToInt32(cbUsuario.SelectedValue.ToString());
+                        oBEAmortizacionVenta.Monto = Convert.ToDecimal(vRow.Cells["DataGridViewTextBoxColumn"].Value.ToString());
+                        oBEAmortizacionVenta.NroDocumento = string.Empty;
+                        oBEAmortizacionVenta.Observacion = string.Empty;
+                        oBEAmortizacionVenta.IdEstado = "REG";
+                        oBEAmortizacionVenta.IdVenta = Convert.ToInt32(vRow.Cells["idVentaDataGridViewTextBoxColumn"].Value.ToString());
+                        oBEAmortizacionVenta.IdCliente = this.Cliente.IdCliente;
+                        oBEAmortizacionVenta.IdPersonal = this.IdPersonal;
                         oBEAmortizacionVenta.BEUsuarioLogin = VariablesSession.BEUsuarioSession;
                         oBEAmortizacionVenta.Caja = VariablesSession.BECaja;
-                        oBEAmortizacionVenta.IdDocumento = idDocumento;
+                        oBEAmortizacionVenta.IdDocumento = this.IdDocumento;
                         vLista.Add(oBEAmortizacionVenta);
                     
                 
@@ -134,34 +124,50 @@ namespace DGP.Presentation.Ventas
         {
             
         }
-
-        private void cmbIdVenta_MouseClick(object sender, MouseEventArgs e)
-        {
-            numMontoVenta.Value = Convert.ToDecimal(cmbIdVenta.SelectedValue.ToString());
-        }
-
-        private void numMonto_ValueChanged(object sender, EventArgs e)
-        {
-            if (numMonto.Value > montoAplicar)
-            {
-                MessageBox.Show("DGP", "El monto debe ser menor o igual que el monto a aplicar");
-            }
-        }
-
         private void btnAplicar_Click(object sender, EventArgs e)
         {
-            dgvDetalle.Rows.Add(new object[]{ numMonto.Value.ToString(), txtNroDocumento.Text, "REG", cmbIdVenta.Text, Cliente.IdCliente.ToString(), txtObservacion.Text });
+            try
+            {
 
-            
+                decimal montoTotal = this.nudMontoAplicar.Value;
+                decimal montoAcarreo = 0;
+
+                foreach (DataGridViewRow vRow in this.dgvDetalle.Rows)
+                {
+
+                    if (montoAcarreo >= montoTotal) break;
+
+                    decimal montoSaldo = 0;
+                    bool okParse = decimal.TryParse(vRow.Cells["totalSaldoDataGridViewTextBoxColumn"].Value.ToString(), out montoSaldo);
+                    if (!okParse || montoSaldo < 0) continue; //excluir a los negativos
+                    decimal delta = montoTotal - montoAcarreo;
+
+                    decimal montoAmortizar = (delta >= montoSaldo) ? montoSaldo : montoTotal - montoAcarreo;
+                    vRow.Cells["MontoAAplicar"].Value = montoAmortizar.ToString();
+                    montoAcarreo = montoAcarreo + montoAmortizar;
+
+
+                    
+                }
+
+
+
+            }
+            catch (Exception ex)
+            {
+                MostrarMensaje(ex.Message, MessageBoxIcon.Error);
+            }
             
         }
 
-        private void cmbIdVenta_SelectedIndexChanged_1(object sender, EventArgs e)
-        {
+     
 
-        }
+        //private void btnGrabar_Click(object sender, EventArgs e)
+        //{
+        //    GrabarDetalle();
+        //}
 
-        private void btnGrabar_Click(object sender, EventArgs e)
+        private void btnAceptar_Click(object sender, EventArgs e)
         {
             GrabarDetalle();
         }

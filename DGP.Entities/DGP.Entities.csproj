@@ -189,6 +189,7 @@
     <Compile Include="Seguridad\BEPrivilegio.cs" />
     <Compile Include="Ventas\BEAmortizacionVenta.cs" />
     <Compile Include="Ventas\BEDocumento.cs" />
+    <Compile Include="Ventas\BEEntidadBancaria.cs" />
     <Compile Include="Ventas\BELineaVenta.cs" />
     <Compile Include="Ventas\BEVenta.cs" />
     <Compile Include="BEZona.cs" />

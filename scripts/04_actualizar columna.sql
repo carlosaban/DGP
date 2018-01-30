@@ -1,3 +1,8 @@
+
+ALTER TABLE [dbo].[Tb_documento] DROP CONSTRAINT [DF__Tb_docume__estad__4589517F]
+
+
+
 ALTER TABLE Tb_documento ALTER COLUMN Estado varchar(3)
 go
 

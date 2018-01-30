@@ -57,6 +57,7 @@
     <Compile Include="Ventas\BLLineaVenta.cs" />
     <Compile Include="Ventas\BLVenta.cs" />
     <Compile Include="Ventas\BLVueltos.cs" />
+    <Compile Include="Ventas\BLEntidadBancaria.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DGP.DataAccess\DGP.DataAccess.csproj">

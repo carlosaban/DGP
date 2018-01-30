@@ -1,6 +1,6 @@
 
 
-alter   PROCEDURE dbo.[InsertarDocumento](
+create   PROCEDURE dbo.[InsertarDocumento](
 
 
 

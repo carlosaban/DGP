@@ -57,6 +57,7 @@
     <Compile Include="Seguridad\DAPrivilegio.cs" />
     <Compile Include="Ventas\DAAmortizacionVenta.cs" />
     <Compile Include="Ventas\DADocumentoPago.cs" />
+    <Compile Include="Ventas\DAEntidadBancaria.cs" />
     <Compile Include="Ventas\DALineaVenta.cs" />
     <Compile Include="Ventas\DALVuelto.cs" />
     <Compile Include="Ventas\DAVenta.cs" />

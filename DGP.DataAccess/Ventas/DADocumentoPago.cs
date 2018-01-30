@@ -80,7 +80,9 @@ namespace DGP.DataAccess.Ventas
                     oBEAmortizacionVenta.IdVenta = (oIDataReader["Id_Venta"] == (object)DBNull.Value) ? 0 : Convert.ToInt32(oIDataReader["Id_Venta"]);
                     oBEAmortizacionVenta.IdCliente = (oIDataReader["Id_Cliente"] == (object)DBNull.Value) ? 0 : Convert.ToInt32(oIDataReader["Id_Cliente"]);
                     oBEAmortizacionVenta.IdDocumento = (oIDataReader["IdDocumento"] == (object)DBNull.Value) ? 0 : Convert.ToInt32(oIDataReader["IdDocumento"]);
-
+                    oBEAmortizacionVenta.SaldoMaximoVenta = (oIDataReader["SaldoMaximoVenta"] == (object)DBNull.Value) ? 0 : Convert.ToDecimal(oIDataReader["SaldoMaximoVenta"]);
+                    
+                    
 
 
                     vLista.Add(oBEAmortizacionVenta);
@@ -98,13 +100,13 @@ namespace DGP.DataAccess.Ventas
             }
         }
 
-        public List<BEVenta> ListarVentasXCliente(int idCliente)
+        public List<BEVenta> ListarVentasXCliente(int idCliente , int idDocumento )
         {
-            return this.ListarVentasXCliente(idCliente, null);
+            return this.ListarVentasXCliente(idCliente,idDocumento, null);
 
         }
 
-        public List<BEVenta> ListarVentasXCliente(int idCliente, DatabaseHelper pDatabaseHelper)
+        public List<BEVenta> ListarVentasXCliente(int idCliente, int idDocumento, DatabaseHelper pDatabaseHelper)
         {
             DatabaseHelper oDatabaseHelper = new DatabaseHelper();
 
@@ -114,13 +116,34 @@ namespace DGP.DataAccess.Ventas
             {
                 oDatabaseHelper.ClearParameter();
                 oDatabaseHelper.AddParameter("@IdCliente", idCliente);
+
+                oDatabaseHelper.AddParameter("@IdDocumento", idDocumento);
                 oIDataReader = oDatabaseHelper.ExecuteReader("ListarVentaXCliente", CommandType.StoredProcedure);
                 while (oIDataReader.Read())
                 {
                     vLista.Add(new BEVenta()
                     {
-                        IdVenta = Convert.ToInt32(oIDataReader["Id_Venta"]),
-                        MontoTotal = Convert.ToDecimal(oIDataReader["Monto_Total"]),
+                        IdVenta = Convert.ToInt32(oIDataReader["Id_Venta"])
+
+                        ,IdCliente = (oIDataReader["Id_Cliente"] == (object)DBNull.Value) ? 0 : int.Parse(oIDataReader["Id_Cliente"].ToString())
+                        ,IdProducto = int.Parse(oIDataReader["Id_Producto"].ToString())
+                        ,Producto = oIDataReader["Producto"].ToString()
+                        ,IdTipoDocumentoVenta = (oIDataReader["IdTipoDocumentoVenta"] == (object)DBNull.Value) ? string.Empty : oIDataReader["IdTipoDocumentoVenta"].ToString()
+                        ,TipoDocumentoVenta = (oIDataReader["TipoDocumentoVenta"] == (object)DBNull.Value) ? string.Empty : oIDataReader["TipoDocumentoVenta"].ToString()
+                        ,FechaCreacion = Convert.ToDateTime(oIDataReader["FechaCreacion"]).ToShortDateString()
+                        
+                        ,TotalPesoBruto = decimal.Parse(oIDataReader["Total_Peso_Bruto"].ToString())
+                        ,TotalPesoTara = decimal.Parse(oIDataReader["Total_Peso_Tara"].ToString())
+                        ,TotalPesoNeto = decimal.Parse(oIDataReader["Total_Peso_Neto"].ToString())
+                        ,Precio = decimal.Parse(oIDataReader["Precio"].ToString())
+                        ,MontoSubTotal = decimal.Parse(oIDataReader["Monto_SubTotal"].ToString())
+                        ,MontoIGV = decimal.Parse(oIDataReader["Monto_Igv"].ToString())
+                        ,MontoTotal = decimal.Parse(oIDataReader["Monto_Total"].ToString())
+                        ,TotalDevolucion = (oIDataReader["Total_Devolucion"] == (object)DBNull.Value) ? decimal.Zero : decimal.Parse(oIDataReader["Total_Devolucion"].ToString())
+                        ,TotalAmortizacion = (oIDataReader["Total_Amortizacion"] == (object)DBNull.Value) ? decimal.Zero : decimal.Parse(oIDataReader["Total_Amortizacion"].ToString())
+                        ,TotalSaldo = decimal.Parse(oIDataReader["Total_Saldo"].ToString())
+                        ,IdEstado = (oIDataReader["Estado"] == (object)DBNull.Value) ? string.Empty : oIDataReader["Estado"].ToString()
+                
                     });
 
                 }
