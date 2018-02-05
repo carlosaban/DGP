@@ -44,6 +44,9 @@
             this.bindingNavigatorMoveLastItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.btnAgregar = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSplitButton1 = new System.Windows.Forms.ToolStripSplitButton();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.subirImagenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lblIdDocumento = new System.Windows.Forms.Label();
             this.txtIdDocumento = new System.Windows.Forms.TextBox();
             this.lblTipoDocumento = new System.Windows.Forms.Label();
@@ -108,9 +111,8 @@
             this.bEEntidadBancariaBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.lblCodigoReferencia = new System.Windows.Forms.Label();
             this.txtCodigoReferencia = new System.Windows.Forms.TextBox();
-            this.toolStripSplitButton1 = new System.Windows.Forms.ToolStripSplitButton();
-            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.subirImagenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.txtCliente = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator1)).BeginInit();
             this.bindingNavigator1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bsDocumentos)).BeginInit();
@@ -254,10 +256,34 @@
             this.btnAgregar.Text = "toolStripButton1";
             this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
+            // toolStripSplitButton1
+            // 
+            this.toolStripSplitButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripSplitButton1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem1,
+            this.subirImagenToolStripMenuItem});
+            this.toolStripSplitButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripSplitButton1.Image")));
+            this.toolStripSplitButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripSplitButton1.Name = "toolStripSplitButton1";
+            this.toolStripSplitButton1.Size = new System.Drawing.Size(32, 22);
+            this.toolStripSplitButton1.Text = "toolStripSplitButton1";
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(144, 22);
+            this.toolStripMenuItem1.Text = "Ver Imagen";
+            // 
+            // subirImagenToolStripMenuItem
+            // 
+            this.subirImagenToolStripMenuItem.Name = "subirImagenToolStripMenuItem";
+            this.subirImagenToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
+            this.subirImagenToolStripMenuItem.Text = "Subir Imagen";
+            // 
             // lblIdDocumento
             // 
             this.lblIdDocumento.AutoSize = true;
-            this.lblIdDocumento.Location = new System.Drawing.Point(15, 55);
+            this.lblIdDocumento.Location = new System.Drawing.Point(14, 81);
             this.lblIdDocumento.Name = "lblIdDocumento";
             this.lblIdDocumento.Size = new System.Drawing.Size(74, 13);
             this.lblIdDocumento.TabIndex = 1;
@@ -266,7 +292,7 @@
             // txtIdDocumento
             // 
             this.txtIdDocumento.Enabled = false;
-            this.txtIdDocumento.Location = new System.Drawing.Point(124, 52);
+            this.txtIdDocumento.Location = new System.Drawing.Point(123, 78);
             this.txtIdDocumento.Name = "txtIdDocumento";
             this.txtIdDocumento.Size = new System.Drawing.Size(121, 20);
             this.txtIdDocumento.TabIndex = 2;
@@ -274,7 +300,7 @@
             // lblTipoDocumento
             // 
             this.lblTipoDocumento.AutoSize = true;
-            this.lblTipoDocumento.Location = new System.Drawing.Point(15, 84);
+            this.lblTipoDocumento.Location = new System.Drawing.Point(14, 110);
             this.lblTipoDocumento.Name = "lblTipoDocumento";
             this.lblTipoDocumento.Size = new System.Drawing.Size(101, 13);
             this.lblTipoDocumento.TabIndex = 4;
@@ -283,7 +309,7 @@
             // numMonto
             // 
             this.numMonto.DecimalPlaces = 2;
-            this.numMonto.Location = new System.Drawing.Point(123, 138);
+            this.numMonto.Location = new System.Drawing.Point(122, 164);
             this.numMonto.Maximum = new decimal(new int[] {
             1000000000,
             0,
@@ -296,7 +322,7 @@
             // lblFecha
             // 
             this.lblFecha.AutoSize = true;
-            this.lblFecha.Location = new System.Drawing.Point(15, 115);
+            this.lblFecha.Location = new System.Drawing.Point(14, 141);
             this.lblFecha.Name = "lblFecha";
             this.lblFecha.Size = new System.Drawing.Size(37, 13);
             this.lblFecha.TabIndex = 9;
@@ -305,7 +331,7 @@
             // lblMonto
             // 
             this.lblMonto.AutoSize = true;
-            this.lblMonto.Location = new System.Drawing.Point(15, 140);
+            this.lblMonto.Location = new System.Drawing.Point(14, 166);
             this.lblMonto.Name = "lblMonto";
             this.lblMonto.Size = new System.Drawing.Size(37, 13);
             this.lblMonto.TabIndex = 10;
@@ -534,7 +560,7 @@
             // dtFecha
             // 
             this.dtFecha.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtFecha.Location = new System.Drawing.Point(123, 108);
+            this.dtFecha.Location = new System.Drawing.Point(122, 134);
             this.dtFecha.Name = "dtFecha";
             this.dtFecha.Size = new System.Drawing.Size(122, 20);
             this.dtFecha.TabIndex = 15;
@@ -555,14 +581,14 @@
             this.cmbTipoDocumento.Items.AddRange(new object[] {
             "AMR",
             "NCR"});
-            this.cmbTipoDocumento.Location = new System.Drawing.Point(124, 81);
+            this.cmbTipoDocumento.Location = new System.Drawing.Point(123, 107);
             this.cmbTipoDocumento.Name = "cmbTipoDocumento";
             this.cmbTipoDocumento.Size = new System.Drawing.Size(121, 21);
             this.cmbTipoDocumento.TabIndex = 17;
             // 
             // txtObservacion
             // 
-            this.txtObservacion.Location = new System.Drawing.Point(20, 333);
+            this.txtObservacion.Location = new System.Drawing.Point(19, 359);
             this.txtObservacion.Multiline = true;
             this.txtObservacion.Name = "txtObservacion";
             this.txtObservacion.Size = new System.Drawing.Size(227, 75);
@@ -571,7 +597,7 @@
             // lblObservacion
             // 
             this.lblObservacion.AutoSize = true;
-            this.lblObservacion.Location = new System.Drawing.Point(17, 304);
+            this.lblObservacion.Location = new System.Drawing.Point(16, 330);
             this.lblObservacion.Name = "lblObservacion";
             this.lblObservacion.Size = new System.Drawing.Size(67, 13);
             this.lblObservacion.TabIndex = 18;
@@ -582,7 +608,7 @@
             this.cmbTipoPago.DataSource = this.bEParametroDetalleBindingSource;
             this.cmbTipoPago.DisplayMember = "Texto";
             this.cmbTipoPago.FormattingEnabled = true;
-            this.cmbTipoPago.Location = new System.Drawing.Point(124, 196);
+            this.cmbTipoPago.Location = new System.Drawing.Point(123, 222);
             this.cmbTipoPago.Name = "cmbTipoPago";
             this.cmbTipoPago.Size = new System.Drawing.Size(121, 21);
             this.cmbTipoPago.TabIndex = 21;
@@ -595,7 +621,7 @@
             // lblFormaPago
             // 
             this.lblFormaPago.AutoSize = true;
-            this.lblFormaPago.Location = new System.Drawing.Point(17, 199);
+            this.lblFormaPago.Location = new System.Drawing.Point(16, 225);
             this.lblFormaPago.Name = "lblFormaPago";
             this.lblFormaPago.Size = new System.Drawing.Size(79, 13);
             this.lblFormaPago.TabIndex = 20;
@@ -690,7 +716,7 @@
             // lblPersonal
             // 
             this.lblPersonal.AutoSize = true;
-            this.lblPersonal.Location = new System.Drawing.Point(15, 169);
+            this.lblPersonal.Location = new System.Drawing.Point(14, 195);
             this.lblPersonal.Name = "lblPersonal";
             this.lblPersonal.Size = new System.Drawing.Size(48, 13);
             this.lblPersonal.TabIndex = 26;
@@ -699,7 +725,7 @@
             // cmbPersonal
             // 
             this.cmbPersonal.FormattingEnabled = true;
-            this.cmbPersonal.Location = new System.Drawing.Point(124, 169);
+            this.cmbPersonal.Location = new System.Drawing.Point(123, 195);
             this.cmbPersonal.Name = "cmbPersonal";
             this.cmbPersonal.Size = new System.Drawing.Size(121, 21);
             this.cmbPersonal.TabIndex = 27;
@@ -707,7 +733,7 @@
             // lblEntidadBancaria
             // 
             this.lblEntidadBancaria.AutoSize = true;
-            this.lblEntidadBancaria.Location = new System.Drawing.Point(15, 223);
+            this.lblEntidadBancaria.Location = new System.Drawing.Point(14, 249);
             this.lblEntidadBancaria.Name = "lblEntidadBancaria";
             this.lblEntidadBancaria.Size = new System.Drawing.Size(88, 13);
             this.lblEntidadBancaria.TabIndex = 28;
@@ -718,7 +744,7 @@
             this.cmbEntidadBancaria.DataSource = this.bEEntidadBancariaBindingSource;
             this.cmbEntidadBancaria.DisplayMember = "Nombre";
             this.cmbEntidadBancaria.FormattingEnabled = true;
-            this.cmbEntidadBancaria.Location = new System.Drawing.Point(124, 223);
+            this.cmbEntidadBancaria.Location = new System.Drawing.Point(123, 249);
             this.cmbEntidadBancaria.Name = "cmbEntidadBancaria";
             this.cmbEntidadBancaria.Size = new System.Drawing.Size(121, 21);
             this.cmbEntidadBancaria.TabIndex = 29;
@@ -731,7 +757,7 @@
             // lblCodigoReferencia
             // 
             this.lblCodigoReferencia.AutoSize = true;
-            this.lblCodigoReferencia.Location = new System.Drawing.Point(15, 266);
+            this.lblCodigoReferencia.Location = new System.Drawing.Point(14, 292);
             this.lblCodigoReferencia.Name = "lblCodigoReferencia";
             this.lblCodigoReferencia.Size = new System.Drawing.Size(95, 13);
             this.lblCodigoReferencia.TabIndex = 30;
@@ -739,41 +765,35 @@
             // 
             // txtCodigoReferencia
             // 
-            this.txtCodigoReferencia.Enabled = false;
-            this.txtCodigoReferencia.Location = new System.Drawing.Point(123, 259);
+            this.txtCodigoReferencia.Location = new System.Drawing.Point(122, 285);
             this.txtCodigoReferencia.Name = "txtCodigoReferencia";
             this.txtCodigoReferencia.Size = new System.Drawing.Size(121, 20);
             this.txtCodigoReferencia.TabIndex = 31;
             // 
-            // toolStripSplitButton1
+            // txtCliente
             // 
-            this.toolStripSplitButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripSplitButton1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem1,
-            this.subirImagenToolStripMenuItem});
-            this.toolStripSplitButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripSplitButton1.Image")));
-            this.toolStripSplitButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripSplitButton1.Name = "toolStripSplitButton1";
-            this.toolStripSplitButton1.Size = new System.Drawing.Size(32, 22);
-            this.toolStripSplitButton1.Text = "toolStripSplitButton1";
+            this.txtCliente.Enabled = false;
+            this.txtCliente.Location = new System.Drawing.Point(123, 43);
+            this.txtCliente.Name = "txtCliente";
+            this.txtCliente.Size = new System.Drawing.Size(121, 20);
+            this.txtCliente.TabIndex = 33;
             // 
-            // toolStripMenuItem1
+            // label1
             // 
-            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
-            this.toolStripMenuItem1.Text = "Ver Imagen";
-            // 
-            // subirImagenToolStripMenuItem
-            // 
-            this.subirImagenToolStripMenuItem.Name = "subirImagenToolStripMenuItem";
-            this.subirImagenToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.subirImagenToolStripMenuItem.Text = "Subir Imagen";
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(14, 46);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(39, 13);
+            this.label1.TabIndex = 32;
+            this.label1.Text = "Cliente";
             // 
             // frmDocumentoPago
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(968, 462);
+            this.Controls.Add(this.txtCliente);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.txtCodigoReferencia);
             this.Controls.Add(this.lblCodigoReferencia);
             this.Controls.Add(this.cmbEntidadBancaria);
@@ -897,5 +917,7 @@
         private System.Windows.Forms.ToolStripSplitButton toolStripSplitButton1;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem subirImagenToolStripMenuItem;
+        private System.Windows.Forms.TextBox txtCliente;
+        private System.Windows.Forms.Label label1;
     }
 }

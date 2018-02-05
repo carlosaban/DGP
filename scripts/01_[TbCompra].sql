@@ -44,14 +44,14 @@ ALTER TABLE [dbo].[TbCompra] ADD  CONSTRAINT [DF_TbCompra_FechaCreacion]  DEFAUL
 GO
 
 ALTER TABLE [dbo].[TbCompra]  WITH CHECK ADD  CONSTRAINT [FK_TbCompra_Tb_Caja] FOREIGN KEY([IdCaja])
-REFERENCES [dbo].[Tb_Caja] ([IdCaja])
+REFERENCES [dbo].[Tb_Caja] ([Id_Caja])
 GO
 
 ALTER TABLE [dbo].[TbCompra] CHECK CONSTRAINT [FK_TbCompra_Tb_Caja]
 GO
 
 ALTER TABLE [dbo].[TbCompra]  WITH CHECK ADD  CONSTRAINT [FK_TbCompra_Tb_Empresa] FOREIGN KEY([IdEmpresa])
-REFERENCES [dbo].[Tb_Empresa] ([IdEmpresa])
+REFERENCES [dbo].[Tb_Empresa] ([Id_Empresa])
 GO
 
 ALTER TABLE [dbo].[TbCompra] CHECK CONSTRAINT [FK_TbCompra_Tb_Empresa]

@@ -18,30 +18,32 @@ namespace DGP.Presentation.Ventas
     public partial class frmDocumentoPagoDetalle : Form
     {
         private BEClienteProveedor Cliente;
-        private decimal montoAplicar;
+        private decimal montoMax;
         private int IdDocumento;
-        private int IdPersonal;
-        public frmDocumentoPagoDetalle(BEClienteProveedor Cliente, decimal montoAplicar, int idDocumento , int IdPersonal)
+        private decimal sumMonto;
+        public frmDocumentoPagoDetalle(BEClienteProveedor Cliente, decimal montoMax, decimal sumMonto, int idDocumento, int IdPersonal)
         {
             InitializeComponent();
             this.Cliente = Cliente;
-            this.montoAplicar = montoAplicar;
             this.IdDocumento =idDocumento;
-            inicializarFormulario();
+            this.montoMax = montoMax;
+            this.sumMonto = sumMonto;
         }
 
-        private void inicializarFormulario()
-        {
-            this.nudMontoAplicar.Maximum = this.montoAplicar;
-        }
 
         private void frmDocumentoPagoDetalle_Load(object sender, EventArgs e)
+        {
+            cargarFormularo();
+                      
+        }
+
+        private void cargarFormularo()
         {
             try
             {
                 BLDocumentoPago BLDP = new BLDocumentoPago();
                 txtCliente.Text = Cliente.Nombre;
-                this.dgvDetalle.DataSource = BLDP.ListarVentaXCliente(Cliente.IdCliente , this.IdDocumento);
+                this.dgvDetalle.DataSource = BLDP.ListarVentaXCliente(Cliente.IdCliente, this.IdDocumento);
 
             }
             catch (Exception ex)
@@ -49,8 +51,6 @@ namespace DGP.Presentation.Ventas
                 MostrarMensaje(ex.Message, MessageBoxIcon.Error);
             }
 
-
-           
         }
 
         private void MostrarMensaje(string pMensaje, MessageBoxIcon pMsgBoxicon)
@@ -63,25 +63,31 @@ namespace DGP.Presentation.Ventas
         {
             try
             {
-                    int intIdUsuario = this.IdPersonal;
                     bool boIndicador = true;
-                   
-                    if (intIdUsuario > 0 && intIdUsuario != VariablesSession.BEUsuarioSession.IdPersonal)
-                    {
-                        boIndicador = (MessageBox.Show("La amortización se va a registrar con otro usuario, desea continuar?", "DGP", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes);
-                    }
+                    int i =0;
+
                     if (boIndicador)
                     {
 
                         List<BEAmortizacionVenta> vLista = ObtenerAmortizaciones();
-
-                        foreach (BEAmortizacionVenta amort in vLista)
+                        if (sumMonto + nudMontoAplicar.Value <= montoMax)
                         {
-                            bool bOk = new BLDocumentoPago().InsertarAmortizacionVenta(amort);
+                            foreach (BEAmortizacionVenta amort in vLista)
+                            {
+                                if (dgvDetalle.Rows[i].Cells["MontoAAplicar"].Value != null)
+                                {
+                                    bool bOk = new BLDocumentoPago().InsertarAmortizacionVenta(amort);
+                                }
+                                i++;
+                            }
+                            MostrarMensaje("Se registró la amortización correctamente", MessageBoxIcon.Information);
 
-                        } 
-                        MostrarMensaje("Se registró la amortización correctamente", MessageBoxIcon.Information);
-                      }
+                        }
+                        else {
+                            MostrarMensaje("La suma de montos de las amortizaciones excede el monto del documento", MessageBoxIcon.Information);
+                            cargarFormularo();
+                        }
+                    }
                 
             }
             catch (Exception ex)
@@ -98,13 +104,13 @@ namespace DGP.Presentation.Ventas
             foreach (DataGridViewRow vRow in dgvDetalle.Rows)
             {
                         oBEAmortizacionVenta = new BEAmortizacionVenta();
-                        oBEAmortizacionVenta.Monto = Convert.ToDecimal(vRow.Cells["DataGridViewTextBoxColumn"].Value.ToString());
+                        oBEAmortizacionVenta.Monto = Convert.ToDecimal(vRow.Cells["montoTotalDataGridViewTextBoxColumn"].Value.ToString());
                         oBEAmortizacionVenta.NroDocumento = string.Empty;
                         oBEAmortizacionVenta.Observacion = string.Empty;
                         oBEAmortizacionVenta.IdEstado = "REG";
                         oBEAmortizacionVenta.IdVenta = Convert.ToInt32(vRow.Cells["idVentaDataGridViewTextBoxColumn"].Value.ToString());
                         oBEAmortizacionVenta.IdCliente = this.Cliente.IdCliente;
-                        oBEAmortizacionVenta.IdPersonal = this.IdPersonal;
+                        oBEAmortizacionVenta.IdPersonal = VariablesSession.BEUsuarioSession.IdPersonal;
                         oBEAmortizacionVenta.BEUsuarioLogin = VariablesSession.BEUsuarioSession;
                         oBEAmortizacionVenta.Caja = VariablesSession.BECaja;
                         oBEAmortizacionVenta.IdDocumento = this.IdDocumento;
