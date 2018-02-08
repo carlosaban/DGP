@@ -25,14 +25,7 @@ namespace DGP.Presentation.Compras
 
         private void frmMantenimientoCompras_Load(object sender, EventArgs e)
         {
-            try
-            {
-                
-            }
-            catch (Exception ex)
-            {
-                MostrarMensaje(ex.Message, MessageBoxIcon.Error);
-            }
+
         }
 
         private void btnBuscarCompras_Click(object sender, EventArgs e)
@@ -49,7 +42,11 @@ namespace DGP.Presentation.Compras
 
         private void CargarGrilla()
         {
-            BECompra oBECompraFiltros = ObtenerCompraBusqueda();
+            BECompraFilter oBECompraFiltros = ObtenerCompraBusqueda();
+            this.bdCompras.DataSource =  blCompra.Listar(oBECompraFiltros);
+            this.dgrvCompras.DataSource = null;
+            this.dgrvCompras.DataSource = this.bdCompras;
+
 
         }
 
@@ -83,47 +80,6 @@ namespace DGP.Presentation.Compras
             cbTipoDocumento.DisplayMember = "Texto";
             cbTipoDocumento.ValueMember = "Valor";
         }
-
-        //private void CargarCliente() {
-        //    List<BEClienteProveedor> vListaCliente = new List<BEClienteProveedor>();
-        //    vListaCliente = new BLClienteProveedor().Listar(new BEClienteProveedor());
-        //    vListaCliente.Insert(0, new BEClienteProveedor(0, "CE : Cliente Eventual"));
-        //    vListaCliente.Insert(0, new BEClienteProveedor(-1, "Todos"));
-        //    cbCliente.DataSource = vListaCliente;
-        //    cbCliente.DisplayMember = "Nombre";
-        //    cbCliente.ValueMember = "IdCliente";
-        //}
-
-        private void CargarProducto()
-        {
-            List<BEProducto> vLista = new List<BEProducto>();
-            vLista = new BLProducto().Listar(new BEProducto());
-            vLista.Insert(0, new BEProducto(0, "Todos"));
-            cbProducto.DataSource = vLista;
-            cbProducto.DisplayMember = "Nombre";
-            cbProducto.ValueMember = "IdProducto";
-        }
-
-        private void MostrarMensaje(string pMensaje, MessageBoxIcon pMsgBoxicon)
-        {
-            MessageBox.Show(pMensaje, "DGP", MessageBoxButtons.OK, pMsgBoxicon);
-        }
-
-        private BECompra ObtenerCompraBusqueda()
-        {
-            BECompra oBECompra = new BECompra();
-
-            //oBECompra.strFilterIds = txtCodigoVenta.Text;// string.IsNullOrEmpty(txtCodigoVenta.Text) ? 0 : int.Parse(txtCodigoVenta.Text);
-
-            //oBECompra.IdTipoDocumentoVenta = (cbTipoDocumento.SelectedIndex == 0) ? string.Empty : cbTipoDocumento.SelectedValue.ToString();
-            //oBECompra.IdCliente = (this.cmbClientes.Text == string.Empty) ? -1 : Convert.ToInt32(cmbClientes.SelectedValue);
-            //oBECompra.IdProducto = (cbProducto.SelectedIndex == 0) ? 0 : Convert.ToInt32(cbProducto.SelectedValue);
-            //oBECompra.FechaInicio = dtpFechaInicial.Value.Date;
-            //oBECompra.FechaFin = dtpFechaFinal.Value.Date;
-            return oBECompra;
-        }
-        /**/
-
         private void CmbClientes_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == (char)(Keys.Enter))
@@ -202,9 +158,6 @@ namespace DGP.Presentation.Compras
                 MostrarMensaje(ex.Message, MessageBoxIcon.Error);
             }
         }
-
-
-
         private void cmbClientes_Leave(object sender, EventArgs e)
         {
             if (this.cmbClientes.SelectedIndex >= 0)
@@ -212,10 +165,74 @@ namespace DGP.Presentation.Compras
                 BEClienteProveedor oBEClienteProveedor = (BEClienteProveedor)this.cmbClientes.SelectedItem;
             }
         }
+        private void CargarProducto()
+        {
+            List<BEProducto> vLista = new List<BEProducto>();
+            vLista = new BLProducto().Listar(new BEProducto());
+            vLista.Insert(0, new BEProducto(0, "Todos"));
+            cbProducto.DataSource = vLista;
+            cbProducto.DisplayMember = "Nombre";
+            cbProducto.ValueMember = "IdProducto";
+        }
+
+        private void MostrarMensaje(string pMensaje, MessageBoxIcon pMsgBoxicon)
+        {
+            MessageBox.Show(pMensaje, "DGP", MessageBoxButtons.OK, pMsgBoxicon);
+        }
+
+        private BECompraFilter ObtenerCompraBusqueda()
+        {
+            BECompraFilter oBECompra = new BECompraFilter();
+
+            //oBECompra.strFilterIds = txtCodigoVenta.Text;// string.IsNullOrEmpty(txtCodigoVenta.Text) ? 0 : int.Parse(txtCodigoVenta.Text);
+            //oBECompra.IdTipoDocumentoVenta = (cbTipoDocumento.SelectedIndex == 0) ? string.Empty : cbTipoDocumento.SelectedValue.ToString();
+            oBECompra.IdProveedor = (this.cmbClientes.Text == string.Empty) ? -1 : Convert.ToInt32(cmbClientes.SelectedValue);
+            oBECompra.IdProducto = (cbProducto.SelectedIndex == 0) ? 0 : Convert.ToInt32(cbProducto.SelectedValue);
+            oBECompra.FechaInicio = dtpFechaInicial.Value.Date;
+            oBECompra.FechaFin = dtpFechaFinal.Value.Date;
+            return oBECompra;
+        }
+        /**/
+
+
 
         private void CargarPrivilegios()
         {
             //this.gbCambiarPrecios.Visible = VariablesSession.Privilegios.Exists(t => t.IdPrivilegio == DGP.Entities.Seguridad.BEPrivilegio.Act_Precio_Venta_Masivo);
+        }
+
+        private void dgrvCompras_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                int IdCompra =  (int)this.dgrvCompras ["" , e.RowIndex].Value;
+                frmDetalleCompra form = new frmDetalleCompra(this.bdCompras) ;
+
+
+               
+            }
+            catch (Exception ex)
+            {
+                this.MostrarMensaje(ex.StackTrace, MessageBoxIcon.Error);
+
+            }
+
+        }
+
+        private void btnNuevo_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                frmDetalleCompra form = new frmDetalleCompra();
+                form.ShowDialog(this);
+
+            }
+            catch (Exception ex)
+            {
+                this.MostrarMensaje(ex.StackTrace, MessageBoxIcon.Error);
+
+            }
+
         }
 
         

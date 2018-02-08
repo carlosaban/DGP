@@ -37,6 +37,8 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.dgrvVentas = new System.Windows.Forms.DataGridView();
             this.TienePrecioVariable = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.NuevoPrecio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Margen = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.chkTienePrecioVariable = new System.Windows.Forms.CheckBox();
             this.cmbClientes = new System.Windows.Forms.ComboBox();
@@ -55,8 +57,6 @@
             this.bdCompras = new System.Windows.Forms.BindingSource(this.components);
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NuevoPrecio = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Margen = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.gbCambiarPrecios.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -153,6 +153,19 @@
             this.TienePrecioVariable.Name = "TienePrecioVariable";
             this.TienePrecioVariable.ReadOnly = true;
             this.TienePrecioVariable.Visible = false;
+            // 
+            // NuevoPrecio
+            // 
+            this.NuevoPrecio.HeaderText = "Nuevo Precio";
+            this.NuevoPrecio.Name = "NuevoPrecio";
+            // 
+            // Margen
+            // 
+            this.Margen.DataPropertyName = "Margen";
+            this.Margen.HeaderText = "Margen";
+            this.Margen.Name = "Margen";
+            this.Margen.ReadOnly = true;
+            this.Margen.Visible = false;
             // 
             // groupBox1
             // 
@@ -284,6 +297,7 @@
             this.btnBuscarVentas.TabIndex = 10;
             this.btnBuscarVentas.Text = "Buscar Compra";
             this.btnBuscarVentas.UseVisualStyleBackColor = true;
+            this.btnBuscarVentas.Click += new System.EventHandler(this.btnBuscarVentas_Click_1);
             // 
             // cbTipoDocumento
             // 
@@ -315,19 +329,6 @@
             this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
             this.dataGridViewTextBoxColumn2.ReadOnly = true;
             this.dataGridViewTextBoxColumn2.Visible = false;
-            // 
-            // NuevoPrecio
-            // 
-            this.NuevoPrecio.HeaderText = "Nuevo Precio";
-            this.NuevoPrecio.Name = "NuevoPrecio";
-            // 
-            // Margen
-            // 
-            this.Margen.DataPropertyName = "Margen";
-            this.Margen.HeaderText = "Margen";
-            this.Margen.Name = "Margen";
-            this.Margen.ReadOnly = true;
-            this.Margen.Visible = false;
             // 
             // frmMantenimientoCompras
             // 

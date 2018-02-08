@@ -483,6 +483,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\DataSources\DGP.Entities.BEParametroDetalle.datasource" />
+    <None Include="Properties\DataSources\DGP.Entities.Compras.BECompra1.datasource" />
     <None Include="Properties\DataSources\DGP.Entities.Compras.BELineaCompra.datasource" />
     <None Include="Properties\DataSources\DGP.Entities.Ventas.BEAmortizacionVenta.datasource" />
     <None Include="Properties\DataSources\DGP.Entities.Ventas.BEEntidadBancaria.datasource" />

@@ -18,6 +18,21 @@ namespace DGP.BusinessLogic.Compra
             this.BECompra = new BECompra();
         }
 
+        public BLCompra(int  IdCompra)
+        {
+            List<BECompra> result = this.Listar(new BECompraFilter() { IdCompra = IdCompra });
+            if (result.Count == 0)
+            {
+                this.BECompra = new BECompra();
+            }
+            else if (result.Count == 1)
+            {
+                this.BECompra = result[0];
+            }
+            else throw new Exception("Existe mas de una registro de compra. Validar  BD");
+            
+        }
+
         public BLCompra(BECompra beCompra)
         {
             this.BECompra = beCompra;

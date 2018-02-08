@@ -249,5 +249,10 @@ namespace DGP.Presentation.Compras
                 }
             }
         }
+
+        private void btnBuscarVentas_Click_1(object sender, EventArgs e)
+        {
+
+        }
     }
 }
