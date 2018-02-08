@@ -56,6 +56,7 @@ namespace DGP.Presentation.Ventas
                 txtIdDocumento.DataBindings.Add("Text", bsDocumentos, "IdDocumento");
                 dtFecha.DataBindings.Add("Text", bsDocumentos, "Fecha");
                 numMonto.DataBindings.Add("Text", bsDocumentos, "Monto");
+                txtCliente.Text = Cliente.Nombre;
                 listarDetalle();
             }
         }
@@ -154,10 +155,26 @@ namespace DGP.Presentation.Ventas
 
         private void btnDetalle_Click(object sender, EventArgs e)
         {
-            montoAplicar = 100; //numMontoAplica.Value;
-            int idDocumento = Convert.ToInt32(txtIdDocumento.Text);
-            frmDocumentoPagoDetalle from = new frmDocumentoPagoDetalle(Cliente, montoAplicar, idDocumento, (int)this.cmbPersonal.SelectedValue);
-            from.Show();
+            if (!txtIdDocumento.Text.Equals(""))
+            {
+                List<BEAmortizacionVenta> vLista = ObtenerAmortizaciones();
+
+                decimal sumMonto = 0;
+
+                foreach (BEAmortizacionVenta amort in vLista)
+                {
+                    sumMonto += amort.Monto;
+
+
+                }
+                int idDocumento = Convert.ToInt32(txtIdDocumento.Text);
+                frmDocumentoPagoDetalle from = new frmDocumentoPagoDetalle(Cliente, numMonto.Value, sumMonto, idDocumento, (int)this.cmbPersonal.SelectedValue);
+                from.Show();
+            }
+            else
+            {
+                MostrarMensaje("Debe grabar un documento antes de agregar amortizaciones", MessageBoxIcon.Information);
+            }
         }
 
         private void btnActualizar_Click(object sender, EventArgs e)
@@ -172,16 +189,39 @@ namespace DGP.Presentation.Ventas
         {
             try
             {
+                if (!txtIdDocumento.Text.Equals(""))
+                {
 
                     List<BEAmortizacionVenta> vLista = ObtenerAmortizaciones();
 
+                    decimal sumMonto = 0;
+
                     foreach (BEAmortizacionVenta amort in vLista)
                     {
-                        bool bOk = new BLDocumentoPago().ActualizarAmortizacionVenta(amort);
+                        sumMonto += amort.Monto;
+
 
                     }
-                    MostrarMensaje("Se actualizo la amortización correctamente", MessageBoxIcon.Information);
-                
+                    if (sumMonto <= numMonto.Value)
+                    {
+                        foreach (BEAmortizacionVenta amort in vLista)
+                        {
+                            bool bOk = new BLDocumentoPago().ActualizarAmortizacionVenta(amort);
+
+
+                        }
+
+                        MostrarMensaje("Se actualizo la amortización correctamente", MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+
+                        MostrarMensaje("El monto de las amostizaciones exceden el monto del documento", MessageBoxIcon.Information);
+                    }
+                }
+                else {
+                    MostrarMensaje("Debe grabar un documento antes de agregar amortizaciones", MessageBoxIcon.Information);
+                }
 
             }
             catch (Exception ex)
