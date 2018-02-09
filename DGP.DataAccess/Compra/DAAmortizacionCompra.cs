@@ -193,8 +193,8 @@ namespace DGP.DataAccess.Compra
             {
                 oDatabaseHelper.ClearParameter();
                 oDatabaseHelper.AddParameter("@IdCliente", beCompra.IdProveedor);
-                oDatabaseHelper.AddParameter("@idUsuario", beCompra.BEUsuarioLogin.IdPersonal);
-                oDatabaseHelper.AddParameter("@IdCaja", beCompra.BEUsuarioLogin.IdCaja);
+                oDatabaseHelper.AddParameter("@idUsuario", beCompra.Auditoria.IdPersonal);
+                oDatabaseHelper.AddParameter("@IdCaja", beCompra.Auditoria.IdCaja);
 
                 int vResultado = oDatabaseHelper.ExecuteNonQuery("DGP_ReAplicar_AmortizacionesCompra", CommandType.StoredProcedure, (pDatabaseHelper == null) ? DBHelper.ConnectionState.CloseOnExit : DBHelper.ConnectionState.KeepOpen);
 
@@ -218,7 +218,7 @@ namespace DGP.DataAccess.Compra
             {
                 oDatabaseHelper.ClearParameter();
                 oDatabaseHelper.AddParameter("@IdCompra", beCompra.IdCompra);
-                oDatabaseHelper.AddParameter("@idUsuario", beCompra.BEUsuarioLogin.IdPersonal);
+                oDatabaseHelper.AddParameter("@idUsuario", beCompra.Auditoria.IdPersonal);
 
                 int vResultado = oDatabaseHelper.ExecuteNonQuery("DGP_AnularAmortizacionesCompra", CommandType.StoredProcedure, (pDatabaseHelper == null) ? DBHelper.ConnectionState.CloseOnExit : DBHelper.ConnectionState.KeepOpen);
 

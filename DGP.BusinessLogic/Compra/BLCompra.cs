@@ -71,22 +71,22 @@ namespace DGP.BusinessLogic.Compra
          }
 
         
-        public bool Grabar ( out string mensaje) {
+        public bool Grabar ( ref string mensaje) {
             bool bOK = false;
             if (!this.ValidarCompra(out mensaje)) return false;
 
-            if (BECompra.IdCompra == 0) bOK = new DACompra().Insertar(this.BECompra, out mensaje);
+            if (BECompra.IdCompra == 0) bOK = new DACompra().Insertar( ref mensaje , this.BECompra);
             else bOK = new DACompra().Actualizar(this.BECompra, out mensaje);
 
 
             return (mensaje == string.Empty);
         
         }
-        public  bool Insertar(  out string mensaje)
+        public  bool Insertar(  ref string mensaje)
         {
             try
             {
-                return new DACompra().Insertar(this.BECompra, out mensaje);
+                return new DACompra().Insertar(ref mensaje , this.BECompra );
             }
             catch (Exception ex)
             {

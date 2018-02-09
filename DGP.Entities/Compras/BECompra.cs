@@ -36,7 +36,7 @@ namespace DGP.Entities.Compras
         public int IdProveedor { get; set; }
         public int IdPersonal { get; set; }
         public DateTime FechaCreacion { get; set; }
-        public BEPersonal BEUsuarioLogin { get; set; }
+        public BEPersonal Auditoria { get; set; }
         public int TotalUnidades { get; set; }
 
         private List<BELineaCompra> mListaLineaCompra = new List<BELineaCompra>();
