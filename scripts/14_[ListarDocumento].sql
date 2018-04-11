@@ -1,4 +1,5 @@
-
+use [DVGP_CITAVAL]
+go
 
 
 
@@ -44,13 +45,13 @@ BEGIN
 
 		  ,[FechaEliminacion]
 
-		  ,[FechaModificacion]
+		  ,d.[FechaModificacion]
 
-		  ,[FechaCreacion]
+		  ,d.[FechaCreacion]
 
-		  ,[UsuarioModificacion]
+		  ,d.[UsuarioModificacion]
 
-		  ,[UsuarioCreacion]
+		  ,d.[UsuarioCreacion]
 
 		  ,[UsuarioEliminacion]
 
@@ -63,9 +64,10 @@ BEGIN
 		  ,[IdTipoPago]
 
 		  ,[Observacion]
-
-	  FROM [dbo].[Tb_documento]
-
+		  
+		  ,cli.Nombres as [ClienteNombre]
+	  FROM [dbo].[Tb_documento] d
+	  left join [dbo].[Tb_Cliente_Proveedor] cli on cli.Id_Cliente = d.IdCliente
 	  WHERE 1=1
 	  AND IdEstado = 'REG' 
 	  AND IdDocumento = ISNULL(@IdDocumento , IdDocumento)

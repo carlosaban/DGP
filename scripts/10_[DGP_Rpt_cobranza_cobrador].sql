@@ -1,4 +1,5 @@
-
+use [DVGP_CITAVAL]
+go
 
     alter                PROCEDURE [dbo].[DGP_Rpt_cobranza_cobrador] (  
 

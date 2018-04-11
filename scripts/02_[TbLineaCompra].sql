@@ -1,3 +1,5 @@
+use [DVGP_CITAVAL]
+go
 
 
 CREATE TABLE [dbo].[TbLineaCompra](

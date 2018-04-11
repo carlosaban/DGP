@@ -1,4 +1,5 @@
-
+use [DVGP_CITAVAL]
+go
 
 create TABLE [dbo].[Tb_Amort_Compra](
 	[IdAmortCompra] [int] IDENTITY(1,1) NOT NULL,

@@ -1,4 +1,5 @@
-
+use [DVGP_CITAVAL]
+go
 
 CREATE TABLE [dbo].[tb_Archivo](
 	[IdArchivo] [int] NOT NULL,

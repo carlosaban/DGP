@@ -1,4 +1,5 @@
-
+use [DVGP_CITAVAL]
+go
 
 ALTER    PROCEDURE [dbo].[DGP_EliminarAmortizacion] (
 

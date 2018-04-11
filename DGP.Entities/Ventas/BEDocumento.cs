@@ -54,7 +54,7 @@ namespace DGP.Entities.Ventas
 
         public BEEntidadBancaria Banco { get; set; }
         public string CodigoReferencia { get; set; }
-
+        public string ClienteNombre { get { return (Cliente != null) ? Cliente.Nombre : string.Empty; } }
         
     }
 }

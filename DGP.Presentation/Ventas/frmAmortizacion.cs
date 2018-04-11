@@ -380,7 +380,12 @@ namespace DGP.Presentation.Ventas {
                     pMensaje = "Monto a Aplicar no debe ser mayor al saldo";
                     boResultado = false;
                 }
-               
+
+                if (int.Parse(this.cmbClientes.SelectedValue.ToString()) <= 0)
+                {
+                    pMensaje = "Debe Seleccionar un cliente";
+                    boResultado = false;
+                }
                
                 return boResultado;
             }

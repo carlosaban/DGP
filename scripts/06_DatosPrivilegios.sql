@@ -1,4 +1,5 @@
-
+use [DVGP_CITAVAL]
+go
 
   update privilegios
   set descripcion ='Mantenimiento de Doc. Pagos Venta' where id=35

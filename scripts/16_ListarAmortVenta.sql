@@ -1,4 +1,5 @@
-
+use [DVGP_CITAVAL]
+go
 
 create procedure ListarAmortVenta(
 @IdDocumento int

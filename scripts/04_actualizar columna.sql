@@ -1,3 +1,5 @@
+use [DVGP_CITAVAL]
+go
 
 ALTER TABLE [dbo].[Tb_documento] DROP CONSTRAINT [DF__Tb_docume__estad__4589517F]
 

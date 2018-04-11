@@ -29,7 +29,7 @@ namespace DGP.DataAccess.Ventas
                 oDatabaseHelper.ClearParameter();
                 oDatabaseHelper.AddParameter("@FechaInicio", FechaInicio);
                 oDatabaseHelper.AddParameter("@FechaFinal", FechaFinal);
-                oDatabaseHelper.AddParameter("@IdCliente", codCliProv);
+                oDatabaseHelper.AddParameter("@IdCliente", (codCliProv == 0) ? DBNull.Value : (object)codCliProv);
                 oIDataReader = oDatabaseHelper.ExecuteReader("ListarDocumento", CommandType.StoredProcedure);
                 while (oIDataReader.Read())
                 {
@@ -40,6 +40,11 @@ namespace DGP.DataAccess.Ventas
                         IdTipoDocumento = oIDataReader["IdTipoDocumento"].ToString(),
                         Monto = decimal.Parse(oIDataReader["Monto"].ToString()),
                         idEstado = oIDataReader["idEstado"].ToString(),
+                        Cliente = new DGP.Entities.BEClienteProveedor {
+                            IdCliente = (int)oIDataReader["IdCliente"],
+                            Nombre = oIDataReader["ClienteNombre"].ToString()
+                        
+                        }
                     });
 
                 }
@@ -178,6 +183,7 @@ namespace DGP.DataAccess.Ventas
                 oDatabaseHelper.AddParameter("@IdPersonal", beDocumento.Personal.IdPersonal);
                 oDatabaseHelper.AddParameter("@IdTipoPago", beDocumento.IdTipoPago);
                 oDatabaseHelper.AddParameter("@observacion", beDocumento.Observacion);
+                oDatabaseHelper.AddParameter("@Usuario", beDocumento.BEUsuarioLogin.IdPersonal);
 
                 object vResultado = oDatabaseHelper.ExecuteScalar("InsertarDocumento", CommandType.StoredProcedure, (pDatabaseHelper == null) ? DBHelper.ConnectionState.CloseOnExit : DBHelper.ConnectionState.KeepOpen);
                 

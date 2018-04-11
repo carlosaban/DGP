@@ -1,4 +1,7 @@
 /* To prevent any potential data loss issues, you should review this script in detail before running it outside the context of the database designer.*/
+use [DVGP_CITAVAL]
+go
+
 BEGIN TRANSACTION
 SET QUOTED_IDENTIFIER ON
 SET ARITHABORT ON
