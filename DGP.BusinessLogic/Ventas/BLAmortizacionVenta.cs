@@ -29,11 +29,11 @@ namespace DGP.BusinessLogic.Ventas {
             }
 
         
-        public int Insertar(List<BEAmortizacionVenta> pLista )
+        public bool Insertar( BEDocumento beDocumento  )
         {
             try
             {
-                return Insertar(pLista, null);
+                return Insertar(beDocumento, null);
             }
             catch (Exception ex)
             {
@@ -41,32 +41,44 @@ namespace DGP.BusinessLogic.Ventas {
             }
         }
 
-        public int Insertar(List<BEAmortizacionVenta> pLista, DBHelper.DatabaseHelper pDatabaseHelper )
+        public bool Insertar(BEDocumento beDocumento , DBHelper.DatabaseHelper pDatabaseHelper )
         {
-                int intResultado = 0;
                 DatabaseHelper oDatabaseHelper = (pDatabaseHelper == null) ? new DatabaseHelper() : pDatabaseHelper;
+                DAAmortizacionVenta DAVenta = new DAAmortizacionVenta();
+                bool bOk = true;
                 try {
-                    int intCantidad = 0;
-                    int intTotal = pLista.Count * 2;
                     if (pDatabaseHelper == null) oDatabaseHelper.BeginTransaction();
-                    foreach (BEAmortizacionVenta oEntidad in pLista) {
-                        intCantidad += new DAAmortizacionVenta().InsertarDependiente(oEntidad, oDatabaseHelper);
-                        BEVenta oBEVenta = new BEVenta();
-                        oBEVenta.IdVenta = oEntidad.IdVenta;
-                        oBEVenta.BEUsuarioLogin = oEntidad.BEUsuarioLogin;
-                        intCantidad += new DAVenta().InsertarVentaFinal(oBEVenta, oDatabaseHelper);
+
+                    bOk = DAVenta.InsertarCabeceraDocumento(beDocumento, oDatabaseHelper);
+                    
+                    foreach (BEAmortizacionVenta oEntidad in beDocumento.delleAmortizacion)
+                    {
+
+                        bOk = bOk && new DAAmortizacionVenta().InsertarDependiente(beDocumento , oEntidad, oDatabaseHelper);
+                        BEVenta oBEVenta = new BEVenta(){
+                                                            IdVenta=oEntidad.IdVenta,
+                                                            BEUsuarioLogin=oEntidad.BEUsuarioLogin
+                                                        };
+
+                        bOk = bOk && (new DAVenta().InsertarVentaFinal(oBEVenta, oDatabaseHelper)> 0 );
+
                         // Opcional
-                        int intTemporal = new DAVenta().ActualizarEstado(oBEVenta.IdVenta, oDatabaseHelper, oEntidad.CancelarVenta);
+                        bOk = bOk &&(   new DAVenta().ActualizarEstado(oBEVenta.IdVenta, oDatabaseHelper, oEntidad.CancelarVenta)>0);
                     }
-                    intResultado += (intCantidad == intTotal) ? 1 : 0;
                     //
-                    if (intResultado == 1) {
-                        if (pDatabaseHelper == null)  oDatabaseHelper.CommitTransaction();
-                    } else {
-                        if (pDatabaseHelper == null) oDatabaseHelper.RollbackTransaction();
-                        else throw new Exception("Error al registrar Amortización");
+                    if (bOk)
+                    {
+                        if (pDatabaseHelper == null) oDatabaseHelper.CommitTransaction();
                     }
-                    return intResultado;
+                    else
+                    {
+                        if (pDatabaseHelper == null) oDatabaseHelper.RollbackTransaction();
+                        throw new Exception("Error al registrar Amortización");
+
+                    }
+
+
+                    return bOk;
                 } catch (Exception ex) {
                     if (pDatabaseHelper == null)  oDatabaseHelper.RollbackTransaction();
                     throw ex;
@@ -82,7 +94,55 @@ namespace DGP.BusinessLogic.Ventas {
         
         }
 
+        public bool ReaplicarAmortizacion(BEVenta beVenta)
+        {
+            return this.ReaplicarAmortizacion(beVenta, null);
+
+
+        }
+        public bool ReaplicarAmortizacion(BEVenta beVenta, DatabaseHelper pDatabaseHelper) {
+
+            DatabaseHelper oDatabaseHelper = (pDatabaseHelper == null) ? new DatabaseHelper() : pDatabaseHelper;
+            DAAmortizacionVenta DAVenta = new DAAmortizacionVenta();
+            bool bOk = true;
+            try
+            {
+                if (pDatabaseHelper == null) oDatabaseHelper.BeginTransaction();
+
+                bOk = DAVenta.ReaplicarAmortizacion(beVenta, pDatabaseHelper);
+
+                if (bOk)
+                {
+                    if (pDatabaseHelper == null) oDatabaseHelper.CommitTransaction();
+                }
+                else
+                {
+                    if (pDatabaseHelper == null) oDatabaseHelper.RollbackTransaction();
+                    throw new Exception("Error al registrar Amortización");
+                }
+
+
+                return bOk;
+            }
+            catch (Exception ex)
+            {
+                if (pDatabaseHelper == null) oDatabaseHelper.RollbackTransaction();
+                throw ex;
+            }
+            finally
+            {
+                if (pDatabaseHelper == null) oDatabaseHelper.Dispose();
+            }
+        
+        
+        
+        }
         #endregion
 
+
+        public decimal ObtenerAmortizacionSinAplicar(int IdCliente)
+        {
+            return new DAAmortizacionVenta().ObtenerAmortizacionSinAplicar(IdCliente);
+        }
     }
 }

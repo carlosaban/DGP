@@ -91,6 +91,9 @@ namespace DGP.BusinessLogic.Ventas {
 
                         BEVenta tmppBEVenta = (new BLVenta().ListarVenta(pBEVenta.IdVenta, pBEVenta.IdCaja, dbh))[0];
 
+                         
+
+
                         BEAmortizacionVenta BEAmortizacion = new BEAmortizacionVenta();
 
                         BEAmortizacion.FechaPago = tmppBEVenta.FechaInicio;
@@ -105,7 +108,16 @@ namespace DGP.BusinessLogic.Ventas {
                         BEAmortizacion.BEUsuarioLogin = pBEVenta.BEUsuarioLogin;
                         List<BEAmortizacionVenta> lista = new List<BEAmortizacionVenta>();
                         lista.Add(BEAmortizacion);
-                        new BLAmortizacionVenta().Insertar(lista, dbh );
+
+                        BEDocumento documento = new BEDocumento();
+                        documento.BEUsuarioLogin = pBEVenta.BEUsuarioLogin;
+                        documento.Fecha = tmppBEVenta.FechaInicio;
+                        documento.IdTipoDocumento = BEDocumento.TIPO_AMORTIZACION_AMR;
+                        documento.delleAmortizacion = lista;
+                        documento.Cliente.IdCliente = tmppBEVenta.IdCliente;
+                        documento.Personal.IdPersonal = pBEVenta.BEUsuarioLogin.IdPersonal;
+
+                        new BLAmortizacionVenta().Insertar(documento, dbh);
                         //Actualizar la venta
                         new DAVenta().InsertarVentaFinal(pBEVenta, dbh);
 
@@ -166,7 +178,15 @@ namespace DGP.BusinessLogic.Ventas {
                         BEAmortizacion.BEUsuarioLogin = pBEVenta.BEUsuarioLogin;
                         List<BEAmortizacionVenta> lista = new List<BEAmortizacionVenta>();
                         lista.Add(BEAmortizacion);
-                        new BLAmortizacionVenta().Insertar(lista ,dbh);
+
+                        BEDocumento documento = new BEDocumento();
+                        documento.BEUsuarioLogin = pBEVenta.BEUsuarioLogin;
+                        documento.Fecha = tmppBEVenta.FechaInicio;
+                        documento.IdTipoDocumento = BEDocumento.TIPO_AMORTIZACION_AMR;
+                        documento.delleAmortizacion = lista;
+
+
+                        new BLAmortizacionVenta().Insertar(documento, dbh);
                         //Actualizar la venta
                         new DAVenta().InsertarVentaFinal(pBEVenta, dbh);
 
@@ -339,9 +359,19 @@ namespace DGP.BusinessLogic.Ventas {
         public void ActualizarPrecio(int IdVenta, decimal NuevoPrecio)
         {
             DBHelper.DatabaseHelper dbh = new DatabaseHelper();
-            DAVenta daVenta = new DAVenta();
-            daVenta.InsertarVentaFinal(new BEVenta() { IdVenta = IdVenta, Precio = NuevoPrecio }, dbh);
-
+            try
+            {
+                DAVenta daVenta = new DAVenta();
+                daVenta.InsertarVentaFinal(new BEVenta() { IdVenta = IdVenta, Precio = NuevoPrecio }, dbh);
+            }
+            catch(Exception ex){
+                throw ex;            
+            }
+            finally
+            {
+                dbh.Dispose();
+            }
+            
         }
 
 

@@ -8,6 +8,7 @@ using System.Windows.Forms;
 
 using DGP.Presentation.Ventas;
 using DGP.Presentation.Reportes;
+using DGP.Presentation.Compras;
 
 namespace DGP.Presentation {
 
@@ -180,13 +181,37 @@ namespace DGP.Presentation {
 
         private void aplicarVueltoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            oVentas_frmVueltos = new frmVueltos();
-            oVentas_frmVueltos.MdiParent = this;
-            oVentas_frmVueltos.Show();
+            //oVentas_frmVueltos = new frmVueltos();
+            //oVentas_frmVueltos.MdiParent = this;
+            //oVentas_frmVueltos.Show();
 
         }
-        
-        
 
-    }
+        private void mantenimientoDeDocPagosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmMantenimientoDocumentoPago frm = new frmMantenimientoDocumentoPago();
+            frm.MdiParent = this;
+            frm.Show();
+        }
+
+        private void mantenimientoDeComprasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmMantenimientoComprasV2 frm = new frmMantenimientoComprasV2();
+            frm.MdiParent = this;
+            frm.Show();
+        }
+
+        private void msMenuPrincipal_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+        
+        }
+
+        private void mantenimientoDeDocPagosCompraToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+        
+        }
+
+        }   
+
+    
 }

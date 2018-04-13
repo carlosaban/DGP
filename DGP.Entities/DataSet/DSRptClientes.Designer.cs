@@ -945,6 +945,8 @@ namespace DGP.Entities.DataSet {
             
             private global::System.Data.DataColumn columnIDESTADO;
             
+            private global::System.Data.DataColumn columnACUMULADO;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public DGP_Rpt_Estado_CuentaClienteDataTable() {
                 this.TableName = "DGP_Rpt_Estado_CuentaCliente";
@@ -1046,6 +1048,13 @@ namespace DGP.Entities.DataSet {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn ACUMULADOColumn {
+                get {
+                    return this.columnACUMULADO;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -1074,7 +1083,7 @@ namespace DGP.Entities.DataSet {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public DGP_Rpt_Estado_CuentaClienteRow AddDGP_Rpt_Estado_CuentaClienteRow(int ORDEN, System.DateTime FECHA, string CLIENTE, string PRODUCTO, decimal PRECIO, decimal TOTAL_PESO_NETO, decimal MONTO_VENTA, decimal AMORTIZACION, string OBSERVACION, string IDESTADO) {
+            public DGP_Rpt_Estado_CuentaClienteRow AddDGP_Rpt_Estado_CuentaClienteRow(int ORDEN, System.DateTime FECHA, string CLIENTE, string PRODUCTO, decimal PRECIO, decimal TOTAL_PESO_NETO, decimal MONTO_VENTA, decimal AMORTIZACION, string OBSERVACION, string IDESTADO, decimal ACUMULADO) {
                 DGP_Rpt_Estado_CuentaClienteRow rowDGP_Rpt_Estado_CuentaClienteRow = ((DGP_Rpt_Estado_CuentaClienteRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         ORDEN,
@@ -1086,7 +1095,8 @@ namespace DGP.Entities.DataSet {
                         MONTO_VENTA,
                         AMORTIZACION,
                         OBSERVACION,
-                        IDESTADO};
+                        IDESTADO,
+                        ACUMULADO};
                 rowDGP_Rpt_Estado_CuentaClienteRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowDGP_Rpt_Estado_CuentaClienteRow);
                 return rowDGP_Rpt_Estado_CuentaClienteRow;
@@ -1121,6 +1131,7 @@ namespace DGP.Entities.DataSet {
                 this.columnAMORTIZACION = base.Columns["AMORTIZACION"];
                 this.columnOBSERVACION = base.Columns["OBSERVACION"];
                 this.columnIDESTADO = base.Columns["IDESTADO"];
+                this.columnACUMULADO = base.Columns["ACUMULADO"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1145,6 +1156,8 @@ namespace DGP.Entities.DataSet {
                 base.Columns.Add(this.columnOBSERVACION);
                 this.columnIDESTADO = new global::System.Data.DataColumn("IDESTADO", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnIDESTADO);
+                this.columnACUMULADO = new global::System.Data.DataColumn("ACUMULADO", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnACUMULADO);
                 this.columnORDEN.ReadOnly = true;
                 this.columnFECHA.ReadOnly = true;
                 this.columnCLIENTE.ReadOnly = true;
@@ -1795,6 +1808,22 @@ namespace DGP.Entities.DataSet {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public decimal ACUMULADO {
+                get {
+                    try {
+                        return ((decimal)(this[this.tableDGP_Rpt_Estado_CuentaCliente.ACUMULADOColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'ACUMULADO\' in table \'DGP_Rpt_Estado_CuentaCliente\' is DBNul" +
+                                "l.", e);
+                    }
+                }
+                set {
+                    this[this.tableDGP_Rpt_Estado_CuentaCliente.ACUMULADOColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public bool IsORDENNull() {
                 return this.IsNull(this.tableDGP_Rpt_Estado_CuentaCliente.ORDENColumn);
             }
@@ -1892,6 +1921,16 @@ namespace DGP.Entities.DataSet {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public void SetIDESTADONull() {
                 this[this.tableDGP_Rpt_Estado_CuentaCliente.IDESTADOColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsACUMULADONull() {
+                return this.IsNull(this.tableDGP_Rpt_Estado_CuentaCliente.ACUMULADOColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetACUMULADONull() {
+                this[this.tableDGP_Rpt_Estado_CuentaCliente.ACUMULADOColumn] = global::System.Convert.DBNull;
             }
         }
         

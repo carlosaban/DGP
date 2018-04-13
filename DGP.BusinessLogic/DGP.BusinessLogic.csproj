@@ -47,14 +47,17 @@
     <Compile Include="BLProducto.cs" />
     <Compile Include="BLProductoCliente.cs" />
     <Compile Include="BLZona.cs" />
+    <Compile Include="Compra\BLCompra.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Seguridad\BLPerfil.cs" />
     <Compile Include="Seguridad\BLPersonal.cs" />
     <Compile Include="Seguridad\BLPrivilegio.cs" />
     <Compile Include="Ventas\BLAmortizacionVenta.cs" />
+    <Compile Include="Ventas\BLDocumentoPago.cs" />
     <Compile Include="Ventas\BLLineaVenta.cs" />
     <Compile Include="Ventas\BLVenta.cs" />
     <Compile Include="Ventas\BLVueltos.cs" />
+    <Compile Include="Ventas\BLEntidadBancaria.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DGP.DataAccess\DGP.DataAccess.csproj">

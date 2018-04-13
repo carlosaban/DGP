@@ -157,7 +157,7 @@ namespace DGP.Presentation.Reportes
 
          private void frmReporteEstadoCuentaCliente_Load(object sender, EventArgs e)
          {
-             this.dtpFechaInicial.Value = DateTime.Now.AddDays(-7);
+             this.dtpFechaInicial.Value = new DateTime (2017,1,1);
          }
 
     }

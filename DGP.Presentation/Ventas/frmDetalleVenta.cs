@@ -35,6 +35,8 @@ namespace DGP.Presentation.Ventas {
         private dsLineaVenta vg_dsDevolucionVenta = new dsLineaVenta();
         private dsLineaVenta vg_dsDevolucionVentaEliminados = new dsLineaVenta();
 
+        private decimal PrecioInicial = 0;
+
         public frmDetalleVenta() {
             InitializeComponent();
         }
@@ -250,7 +252,7 @@ namespace DGP.Presentation.Ventas {
                         vg_dsLineaVenta.DTLineaVenta.AcceptChanges();
                     }
                     //** FIN **//
-                    intResultado = new BLLineaVenta().RegistrarLineaVentaMantenimientoDependiente(oBEVenta, vg_dsLineaVenta.DTLineaVenta, vg_dsLineaVentaEliminados.DTLineaVenta);
+                    intResultado = new BLLineaVenta().RegistrarLineaVentaMantenimientoDependiente(oBEVenta, vg_dsLineaVenta.DTLineaVenta, vg_dsLineaVentaEliminados.DTLineaVenta , (this.PrecioInicial != this.nudPrecioVenta.Value) );
                     if (intResultado == 3) {
                         InicializarVenta();
                         InicializarLineaVenta();
@@ -286,9 +288,22 @@ namespace DGP.Presentation.Ventas {
                     if (ValidarFormularioAmortizacion(ref strMensaje)) {
                         // Obtener las Amortizaciones
                         List<BEAmortizacionVenta> vLista = ObtenerAmortizaciones();
-                        int intResultado = 0;
-                        intResultado = new BLAmortizacionVenta().Insertar(vLista);
-                        if (intResultado == 1) {
+                        bool  bOk ;
+
+                        BEDocumento documento = new BEDocumento();
+                        documento.BEUsuarioLogin = VariablesSession.BEUsuarioSession;
+
+                        documento.Fecha = VariablesSession.BECaja.Fecha; 
+                        documento.IdTipoDocumento = BEDocumento.TIPO_AMORTIZACION_AMR;
+                        documento.delleAmortizacion = vLista;
+                        documento.Cliente.IdCliente = vg_BEVenta.IdCliente;
+                        documento.Personal.IdPersonal = VariablesSession.BEUsuarioSession.IdPersonal;
+
+                        bOk = new BLAmortizacionVenta().Insertar(documento);
+
+
+                        if (bOk)
+                        {
                             MostrarMensaje("Se registró la amortización correctamente", MessageBoxIcon.Information);
                             InicializarAmortizacionVenta();
                         } else {
@@ -480,7 +495,7 @@ namespace DGP.Presentation.Ventas {
                             vg_dsDevolucionVenta.DTLineaVenta.AcceptChanges();
                         }
                         //** FIN **//
-                        intResultado = new BLLineaVenta().RegistrarLineaVentaMantenimientoDependiente(oBEVenta, vg_dsDevolucionVenta.DTLineaVenta, vg_dsDevolucionVentaEliminados.DTLineaVenta);
+                        intResultado = new BLLineaVenta().RegistrarLineaVentaMantenimientoDependiente(oBEVenta, vg_dsDevolucionVenta.DTLineaVenta, vg_dsDevolucionVentaEliminados.DTLineaVenta, (this.PrecioInicial != this.nudPrecioVenta.Value));
                         if (intResultado == 3) {
                             InicializarVenta();
                             tcVenta.SelectedIndex = eTabDetalleVenta.TabDevolucionVenta.GetHashCode();
@@ -591,6 +606,7 @@ namespace DGP.Presentation.Ventas {
                 lblClienteVenta.Text = vg_BEVenta.Cliente;
                 lblProductoVenta.Text = vg_BEVenta.Producto;
                 nudPrecioVenta.Value = vg_BEVenta.Precio;
+                PrecioInicial = vg_BEVenta.Precio;
                 lblDevoluciones.Text = vg_BEVenta.TotalDevolucion.ToString();
                 lblEmpresaVenta.Text = vg_BEVenta.Empresa;
                 lblUnidades.Text = vg_BEVenta.TotalUnidades.ToString();

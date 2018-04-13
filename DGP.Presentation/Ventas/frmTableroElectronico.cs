@@ -407,90 +407,134 @@ namespace DGP.Presentation.Ventas {
             }
 
             private void dgvLineaVenta_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e) {
-                bool boIndicador = false;
-                // Validar que sea edicion si solo hay una fila
-                if (dgvLineaVenta.Rows.Count == 1 && dgvLineaVenta.Rows[e.RowIndex].IsNewRow == true) {
-                    boIndicador = true;
-                } else {
-                    // Validar que sea edicion para todas las demas menos la ultima
-                    if (e.RowIndex < dgvLineaVenta.Rows.Count - 1) {
+                try
+                {
+                    bool boIndicador = false;
+                    // Validar que sea edicion si solo hay una fila
+                    if (dgvLineaVenta.Rows.Count == 1 && dgvLineaVenta.Rows[e.RowIndex].IsNewRow == true)
+                    {
                         boIndicador = true;
                     }
-                }
-                if (boIndicador) {
-                    // Validar que sea solo para algunas celdas
-                    if (e.ColumnIndex != 9) {
-                        Point oPoint = dgvLineaVenta.CurrentCellAddress;
-                        if (oPoint.X == e.ColumnIndex && oPoint.Y == e.RowIndex && e.Button == MouseButtons.Left && dgvLineaVenta.EditMode != DataGridViewEditMode.EditProgrammatically) {
-                            if (!dgvLineaVenta.IsCurrentCellInEditMode) {
-                                dgvLineaVenta.BeginEdit(true);
+                    else
+                    {
+                        // Validar que sea edicion para todas las demas menos la ultima
+                        if (e.RowIndex < dgvLineaVenta.Rows.Count - 1)
+                        {
+                            boIndicador = true;
+                        }
+                    }
+                    if (boIndicador)
+                    {
+                        // Validar que sea solo para algunas celdas
+                        if (e.ColumnIndex != 9)
+                        {
+                            Point oPoint = dgvLineaVenta.CurrentCellAddress;
+                            if (oPoint.X == e.ColumnIndex && oPoint.Y == e.RowIndex && e.Button == MouseButtons.Left && dgvLineaVenta.EditMode != DataGridViewEditMode.EditProgrammatically)
+                            {
+                                if (!dgvLineaVenta.IsCurrentCellInEditMode)
+                                {
+                                    dgvLineaVenta.BeginEdit(true);
+                                }
                             }
                         }
                     }
-                } else {
-                    dgvLineaVenta.CancelEdit();
+                    else
+                    {
+                        dgvLineaVenta.CancelEdit();
+                    }
+
                 }
+                catch (Exception ex)
+                {
+                    
+                    MostrarMensaje(ex.Message , MessageBoxIcon.Error);
+                }
+                
             }
 
             private void dgvLineaVenta_CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e) {
-                switch ((ePosicionCol)e.ColumnIndex) {
-                    case ePosicionCol.CantidadJavas:
-                        // Validar si existe valor
-                        object oCantidad = dgvLineaVenta[ePosicionCol.CantidadJavas.GetHashCode(), e.RowIndex].Value;
-                        if (oCantidad == null || string.IsNullOrEmpty(oCantidad.ToString())) {
-                            vg_strCantidad = string.Empty;
-                        } else {
-                            vg_strCantidad = oCantidad.ToString();
-                        }
-                        break;
-                    case ePosicionCol.PesoBruto:
-                        // Validar si existe valor
-                        object oPesoBruto = dgvLineaVenta[ePosicionCol.PesoBruto.GetHashCode(), e.RowIndex].Value;
-                        if (oPesoBruto == null || string.IsNullOrEmpty(oPesoBruto.ToString())) {
-                            vg_strPesoBruto = string.Empty;
-                        } else {
-                            vg_strPesoBruto = oPesoBruto.ToString();
-                        }
-                        break;
-                    case ePosicionCol.CantidadPollos:
-                        object oCantidadPollos = dgvLineaVenta[ePosicionCol.CantidadPollos.GetHashCode(), e.RowIndex].Value;
-                        if (oCantidadPollos == null || string.IsNullOrEmpty(oCantidadPollos.ToString()))
-                        {
-                            vg_strCantidadPollos = string.Empty;
-                        }
-                        else
-                        {
-                            // Calcular Peso tara
-                            object oCantJavas = dgvLineaVenta[ePosicionCol.CantidadJavas.GetHashCode(), e.RowIndex].Value;
-                            object oUnidadesJava = vg_unidades_por_java;
-                            if (!string.IsNullOrEmpty(oCantJavas.ToString()) && !string.IsNullOrEmpty(oUnidadesJava.ToString()))
+
+                try
+                {
+                    switch ((ePosicionCol)e.ColumnIndex)
+                    {
+                        case ePosicionCol.CantidadJavas:
+                            // Validar si existe valor
+                            object oCantidad = dgvLineaVenta[ePosicionCol.CantidadJavas.GetHashCode(), e.RowIndex].Value;
+                            if (oCantidad == null || string.IsNullOrEmpty(oCantidad.ToString()))
                             {
-                                vg_strCantidadPollos = (int.Parse(oCantJavas.ToString()) * decimal.Parse(oUnidadesJava.ToString())).ToString();
+                                vg_strCantidad = string.Empty;
                             }
                             else
                             {
-                                vg_strCantidadPollos = oCantidadPollos.ToString();
+                                vg_strCantidad = oCantidad.ToString();
                             }
-                        }
+                            break;
+                        case ePosicionCol.PesoBruto:
+                            // Validar si existe valor
+                            object oPesoBruto = dgvLineaVenta[ePosicionCol.PesoBruto.GetHashCode(), e.RowIndex].Value;
+                            if (oPesoBruto == null || string.IsNullOrEmpty(oPesoBruto.ToString()))
+                            {
+                                vg_strPesoBruto = string.Empty;
+                            }
+                            else
+                            {
+                                vg_strPesoBruto = oPesoBruto.ToString();
+                            }
+                            break;
+                        case ePosicionCol.CantidadPollos:
+                            object oCantidadPollos = dgvLineaVenta[ePosicionCol.CantidadPollos.GetHashCode(), e.RowIndex].Value;
+                            if (oCantidadPollos == null || string.IsNullOrEmpty(oCantidadPollos.ToString()))
+                            {
+                                vg_strCantidadPollos = string.Empty;
+                            }
+                            else
+                            {
+                                // Calcular Peso tara
+                                object oCantJavas = dgvLineaVenta[ePosicionCol.CantidadJavas.GetHashCode(), e.RowIndex].Value;
+                                object oUnidadesJava = vg_unidades_por_java;
+                                if (!string.IsNullOrEmpty(oCantJavas.ToString()) && !string.IsNullOrEmpty(oUnidadesJava.ToString()))
+                                {
+                                    vg_strCantidadPollos = (int.Parse(oCantJavas.ToString()) * decimal.Parse(oUnidadesJava.ToString())).ToString();
+                                }
+                                else
+                                {
+                                    vg_strCantidadPollos = oCantidadPollos.ToString();
+                                }
+                            }
 
-                        break;
-                    case ePosicionCol.PesoTara:
-                        // Validar si existe valor
-                        object oPesoTara = dgvLineaVenta[ePosicionCol.PesoTara.GetHashCode(), e.RowIndex].Value;
-                        if (oPesoTara == null || string.IsNullOrEmpty(oPesoTara.ToString())) {
-                            vg_strPesoTara = string.Empty;
-                        } else {
-                            // Calcular Peso tara
-                            object oCantJavas = dgvLineaVenta[ePosicionCol.CantidadJavas.GetHashCode(), e.RowIndex].Value;
-                            object oPesoJava = dgvLineaVenta[ePosicionCol.PesoJava.GetHashCode(), e.RowIndex].Value;
-                            if (!string.IsNullOrEmpty(oCantJavas.ToString()) && !string.IsNullOrEmpty(oPesoJava.ToString())) {
-                                vg_strPesoTara = (int.Parse(oCantJavas.ToString()) * decimal.Parse(oPesoJava.ToString())).ToString();
-                            } else {
-                                vg_strPesoTara = oPesoTara.ToString();
+                            break;
+                        case ePosicionCol.PesoTara:
+                            // Validar si existe valor
+                            object oPesoTara = dgvLineaVenta[ePosicionCol.PesoTara.GetHashCode(), e.RowIndex].Value;
+                            if (oPesoTara == null || string.IsNullOrEmpty(oPesoTara.ToString()))
+                            {
+                                vg_strPesoTara = string.Empty;
                             }
-                        }
-                        break;
+                            else
+                            {
+                                // Calcular Peso tara
+                                object oCantJavas = dgvLineaVenta[ePosicionCol.CantidadJavas.GetHashCode(), e.RowIndex].Value;
+                                object oPesoJava = dgvLineaVenta[ePosicionCol.PesoJava.GetHashCode(), e.RowIndex].Value;
+                                if (!string.IsNullOrEmpty(oCantJavas.ToString()) && !string.IsNullOrEmpty(oPesoJava.ToString()))
+                                {
+                                    vg_strPesoTara = (int.Parse(oCantJavas.ToString()) * decimal.Parse(oPesoJava.ToString())).ToString();
+                                }
+                                else
+                                {
+                                    vg_strPesoTara = oPesoTara.ToString();
+                                }
+                            }
+                            break;
+                    }
+
                 }
+                catch (Exception ex)
+                {
+                    
+                    MostrarMensaje("Error Controlado: " + ex.Message , MessageBoxIcon.Error);
+                }
+               
             }
             
             private void dgvLineaVenta_CellEndEdit(object sender, DataGridViewCellEventArgs e) {
@@ -507,15 +551,27 @@ namespace DGP.Presentation.Ventas {
             }
 
             private void dgvLineaVenta_CellContentClick(object sender, DataGridViewCellEventArgs e) {
-                if (e.ColumnIndex< 0) return;
+                try
+                {
+                    if (e.ColumnIndex < 0) return;
 
-                if (e.ColumnIndex == ePosicionCol.BotonEliminar.GetHashCode() && e.RowIndex >= 0) {
-                    DataGridViewButtonCell objeto = (DataGridViewButtonCell)dgvLineaVenta[e.ColumnIndex, e.RowIndex];
-                    if (!string.IsNullOrEmpty(objeto.FormattedValue.ToString())) {
-                        dgvLineaVenta.Rows.RemoveAt(e.RowIndex);
-                        CalcularSumaMontos(true, true, true);
+                    if (e.ColumnIndex == ePosicionCol.BotonEliminar.GetHashCode() && e.RowIndex >= 0)
+                    {
+                        DataGridViewButtonCell objeto = (DataGridViewButtonCell)dgvLineaVenta[e.ColumnIndex, e.RowIndex];
+                        if (!string.IsNullOrEmpty(objeto.FormattedValue.ToString()))
+                        {
+                            dgvLineaVenta.Rows.RemoveAt(e.RowIndex);
+                            CalcularSumaMontos(true, true, true);
+                        }
                     }
+
                 }
+                catch (Exception ex)
+                {
+                    
+                    this.MostrarMensaje("Error Controlado: " + ex.StackTrace , MessageBoxIcon.Error);
+                }
+              
             }
 
             private void btnAceptarVenta_Click(object sender, EventArgs e) {
@@ -638,31 +694,28 @@ namespace DGP.Presentation.Ventas {
                                 if (intIdCliente == 0) {
                                     oBEAmortizacionVenta.Observacion = "Pago de Cliente Eventual";
                                     oBEAmortizacionVenta.IdCliente = 0;
-                                    boIndicador = true;
-                                    //if (decSaldo <= decPago) {
-                                    //    oBEAmortizacionVenta.Observacion = "Pago de Cliente Eventual";
-                                    //    oBEAmortizacionVenta.IdCliente = 0;
-                                    //    boIndicador = true;
-                                    //} else {
-                                    //    MostrarMensaje("El monto a pagar debe ser mayor al saldo", MessageBoxIcon.Exclamation);
-                                    //}                                    
+                                    boIndicador = true;                    
                                 } else {
                                     oBEAmortizacionVenta.Observacion = "Pago de Cliente Espedífico";
                                     oBEAmortizacionVenta.IdCliente = intIdCliente;
                                     boIndicador = true;
-                                    //if (decPago <= decSaldo) {
-                                    //    oBEAmortizacionVenta.Observacion = "Pago de Cliente Espedífico";
-                                    //    oBEAmortizacionVenta.IdCliente = intIdCliente;
-                                    //    boIndicador = true;
-                                    //} else {
-                                    //    MostrarMensaje("El monto a pagar debe ser menor al saldo", MessageBoxIcon.Exclamation);
-                                    //}
                                 }
                                 if (boIndicador) {
                                     int intResultado = 0;
+                                    BEDocumento documento = new BEDocumento();
+                                    documento.BEUsuarioLogin = VariablesSession.BEUsuarioSession;
+                                    documento.Fecha = DateTime.Now.Date;
+                                    documento.IdTipoDocumento = BEDocumento.TIPO_AMORTIZACION_AMR;
+                                    documento.delleAmortizacion = vLista;
+                                    int IdCliente;
+                                    bool flag = int.TryParse(this.cbCliente.SelectedValue.ToString(),  out IdCliente);
+                                    documento.Cliente.IdCliente = (flag) ? IdCliente : 0;
+                                    documento.Personal.IdPersonal = VariablesSession.BEUsuarioSession.IdPersonal;
+
                                     vLista.Add(oBEAmortizacionVenta);
-                                    intResultado = new BLAmortizacionVenta().Insertar(vLista);
-                                    if (intResultado == 1) {
+                                    bool bOk = new BLAmortizacionVenta().Insertar(documento);
+                                    if (bOk)
+                                    {
                                         MostrarMensaje("Se registró la amortización correctamente", MessageBoxIcon.Information);
                                         CargarListaVentas(false, 0, 0, 0, 0);
                                     } else {

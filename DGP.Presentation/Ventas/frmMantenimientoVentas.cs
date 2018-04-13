@@ -287,10 +287,14 @@ namespace DGP.Presentation.Ventas {
                 try
                 {
                     if ( MessageBox.Show("Se modificaran los precios. Desea Continuar?", "Modificar Precios", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.No) return ;
+                    List<int> ListaClientes = new List<int>();
 
                     foreach (DataGridViewRow item in this.dgrvVentas.Rows)
                     {
                         if (item.Cells["idVenta"].Value == null || item.Cells["NuevoPrecio"].Value== null) continue;
+                        ////obtenemos los Id de los clientes a los q se les ha modificado el precio
+                        int tmpIdCliente = (item.Cells["IdCliente"].Value == null) ? 0 : int.Parse( item.Cells["IdCliente"].Value.ToString());
+                        if (!ListaClientes.Exists(t => t == tmpIdCliente)) ListaClientes.Add(tmpIdCliente);
                         bool bok = false;
                         int idVenta ;
                         decimal precio;
@@ -301,8 +305,19 @@ namespace DGP.Presentation.Ventas {
                         
                         BLVenta blVenta = new BLVenta();
                         blVenta.ActualizarPrecio(idVenta, precio);
+                       // List<BEVenta> listaVenta = blVenta.ListarVenta(idVenta, 0);
+
 
                     }
+                    foreach (var item in ListaClientes)
+                    {
+                        if (item== 0) continue;
+                        new BLAmortizacionVenta().ReaplicarAmortizacion(new BEVenta() { IdCliente = item, BEUsuarioLogin = VariablesSession.BEUsuarioSession });
+                        
+                        
+                    }
+
+
                     CargarGrilla();
 
 
@@ -321,6 +336,11 @@ namespace DGP.Presentation.Ventas {
                 
             
             
+            }
+
+            private void groupBox1_Enter(object sender, EventArgs e)
+            {
+
             }
 
 
