@@ -1,7 +1,7 @@
 use [DVGP_CITAVAL]
 go
 
-alter   PROCEDURE dbo.[InsertarDocumento](
+create   PROCEDURE dbo.[InsertarDocumento](
 
 
 
