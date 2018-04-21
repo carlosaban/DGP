@@ -356,13 +356,13 @@ namespace DGP.BusinessLogic.Ventas {
             }
         }
 
-        public void ActualizarPrecio(int IdVenta, decimal NuevoPrecio)
+        public void ActualizarPrecioMasivo(int IdVenta, decimal NuevoPrecio)
         {
             DBHelper.DatabaseHelper dbh = new DatabaseHelper();
             try
             {
                 DAVenta daVenta = new DAVenta();
-                daVenta.InsertarVentaFinal(new BEVenta() { IdVenta = IdVenta, Precio = NuevoPrecio }, dbh);
+                daVenta.InsertarVentaFinalSinReaplicar(new BEVenta() { IdVenta = IdVenta, Precio = NuevoPrecio }, dbh);
             }
             catch(Exception ex){
                 throw ex;            

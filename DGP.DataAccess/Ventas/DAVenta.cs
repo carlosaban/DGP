@@ -271,6 +271,26 @@ namespace DGP.DataAccess.Ventas {
                 }
             }
 
+            public int InsertarVentaFinalSinReaplicar(BEVenta pBEVenta, DatabaseHelper pDatabaseHelper)
+            {
+                int vResultado = 0;
+                try
+                {
+                    pDatabaseHelper.ClearParameter();
+                    pDatabaseHelper.AddParameter("@intIdVenta", pBEVenta.IdVenta);
+                    pDatabaseHelper.AddParameter("@decPrecioVenta", (pBEVenta.Precio <= 0) ? (Object)DBNull.Value : pBEVenta.Precio);
+                    vResultado = pDatabaseHelper.ExecuteNonQuery("[DGP_Insertar_Venta_Final_Sin_Reaplicar]", CommandType.StoredProcedure, DBHelper.ConnectionState.KeepOpen);
+
+
+                    return vResultado;
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+
+
             public int ActualizarEstado(int pIdVenta, DatabaseHelper pDatabaseHelper)
             {
                 return ActualizarEstado(pIdVenta, pDatabaseHelper , false);

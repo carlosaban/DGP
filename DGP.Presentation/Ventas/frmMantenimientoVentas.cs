@@ -304,7 +304,7 @@ namespace DGP.Presentation.Ventas {
                         if (!bok ) continue;
                         
                         BLVenta blVenta = new BLVenta();
-                        blVenta.ActualizarPrecio(idVenta, precio);
+                        blVenta.ActualizarPrecioMasivo(idVenta, precio);
                        // List<BEVenta> listaVenta = blVenta.ListarVenta(idVenta, 0);
 
 

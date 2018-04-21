@@ -58,7 +58,7 @@ namespace DGP.BusinessLogic.Ventas {
                     //if (HayCambioPrecio) new DAAmortizacionVenta().AnularAmortizacionVenta(pBEVenta); //.ReaplicarAmortizacion(pBEVenta);
 
                     // Insertar Venta Final
-                    intResultado += new DAVenta().InsertarVentaFinal(pBEVenta, dbh);
+                    intResultado += (new DAVenta().InsertarVentaFinal(pBEVenta, dbh) > 0 )? 1:0;
                     //
                     if (intResultado == 3) {
                         dbh.CommitTransaction();

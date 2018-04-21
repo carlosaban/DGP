@@ -440,12 +440,6 @@ namespace DGP.Entities.DataSet {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public COBRANZARow FindByID_VENTA(string ID_VENTA) {
-                return ((COBRANZARow)(this.Rows.Find(new object[] {
-                            ID_VENTA})));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public virtual global::System.Collections.IEnumerator GetEnumerator() {
                 return this.Rows.GetEnumerator();
             }
@@ -501,10 +495,7 @@ namespace DGP.Entities.DataSet {
                 base.Columns.Add(this.columnPesoNeto);
                 this.columnEsSaldo = new global::System.Data.DataColumn("EsSaldo", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnEsSaldo);
-                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
-                                this.columnID_VENTA}, true));
                 this.columnID_VENTA.AllowDBNull = false;
-                this.columnID_VENTA.Unique = true;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
