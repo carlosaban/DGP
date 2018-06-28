@@ -29,5 +29,6 @@ namespace DGP.Presentation {
         }
         public static  List<BEPrivilegio> Privilegios { get; set; }
 
+        public static  decimal IGV { get { return 18; } }
     }
 }

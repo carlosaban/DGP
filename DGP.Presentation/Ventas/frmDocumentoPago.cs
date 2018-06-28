@@ -283,6 +283,7 @@ namespace DGP.Presentation.Ventas
         private void CargarFormaDePago()
         {
             List<BEParametroDetalle> vLista = new BLParametroDetalle().Listar(new BEParametroDetalle() { IdParametro = 7 } );
+            vLista.Insert(0 , new  BEParametroDetalle(){Texto= "Seleccione" , Valor = ""});
             this.cmbTipoPago.DataSource = vLista ;
             cmbTipoPago.DisplayMember = "Texto";
             cmbTipoPago.ValueMember = "Valor";
@@ -291,6 +292,8 @@ namespace DGP.Presentation.Ventas
         private void CargarEntidadBancaria()
         {
             List<BEEntidadBancaria> vLista = new BLEntidadBancaria().Listar(new BEEntidadBancaria());
+            vLista.Insert(0, new BEEntidadBancaria() { IdEntidadBancaria = 0, Nombre = "Seleccione", Siglas = "" });
+
             this.cmbEntidadBancaria.DataSource = vLista;
             cmbEntidadBancaria.DisplayMember = "Nombre";
             cmbEntidadBancaria.ValueMember = "Siglas";
@@ -299,9 +302,11 @@ namespace DGP.Presentation.Ventas
         private void CargarTipoDocumento()
         {
             List<BEParametroDetalle> vLista = new BLParametroDetalle().Listar(new BEParametroDetalle() { IdParametro = 8 });
+            vLista.Insert(0, new BEParametroDetalle() { Texto = "Seleccione", Valor = "" });
             this.cmbTipoDocumento.DataSource = vLista;
             cmbTipoDocumento.DisplayMember = "Texto";
             cmbTipoDocumento.ValueMember = "Valor";
+
         }
 
         private void bindingNavigatorDeleteItem_Click(object sender, EventArgs e)

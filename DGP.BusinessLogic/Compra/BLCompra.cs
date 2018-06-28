@@ -38,45 +38,48 @@ namespace DGP.BusinessLogic.Compra
             this.BECompra = beCompra;
         }
         
-        public bool ValidarCompra(out string mensaje) {
+        public bool ValidarCompra(ref string mensaje) {
+
+            mensaje = string.Empty;
+            
+           
+
+            return true;
+        
+        }
+        public bool ValidarLineaCompra(ref string mensaje) {
 
             mensaje = string.Empty;
             return true;
         
         }
-        public bool ValidarLineaCompra(out string mensaje) {
-
-            mensaje = string.Empty;
-            return true;
-        
-        }
-         public bool ValidarLineaDevolucion(out string mensaje) {
+         public bool ValidarLineaDevolucion(ref string mensaje) {
 
             mensaje = string.Empty;
             return true;
         
         }
 
-         public bool addLineaCompra( BELineaCompra beLineaCompra ,  out string mensaje)
+         public bool addLineaCompra( BELineaCompra beLineaCompra ,  ref string mensaje)
          {
-             if ( ValidarLineaCompra(out mensaje) ) this.BECompra.ListaLineaCompra.Add(beLineaCompra);
+             if ( ValidarLineaCompra(ref mensaje) ) this.BECompra.ListaLineaCompra.Add(beLineaCompra);
 
              return (mensaje == string.Empty);
          }
 
-         public bool addLineaDevolucion(BELineaCompra beLineaCompra, out string mensaje)
+         public bool addLineaDevolucion(BELineaCompra beLineaCompra, ref string mensaje)
          {
-             if (ValidarLineaDevolucion(out mensaje)) this.BECompra.ListaDevolucion.Add(beLineaCompra);
+             if (ValidarLineaDevolucion(ref mensaje)) this.BECompra.ListaDevolucion.Add(beLineaCompra);
              return (mensaje == string.Empty);
          }
 
         
         public bool Grabar ( ref string mensaje) {
             bool bOK = false;
-            if (!this.ValidarCompra(out mensaje)) return false;
+            if (!this.ValidarCompra(ref mensaje)) return false;
 
             if (BECompra.IdCompra == 0) bOK = new DACompra().Insertar( ref mensaje , this.BECompra);
-            else bOK = new DACompra().Actualizar(this.BECompra, out mensaje);
+            else bOK = new DACompra().Actualizar( ref mensaje,  this.BECompra);
 
 
             return (mensaje == string.Empty);
@@ -94,20 +97,30 @@ namespace DGP.BusinessLogic.Compra
             }
         }
 
-        public bool Actualizar(out string mensaje)
+        public bool Actualizar(ref string mensaje)
         {
             try
             {
-                return new DACompra().Actualizar(this.BECompra, out mensaje);
+                return new DACompra().Actualizar(ref mensaje , this.BECompra );
             }
             catch (Exception ex)
             {
                 throw ex;
             }
         }
-
-
-
+        public bool Eliminar(BECompra beCompra)
+        {
+            string mensaje = string.Empty;
+            try
+            {
+                return new DACompra().Eliminar(ref mensaje, beCompra);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(mensaje);
+            }
+        }
+       
         public List<BECompra> Listar(BECompraFilter pBECompra)
         {
             try
@@ -120,28 +133,15 @@ namespace DGP.BusinessLogic.Compra
             }
         }
 
-        /*public BECompra ObtenerCompra(int pIdCompra)
+        public BECompra getCompra
         {
-            try
-            {
-                return new DACompra().ObtenerCompra(pIdCompra);
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }*/
+            get {
 
-        //public List<BECompra> ListarCompra(int pIdCompra, int pIdCaja, DatabaseHelper pDatabaseHelper)
-        //{
-        //    try
-        //    {
-        //        return new DACompra().ListarCompra(pIdCompra, pIdCaja, pDatabaseHelper);
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        throw ex;
-        //    }
-        //}
+
+                return this.BECompra;
+            }
+        
+        
+        }
     }
 }

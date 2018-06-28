@@ -205,8 +205,9 @@ namespace DGP.Presentation.Compras
         {
             try
             {
-                int IdCompra =  (int)this.dgrvCompras ["" , e.RowIndex].Value;
+                //int IdCompra = (int)this.dgrvCompras["IdCompra", e.RowIndex].Value;
                 frmDetalleCompra form = new frmDetalleCompra(this.bdCompras) ;
+                form.ShowDialog(this);
 
 
                
@@ -221,6 +222,16 @@ namespace DGP.Presentation.Compras
 
         private void btnNuevo_Click(object sender, EventArgs e)
         {
+            
+        }
+
+        private void groupBox2_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tsbNuevo_Click(object sender, EventArgs e)
+        {
             try
             {
                 frmDetalleCompra form = new frmDetalleCompra();
@@ -232,6 +243,40 @@ namespace DGP.Presentation.Compras
                 this.MostrarMensaje(ex.StackTrace, MessageBoxIcon.Error);
 
             }
+
+
+        }
+
+        private void tsbEliminar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                //ojo revisar esto
+                BLCompra BLDP = new BLCompra();
+                List<BECompra> lista = new List<BECompra>();
+
+                foreach (DataGridViewRow dgvRow in this.dgrvCompras.Rows)
+                {
+                    if (Convert.ToBoolean(dgvRow.Cells["Seleccionado"].Value).Equals(true))
+                    {
+                        BECompra beCompra = new BECompra();
+                        beCompra.IdCompra = Convert.ToInt32(dgvRow.Cells["idDocumentoDataGridViewTextBoxColumn"].Value.ToString());
+                        beCompra.BEUsuarioLogin = VariablesSession.BEUsuarioSession;
+                        beCompra.Observacion = "Eliminado por :" + VariablesSession.BEUsuarioSession.Nombre;
+                        BLDP.Eliminar(beCompra);
+                    }
+                }
+                CargarGrilla();
+
+            }
+            catch (Exception ex)
+            {
+                
+                this.MostrarMensaje(ex.StackTrace, MessageBoxIcon.Error);
+
+            }
+
+
 
         }
 

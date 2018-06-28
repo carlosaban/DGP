@@ -40,6 +40,7 @@
             this.productoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.estadoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.precioDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Precios = new System.Windows.Forms.DataGridViewImageColumn();
             this.NuevoPrecio = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.totalPesoNetoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.montoTotalDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -83,6 +84,8 @@
             this.gbCambiarPrecios = new System.Windows.Forms.GroupBox();
             this.btnCambioPrecios = new System.Windows.Forms.Button();
             this.btnAplicar = new System.Windows.Forms.Button();
+            this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -151,6 +154,7 @@
             this.productoDataGridViewTextBoxColumn,
             this.estadoDataGridViewTextBoxColumn,
             this.precioDataGridViewTextBoxColumn,
+            this.Precios,
             this.NuevoPrecio,
             this.totalPesoNetoDataGridViewTextBoxColumn,
             this.montoTotalDataGridViewTextBoxColumn,
@@ -184,6 +188,7 @@
             this.dgrvVentas.Size = new System.Drawing.Size(927, 267);
             this.dgrvVentas.TabIndex = 0;
             this.dgrvVentas.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgrvVentas_CellDoubleClick);
+            this.dgrvVentas.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgrvVentas_CellFormatting);
             // 
             // TienePrecioVariable
             // 
@@ -234,6 +239,13 @@
             this.precioDataGridViewTextBoxColumn.HeaderText = "Precio";
             this.precioDataGridViewTextBoxColumn.Name = "precioDataGridViewTextBoxColumn";
             this.precioDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // Precios
+            // 
+            this.Precios.HeaderText = "Inf";
+            this.Precios.Image = global::DGP.Presentation.Properties.Resources.boton_rojo_info;
+            this.Precios.Name = "Precios";
+            this.Precios.ToolTipText = "Redondo(5.00), Santa Elena(4.05)";
             // 
             // NuevoPrecio
             // 
@@ -613,6 +625,12 @@
             this.btnAplicar.UseVisualStyleBackColor = true;
             this.btnAplicar.Click += new System.EventHandler(this.btnAplicar_Click);
             // 
+            // dataGridViewImageColumn1
+            // 
+            this.dataGridViewImageColumn1.HeaderText = "Column1";
+            this.dataGridViewImageColumn1.Image = global::DGP.Presentation.Properties.Resources.boton_rojo_info;
+            this.dataGridViewImageColumn1.Name = "dataGridViewImageColumn1";
+            // 
             // dataGridViewTextBoxColumn1
             // 
             this.dataGridViewTextBoxColumn1.DataPropertyName = "IdVenta";
@@ -743,6 +761,7 @@
             this.dataGridViewTextBoxColumn12.ReadOnly = true;
             this.dataGridViewTextBoxColumn12.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridViewTextBoxColumn12.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.dataGridViewTextBoxColumn12.Visible = false;
             this.dataGridViewTextBoxColumn12.Width = 90;
             // 
             // dataGridViewTextBoxColumn13
@@ -1040,6 +1059,8 @@
         private System.Windows.Forms.Button btnCambioPrecios;
         private System.Windows.Forms.CheckBox chkTienePrecioVariable;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn1;
+        private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.DataGridViewCheckBoxColumn TienePrecioVariable;
         private System.Windows.Forms.DataGridViewTextBoxColumn IdVenta;
         private System.Windows.Forms.DataGridViewTextBoxColumn fechaDataGridViewTextBoxColumn;
@@ -1047,6 +1068,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn productoDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn estadoDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn precioDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewImageColumn Precios;
         private System.Windows.Forms.DataGridViewTextBoxColumn NuevoPrecio;
         private System.Windows.Forms.DataGridViewTextBoxColumn totalPesoNetoDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn montoTotalDataGridViewTextBoxColumn;

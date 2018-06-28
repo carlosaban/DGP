@@ -18,8 +18,9 @@ namespace DGP.DataAccess.Compra
         public bool Insertar(ref string pmensaje, BECompra bECompra)
         {
 
+            bool bOk = this.Insertar(ref pmensaje, bECompra, null);
 
-            return this.Insertar(ref pmensaje, bECompra,null);
+            return bOk;
         
         }
         public bool Insertar(ref string pmensaje, BECompra bECompra, DatabaseHelper pDatabaseHelper)
@@ -33,35 +34,38 @@ namespace DGP.DataAccess.Compra
       
                 oDatabaseHelper.ClearParameter();
                 oDatabaseHelper.AddParameter("@IdCompra", (bECompra.IdCompra <= 0) ? (object)DBNull.Value : bECompra.IdCompra, ParameterDirection.Output, SqlDbType.Int, 4);
-                oDatabaseHelper.AddParameter("@IdTipoDocumentoCompra", (string.IsNullOrEmpty(bECompra.IdTipoDocumentoCompra)) ? (object)DBNull.Value : bECompra.IdTipoDocumentoCompra);
-                oDatabaseHelper.AddParameter("@NumeroDocumento", (string.IsNullOrEmpty(bECompra.NumeroDocumento)) ? (object)DBNull.Value : bECompra.NumeroDocumento);
-                oDatabaseHelper.AddParameter("@TotalPeso_Bruto", bECompra.TotalPesoBruto);
-                oDatabaseHelper.AddParameter("@TotalPeso_Tara", bECompra.TotalPesoTara);
-                oDatabaseHelper.AddParameter("@TotalPeso_Neto", bECompra.TotalPesoNeto);
+                oDatabaseHelper.AddParameter("@idTipoDocumento", (string.IsNullOrEmpty(bECompra.IdTipoDocumentoCompra)) ? (object)DBNull.Value : bECompra.IdTipoDocumentoCompra);
+                oDatabaseHelper.AddParameter("@idClienteProveedor", bECompra.IdProveedor);
+                oDatabaseHelper.AddParameter("@Total_Jabas", bECompra.TotalJabas);
+
+                oDatabaseHelper.AddParameter("@Total_Peso_Bruto", bECompra.TotalPesoBruto);
+                oDatabaseHelper.AddParameter("@Total_Peso_Tara", bECompra.TotalPesoTara);
+                oDatabaseHelper.AddParameter("@Total_Peso_Neto", bECompra.TotalPesoNeto);
                 oDatabaseHelper.AddParameter("@Precio", bECompra.Precio);
-                oDatabaseHelper.AddParameter("@MontoSubTotal", bECompra.MontoSubTotal);
-                oDatabaseHelper.AddParameter("@MontoIgv", bECompra.MontoIGV);
-                oDatabaseHelper.AddParameter("@MontoTotal", bECompra.MontoTotal);
-
-                oDatabaseHelper.AddParameter("@TotalDevolucion", bECompra.TotalDevolucion);
-                oDatabaseHelper.AddParameter("@TotalAmortizacion", bECompra.TotalAmortizacion);
-                oDatabaseHelper.AddParameter("@TotalSaldo", bECompra.TotalAmortizacion);
-                oDatabaseHelper.AddParameter("@Observacion", bECompra.TotalAmortizacion);
-                oDatabaseHelper.AddParameter("@IdEstado", bECompra.TotalAmortizacion);
-                oDatabaseHelper.AddParameter("@IdEmpresa", bECompra.TotalAmortizacion);
+                oDatabaseHelper.AddParameter("@Monto_SubTotal", bECompra.MontoSubTotal);
+                oDatabaseHelper.AddParameter("@Monto_Igv", bECompra.MontoIGV);
+                oDatabaseHelper.AddParameter("@Monto_Total", bECompra.MontoTotal);
+                
+                oDatabaseHelper.AddParameter("@Total_Devolucion", bECompra.TotalDevolucion);
+                oDatabaseHelper.AddParameter("@Total_Amortizacion", bECompra.TotalAmortizacion);
+                oDatabaseHelper.AddParameter("@Total_Saldo", bECompra.TotalAmortizacion);
+                oDatabaseHelper.AddParameter("@IdCaja", bECompra.Auditoria.IdCaja );
+                
+                //oDatabaseHelper.AddParameter("@EsSobrante", bECompra);
+                //oDatabaseHelper.AddParameter("@IdEstado", bECompra.TotalAmortizacion); ;
+                
+                oDatabaseHelper.AddParameter("@Observacion", bECompra.Observacion);
                 oDatabaseHelper.AddParameter("@IdProducto",bECompra.IdProducto );
-                oDatabaseHelper.AddParameter("@IdCliente", bECompra.IdProveedor);
-                oDatabaseHelper.AddParameter("@IdPersonal", bECompra.IdPersonal);
                 oDatabaseHelper.AddParameter("@TotalUnidades",bECompra.TotalUnidades );
-
-
-
-                oDatabaseHelper.AddParameter("@usuarioModificacion", (bECompra.Auditoria == null) ? (object)DBNull.Value : bECompra.Auditoria.IdPersonal);
-
-                int filasAfectadas = oDatabaseHelper.ExecuteNonQuery("", CommandType.StoredProcedure, DBHelper.ConnectionState.KeepOpen, true);
+                oDatabaseHelper.AddParameter("@Usuario", (bECompra.Auditoria == null) ? (object)DBNull.Value : bECompra.Auditoria.IdPersonal);
+                oDatabaseHelper.AddParameter("@Fecha", bECompra.Fecha);
+                
+                int filasAfectadas = oDatabaseHelper.ExecuteNonQuery("DGP_Insertar_Compra", CommandType.StoredProcedure, DBHelper.ConnectionState.KeepOpen, true);
 
                 bECompra.IdCompra = Convert.ToInt32(oDatabaseHelper.GetParameter("@IdCompra").Value.ToString());
-                return (filasAfectadas > 0);
+
+                if (pDatabaseHelper == null && bECompra.IdCompra > 0) oDatabaseHelper.CommitTransaction();
+                return (bECompra.IdCompra > 0);
             }
             catch (Exception ex) {
                     if (pDatabaseHelper == null)  oDatabaseHelper.RollbackTransaction();
@@ -72,12 +76,103 @@ namespace DGP.DataAccess.Compra
 
 
         }
-            
 
-        public bool Actualizar(BECompra bECompra, out string mensaje)
+
+        public bool Actualizar(ref string pmensaje, BECompra bECompra)
         {
-            throw new NotImplementedException();
+            return this.Actualizar(ref pmensaje, bECompra, null);
         }
+        public bool Actualizar(ref string pmensaje, BECompra bECompra, DatabaseHelper pDatabaseHelper)
+        {
+            DatabaseHelper oDatabaseHelper = (pDatabaseHelper == null) ? new DatabaseHelper() : pDatabaseHelper;
+
+            try
+            {
+                if (pDatabaseHelper == null) oDatabaseHelper.BeginTransaction();
+
+
+                oDatabaseHelper.ClearParameter();
+                oDatabaseHelper.AddParameter("@IdCompra",  bECompra.IdCompra);
+                oDatabaseHelper.AddParameter("@idTipoDocumento", (string.IsNullOrEmpty(bECompra.IdTipoDocumentoCompra)) ? (object)DBNull.Value : bECompra.IdTipoDocumentoCompra);
+                oDatabaseHelper.AddParameter("@idClienteProveedor", bECompra.IdProveedor);
+                oDatabaseHelper.AddParameter("@Total_Jabas", bECompra.TotalJabas);
+
+                oDatabaseHelper.AddParameter("@Total_Peso_Bruto", bECompra.TotalPesoBruto);
+                oDatabaseHelper.AddParameter("@Total_Peso_Tara", bECompra.TotalPesoTara);
+                oDatabaseHelper.AddParameter("@Total_Peso_Neto", bECompra.TotalPesoNeto);
+
+                oDatabaseHelper.AddParameter("@Total_Devolucion", bECompra.TotalDevolucion);
+                oDatabaseHelper.AddParameter("@Total_Amortizacion", bECompra.TotalAmortizacion);
+                oDatabaseHelper.AddParameter("@Total_Saldo", bECompra.TotalAmortizacion);
+
+                oDatabaseHelper.AddParameter("@Precio", bECompra.Precio);
+                oDatabaseHelper.AddParameter("@Monto_SubTotal", bECompra.MontoSubTotal);
+                oDatabaseHelper.AddParameter("@Monto_Igv", bECompra.MontoIGV);
+                oDatabaseHelper.AddParameter("@Monto_Total", bECompra.MontoTotal);
+                //oDatabaseHelper.AddParameter("@EsSobrante", bECompra.EsSobrante);
+                oDatabaseHelper.AddParameter("@IdEstado", bECompra.IdEstado); ;
+
+                oDatabaseHelper.AddParameter("@Observacion", bECompra.Observacion);
+                oDatabaseHelper.AddParameter("@IdProducto", bECompra.IdProducto);
+                oDatabaseHelper.AddParameter("@TotalUnidades", bECompra.TotalUnidades);
+                oDatabaseHelper.AddParameter("@Usuario", (bECompra.Auditoria == null) ? (object)DBNull.Value : bECompra.Auditoria.IdPersonal);
+
+                int filasAfectadas = oDatabaseHelper.ExecuteNonQuery("DGP_Actualizar_Compra", CommandType.StoredProcedure, DBHelper.ConnectionState.KeepOpen, true);
+
+                if (pDatabaseHelper == null && filasAfectadas > 0) oDatabaseHelper.CommitTransaction();
+
+                return (filasAfectadas > 0);
+            }
+            catch (Exception ex)
+            {
+                if (pDatabaseHelper == null) oDatabaseHelper.RollbackTransaction();
+                throw ex;
+            }
+            finally
+            {
+                if (pDatabaseHelper == null) oDatabaseHelper.Dispose();
+            }
+
+
+        }
+
+
+        public bool Eliminar(ref string pmensaje, BECompra bECompra)
+        {
+            return this.Actualizar(ref pmensaje, bECompra, null);
+        }
+        public bool Eliminar(ref string pmensaje, BECompra bECompra, DatabaseHelper pDatabaseHelper)
+        {
+            DatabaseHelper oDatabaseHelper = (pDatabaseHelper == null) ? new DatabaseHelper() : pDatabaseHelper;
+
+            try
+            {
+                if (pDatabaseHelper == null) oDatabaseHelper.BeginTransaction();
+
+
+                oDatabaseHelper.ClearParameter();
+                oDatabaseHelper.AddParameter("@IdCompra", bECompra.IdCompra);
+                oDatabaseHelper.AddParameter("@Usuario", (bECompra.Auditoria == null) ? (object)DBNull.Value : bECompra.Auditoria.IdPersonal);
+
+                int filasAfectadas = oDatabaseHelper.ExecuteNonQuery("DGP_Eliminar_Compra", CommandType.StoredProcedure, DBHelper.ConnectionState.KeepOpen, true);
+
+                if (pDatabaseHelper == null && filasAfectadas > 0) oDatabaseHelper.CommitTransaction();
+
+                return (filasAfectadas > 0);
+            }
+            catch (Exception ex)
+            {
+                if (pDatabaseHelper == null) oDatabaseHelper.RollbackTransaction();
+                throw ex;
+            }
+            finally
+            {
+                if (pDatabaseHelper == null) oDatabaseHelper.Dispose();
+            }
+
+
+        }
+       
 
         public List<BECompra> Listar(BECompraFilter pBECompra) 
         {
@@ -110,12 +205,11 @@ namespace DGP.DataAccess.Compra
             try
             {
                 DBconexiones.ClearParameter();
-                DBconexiones.AddParameter("@intIdCompra", pBECompra.IdCompra);
-                DBconexiones.AddParameter("@varIdTipoDocumento", pBECompra.IdCompra);
-                DBconexiones.AddParameter("@intIdCliente", pBECompra.IdCompra);
-                DBconexiones.AddParameter("@intIdProducto", pBECompra.IdCompra);
-                DBconexiones.AddParameter("@fechaIni", pBECompra.IdCompra);
-                DBconexiones.AddParameter("@fechaFin", pBECompra.IdCompra);
+                DBconexiones.AddParameter("@IdCompra",  (pBECompra.IdCompra == 0) ? DBNull.Value : (object)pBECompra.IdCompra);
+                DBconexiones.AddParameter("@IdProveedor", (pBECompra.IdProveedor <= 0) ? DBNull.Value : (object)pBECompra.IdProveedor);
+                DBconexiones.AddParameter("@IdProducto", (pBECompra.IdProducto == 0) ? DBNull.Value : (object)pBECompra.IdProducto);
+                DBconexiones.AddParameter("@fechaIni", (pBECompra.FechaInicio == null) ? DBNull.Value : (object)pBECompra.FechaInicio);
+                DBconexiones.AddParameter("@fechaFin", (pBECompra.FechaFin == null) ? DBNull.Value : (object)pBECompra.FechaFin);
                 DRlista = DBconexiones.ExecuteReader("DGP_Listar_Compra", CommandType.StoredProcedure);
 
                 while (DRlista.Read())
@@ -140,11 +234,13 @@ namespace DGP.DataAccess.Compra
                     compra.Empresa = (DRlista["Empresa"] == DBNull.Value) ? string.Empty : (string)DRlista["Empresa"];
                     compra.IdProducto = (DRlista["IdProducto"] == DBNull.Value) ? 0 : (int)DRlista["IdProducto"];
                     compra.Producto = (DRlista["Producto"] == DBNull.Value) ? string.Empty : (string)DRlista["Producto"];
-                    compra.IdProveedor = (DRlista["IdCliente"] == DBNull.Value) ? 0 : (int)DRlista["IdCliente"];
+                    compra.IdProveedor = (DRlista["IdProveedor"] == DBNull.Value) ? 0 : (int)DRlista["IdProveedor"];
                     compra.Proveedor = (DRlista["Cliente"] == DBNull.Value) ? string.Empty : (string)DRlista["Cliente"];
                     compra.IdPersonal = (DRlista["IdPersonal"] == DBNull.Value) ? 0 : (int)DRlista["IdPersonal"];
                     compra.FechaCreacion = (DateTime)DRlista["FechaCreacion"];
+                    compra.Fecha = (DateTime)DRlista["Fecha"];
                     compra.TotalUnidades = (DRlista["TotalUnidades"] == DBNull.Value) ? 0 : (int)DRlista["TotalUnidades"];
+                    compra.TotalJabas = (DRlista["TotalJabas"] == DBNull.Value) ? 0 : (int)DRlista["TotalJabas"];
                     lista.Add(compra);
                 }
 

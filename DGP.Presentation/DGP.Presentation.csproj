@@ -489,6 +489,12 @@
     <None Include="Properties\DataSources\DGP.Entities.Ventas.BEEntidadBancaria.datasource" />
     <None Include="Resources\plusIcon.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\delete.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\boton rojo info.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

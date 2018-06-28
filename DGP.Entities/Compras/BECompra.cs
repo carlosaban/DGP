@@ -14,6 +14,9 @@ namespace DGP.Entities.Compras
         public const string CANCELADO = "CAN";
         public const int UNIDAD_JAVA = 8;
 
+        public const string TIPO_DOC_FACTURA = "FAC";
+        public const string TIPO_DOC_BOLETA= "BOL";
+
         public string strFilterIds { get; set; }
         public int IdCompra { get; set; }
         public string IdTipoDocumentoCompra { get; set; }
@@ -39,6 +42,7 @@ namespace DGP.Entities.Compras
         public BEPersonal Auditoria { get; set; }
         public int TotalUnidades { get; set; }
 
+        public BEPersonal BEUsuarioLogin { get; set; }
         private List<BELineaCompra> mListaLineaCompra = new List<BELineaCompra>();
         public List<BELineaCompra> ListaLineaCompra
         {
@@ -58,12 +62,15 @@ namespace DGP.Entities.Compras
             get { return _BEAmortizacionCompra; }
             set { _BEAmortizacionCompra = value; }
         }
+        public bool EsSobrante { get; set; }
+        public int TotalJabas { get; set; }
+        public DateTime Fecha { get; set; }
     }
 
     public class BECompraFilter : BECompra
     {
-        public DateTime FechaInicio { get; set; }
-        public DateTime FechaFin { get; set; }
+        public DateTime? FechaInicio { get; set; }
+        public DateTime? FechaFin { get; set; }
         public string TipoDocumentoCompra { get; set; }
         public string Empresa { get; set; }
         public string Proveedor { get; set; }

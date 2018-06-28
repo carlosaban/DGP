@@ -60,6 +60,20 @@ namespace DGP.Presentation.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap boton_rojo_info {
+            get {
+                object obj = ResourceManager.GetObject("boton rojo info", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap delete {
+            get {
+                object obj = ResourceManager.GetObject("delete", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap plusIcon {
             get {
                 object obj = ResourceManager.GetObject("plusIcon", resourceCulture);

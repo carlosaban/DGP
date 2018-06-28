@@ -527,14 +527,9 @@ namespace DGP.Presentation.Ventas {
                     if (ValidarEstadoVenta(ref strMensaje)) {
                         int intResultado = 0;
                         intResultado = new BLVenta().ActualizarEstado(vg_intIdVenta, cbEstadoVentaG.SelectedValue.ToString(), txtObservaciones.Text);
-                        if (intResultado == 1) {
+                        if (intResultado > 1) {
                             MostrarMensaje("La venta se canceló correctamente", MessageBoxIcon.Exclamation);
-                            //DGP_Util.EnableControl(tabPage1, false);
-                            //DGP_Util.EnableControl(tabPage2, false);
-                            //DGP_Util.EnableControl(tabPage3, false);
-                            //DGP_Util.EnableControl(cbEstadoVentaG, false);
-                            //DGP_Util.EnableControl(txtObservaciones, false);
-                            //DGP_Util.EnableControl(btnCancelarVenta, false);
+                            
                         } else {
                             MostrarMensaje("No se pudo cancelar la venta, intentelo de nuevo", MessageBoxIcon.Exclamation);
                         }
@@ -585,11 +580,13 @@ namespace DGP.Presentation.Ventas {
                 BEParametroDetalle oBEParametroDetalle = new BEParametroDetalle();
                 oBEParametroDetalle.IdParametro = eParametro.Estado_Venta.GetHashCode();
                 List<BEParametroDetalle> vLista = new BLParametroDetalle().Listar(oBEParametroDetalle);
+                //BEParametroDetalle BEEstadoRegistrado = vLista.Find(x => x.Valor == "CAN");
+                //vLista.Remove(BEEstadoRegistrado);
                 vLista.Insert(0, new BEParametroDetalle("0", "Todos"));
                 cbEstadoVentaG.DataSource = vLista;
                 cbEstadoVentaG.DisplayMember = "Texto";
                 cbEstadoVentaG.ValueMember = "Valor";
-
+                
             }
 
             private void EstablecerVentaBD() {
@@ -891,8 +888,13 @@ namespace DGP.Presentation.Ventas {
                 bool boResultado = true;
 
                 if (cbEstadoVentaG.SelectedIndex > 0 && string.IsNullOrEmpty(txtObservaciones.Text)) {
-                    boResultado = false;
-                    pMensaje = "Ingresar observación";
+                    boResultado = boResultado && false;
+                    pMensaje += "Ingresar observación. \n";
+                }
+                if (cbEstadoVentaG.SelectedValue.ToString() == BEVenta.CANCELADO.ToString())
+                {
+                    boResultado = boResultado && false;
+                    pMensaje += "No se puede cancelar la venta debe ingresar nota de credito";
                 }
 
                 return boResultado;

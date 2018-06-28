@@ -343,6 +343,15 @@ namespace DGP.Presentation.Ventas {
 
             }
 
+            private void dgrvVentas_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+            {
+                if ((e.ColumnIndex == this.dgrvVentas.Columns["Precios"].Index) && e.Value != null)
+                {
+                    DataGridViewCell cell = this.dgrvVentas.Rows[e.RowIndex].Cells[e.ColumnIndex];
+                    cell.ToolTipText = "probando tooltip" + this.dgrvVentas.Rows[e.RowIndex].Cells["precioDataGridViewTextBoxColumn"].Value.ToString();
+                }
+            }
+
 
     }
 }

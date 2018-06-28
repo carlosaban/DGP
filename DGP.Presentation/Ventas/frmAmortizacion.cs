@@ -94,33 +94,40 @@ namespace DGP.Presentation.Ventas {
                 }
             }
 
+            private void AplicarMonto() {
+                decimal montoTotal = this.nudMontoDocumento.Value;
+                decimal montoAcarreo = 0;
+
+                foreach (DataGridViewRow vRow in dgrvAmortizacion.Rows)
+                {
+
+                    if (montoAcarreo >= montoTotal) break;
+
+                    object oIndicador = vRow.Cells[ePosicionCol.Indicador.GetHashCode()].Value;
+                    string sEstado = vRow.Cells[ePosicionCol.IdEstado.GetHashCode()].Value.ToString();
+
+                    if (oIndicador.ToString() == "1" && sEstado == BEVenta.REGISTRADO)
+                    {
+
+                        decimal montoSaldo = 0;
+                        bool okParse = decimal.TryParse(vRow.Cells[ePosicionCol.Saldo.GetHashCode()].Value.ToString(), out montoSaldo);
+                        if (!okParse || montoSaldo < 0) continue; //excluir a los negativos
+                        decimal delta = montoTotal - montoAcarreo;
+
+                        decimal montoAmortizar = (delta >= montoSaldo) ? montoSaldo : montoTotal - montoAcarreo;
+                        vRow.Cells[ePosicionCol.Pago.GetHashCode()].Value = montoAmortizar.ToString();
+                        montoAcarreo = montoAcarreo + montoAmortizar;
+
+
+                    }
+                }
+            
+            }
+
             private void btnAplicarMonto_Click(object sender, EventArgs e) {
                 try {
 
-                    decimal montoTotal = this.nudMontoDocumento.Value;
-                    decimal montoAcarreo = 0;
-                    
-                    foreach (DataGridViewRow vRow in dgrvAmortizacion.Rows) {
-                       
-                        if (montoAcarreo >= montoTotal) break;
-
-                        object oIndicador = vRow.Cells[ePosicionCol.Indicador.GetHashCode()].Value;
-                        string sEstado = vRow.Cells[ePosicionCol.IdEstado.GetHashCode()].Value.ToString();
-                    
-                        if (oIndicador.ToString() == "1" && sEstado == BEVenta.REGISTRADO) {
-                            
-                            decimal montoSaldo = 0;       
-                            bool okParse = decimal.TryParse(vRow.Cells[ePosicionCol.Saldo.GetHashCode()].Value.ToString() , out montoSaldo);
-                            if (!okParse ||montoSaldo < 0) continue; //excluir a los negativos
-                            decimal delta = montoTotal - montoAcarreo;
-                            
-                            decimal montoAmortizar = (delta >= montoSaldo) ? montoSaldo : montoTotal - montoAcarreo;
-                            vRow.Cells[ePosicionCol.Pago.GetHashCode()].Value = montoAmortizar.ToString();
-                            montoAcarreo = montoAcarreo + montoAmortizar;
-
-                             
-                        }
-                    }
+                    AplicarMonto();
 
 
 
@@ -172,6 +179,8 @@ namespace DGP.Presentation.Ventas {
                 bool bCancelarVenta = false;
                 try {
                     if (ValidarFormularioAmortizacion(ref strMensaje)) {
+
+                        if (this.SumaAmortizaciones() == 0) this.AplicarMonto();
                         int intIdUsuario = 0;
                         bool boIndicador = true;
                         int.TryParse(cbUsuario.SelectedValue.ToString(), out intIdUsuario);
@@ -674,7 +683,6 @@ namespace DGP.Presentation.Ventas {
 
 
         
-
 
     }
 }

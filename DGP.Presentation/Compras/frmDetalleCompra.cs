@@ -19,18 +19,38 @@ namespace DGP.Presentation.Compras {
         private BindingSource bdSourceCompras;
         public frmDetalleCompra() {
             InitializeComponent();
-            BLCompra = new BLCompra(0);
+            CargarProducto();
+            CargarEstadoCompra();
+            BLCompra = new BLCompra();
         }
 
         public frmDetalleCompra(BindingSource bsCompras)
         {
             InitializeComponent();
+            CargarProducto();
+            CargarEstadoCompra();
 
-            bdnCompras.BindingSource = bsCompras;
+            bdnCompras.BindingSource = bsCompras ;
+            this.bdSourceCompras = bsCompras;
             BLCompra = new BLCompra( (BECompra)bsCompras.Current);
-         
-        }
+            cargarCliente();
 
+            this.cmbClientes.Enabled = false;
+
+        }
+        
+        private void cargarCliente()
+        {
+            
+            List<BEClienteProveedor> vTemp = new BLClienteProveedor().Listar(new BEClienteProveedor (){ IdCliente = this.BLCompra.BECompra.IdProveedor});
+
+            this.cmbClientes.DataSource = vTemp;
+            this.cmbClientes.DisplayMember = "Nombre";
+            this.cmbClientes.ValueMember = "IdCliente";
+                        
+            if (vTemp.Count > 0) this.cmbClientes.SelectedIndex = 0;
+        
+        }
         #region "Eventos de frmDetalleCompra"
 
      
@@ -52,11 +72,12 @@ namespace DGP.Presentation.Compras {
                 BEParametroDetalle oBEParametroDetalle = new BEParametroDetalle();
                 oBEParametroDetalle.IdParametro = eParametro.Estado_Venta.GetHashCode();
                 List<BEParametroDetalle> vLista = new BLParametroDetalle().Listar(oBEParametroDetalle);
-                vLista.Insert(0, new BEParametroDetalle("0", "Todos"));
+                //vLista.Insert(0, new BEParametroDetalle("0", "Todos"));
                 this.cbEstado.DataSource = vLista;
                 cbEstado.DisplayMember = "Texto";
                 cbEstado.ValueMember = "Valor";
-
+                
+                //cbEstado.SelectedValue= "REG"
             }
 
             private void cmbClientes_KeyPress(object sender, KeyPressEventArgs e)
@@ -111,6 +132,7 @@ namespace DGP.Presentation.Compras {
                     {
                         cmbClientes.Text = string.Empty;
                         cmbClientes.DataSource = vTemp;
+                        
                         cmbClientes.DisplayMember = "Nombre";
                         cmbClientes.ValueMember = "IdCliente";
                         cmbClientes.DroppedDown = true;
@@ -155,29 +177,8 @@ namespace DGP.Presentation.Compras {
                 cmbProducto.DisplayMember = "Nombre";
                 cmbProducto.ValueMember = "IdProducto";
             }
-            private void CargarEmpresa()
-            {
-                List<BEEmpresa> vLista = new BLEmpresa().Listar(new BEEmpresa());
-                
-                vLista.Insert(0, new BEEmpresa(0, "Seleccione"));
-                cmbEmpresa.DataSource = vLista;
-                cmbEmpresa.DisplayMember = "RazonSocial";
-                cmbEmpresa.ValueMember = "IdEmpresa";
-                cmbEmpresa.SelectedIndex = (cmbEmpresa.Items.Count > 0) ? 1 : 0;
-
-            }
-            private void CargarEstadoVenta()
-            {
-                BEParametroDetalle oBEParametroDetalle = new BEParametroDetalle();
-                oBEParametroDetalle.IdParametro = eParametro.Estado_Venta.GetHashCode();
-                List<BEParametroDetalle> vLista = new BLParametroDetalle().Listar(oBEParametroDetalle);
-                vLista.Insert(0, new BEParametroDetalle("0", "Todos"));
-                cmbEmpresa.DataSource = vLista;
-                cmbEmpresa.DisplayMember = "Texto";
-                cmbEmpresa.ValueMember = "Valor";
-
-            }
-
+            
+            
         #endregion
 
         #region "Métodos de Validacion"
@@ -205,15 +206,290 @@ namespace DGP.Presentation.Compras {
         
         private void frmDetalleCompra_Load(object sender, EventArgs e)
         {
+            if (this.bdSourceCompras != null)
+            {
+                this.lblIDCompra.DataBindings.Add("Text", this.bdSourceCompras, "IdCompra");
+                this.txtImporte.DataBindings.Add("Text", this.bdSourceCompras, "MontoTotal");
+                this.txtObservacion.DataBindings.Add("Text", this.bdSourceCompras, "Observacion");
+                this.txtTotalBruto.DataBindings.Add("Text", this.bdSourceCompras, "TotalPesoBruto");
+                this.txtTotalDevolucion.DataBindings.Add("Text", this.bdSourceCompras, "TotalDevolucion");
+                this.txtTotalJabas.DataBindings.Add("Text", this.bdSourceCompras, "TotalJabas");
+                this.txtTotalNeto.DataBindings.Add("Text", this.bdSourceCompras, "TotalPesoNeto");
+                this.txtTotalTara.DataBindings.Add("Text", this.bdSourceCompras, "TotalPesoTara");
+                this.txtUnidades.DataBindings.Add("Text", this.bdSourceCompras, "TotalUnidades");
+                this.nudPrecio.DataBindings.Add("Value", this.bdSourceCompras, "Precio");
+                this.dtFecha.DataBindings.Add("Value", this.bdSourceCompras, "Fecha");
+                this.cmbProducto.DataBindings.Add("SelectedValue", this.bdSourceCompras, "IdProducto");
+                this.cmbClientes.DataBindings.Add("SelectedValue", this.bdSourceCompras, "IdProveedor",true , DataSourceUpdateMode.OnPropertyChanged);
 
+                
+            }
         }
 
         private void btnAceptarLineaVenta_Click(object sender, EventArgs e)
         {
+            try
+            {
+                
+                bool bOk = true;
+                string mensaje = string.Empty;
+
+                if (this.cmbProducto.SelectedIndex == 0) {
+
+                    bOk = bOk && false;
+                    mensaje = "Debe Seleccionar un producto. \n";
+
+                }
+                if (this.cmbClientes.Text == string.Empty)
+                {
+
+                    bOk = bOk && false;
+                    mensaje = "Debe Seleccionar un cliente. \n";
+
+                }
+                if ( bOk && BLCompra.ValidarCompra(ref mensaje)){
+
+                    this.LoadFormCompra();                
+                    bOk = BLCompra.Grabar(ref mensaje);                    
+                    if (bOk) this.lblIDCompra.Text = BLCompra.getCompra.IdCompra.ToString(); 
+                }
+
+                if (!bOk) MostrarMensaje(mensaje, MessageBoxIcon.Error);
+            }
+            catch (Exception)
+            {
+
+                MostrarMensaje("Error al cargar formulario", MessageBoxIcon.Error);
+            }
+        }
+
+        //private void MostrarMensaje(string pMensaje, MessageBoxIcon pMsgBoxicon)
+        //{
+        //    MessageBox.Show(pMensaje, "DGP", MessageBoxButtons.OK, pMsgBoxicon);
+        //}
+
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+        private void LoadFormCompra()
+        {
+            try
+            {
+                this.BLCompra.BECompra.Auditoria = VariablesSession.BEUsuarioSession;
+                this.BLCompra.BECompra.IdCaja = VariablesSession.BEUsuarioSession.IdCaja;
+                this.BLCompra.BECompra.IdCompra = string.IsNullOrEmpty(this.lblIDCompra.Text) ? 0 : int.Parse (this.lblIDCompra.Text);
+                //this.BLCompra.BECompra.IdEmpresa = this.empre;
+                this.BLCompra.BECompra.IdEstado = BECompra.REGISTRADO;
+                this.BLCompra.BECompra.IdPersonal = VariablesSession.BEUsuarioSession.IdPersonal;
+                this.BLCompra.BECompra.IdProducto = (this.cmbProducto.SelectedValue == null) ? 0 : int.Parse(this.cmbProducto.SelectedValue.ToString());
+                this.BLCompra.BECompra.IdProveedor = (this.cmbClientes.SelectedValue == null) ? 0 : int.Parse(this.cmbClientes.SelectedValue.ToString());
+
+                this.BLCompra.BECompra.IdTipoDocumentoCompra = BECompra.TIPO_DOC_FACTURA;
+
+                this.BLCompra.BECompra.MontoTotal = decimal.Parse(this.txtImporte.Text);
+                this.BLCompra.BECompra.MontoIGV = this.BLCompra.BECompra.MontoSubTotal * VariablesSession.IGV/100;
+                this.BLCompra.BECompra.MontoSubTotal = this.BLCompra.BECompra.MontoSubTotal / (1 + VariablesSession.IGV/100);
+                //this.BLCompra.BECompra.NumeroDocumento = ;
+                this.BLCompra.BECompra.Observacion = this.txtObservacion.Text;
+                this.BLCompra.BECompra.Precio = this.nudPrecio.Value;
+                this.BLCompra.BECompra.TotalDevolucion = decimal.Parse(this.txtTotalDevolucion.Text);
+                this.BLCompra.BECompra.TotalJabas = int.Parse(this.txtTotalJabas.Text);
+                this.BLCompra.BECompra.TotalPesoBruto = decimal.Parse(this.txtTotalBruto.Text);
+                this.BLCompra.BECompra.TotalPesoNeto = decimal.Parse(this.txtTotalNeto.Text);
+                this.BLCompra.BECompra.TotalPesoTara = decimal.Parse(this.txtTotalTara.Text);
+                this.BLCompra.BECompra.TotalUnidades = int.Parse(this.txtUnidades.Text);
+                this.BLCompra.BECompra.Fecha = this.dtFecha.Value.Date;
+
+
+            }
+            catch (Exception)
+            {
+                
+                throw;
+            }
+            
+        }
+        public bool validarFormulario(ref string Mensaje)
+            {
+                decimal valor = 0;
+                bool bOk = true;
+                bOk = bOk && decimal.TryParse (this.txtTotalBruto.Text, out valor);
+                
+                bOk = bOk && decimal.TryParse (this.txtTotalTara.Text, out valor);
+                bOk = bOk && decimal.TryParse (this.txtTotalJabas.Text, out valor);
+                bOk = bOk && decimal.TryParse (this.txtTotalDevolucion.Text, out valor);
+                //bOk = bOk && decimal.TryParse (this.txtImporte.Text, out valor);
+                //bOk = bOk && decimal.TryParse (this.txtTotalNeto.Text, out valor);
+                bOk = bOk && decimal.TryParse (this.txtUnidades.Text, out valor);
+
+
+                if (!bOk) Mensaje = "Error en formato de datos";
+                return bOk;
+            }
+        public void CalcularImportes()
+        {
+                string mensaje= string.Empty;
+                try
+                {
+                    decimal TotalNeto = 0;
+                    decimal TotalBruto = 0;
+                    decimal TotalTara = 0;
+                    decimal TotalDevolucion;
+                    decimal TotalJabas;
+                    decimal Unidades;
+                    decimal Importe;
+
+                    if (validarFormulario(ref mensaje))
+                    {
+                        //TotalNeto = decimal.Parse(this.txtTotalNeto.Text);
+                        TotalBruto = decimal.Parse(this.txtTotalBruto.Text);
+                        TotalTara = decimal.Parse(this.txtTotalTara.Text);
+                        TotalDevolucion = decimal.Parse(this.txtTotalDevolucion.Text);
+                        TotalJabas = decimal.Parse(this.txtTotalJabas.Text);
+                        Unidades = decimal.Parse(this.txtUnidades.Text);
+                        //Importe = decimal.Parse(this.txtImporte.Text);
+                        TotalNeto = TotalBruto - TotalTara - TotalDevolucion;
+                        Importe = TotalNeto * this.nudPrecio.Value;
+
+
+                        this.txtTotalNeto.Text = TotalNeto.ToString();
+                        this.txtImporte.Text = Importe.ToString();
+
+
+
+
+                    }
+                    else
+                    {
+                        //MostrarMensaje(mensaje, MessageBoxIcon.Error);
+                    
+                    }
+                }
+                catch (Exception)
+                {
+
+                    throw;
+                }   
+       
+        
+        
+        }
+        private void nudPrecio_ValueChanged(object sender, EventArgs e)
+        {
+            CalcularImportes();
+            
+        }
+
+        private void txtTotalBruto_TextChanged(object sender, EventArgs e)
+        {
+
+            CalcularImportes();
+        }
+
+        private void txtTotalTara_TextChanged(object sender, EventArgs e)
+        {
+
+            CalcularImportes();
+        }
+
+        private void txtTotalDevolucion_TextChanged(object sender, EventArgs e)
+        {
+
+            CalcularImportes();
+        }
+
+        private void cmbClientes_BindingContextChanged(object sender, EventArgs e)
+        {
 
         }
 
-       
+        private void cmbClientes_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (this.bdSourceCompras != null) {
+
+                BECompraFilter compra = (BECompraFilter)this.bdSourceCompras.Current;
+                //this.cmbClientes.Items.Insert(0,
+                BEClienteProveedor oEntidad = new BEClienteProveedor();
+                oEntidad.IdCliente = compra.IdProveedor;
+
+                List<BEClienteProveedor> vTemp = new BLClienteProveedor().Listar(oEntidad);
+                this.cmbClientes.DataSource = vTemp;
+                this.cmbClientes.DisplayMember = "Nombre";
+                this.cmbClientes.ValueMember = "IdCliente";
+                //MostrarMensaje(compra.Proveedor, MessageBoxIcon.Information);
+            
+                
+                        
+            
+            
+            }
+            
+
+            
+        }
+
+        private void bdnCompras_RefreshItems(object sender, EventArgs e)
+        {
+
+        }
+
+        private void bindingNavigatorDeleteItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                //ojo revisar esto
+                int IdCompra = Convert.ToInt32((string.IsNullOrEmpty(this.lblIDCompra.Text)?"0":this.lblIDCompra.Text ));
+                BLCompra BLDP = new BLCompra();                
+                BECompra beCompra = new BECompra();
+
+                beCompra.IdCompra = IdCompra;
+                beCompra.BEUsuarioLogin = VariablesSession.BEUsuarioSession;
+                beCompra.Observacion = "Eliminado por :" + VariablesSession.BEUsuarioSession.Nombre;
+
+                if (MessageBox.Show("Desea Eliminar la compra?", "Eliminar Compra", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+
+                    BLDP.Eliminar(beCompra);
+                }
+                
+
+
+                
+            }
+            catch (Exception ex)
+            {
+
+                this.MostrarMensaje(ex.StackTrace, MessageBoxIcon.Error);
+
+            }
+
+        }
+
+        //private void CargarProducto()
+        //{
+        //    List<BEProducto> vLista = new List<BEProducto>();
+        //    vLista = new BLProducto().Listar(new BEProducto());
+        //    vLista.Insert(0, new BEProducto(0, "Seleccione"));
+        //    this.cmbProducto.DataSource = vLista;
+        //    this.cmbProducto.DisplayMember = "Nombre";
+        //    this.cmbProducto.ValueMember = "IdProducto";
+        //}
+        
+        //private void CargarEstadoVenta()
+        //{
+        //    BEParametroDetalle oBEParametroDetalle = new BEParametroDetalle();
+        //    oBEParametroDetalle.IdParametro = eParametro.Estado_Venta.GetHashCode();
+        //    List<BEParametroDetalle> vLista = new BLParametroDetalle().Listar(oBEParametroDetalle);
+        //    vLista.Insert(0, new BEParametroDetalle("0", "Seleccione"));
+        //    cbEstadoVentaG.DataSource = vLista;
+        //    cbEstadoVentaG.DisplayMember = "Texto";
+        //    cbEstadoVentaG.ValueMember = "Valor";
+
+        //}
+
+
 
         
 
