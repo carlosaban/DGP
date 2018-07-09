@@ -344,11 +344,11 @@ namespace DGP.BusinessLogic.Ventas {
                 throw ex;
             }
         }
-        public DSRptClientes ReporteEstadoCuentaCliente(DateTime? fechaInicio , string clientes)
+        public DSRptClientes ReporteEstadoCuentaCliente(DateTime? fechaInicio , string clientes, bool CanInfoCompra)
         {
             try
             {
-                return new DAVenta().ReporteEstadoCuentaClientes(fechaInicio,clientes);
+                return new DAVenta().ReporteEstadoCuentaClientes(fechaInicio, clientes, CanInfoCompra);
             }
             catch (Exception ex)
             {

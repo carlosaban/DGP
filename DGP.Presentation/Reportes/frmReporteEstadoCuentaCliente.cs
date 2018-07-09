@@ -30,7 +30,8 @@ namespace DGP.Presentation.Reportes
             {
                 //lbClientes.Items.to
 
-                DSRptClientes oDSRptClientes = new BLVenta().ReporteEstadoCuentaCliente(dtpFechaInicial.Value.Date, getClientesList( this.lbClientes));
+                bool canInfoCompra = VariablesSession.Privilegios.Find(x => x.IdPrivilegio == DGP.Entities.Seguridad.BEPrivilegio.Visualizar_Precios_compra)!= null;
+                DSRptClientes oDSRptClientes = new BLVenta().ReporteEstadoCuentaCliente(dtpFechaInicial.Value.Date, getClientesList(this.lbClientes), canInfoCompra);
                 //this.MostrarMensaje(getClientesList(this.lbClientes), MessageBoxIcon.Information);
 
                 DGP.Entities.Reportes.CRptEstadoCuentaCliente oCRptEstadoCuentaCliente = new DGP.Entities.Reportes.CRptEstadoCuentaCliente();

@@ -527,9 +527,8 @@ namespace DGP.Presentation.Ventas {
                     if (ValidarEstadoVenta(ref strMensaje)) {
                         int intResultado = 0;
                         intResultado = new BLVenta().ActualizarEstado(vg_intIdVenta, cbEstadoVentaG.SelectedValue.ToString(), txtObservaciones.Text);
-                        if (intResultado > 1) {
-                            MostrarMensaje("La venta se canceló correctamente", MessageBoxIcon.Exclamation);
-                            
+                        if (intResultado > 0) {
+                            MostrarMensaje("La venta se canceló correctamente", MessageBoxIcon.Exclamation);                            
                         } else {
                             MostrarMensaje("No se pudo cancelar la venta, intentelo de nuevo", MessageBoxIcon.Exclamation);
                         }

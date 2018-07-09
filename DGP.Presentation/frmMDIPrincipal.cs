@@ -129,6 +129,7 @@ namespace DGP.Presentation {
         {
             HabilitarOpciones();
 
+           // this.reportViewer1.RefreshReport();
         }
         #region MethodsForMenu
         public void HabilitarOpciones()

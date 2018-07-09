@@ -118,6 +118,34 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="mscorlib" name="mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="chkbEsDevolucion.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="chkbEsDevolucion.Location" type="System.Drawing.Point, System.Drawing">
+    <value>88, 167</value>
+  </data>
+  <data name="chkbEsDevolucion.Size" type="System.Drawing.Size, System.Drawing">
+    <value>114, 20</value>
+  </data>
+  <data name="chkbEsDevolucion.TabIndex" type="System.Int32, mscorlib">
+    <value>21</value>
+  </data>
+  <data name="chkbEsDevolucion.Text" xml:space="preserve">
+    <value>Es Devolucion</value>
+  </data>
+  <data name="&gt;&gt;chkbEsDevolucion.Name" xml:space="preserve">
+    <value>chkbEsDevolucion</value>
+  </data>
+  <data name="&gt;&gt;chkbEsDevolucion.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;chkbEsDevolucion.Parent" xml:space="preserve">
+    <value>tabPage1</value>
+  </data>
+  <data name="&gt;&gt;chkbEsDevolucion.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <data name="label6.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -125,7 +153,6 @@
   <data name="label6.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>Off</value>
   </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="label6.Location" type="System.Drawing.Point, System.Drawing">
     <value>1, 27</value>
   </data>
@@ -235,7 +262,7 @@
     <value>3</value>
   </data>
   <data name="groupBox3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 285</value>
+    <value>3, 311</value>
   </data>
   <data name="groupBox3.Size" type="System.Drawing.Size, System.Drawing">
     <value>216, 151</value>
@@ -256,10 +283,10 @@
     <value>tabPage1</value>
   </data>
   <data name="&gt;&gt;groupBox3.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="nudAmortizacion.Location" type="System.Drawing.Point, System.Drawing">
-    <value>88, 240</value>
+    <value>88, 268</value>
   </data>
   <data name="nudAmortizacion.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>4, 4, 4, 4</value>
@@ -286,13 +313,13 @@
     <value>tabPage1</value>
   </data>
   <data name="&gt;&gt;nudAmortizacion.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="label10.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>Off</value>
   </data>
   <data name="label10.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 201</value>
+    <value>4, 229</value>
   </data>
   <data name="label10.Size" type="System.Drawing.Size, System.Drawing">
     <value>77, 23</value>
@@ -313,10 +340,10 @@
     <value>tabPage1</value>
   </data>
   <data name="&gt;&gt;label10.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="nudCantidad.Location" type="System.Drawing.Point, System.Drawing">
-    <value>88, 201</value>
+    <value>88, 229</value>
   </data>
   <data name="nudCantidad.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>4, 4, 4, 4</value>
@@ -343,7 +370,7 @@
     <value>tabPage1</value>
   </data>
   <data name="&gt;&gt;nudCantidad.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
   </data>
   <data name="chkbAlContado.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -352,7 +379,7 @@
     <value>Off</value>
   </data>
   <data name="chkbAlContado.Location" type="System.Drawing.Point, System.Drawing">
-    <value>88, 267</value>
+    <value>88, 295</value>
   </data>
   <data name="chkbAlContado.Size" type="System.Drawing.Size, System.Drawing">
     <value>93, 20</value>
@@ -373,7 +400,7 @@
     <value>tabPage1</value>
   </data>
   <data name="&gt;&gt;chkbAlContado.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>5</value>
   </data>
   <data name="label9.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -403,7 +430,7 @@
     <value>tabPage1</value>
   </data>
   <data name="&gt;&gt;label9.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>6</value>
   </data>
   <data name="dtpFechaCaja.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -427,7 +454,7 @@
     <value>tabPage1</value>
   </data>
   <data name="&gt;&gt;dtpFechaCaja.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>7</value>
   </data>
   <metadata name="Column00.UserAddedColumn" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -562,10 +589,10 @@
     <value>tabPage1</value>
   </data>
   <data name="&gt;&gt;dgvLineaVenta.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>8</value>
   </data>
   <data name="nudPredio.Location" type="System.Drawing.Point, System.Drawing">
-    <value>88, 168</value>
+    <value>88, 196</value>
   </data>
   <data name="nudPredio.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>4, 4, 4, 4</value>
@@ -592,7 +619,7 @@
     <value>tabPage1</value>
   </data>
   <data name="&gt;&gt;nudPredio.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>9</value>
   </data>
   <data name="cbEmpresa.Location" type="System.Drawing.Point, System.Drawing">
     <value>642, 10</value>
@@ -616,7 +643,7 @@
     <value>tabPage1</value>
   </data>
   <data name="&gt;&gt;cbEmpresa.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>10</value>
   </data>
   <data name="label19.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -649,7 +676,7 @@
     <value>tabPage1</value>
   </data>
   <data name="&gt;&gt;label19.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>11</value>
   </data>
   <data name="txtNroDocumento.Location" type="System.Drawing.Point, System.Drawing">
     <value>351, 40</value>
@@ -673,7 +700,7 @@
     <value>tabPage1</value>
   </data>
   <data name="&gt;&gt;txtNroDocumento.ZOrder" xml:space="preserve">
-    <value>11</value>
+    <value>12</value>
   </data>
   <data name="label18.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -706,7 +733,7 @@
     <value>tabPage1</value>
   </data>
   <data name="&gt;&gt;label18.ZOrder" xml:space="preserve">
-    <value>12</value>
+    <value>13</value>
   </data>
   <data name="cbTipoDocumento.Location" type="System.Drawing.Point, System.Drawing">
     <value>351, 10</value>
@@ -730,7 +757,7 @@
     <value>tabPage1</value>
   </data>
   <data name="&gt;&gt;cbTipoDocumento.ZOrder" xml:space="preserve">
-    <value>13</value>
+    <value>14</value>
   </data>
   <data name="label15.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -763,7 +790,7 @@
     <value>tabPage1</value>
   </data>
   <data name="&gt;&gt;label15.ZOrder" xml:space="preserve">
-    <value>14</value>
+    <value>15</value>
   </data>
   <data name="cbVenta.Location" type="System.Drawing.Point, System.Drawing">
     <value>88, 136</value>
@@ -787,7 +814,7 @@
     <value>tabPage1</value>
   </data>
   <data name="&gt;&gt;cbVenta.ZOrder" xml:space="preserve">
-    <value>15</value>
+    <value>16</value>
   </data>
   <data name="label14.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -820,13 +847,13 @@
     <value>tabPage1</value>
   </data>
   <data name="&gt;&gt;label14.ZOrder" xml:space="preserve">
-    <value>16</value>
+    <value>17</value>
   </data>
   <data name="btnAceptarVenta.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>Off</value>
   </data>
   <data name="btnAceptarVenta.Location" type="System.Drawing.Point, System.Drawing">
-    <value>822, 396</value>
+    <value>826, 433</value>
   </data>
   <data name="btnAceptarVenta.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>4, 4, 4, 4</value>
@@ -850,7 +877,7 @@
     <value>tabPage1</value>
   </data>
   <data name="&gt;&gt;btnAceptarVenta.ZOrder" xml:space="preserve">
-    <value>17</value>
+    <value>18</value>
   </data>
   <data name="lblMonto.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>Off</value>
@@ -1093,7 +1120,7 @@
     <value>7</value>
   </data>
   <data name="groupBox2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>226, 350</value>
+    <value>226, 375</value>
   </data>
   <data name="groupBox2.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>4, 4, 4, 4</value>
@@ -1120,7 +1147,7 @@
     <value>tabPage1</value>
   </data>
   <data name="&gt;&gt;groupBox2.ZOrder" xml:space="preserve">
-    <value>18</value>
+    <value>19</value>
   </data>
   <data name="txtObservacionesVenta.Location" type="System.Drawing.Point, System.Drawing">
     <value>12, 425</value>
@@ -1153,13 +1180,13 @@
     <value>tabPage1</value>
   </data>
   <data name="&gt;&gt;txtObservacionesVenta.ZOrder" xml:space="preserve">
-    <value>19</value>
+    <value>20</value>
   </data>
   <data name="lblSimboloMoneda.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>Off</value>
   </data>
   <data name="lblSimboloMoneda.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 242</value>
+    <value>4, 270</value>
   </data>
   <data name="lblSimboloMoneda.Size" type="System.Drawing.Size, System.Drawing">
     <value>85, 23</value>
@@ -1180,7 +1207,7 @@
     <value>tabPage1</value>
   </data>
   <data name="&gt;&gt;lblSimboloMoneda.ZOrder" xml:space="preserve">
-    <value>20</value>
+    <value>21</value>
   </data>
   <data name="label4.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1189,7 +1216,7 @@
     <value>Off</value>
   </data>
   <data name="label4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 170</value>
+    <value>4, 198</value>
   </data>
   <data name="label4.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>4, 0, 4, 0</value>
@@ -1213,7 +1240,7 @@
     <value>tabPage1</value>
   </data>
   <data name="&gt;&gt;label4.ZOrder" xml:space="preserve">
-    <value>21</value>
+    <value>22</value>
   </data>
   <data name="ckbEsSobrante.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1246,7 +1273,7 @@
     <value>tabPage1</value>
   </data>
   <data name="&gt;&gt;ckbEsSobrante.ZOrder" xml:space="preserve">
-    <value>22</value>
+    <value>23</value>
   </data>
   <data name="cbProducto.Location" type="System.Drawing.Point, System.Drawing">
     <value>88, 72</value>
@@ -1270,7 +1297,7 @@
     <value>tabPage1</value>
   </data>
   <data name="&gt;&gt;cbProducto.ZOrder" xml:space="preserve">
-    <value>23</value>
+    <value>24</value>
   </data>
   <data name="label3.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1303,7 +1330,7 @@
     <value>tabPage1</value>
   </data>
   <data name="&gt;&gt;label3.ZOrder" xml:space="preserve">
-    <value>24</value>
+    <value>25</value>
   </data>
   <data name="cbCliente.Location" type="System.Drawing.Point, System.Drawing">
     <value>88, 104</value>
@@ -1327,7 +1354,7 @@
     <value>tabPage1</value>
   </data>
   <data name="&gt;&gt;cbCliente.ZOrder" xml:space="preserve">
-    <value>25</value>
+    <value>26</value>
   </data>
   <data name="cbZona.Location" type="System.Drawing.Point, System.Drawing">
     <value>88, 40</value>
@@ -1351,7 +1378,7 @@
     <value>tabPage1</value>
   </data>
   <data name="&gt;&gt;cbZona.ZOrder" xml:space="preserve">
-    <value>26</value>
+    <value>27</value>
   </data>
   <data name="label2.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1384,7 +1411,7 @@
     <value>tabPage1</value>
   </data>
   <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
-    <value>27</value>
+    <value>28</value>
   </data>
   <data name="label1.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1417,7 +1444,7 @@
     <value>tabPage1</value>
   </data>
   <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
-    <value>28</value>
+    <value>29</value>
   </data>
   <data name="tabPage1.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 25</value>
@@ -1429,7 +1456,7 @@
     <value>4, 4, 4, 4</value>
   </data>
   <data name="tabPage1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>978, 449</value>
+    <value>978, 469</value>
   </data>
   <data name="tabPage1.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -2086,7 +2113,7 @@
     <value>4, 4, 4, 4</value>
   </data>
   <data name="tcTableroElectronico.Size" type="System.Drawing.Size, System.Drawing">
-    <value>986, 478</value>
+    <value>986, 498</value>
   </data>
   <data name="tcTableroElectronico.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -2332,7 +2359,7 @@
     <value>8, 16</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>992, 483</value>
+    <value>992, 506</value>
   </data>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 9.75pt</value>

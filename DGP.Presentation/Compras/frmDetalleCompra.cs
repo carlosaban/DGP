@@ -29,10 +29,11 @@ namespace DGP.Presentation.Compras {
             InitializeComponent();
             CargarProducto();
             CargarEstadoCompra();
-
             bdnCompras.BindingSource = bsCompras ;
             this.bdSourceCompras = bsCompras;
             BLCompra = new BLCompra( (BECompra)bsCompras.Current);
+            //setBindings();
+            
             cargarCliente();
 
             this.cmbClientes.Enabled = false;
@@ -202,28 +203,68 @@ namespace DGP.Presentation.Compras {
         //}
 
       
-
+        
         
         private void frmDetalleCompra_Load(object sender, EventArgs e)
         {
+            setBindings();
+
+        }
+
+        private void setBindings()
+        {
             if (this.bdSourceCompras != null)
             {
-                this.lblIDCompra.DataBindings.Add("Text", this.bdSourceCompras, "IdCompra");
-                this.txtImporte.DataBindings.Add("Text", this.bdSourceCompras, "MontoTotal");
-                this.txtObservacion.DataBindings.Add("Text", this.bdSourceCompras, "Observacion");
-                this.txtTotalBruto.DataBindings.Add("Text", this.bdSourceCompras, "TotalPesoBruto");
-                this.txtTotalDevolucion.DataBindings.Add("Text", this.bdSourceCompras, "TotalDevolucion");
-                this.txtTotalJabas.DataBindings.Add("Text", this.bdSourceCompras, "TotalJabas");
-                this.txtTotalNeto.DataBindings.Add("Text", this.bdSourceCompras, "TotalPesoNeto");
-                this.txtTotalTara.DataBindings.Add("Text", this.bdSourceCompras, "TotalPesoTara");
-                this.txtUnidades.DataBindings.Add("Text", this.bdSourceCompras, "TotalUnidades");
-                this.nudPrecio.DataBindings.Add("Value", this.bdSourceCompras, "Precio");
-                this.dtFecha.DataBindings.Add("Value", this.bdSourceCompras, "Fecha");
-                this.cmbProducto.DataBindings.Add("SelectedValue", this.bdSourceCompras, "IdProducto");
-                this.cmbClientes.DataBindings.Add("SelectedValue", this.bdSourceCompras, "IdProveedor",true , DataSourceUpdateMode.OnPropertyChanged);
 
-                
+            this.lblIDCompra.DataBindings.Clear();
+            this.lblIDCompra.DataBindings.Add("Text", this.bdSourceCompras, "IdCompra");
+
+            this.dtFecha.DataBindings.Clear();
+            this.dtFecha.DataBindings.Add("Value", this.bdSourceCompras, "Fecha");
+
+            this.cmbClientes.DataBindings.Clear();
+            this.cmbClientes.DataBindings.Add("SelectedValue", this.bdSourceCompras, "IdProveedor", true, DataSourceUpdateMode.OnPropertyChanged);
+
+            this.cmbProducto.DataBindings.Clear();
+            this.cmbProducto.DataBindings.Add("SelectedValue", this.bdSourceCompras, "IdProducto");
+
+            this.nudPrecio.DataBindings.Clear();
+            this.nudPrecio.DataBindings.Add("Value", this.bdSourceCompras, "Precio");
+
+            this.txtObservacion.DataBindings.Clear();
+            this.txtObservacion.DataBindings.Add("Text", this.bdSourceCompras, "Observacion");
+
+            this.cbEstado.DataBindings.Clear();
+            this.cbEstado.DataBindings.Add("SelectedValue", this.bdSourceCompras, "IdEstado");
+
+
+
+
+            this.txtTotalJabas.DataBindings.Clear();
+            this.txtTotalJabas.DataBindings.Add("Text", this.bdSourceCompras, "TotalJabas");
+
+            this.txtTotalBruto.DataBindings.Clear();
+            this.txtTotalBruto.DataBindings.Add("Text", this.bdSourceCompras, "TotalPesoBruto");
+
+            this.txtTotalTara.DataBindings.Clear();
+            this.txtTotalTara.DataBindings.Add("Text", this.bdSourceCompras, "TotalPesoTara");
+
+            this.txtUnidades.DataBindings.Clear();
+            this.txtUnidades.DataBindings.Add("Text", this.bdSourceCompras, "TotalUnidades");
+
+            this.txtTotalDevolucion.DataBindings.Clear();
+            this.txtTotalDevolucion.DataBindings.Add("Text", this.bdSourceCompras, "TotalDevolucion");
+
+            this.txtTotalNeto.DataBindings.Clear();
+            this.txtTotalNeto.DataBindings.Add("Text", this.bdSourceCompras, "TotalPesoNeto");
+
+            this.txtImporte.DataBindings.Clear();
+            this.txtImporte.DataBindings.Add("Text", this.bdSourceCompras, "MontoTotal");
+
             }
+
+        
+        
         }
 
         private void btnAceptarLineaVenta_Click(object sender, EventArgs e)
@@ -452,6 +493,7 @@ namespace DGP.Presentation.Compras {
                 {
 
                     BLDP.Eliminar(beCompra);
+                    this.bdnCompras.Refresh();
                 }
                 
 

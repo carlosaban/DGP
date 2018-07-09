@@ -74,6 +74,13 @@ namespace DGP.Presentation.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap icono_camion {
+            get {
+                object obj = ResourceManager.GetObject("icono camion", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap plusIcon {
             get {
                 object obj = ResourceManager.GetObject("plusIcon", resourceCulture);

@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmTableroElectronico));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -55,6 +54,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle25 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmTableroElectronico));
             this.tcTableroElectronico = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
@@ -192,6 +192,7 @@
             this.dataGridViewTextBoxColumn35 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn36 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn37 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.chkbEsDevolucion = new System.Windows.Forms.CheckBox();
             this.tcTableroElectronico.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -224,6 +225,7 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.chkbEsDevolucion);
             this.tabPage1.Controls.Add(this.groupBox3);
             this.tabPage1.Controls.Add(this.nudAmortizacion);
             this.tabPage1.Controls.Add(this.label10);
@@ -1438,6 +1440,12 @@
             resources.ApplyResources(this.dataGridViewTextBoxColumn37, "dataGridViewTextBoxColumn37");
             this.dataGridViewTextBoxColumn37.Name = "dataGridViewTextBoxColumn37";
             // 
+            // chkbEsDevolucion
+            // 
+            resources.ApplyResources(this.chkbEsDevolucion, "chkbEsDevolucion");
+            this.chkbEsDevolucion.Name = "chkbEsDevolucion";
+            this.chkbEsDevolucion.UseVisualStyleBackColor = true;
+            // 
             // frmTableroElectronico
             // 
             resources.ApplyResources(this, "$this");
@@ -1612,5 +1620,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn observacionDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewButtonColumn grvGastoEliminar;
         private System.Windows.Forms.DateTimePicker dtFechaGasto;
+        private System.Windows.Forms.CheckBox chkbEsDevolucion;
     }
 }

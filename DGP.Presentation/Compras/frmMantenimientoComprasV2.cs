@@ -43,6 +43,10 @@ namespace DGP.Presentation.Compras
         private void CargarGrilla()
         {
             BECompraFilter oBECompraFiltros = ObtenerCompraBusqueda();
+
+            this.bdCompras = new System.Windows.Forms.BindingSource(this.components);
+
+            
             this.bdCompras.DataSource =  blCompra.Listar(oBECompraFiltros);
             this.dgrvCompras.DataSource = null;
             this.dgrvCompras.DataSource = this.bdCompras;

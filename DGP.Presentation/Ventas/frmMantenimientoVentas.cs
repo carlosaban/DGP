@@ -348,7 +348,11 @@ namespace DGP.Presentation.Ventas {
                 if ((e.ColumnIndex == this.dgrvVentas.Columns["Precios"].Index) && e.Value != null)
                 {
                     DataGridViewCell cell = this.dgrvVentas.Rows[e.RowIndex].Cells[e.ColumnIndex];
-                    cell.ToolTipText = "probando tooltip" + this.dgrvVentas.Rows[e.RowIndex].Cells["precioDataGridViewTextBoxColumn"].Value.ToString();
+                    if (VariablesSession.Privilegios.Find(x => x.IdPrivilegio == DGP.Entities.Seguridad.BEPrivilegio.Visualizar_Precios_compra) != null)
+                    {
+                        cell.ToolTipText = "Compras: " + this.dgrvVentas.Rows[e.RowIndex].Cells["CompraInfo"].Value.ToString();
+                    
+                    }
                 }
             }
 

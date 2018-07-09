@@ -321,6 +321,10 @@ namespace DGP.Presentation.Ventas {
                             DGP_Util.EnableControl(btnAceptarVenta, true);
                             txtNroDocumento.ResetText();
                             txtObservacionesVenta.ResetText();
+                            //modificacion CAG devoluciones
+                            this.chkbEsDevolucion.Checked = false;
+                            this.chkbEsDevolucion.Enabled = false;
+
                         } else {
                             // Venta Existente
                             BEVenta oBEVenta = new BLVenta().ObtenerVenta(vg_intIdVenta);
@@ -360,7 +364,10 @@ namespace DGP.Presentation.Ventas {
                                 
                             
                             }
-                            
+                            //modificacion CAG devoluciones
+                            //this.chkbEsDevolucion.Checked = false;
+                            this.chkbEsDevolucion.Enabled = true;
+
                         }
                         dgvLineaVenta.AllowUserToAddRows = true;
                     } else {
@@ -590,7 +597,11 @@ namespace DGP.Presentation.Ventas {
                         if (oBEVenta.IdVenta.Equals(0)) {
                             intResultado = new BLVenta().RegistrarVentaInicialDependiente(oBEVenta , alContado ,montoAmortizacion);
                         } else {
-                            intResultado = new BLVenta().ModificarVentaInicialDependiente(oBEVenta, alContado, montoAmortizacion);
+                            //cag cambio para ingresar devolucion
+                            if (MessageBox.Show("Se va ingresar una devolucion. Desea Continuar?", "Devolucion", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                            {
+                                intResultado = new BLVenta().ModificarVentaInicialDependiente(oBEVenta, alContado, montoAmortizacion);
+                            }
                         }
                         //
                         if (intResultado == 3) {
@@ -802,6 +813,9 @@ namespace DGP.Presentation.Ventas {
                 chkbAlContado.Enabled = true;
                 nudAmortizacion.Value = 0;
                 nudAmortizacion.Enabled = true;
+
+                this.chkbEsDevolucion.Checked = false;
+                this.chkbEsDevolucion.Enabled = false;
             }
 
             private void MostrarMensaje(string pMensaje, MessageBoxIcon pMsgBoxicon) {
@@ -1011,7 +1025,7 @@ namespace DGP.Presentation.Ventas {
                         oBELineaVenta.EsPesoTaraEditado = (intFlagEsPesoTaraEditado == 1) ? "S" : "N";
                         oBELineaVenta.PesoTara = decimal.Parse(oLineaVenta.Cells[ePosicionCol.PesoTara.GetHashCode()].Value.ToString());
                         oBELineaVenta.PesoNeto = decimal.Parse(oLineaVenta.Cells[ePosicionCol.PesoNeto.GetHashCode()].Value.ToString());
-                        oBELineaVenta.EsDevolucion = "N";
+                        oBELineaVenta.EsDevolucion =(this.chkbEsDevolucion.Checked)?"S": "N";
                        
                         oBELineaVenta.Observacion = (intFlagEsPesoTaraEditado == 1 && oLineaVenta.Cells[ePosicionCol.Observaciones.GetHashCode()].Value != DBNull.Value) ? oLineaVenta.Cells[ePosicionCol.Observaciones.GetHashCode()].Value.ToString() : string.Empty;
                         oBELineaVenta.IdEstado = BEVenta.REGISTRADO;

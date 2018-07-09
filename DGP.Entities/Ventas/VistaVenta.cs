@@ -200,7 +200,7 @@ namespace DGP.Entities.Ventas {
         public decimal Margen { get; set; }
 
         public bool TienePrecioVariable { get; set; }
-	
 
+        public string CompraInfo { get; set; }
     }
 }

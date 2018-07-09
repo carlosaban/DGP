@@ -355,6 +355,7 @@ namespace DGP.DataAccess.Ventas {
                         oVistaVenta.Margen = (oIDataReader["Margen"] == (object)DBNull.Value) ? (decimal)0.3 : decimal.Parse(oIDataReader["Margen"].ToString());
 
                         oVistaVenta.TienePrecioVariable = (oIDataReader["TienePrecioVariable"] == (object)DBNull.Value) ? false : bool.Parse( oIDataReader["TienePrecioVariable"].ToString());
+                        oVistaVenta.CompraInfo = (oIDataReader["CompraInfo"] == (object)DBNull.Value) ? string.Empty : oIDataReader["CompraInfo"].ToString();
                         
                         vLista.Add(oVistaVenta);
                     }
@@ -510,16 +511,19 @@ namespace DGP.DataAccess.Ventas {
                 oDatabaseHelper.Dispose();
             }
         }
-        public DSRptClientes ReporteEstadoCuentaClientes(DateTime? fechaInicio , string clientes )
+        public DSRptClientes ReporteEstadoCuentaClientes(DateTime? fechaInicio , string clientes , bool CanInfoCompra )
         {
             DatabaseHelper oDatabaseHelper = new DatabaseHelper();
             DSRptClientes dSRptClientes = new DSRptClientes();
             
             try
             {
+                
                 oDatabaseHelper.ClearParameter();
                 oDatabaseHelper.AddParameter("@fechaInicio", (fechaInicio == null) ? (object)DBNull.Value : fechaInicio);
                 oDatabaseHelper.AddParameter("@clientes", (string.IsNullOrEmpty(clientes)) ? (object)DBNull.Value : clientes);
+                oDatabaseHelper.AddParameter("@TienePermisoInfoCompra", CanInfoCompra);
+                
                 DataSet ds = oDatabaseHelper.ExecuteDataSet("DGP_Rpt_Estado_CuentaCliente_v3", CommandType.StoredProcedure);
                 dSRptClientes.DGP_Rpt_Estado_CuentaCliente.Merge(ds.Tables[0], true, MissingSchemaAction.Ignore);
                 dSRptClientes.DGP_Rpt_Estado_CuentaCliente.GenerarAcumulado();

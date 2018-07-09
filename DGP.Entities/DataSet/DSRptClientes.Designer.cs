@@ -947,6 +947,8 @@ namespace DGP.Entities.DataSet {
             
             private global::System.Data.DataColumn columnACUMULADO;
             
+            private global::System.Data.DataColumn columnCOMPRAINFO;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public DGP_Rpt_Estado_CuentaClienteDataTable() {
                 this.TableName = "DGP_Rpt_Estado_CuentaCliente";
@@ -1055,6 +1057,13 @@ namespace DGP.Entities.DataSet {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn COMPRAINFOColumn {
+                get {
+                    return this.columnCOMPRAINFO;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -1083,7 +1092,7 @@ namespace DGP.Entities.DataSet {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public DGP_Rpt_Estado_CuentaClienteRow AddDGP_Rpt_Estado_CuentaClienteRow(int ORDEN, System.DateTime FECHA, string CLIENTE, string PRODUCTO, decimal PRECIO, decimal TOTAL_PESO_NETO, decimal MONTO_VENTA, decimal AMORTIZACION, string OBSERVACION, string IDESTADO, decimal ACUMULADO) {
+            public DGP_Rpt_Estado_CuentaClienteRow AddDGP_Rpt_Estado_CuentaClienteRow(int ORDEN, System.DateTime FECHA, string CLIENTE, string PRODUCTO, decimal PRECIO, decimal TOTAL_PESO_NETO, decimal MONTO_VENTA, decimal AMORTIZACION, string OBSERVACION, string IDESTADO, decimal ACUMULADO, string COMPRAINFO) {
                 DGP_Rpt_Estado_CuentaClienteRow rowDGP_Rpt_Estado_CuentaClienteRow = ((DGP_Rpt_Estado_CuentaClienteRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         ORDEN,
@@ -1096,7 +1105,8 @@ namespace DGP.Entities.DataSet {
                         AMORTIZACION,
                         OBSERVACION,
                         IDESTADO,
-                        ACUMULADO};
+                        ACUMULADO,
+                        COMPRAINFO};
                 rowDGP_Rpt_Estado_CuentaClienteRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowDGP_Rpt_Estado_CuentaClienteRow);
                 return rowDGP_Rpt_Estado_CuentaClienteRow;
@@ -1132,6 +1142,7 @@ namespace DGP.Entities.DataSet {
                 this.columnOBSERVACION = base.Columns["OBSERVACION"];
                 this.columnIDESTADO = base.Columns["IDESTADO"];
                 this.columnACUMULADO = base.Columns["ACUMULADO"];
+                this.columnCOMPRAINFO = base.Columns["COMPRAINFO"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1158,6 +1169,8 @@ namespace DGP.Entities.DataSet {
                 base.Columns.Add(this.columnIDESTADO);
                 this.columnACUMULADO = new global::System.Data.DataColumn("ACUMULADO", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnACUMULADO);
+                this.columnCOMPRAINFO = new global::System.Data.DataColumn("COMPRAINFO", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCOMPRAINFO);
                 this.columnORDEN.ReadOnly = true;
                 this.columnFECHA.ReadOnly = true;
                 this.columnCLIENTE.ReadOnly = true;
@@ -1824,6 +1837,21 @@ namespace DGP.Entities.DataSet {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public string COMPRAINFO {
+                get {
+                    if (this.IsCOMPRAINFONull()) {
+                        return string.Empty;
+                    }
+                    else {
+                        return ((string)(this[this.tableDGP_Rpt_Estado_CuentaCliente.COMPRAINFOColumn]));
+                    }
+                }
+                set {
+                    this[this.tableDGP_Rpt_Estado_CuentaCliente.COMPRAINFOColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public bool IsORDENNull() {
                 return this.IsNull(this.tableDGP_Rpt_Estado_CuentaCliente.ORDENColumn);
             }
@@ -1931,6 +1959,16 @@ namespace DGP.Entities.DataSet {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public void SetACUMULADONull() {
                 this[this.tableDGP_Rpt_Estado_CuentaCliente.ACUMULADOColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsCOMPRAINFONull() {
+                return this.IsNull(this.tableDGP_Rpt_Estado_CuentaCliente.COMPRAINFOColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetCOMPRAINFONull() {
+                this[this.tableDGP_Rpt_Estado_CuentaCliente.COMPRAINFOColumn] = global::System.Convert.DBNull;
             }
         }
         
