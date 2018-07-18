@@ -13,6 +13,8 @@ using DGP.Entities;
 using System.Threading;
 using DGP.Entities.DataSet;
 using DGP.Entities.DataSet.DSEntitiesTableroTableAdapters;
+using DGP.Util;
+using DGP.BusinessLogic.Reporte;
 
 namespace DGP.Presentation.Ventas {
 
@@ -1713,7 +1715,29 @@ namespace DGP.Presentation.Ventas {
             //if (VariablesSession.Privilegios.Exists(t => t.IdPrivilegio == DGP.Entities.Seguridad.BEPrivilegio.Tablero_Registrar_Venta)) this.tabPage1.Hide();
             //if (VariablesSession.Privilegios.Exists(t => t.IdPrivilegio == DGP.Entities.Seguridad.BEPrivilegio.Tablero_Lista_de_ventas)) this.tabPage2.Hide();
             //if (VariablesSession.Privilegios.Exists(t => t.IdPrivilegio == DGP.Entities.Seguridad.BEPrivilegio.Tablero_Registrar_Gastos)) this.tabPage3.Hide();
-            
+
+        }
+
+        private void tsButtonGuia_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                BEClienteProveedor Cliente = ((BEClienteProveedor)this.cbCliente.SelectedItem);
+
+                ReporteWebGuia reporte = new ReporteWebGuia(Cliente , this.dtpFechaCaja.Value);
+
+
+
+                DGP.Presentation.Reportes.FrmReporteWeb ReporteGuia = new DGP.Presentation.Reportes.FrmReporteWeb(reporte);
+                ReporteGuia.MdiParent = this.MdiParent;
+                ReporteGuia.Show();
+
+            }
+            catch (Exception ex)
+            {
+
+                MostrarMensaje("No se puede imprimir guia",MessageBoxIcon.Error);
+            }
         }
     }
 }

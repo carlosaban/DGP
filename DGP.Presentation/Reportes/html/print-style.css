@@ -1,0 +1,16 @@
+﻿
+* 
+{
+	font: 8pt Georgia, "Times New Roman", Times, serif;
+    
+}
+body
+{
+	font: 8pt Georgia, "Times New Roman", Times, serif;
+    line-height: 1.3;
+}
+#header
+{
+	
+	display:none;	
+}

@@ -20,6 +20,17 @@ namespace DGP.BusinessLogic.Ventas {
                     throw ex;
                 }
             }
+            public List<BEVenta> Listar(BEVenta pBEVenta)
+            {
+                try
+                {
+                    return new DALineaVenta().Listar(pBEVenta);
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
 
             public dsLineaVenta ListarDS(BELineaVenta pBELineaVenta) { 
                 try {

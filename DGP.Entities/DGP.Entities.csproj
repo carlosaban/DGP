@@ -187,6 +187,8 @@
     <Compile Include="BEProductoCliente.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Seguridad\BEPrivilegio.cs" />
+    <Compile Include="Util\IReportWeb.cs" />
+    <Compile Include="Util\ReportWeb.cs" />
     <Compile Include="Ventas\BEAmortizacionVenta.cs" />
     <Compile Include="Ventas\BEDocumento.cs" />
     <Compile Include="Ventas\BEEntidadBancaria.cs" />

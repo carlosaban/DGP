@@ -70,6 +70,7 @@ namespace DGP.Entities {
             get { return mMargen; }
             set { mMargen = value; }
         }
+        public bool TieneDetalle { get; set; }
 	
 
     }

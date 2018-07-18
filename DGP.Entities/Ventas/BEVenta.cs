@@ -272,8 +272,8 @@ namespace DGP.Entities.Ventas {
             set { _TotalUnidades = value; }
         }
         public bool TienePrecioVariable { get; set; }
-	
 
 
+        public BEProducto BEProducto { get; set; }
     }
 }

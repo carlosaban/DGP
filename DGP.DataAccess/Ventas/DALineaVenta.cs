@@ -53,6 +53,98 @@ namespace DGP.DataAccess.Ventas {
             }
         }
 
+        public List<BEVenta> Listar(BEVenta pVenta)
+        {
+
+            DatabaseHelper oDatabaseHelper = new DatabaseHelper();
+            List<BEVenta> vLista = new List<BEVenta>();
+            IDataReader oIDataReader = null;
+            BELineaVenta oBELineaVenta = null;
+            try
+            {
+                oDatabaseHelper.ClearParameter();
+                oDatabaseHelper.AddParameter("@IdVenta", (pVenta.IdVenta <= 0) ? (object)DBNull.Value : pVenta.IdVenta);
+                oDatabaseHelper.AddParameter("@FechaInicial", (pVenta.FechaInicio == DateTime.MinValue) ? (object)DBNull.Value : pVenta.FechaInicio);
+                oDatabaseHelper.AddParameter("@FechaFinal", (pVenta.FechaFin == DateTime.MinValue) ? (object)DBNull.Value : pVenta.FechaFin);
+
+                oDatabaseHelper.AddParameter("@IdCliente",( pVenta.IdCliente <= 0 )? (object)DBNull.Value : pVenta.IdCliente);
+                oIDataReader = oDatabaseHelper.ExecuteReader("DGP_Listar_detalleLineaVenta", CommandType.StoredProcedure);
+
+                while (oIDataReader.Read())
+                {
+                    int tmpIdVenta = int.Parse(oIDataReader["Id_Venta"].ToString());
+                    BEVenta beVenta;
+                    if (vLista.Exists(x => x.IdVenta == tmpIdVenta))
+                    {
+                        beVenta = vLista.Find(x => x.IdVenta == tmpIdVenta);
+                    }
+                    else
+                    {
+                        beVenta = new BEVenta();
+                        beVenta.IdVenta = int.Parse(oIDataReader["Id_Venta"].ToString());
+                        beVenta.ClienteEventual = oIDataReader["ClienteEventual"].ToString();
+                        beVenta.MontoTotal = decimal.Parse(oIDataReader["Monto_Total"].ToString());
+                        beVenta.TotalDevolucion = decimal.Parse(oIDataReader["Total_Devolucion"].ToString());
+                        beVenta.TotalPesoBruto = decimal.Parse(oIDataReader["Total_Peso_Bruto"].ToString());
+                        beVenta.TotalPesoTara = decimal.Parse(oIDataReader["Total_Peso_Tara"].ToString());
+                        beVenta.TotalPesoNeto = decimal.Parse(oIDataReader["Total_Peso_Neto"].ToString());
+
+                        beVenta.IdProducto = int.Parse(oIDataReader["Id_Producto"].ToString());
+
+                        beVenta.TotalUnidades = int.Parse(oIDataReader["TotalUnidades"].ToString());
+                        beVenta.Cliente = oIDataReader["CLIENTE"].ToString();
+                        beVenta.Producto = oIDataReader["PRODUCTO"].ToString();
+                        beVenta.BEProducto = new BEProducto()
+                        {
+                            IdProducto = beVenta.IdProducto,
+                            TieneDetalle = bool.Parse( oIDataReader["TieneDetalle"].ToString()),
+                            Nombre = oIDataReader["PRODUCTO"].ToString()
+                        };
+                       
+                        
+                        beVenta.IdVenta = int.Parse(oIDataReader["Id_Venta"].ToString());
+
+                        vLista.Add(beVenta);
+                    }
+
+                    oBELineaVenta = new BELineaVenta();
+     
+                    oBELineaVenta.IdLineaVenta = int.Parse(oIDataReader["Id_Linea_Venta"].ToString());
+                    oBELineaVenta.CantidadJavas = int.Parse(oIDataReader["Cantidad_Javas"].ToString());
+                    //oBELineaVenta.FlagJava = oIDataReader["FlagTara"].ToString();
+                    //oBELineaVenta.TaraEditada = decimal.Parse(oIDataReader["Tara"].ToString());
+                    //oBELineaVenta.PesoJava = decimal.Parse(oIDataReader["Tara"].ToString());
+                    oBELineaVenta.PesoBruto = decimal.Parse(oIDataReader["Peso_Bruto"].ToString());
+                    oBELineaVenta.PesoTara = decimal.Parse(oIDataReader["Peso_Tara"].ToString());
+                    oBELineaVenta.PesoNeto = decimal.Parse(oIDataReader["Peso_Neto"].ToString());
+                    oBELineaVenta.EsDevolucion = oIDataReader["EsDevolucion"].ToString();
+                    oBELineaVenta.EsPesoTaraEditado = oIDataReader["EsPesoTaraEditado"].ToString();
+                    oBELineaVenta.Observacion = oIDataReader["Observacion"].ToString();
+                    oBELineaVenta.IdVenta = tmpIdVenta;
+                    //oBELineaVenta.Accion = eAccion.BaseDatos;
+                    oBELineaVenta.IdEstado = oIDataReader["IdEstado"].ToString();
+                    oBELineaVenta.IdEstado = oIDataReader["unidades"].ToString();
+                    
+                    beVenta.ListaLineaVenta.Add(oBELineaVenta);
+                    
+                }
+
+                return vLista;
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                if (!oIDataReader.IsClosed) oIDataReader.Close();
+                oIDataReader.Dispose();
+                oDatabaseHelper.Dispose();
+            }
+        }
+
+
         public dsLineaVenta ListarDS(BELineaVenta pBELineaVenta) {
             DatabaseHelper oDatabaseHelper = new DatabaseHelper();
             dsLineaVenta oDsLineaVenta = new dsLineaVenta();
