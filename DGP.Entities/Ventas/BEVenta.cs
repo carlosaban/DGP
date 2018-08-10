@@ -72,6 +72,7 @@ namespace DGP.Entities.Ventas {
             mIdCliente = 0;
             mFechaCreacion = string.Empty;
             mBEUsuarioLogin = new BEPersonal();
+            Fecha = DateTime.MinValue;//valor por defecto
         }
 
         public BEVenta(int pIdVenta, string pNombreVenta) {
@@ -275,5 +276,6 @@ namespace DGP.Entities.Ventas {
 
 
         public BEProducto BEProducto { get; set; }
+        public DateTime Fecha { get; set; }
     }
 }

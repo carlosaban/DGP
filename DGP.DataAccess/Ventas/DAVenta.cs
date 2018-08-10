@@ -132,7 +132,8 @@ namespace DGP.DataAccess.Ventas {
                         oBEVenta.Cliente = oIDataReader["Cliente"].ToString();
                         oBEVenta.FechaCreacion = Convert.ToDateTime(oIDataReader["FechaCreacion"]).ToShortDateString();
                         oBEVenta.TotalUnidades = (oIDataReader["TotalUnidades"] == (object)DBNull.Value) ? 0 : int.Parse(oIDataReader["TotalUnidades"].ToString());
-                        
+                        oBEVenta.Fecha = Convert.ToDateTime( oIDataReader["Fecha"].ToString());
+
                         vLista.Add(oBEVenta);
                     }
                     return vLista;
@@ -188,6 +189,9 @@ namespace DGP.DataAccess.Ventas {
                         oBEVenta.IdCliente = (oIDataReader["Id_Cliente"] == (object)DBNull.Value) ? 0 : int.Parse(oIDataReader["Id_Cliente"].ToString());
                         oBEVenta.Cliente = oIDataReader["Cliente"].ToString();
                         oBEVenta.FechaCreacion = Convert.ToDateTime(oIDataReader["Fecha"]).ToShortDateString();
+                        oBEVenta.Fecha = Convert.ToDateTime(oIDataReader["Fecha"].ToString());
+                        
+
                         //oBEVenta.TotalUnidades = int.Parse(oIDataReader["TotalUnidades"].ToString());
                         oBEVenta.TotalUnidades = (oIDataReader["TotalUnidades"] == (object)DBNull.Value) ? 0 : int.Parse(oIDataReader["TotalUnidades"].ToString());
                         

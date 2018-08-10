@@ -668,7 +668,11 @@ namespace DGP.Presentation.Ventas {
 
             private void dgvListaVenta_CellContentClick(object sender, DataGridViewCellEventArgs e) {
                 try {
-                    if (e.ColumnIndex == ePosicionLista.BottonPagar.GetHashCode() && e.RowIndex >= 0 ) {
+                    //int columnaBotonPagar = this.dgvListaVenta.Columns["Pagar"].Index;
+                    //if (e.ColumnIndex== ePosicionLista.BottonPagar.GetHashCode() && e.RowIndex >= 0 ) {
+                    if (e.ColumnIndex == this.indiceListaVenta("BtnPagar") && e.RowIndex >= 0)
+                    {
+
 
                         if (VariablesSession.Privilegios.Exists(t => t.IdPrivilegio == DGP.Entities.Seguridad.BEPrivilegio.Tablero_Registrar_Venta))
                         {
@@ -743,7 +747,9 @@ namespace DGP.Presentation.Ventas {
                         }
                     }
                    // MessageBox.Show("e.ColumnIndex" + e.ColumnIndex);
-                    if (e.ColumnIndex == ePosicionLista.BotonCuentas.GetHashCode() && e.RowIndex >= 0)
+                    //if (e.ColumnIndex == ePosicionLista.BotonCuentas.GetHashCode() && e.RowIndex >= 0)
+
+                    if (e.ColumnIndex == indiceListaVenta("BtnVerCuenta") && e.RowIndex >= 0)
                     { 
                         int IdCliente = (int) dgvListaVenta[ePosicionLista.IdCliente.GetHashCode(), e.RowIndex].Value;
                         int IdProducto = (int)dgvListaVenta[ePosicionLista.IdCliente.GetHashCode(), e.RowIndex].Value;
@@ -751,6 +757,8 @@ namespace DGP.Presentation.Ventas {
                     
                     }
 
+
+                    this.dgvListaVenta.EndEdit();
                 } catch (Exception ex) {
                     MostrarMensaje(ex.Message, MessageBoxIcon.Error);
                 }
@@ -1064,9 +1072,9 @@ namespace DGP.Presentation.Ventas {
                 // Validar el PAGO para los Clientes Eventuales
                 DataGridViewCellStyle oCellStyle = null;
                 foreach (DataGridViewRow vRow in dgvListaVenta.Rows) {
-                    object objIdCliente = vRow.Cells[ePosicionLista.IdCliente.GetHashCode()].Value;
-                    object objIdEsSobranteDia = vRow.Cells[ePosicionLista.EsSobranteDia.GetHashCode()].Value;
-                    object objIdEstado = vRow.Cells[ePosicionLista.IdEstado.GetHashCode()].Value;
+                    object objIdCliente = vRow.Cells["IdCliente"].Value;//object objIdCliente = vRow.Cells[ePosicionLista.IdCliente.GetHashCode()].Value;
+                    object objIdEsSobranteDia = vRow.Cells["IdEsSobrante"].Value;//object objIdEsSobranteDia = vRow.Cells[ePosicionLista.EsSobranteDia.GetHashCode()].Value;
+                    object objIdEstado = vRow.Cells["IdEstado"].Value;
                     if (objIdCliente != null && objIdEsSobranteDia != null) {
                         int intIdCliente = 0;
                         eVentaEsSobrante mVentaEsSobrante = eVentaEsSobrante.No;
@@ -1082,14 +1090,17 @@ namespace DGP.Presentation.Ventas {
                         // if (intIdCliente == 0 && .....
                         if (mVentaEsSobrante == eVentaEsSobrante.No && !strIdEstado.Equals(BEVenta.CANCELADO))
                         {
-                            vRow.Cells[ePosicionLista.Pago.GetHashCode()].ReadOnly = false;
-                            vRow.Cells[ePosicionLista.Pago.GetHashCode()].Value = string.Empty;
-                            ((DataGridViewButtonCell)vRow.Cells[ePosicionLista.BottonPagar.GetHashCode()]).ReadOnly = false;                            
+                            //vRow.Cells[ePosicionLista.Pago.GetHashCode()].ReadOnly = false;
+
+                            vRow.Cells[this.indiceListaVenta("Pago")].ReadOnly = false;
+
+                            vRow.Cells[this.indiceListaVenta("Pago")].Value = string.Empty;
+                            ((DataGridViewButtonCell)vRow.Cells[this.indiceListaVenta("BtnPagar")]).ReadOnly = false;                            
                         } else {
-                            vRow.Cells[ePosicionLista.Pago.GetHashCode()].ReadOnly = true;
-                            ((DataGridViewButtonCell)vRow.Cells[ePosicionLista.BottonPagar.GetHashCode()]).ReadOnly = true;
-                            vRow.Cells[ePosicionLista.Pago.GetHashCode()].Style = oCellStyle;
-                            ((DataGridViewButtonCell)vRow.Cells[ePosicionLista.BottonPagar.GetHashCode()]).Style = oCellStyle;
+                            vRow.Cells[this.indiceListaVenta("Pago")].ReadOnly = true;
+                            ((DataGridViewButtonCell)vRow.Cells[this.indiceListaVenta("BtnPagar")]).ReadOnly = true;
+                            vRow.Cells[this.indiceListaVenta("Pago")].Style = oCellStyle;
+                            ((DataGridViewButtonCell)vRow.Cells[this.indiceListaVenta("BtnPagar")]).Style = oCellStyle;
                         }
                     }
                 }
@@ -1722,16 +1733,68 @@ namespace DGP.Presentation.Ventas {
         {
             try
             {
-                BEClienteProveedor Cliente = ((BEClienteProveedor)this.cbCliente.SelectedItem);
+                if (this.tcTableroElectronico.SelectedTab == this.tabPageRegistrarVenta) {
 
-                ReporteWebGuia reporte = new ReporteWebGuia(Cliente , this.dtpFechaCaja.Value);
+                    BEClienteProveedor Cliente = ((BEClienteProveedor)this.cbCliente.SelectedItem);
+
+                    ReporteWebGuia reporte = new ReporteWebGuia(Cliente, this.dtpFechaCaja.Value, 0);
 
 
 
-                DGP.Presentation.Reportes.FrmReporteWeb ReporteGuia = new DGP.Presentation.Reportes.FrmReporteWeb(reporte);
-                ReporteGuia.MdiParent = this.MdiParent;
-                ReporteGuia.Show();
+                    DGP.Presentation.Reportes.FrmReporteWeb ReporteGuia = new DGP.Presentation.Reportes.FrmReporteWeb(reporte);
+                    ReporteGuia.MdiParent = this.MdiParent;
+                    ReporteGuia.Show();
 
+                
+                
+                }
+                else if (this.tcTableroElectronico.SelectedTab == this.tabPageListaVentas)
+                {
+                    BEClienteProveedor Cliente = new BEClienteProveedor();
+                    int IdVenta = 0;
+                    DateTime fecha = DateTime.Now.Date;
+                    bool AlMenosUnSeleecionado = false;
+                    foreach (DataGridViewRow item in this.dgvListaVenta.Rows)
+                    {
+                        bool seleccionado = Convert.ToBoolean(item.Cells["Seleccionado"].Value).Equals(true);
+
+                        //CheckBox seleccionado = (CheckBox)item.Cells["Seleccionado"].Value;
+
+                        if (seleccionado)
+                        {
+                            Cliente.IdCliente = (item.Cells["IdCliente"].Value == null) ? 0 : int.Parse(item.Cells["IdCliente"].Value.ToString());
+
+                            IdVenta = (Cliente.IdCliente == 0)? (int)item.Cells["IdVenta"].Value: 0;
+                            fecha = DateTime.Parse(item.Cells["Fecha"].Value.ToString());
+                            
+                            AlMenosUnSeleecionado = true;
+                     
+                        }
+                        if (seleccionado) break;
+                        
+                    }
+                    if (AlMenosUnSeleecionado) {
+
+                        //BEClienteProveedor Cliente = ((BEClienteProveedor)this.cbCliente.SelectedItem);
+
+                        ReporteWebGuia reporte = new ReporteWebGuia(Cliente, fecha, IdVenta);
+
+
+
+                        DGP.Presentation.Reportes.FrmReporteWeb ReporteGuia = new DGP.Presentation.Reportes.FrmReporteWeb(reporte);
+                        ReporteGuia.MdiParent = this.MdiParent;
+                        ReporteGuia.Show();
+
+                    
+                    
+
+                    }
+                
+                
+                
+                }
+                
+                
             }
             catch (Exception ex)
             {
@@ -1739,5 +1802,18 @@ namespace DGP.Presentation.Ventas {
                 MostrarMensaje("No se puede imprimir guia",MessageBoxIcon.Error);
             }
         }
+        private int indiceListaVenta(string NombreColumna) {
+
+            try
+            {
+                return this.dgvListaVenta.Columns[NombreColumna].Index;
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+                
+            }
+        } 
     }
 }

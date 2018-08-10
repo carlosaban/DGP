@@ -17,23 +17,28 @@ namespace DGP.BusinessLogic.Reporte
         private List<BEVenta> listaVentas;
 
         private DateTime fecha;
-        public ReporteWebGuia(BEClienteProveedor beClienteProveedor , DateTime fecha ) {
+        public ReporteWebGuia(BEClienteProveedor beClienteProveedor , DateTime fecha ,int pIdVenta) {
             this.rutaReporte = ConfigurationSettings.AppSettings["RutaReportes"] + "\\ReporteGuia.html";
-            refrescar(beClienteProveedor, fecha);
+            refrescar(beClienteProveedor, fecha, pIdVenta);
         }
-        private void refrescar(BEClienteProveedor beClienteProveedor , DateTime fecha)
+        private void refrescar(BEClienteProveedor beClienteProveedor , DateTime fecha, int pIdVenta )
         {
             this.beClienteProveedor = beClienteProveedor;
             this.fecha = fecha;
 
             BLLineaVenta bl = new BLLineaVenta();
-            listaVentas = bl.Listar(new BEVenta() { IdCliente = this.beClienteProveedor.IdCliente, FechaInicio = fecha, FechaFin = fecha });
+            listaVentas = bl.Listar(new BEVenta() { IdCliente = this.beClienteProveedor.IdCliente
+                                                    , FechaInicio = fecha
+                                                    , FechaFin = fecha
+                                                    , IdVenta = pIdVenta
+                                                    });
           
         
         }
         private string detalleventas() {
 
             StringBuilder sb = new StringBuilder();
+           
             
      
    
@@ -41,23 +46,23 @@ namespace DGP.BusinessLogic.Reporte
             {
                 if (!venta.BEProducto.TieneDetalle) continue;
                 sb.AppendFormat(@"
-                <table><!--inicio venta cabecera-->
+                <table id = 'DetalleCabecera'><!--inicio venta cabecera-->
                 <tr>
-                    <td style='text-align:left;border-right: solid 1px black;'>Detalle: {0} - Venta: {1} </td>
+                    <td style='text-align:left;'>Detalle: {0} - Venta: {1} </td>
                     <td>Devolucion</td>
                 </tr>
-                <tr><td valign='top' style='border-right: solid 1px black;'>
+                <tr><td valign='top' style=''>
                 ", venta.Producto,venta.IdVenta);
                 sb.Append(@"                
-                <table><!--inicio venta detalle--> 
+                <table id = 'DetalleProducto'><!--inicio venta detalle--> 
 	                <tr>
-	                <th>Producto</th>
-	                <th>P.Bruto</th>
-	                <th>P.Bruto</th>              
-	                <th>P.Bruto</th>
-	                <th>P.Tara</th>
-	                <th>P.Tara</th>
-	                <th>P.Tara</th>
+	                
+	                <th>P.B1</th>
+	                <th>P.B2</th>              
+	                <th>P.B3</th>
+	                <th>P.T1</th>
+	                <th>P.T2</th>
+	                <th>P.T3</th>
 	                </tr>
                 ");
 
@@ -79,7 +84,6 @@ namespace DGP.BusinessLogic.Reporte
 
                     sb.Append("<tr>");
 
-                    sb.AppendFormat("<td>{0}</td>", (primerafila) ? linea.Producto : string.Empty);
                     
                     sb.AppendFormat("<td>{0}{2}{1}</td>", cant1, pb1, (pb1 != string.Empty) ? ")" : string.Empty);
 
@@ -96,12 +100,12 @@ namespace DGP.BusinessLogic.Reporte
                 }
                 sb.AppendLine(@"</table><!--fin venta detalle--></td><td valign='top'>");
                 sb.Append(@"                
-                <table><!--inicio devolucion venta --> 
+                <table id = 'DetalleDevolucion'><!--inicio devolucion venta --> 
 	                <tr>
-	                <th>P.Bruto</th>
-	                <th>P.Bruto</th>
-	                <th>P.Tara</th>
-	                <th>P.Tara</th>
+	                <th>P.B1</th>
+	                <th>P.B2</th>
+	                <th>P.T1</th>
+	                <th>P.T2</th>
 	                </tr>
                 ");
                 //sb.AppendFormat(@"<tr><td 'colspan=7' colspan>Devolucion {0} </td></tr>" , venta.Producto);
@@ -142,7 +146,7 @@ namespace DGP.BusinessLogic.Reporte
 
             }
 
-            sb.Append(@"                
+            sb.Append(@"<hr />                
                 <table width = '100%'> 
 	                <tr>
 	                    <th>Producto</th>
@@ -172,7 +176,7 @@ namespace DGP.BusinessLogic.Reporte
 
                 sb.AppendLine("</tr>");
             }
-            sb.AppendFormat("<tr><td colspan = '7' align = 'right'>Importe : {0}</td></tr>", total);
+            sb.AppendFormat("<tr><td colspan = '7' align = 'right'>Imp. Total : {0}</td></tr></table>", total);
             /*venta.MontoTotal;
                 venta.TotalPesoBruto;
                 venta.TotalPesoTara;
@@ -195,12 +199,13 @@ namespace DGP.BusinessLogic.Reporte
                     Sb.Replace("{CLIENTE}", this.beClienteProveedor.Nombre);
 
                     Sb.Replace("{FECHA}", this.fecha.ToShortDateString() );
-
-                    Sb.Replace("{DETALLEVENTA}", this.detalleventas());
+                    string detalleVenta = this.detalleventas();
+                    Sb.Replace("{@@DETALLEVENTA}", detalleVenta);
+                    Sb.Replace("{@@DETALLEVENTACOPIA}", detalleVenta);
 
                 }
             }
-
+           
             return Sb.ToString();
         }
 
@@ -216,18 +221,20 @@ namespace DGP.BusinessLogic.Reporte
 			{
                 int inicio = i * columnas;
                 int range = (inicio + columnas > lineaVenta.Count) ? lineaVenta.Count % columnas : columnas;
+                vistaLineaVenta vistaLineaVenta = new vistaLineaVenta();
+                    
                 foreach (var item in lineaVenta.GetRange(inicio, range))
                 {
-                    vistaLineaVenta vistaLineaVenta = new vistaLineaVenta();
                     
                     vistaLineaVenta.PesoBruto.Add(item.PesoBruto);
                     vistaLineaVenta.PesoTara.Add(item.PesoTara);
                     vistaLineaVenta.CantJavasPesoBruto.Add(item.CantidadJavas);
                     vistaLineaVenta.Producto = ventas.Producto;
                     vistaLineaVenta.EsDevolucion = (item.EsDevolucion == "S");
-                    resultado.Add(vistaLineaVenta);
                     
                 }
+                resultado.Add(vistaLineaVenta);
+                    
 			 
 			}
             return resultado;
