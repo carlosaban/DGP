@@ -97,7 +97,7 @@ namespace DGP.DataAccess.Ventas {
                         beVenta.BEProducto = new BEProducto()
                         {
                             IdProducto = beVenta.IdProducto,
-                            TieneDetalle = bool.Parse( oIDataReader["TieneDetalle"].ToString()),
+                            TieneDetalle = bool.Parse((oIDataReader["TieneDetalle"] != DBNull.Value) ? oIDataReader["TieneDetalle"].ToString() : "False"),
                             Nombre = oIDataReader["PRODUCTO"].ToString()
                         };
                        
