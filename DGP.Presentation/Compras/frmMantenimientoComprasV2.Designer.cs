@@ -190,6 +190,7 @@
             this.dgrvCompras.Size = new System.Drawing.Size(950, 332);
             this.dgrvCompras.TabIndex = 0;
             this.dgrvCompras.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgrvCompras_CellDoubleClick);
+            this.dgrvCompras.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgrvCompras_CellContentClick);
             // 
             // Seleccionado
             // 

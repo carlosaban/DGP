@@ -473,6 +473,7 @@ namespace DGP.Presentation.Compras {
 
         private void bdnCompras_RefreshItems(object sender, EventArgs e)
         {
+            
 
         }
 
@@ -480,9 +481,10 @@ namespace DGP.Presentation.Compras {
         {
             try
             {
+                string temp = e.ToString() + " clase : " + e.GetType().Name;
                 //ojo revisar esto
-                int IdCompra = Convert.ToInt32((string.IsNullOrEmpty(this.lblIDCompra.Text)?"0":this.lblIDCompra.Text ));
-                BLCompra BLDP = new BLCompra();                
+                int IdCompra = Convert.ToInt32((string.IsNullOrEmpty(this.lblIDCompra.Text) ? "0" : this.lblIDCompra.Text));
+                BLCompra BLDP = new BLCompra();
                 BECompra beCompra = new BECompra();
 
                 beCompra.IdCompra = IdCompra;
@@ -492,13 +494,20 @@ namespace DGP.Presentation.Compras {
                 if (MessageBox.Show("Desea Eliminar la compra?", "Eliminar Compra", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
 
-                    BLDP.Eliminar(beCompra);
+                    //BLDP.Eliminar(beCompra);
+
+                    //this.bdSourceCompras.EndEdit();
                     this.bdnCompras.Refresh();
                 }
-                
+                else
+                {
+
+                    //this.bdSourceCompras.CancelEdit();
+                }
 
 
-                
+
+
             }
             catch (Exception ex)
             {
@@ -506,6 +515,13 @@ namespace DGP.Presentation.Compras {
                 this.MostrarMensaje(ex.StackTrace, MessageBoxIcon.Error);
 
             }
+
+            
+        }
+
+        private void bindingNavigatorDeleteItem_MouseDown(object sender, MouseEventArgs e)
+        {
+            
 
         }
 

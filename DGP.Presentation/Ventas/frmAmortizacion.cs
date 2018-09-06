@@ -55,6 +55,11 @@ namespace DGP.Presentation.Ventas {
                 try {
                     dgrvAmortizacion.AutoGenerateColumns = false;
                     lblSimboloMoneda.Text = VariablesSession.ISOCulture.NumberFormat.CurrencySymbol;
+                    this.CargarTipoDocumentoPago();
+
+                    BEParametroDetalle parametro = (BEParametroDetalle)this.cmbTipoPago.SelectedItem;
+                    this.CargarFormaPago( parametro );
+                    this.CargarEntidadBancaria();
                 } catch (Exception ex) {
                     MostrarMensaje(ex.Message, MessageBoxIcon.Error);
                 }
@@ -103,19 +108,19 @@ namespace DGP.Presentation.Ventas {
 
                     if (montoAcarreo >= montoTotal) break;
 
-                    object oIndicador = vRow.Cells[ePosicionCol.Indicador.GetHashCode()].Value;
-                    string sEstado = vRow.Cells[ePosicionCol.IdEstado.GetHashCode()].Value.ToString();
+                    object oIndicador = vRow.Cells["Indicador"].Value;
+                    string sEstado = vRow.Cells["IdEstado"].Value.ToString();
 
                     if (oIndicador.ToString() == "1" && sEstado == BEVenta.REGISTRADO)
                     {
 
                         decimal montoSaldo = 0;
-                        bool okParse = decimal.TryParse(vRow.Cells[ePosicionCol.Saldo.GetHashCode()].Value.ToString(), out montoSaldo);
+                        bool okParse = decimal.TryParse(vRow.Cells["Saldo"].Value.ToString(), out montoSaldo);
                         if (!okParse || montoSaldo < 0) continue; //excluir a los negativos
                         decimal delta = montoTotal - montoAcarreo;
 
                         decimal montoAmortizar = (delta >= montoSaldo) ? montoSaldo : montoTotal - montoAcarreo;
-                        vRow.Cells[ePosicionCol.Pago.GetHashCode()].Value = montoAmortizar.ToString();
+                        vRow.Cells["Pago"].Value = montoAmortizar.ToString();
                         montoAcarreo = montoAcarreo + montoAmortizar;
 
 
@@ -165,8 +170,8 @@ namespace DGP.Presentation.Ventas {
                 foreach (DataGridViewRow vRow in dgrvAmortizacion.Rows) {
                     bool bok;
                     decimal tempValue;
-                    if ( vRow.Cells[ePosicionCol.Pago.GetHashCode()].Value == null) continue;
-                    bok = decimal.TryParse(vRow.Cells[ePosicionCol.Pago.GetHashCode()].Value.ToString() , out tempValue);
+                    if ( vRow.Cells["Pago"].Value == null) continue;
+                    bok = decimal.TryParse(vRow.Cells["Pago"].Value.ToString() , out tempValue);
                     montoResult += (bok)?tempValue: 0;
                 }
 
@@ -196,11 +201,18 @@ namespace DGP.Presentation.Ventas {
                             BEDocumento documento = new BEDocumento();
                             documento.BEUsuarioLogin = VariablesSession.BEUsuarioSession;
                             documento.Fecha = this.dtpFechaPago.Value.Date;
-                            documento.IdTipoDocumento = BEDocumento.TIPO_AMORTIZACION_AMR;
+                            documento.IdTipoDocumento = cmbTipoPago.SelectedValue.ToString();
                             documento.Cliente.IdCliente = int.Parse( this.cmbClientes.SelectedValue.ToString() );
                             documento.Personal.IdPersonal = int.Parse( cbUsuario.SelectedValue.ToString());
                             documento.delleAmortizacion = vLista;
                             documento.Monto = this.nudMontoDocumento.Value;
+                            documento.IdFormaPago = this.cmbFormaPago.SelectedValue.ToString();
+                            documento.IdBanco = (this.cmbBanco.Enabled)?this.cmbBanco.SelectedValue.ToString(): string.Empty;
+                            documento.Observacion = this.txtObservacion.Text;
+                            documento.NumeroOperacion = (this.txtNumeroOperacion.Enabled)?this.txtNumeroOperacion.Text:string.Empty;
+                            documento.NumeroReciboPago = this.txtNumeroRecibo.Text;
+
+                            //documento.IdTipoDocumento
 
 
                             bool bOk = new BLAmortizacionVenta().Insertar(documento);
@@ -287,6 +299,17 @@ namespace DGP.Presentation.Ventas {
                 nudMontoDocumento.Value = 0;
                 nudVuelto.Value = 0;
                 this.nudMontoAplicadoDocumento.Value = 0;
+                this.txtObservacion.Text = string.Empty;
+                this.txtNumeroRecibo.Text = "";
+                this.txtNumeroOperacion.Text = string.Empty;
+
+                this.cmbBanco.SelectedIndex = (this.cmbBanco.Items.Count > 0) ? 0 : this.cmbBanco.SelectedIndex;
+                this.cmbTipoPago.SelectedIndex = (this.cmbTipoPago.Items.Count > 0) ? 0 : this.cmbTipoPago.SelectedIndex; ;
+                this.cmbFormaPago.SelectedIndex = (this.cmbFormaPago.Items.Count > 0) ? 0 : this.cmbFormaPago.SelectedIndex; ;
+
+                this.cmbBanco.Enabled = false;
+                this.txtNumeroOperacion.Enabled = false;
+
             }
 
             private void CargarProductoCliente(int pIdCliente) {
@@ -326,15 +349,16 @@ namespace DGP.Presentation.Ventas {
                 oCeldaPagoCuenta.BackColor = Color.Silver;
                 foreach (DataGridViewRow vRow in dgrvAmortizacion.Rows) {
                     // Obtener Indicador
-                    object oIndicador = vRow.Cells[ePosicionCol.Indicador.GetHashCode()].Value;
+                    object oIndicador = vRow.Cells["Indicador"].Value;
                     if (oIndicador.ToString() == "0") {
-                        vRow.Cells[ePosicionCol.Cantidad.GetHashCode()].Value = "";
-                        vRow.Cells[ePosicionCol.PesoNeto.GetHashCode()].Value = "";
-                        vRow.Cells[ePosicionCol.Saldo.GetHashCode()].Value = "";
-                        vRow.Cells[ePosicionCol.Pago.GetHashCode()].Value = "";
-                        vRow.Cells[ePosicionCol.Pago.GetHashCode()].ReadOnly = true;
-                        vRow.Cells[ePosicionCol.Pago.GetHashCode()].Style = oCeldaPagoCuenta;
+                        vRow.Cells["Cantidad"].Value = "";
+                        vRow.Cells["PesoNeto"].Value = "";
+                        vRow.Cells["Saldo"].Value = "";
+                        vRow.Cells["Pago"].Value = "";
+                        vRow.Cells["Pago"].ReadOnly = true;
+                        vRow.Cells["Pago"].Style = oCeldaPagoCuenta;
                     }
+
                 }
             }
 
@@ -346,22 +370,22 @@ namespace DGP.Presentation.Ventas {
                 bool ExisteAmortizacionMayorSaldo = false;
                 foreach (DataGridViewRow vRow in dgrvAmortizacion.Rows) { 
                     // Obtener el indicador
-                    object oIndicador = vRow.Cells[ePosicionCol.Indicador.GetHashCode()].Value;
+                    object oIndicador = vRow.Cells["Indicador"].Value;
                     if (oIndicador.ToString() == "1") {
                         // Obtener el Pago a Cuenta
                         decimal decSaldoCuenta = decimal.Zero;
-                        object oPagoCuenta = vRow.Cells[ePosicionCol.Pago.GetHashCode()].Value;
+                        object oPagoCuenta = vRow.Cells["Pago"].Value;
                         
                         if (oPagoCuenta != null && !string.IsNullOrEmpty(oPagoCuenta.ToString())) {
                             intCantidad++;
-                            decimal.TryParse(vRow.Cells[ePosicionCol.Saldo.GetHashCode()].Value.ToString(), out decSaldoCuenta);
+                            decimal.TryParse(vRow.Cells["Saldo"].Value.ToString(), out decSaldoCuenta);
                             ExisteNegativos = ExisteNegativos || (decSaldoCuenta < 0);
                             decimal tempPagoAcuenta = 0;
                             decimal.TryParse(oPagoCuenta.ToString(), out tempPagoAcuenta);
                             ExisteAmortizacionMayorSaldo = ExisteAmortizacionMayorSaldo || (tempPagoAcuenta > decSaldoCuenta);
                         }
                         //obtener el checkbox cancelado
-                        bExisteCancelar = bExisteCancelar || ((bool)vRow.Cells[ePosicionCol.Cancelar.GetHashCode()].Value);
+                        bExisteCancelar = bExisteCancelar || ((bool)vRow.Cells["CancelarVenta"].Value);
                         
                     }
                 }
@@ -421,7 +445,7 @@ namespace DGP.Presentation.Ventas {
 
             private bool ValidarPagoCuenta(ref string pMensaje, int pRowIndex) {
                 bool boIndicador = true;
-                object oPagoCuenta = dgrvAmortizacion[ePosicionCol.Pago.GetHashCode(), pRowIndex].Value;
+                object oPagoCuenta = dgrvAmortizacion["Pago", pRowIndex].Value;
                 if (oPagoCuenta == null || string.IsNullOrEmpty(oPagoCuenta.ToString())) {
                     boIndicador = true;
                 } else {
@@ -450,19 +474,19 @@ namespace DGP.Presentation.Ventas {
 
                 foreach (DataGridViewRow vRow in dgrvAmortizacion.Rows) {
                     // Obtener el indicador
-                    object oIndicador = vRow.Cells[ePosicionCol.Indicador.GetHashCode()].Value;
+                    object oIndicador = vRow.Cells["Indicador"].Value;
                     if (oIndicador.ToString() == "1") {
                         // Obtener el Pago a Cuenta
                         decimal decPagoCuenta = decimal.Zero;
-                        object oPagoCuenta = vRow.Cells[ePosicionCol.Pago.GetHashCode()].Value;
+                        object oPagoCuenta = vRow.Cells["Pago"].Value;
                         if (oPagoCuenta != null && !string.IsNullOrEmpty(oPagoCuenta.ToString())) {
                             decPagoCuenta = Convert.ToDecimal(oPagoCuenta);
                             // Obtener los demas Valores de la fila
                             int intIdVenta = 0;
                             int intIdProducto = 0;
                             int intIdCliente = 0;
-                            intIdVenta = Convert.ToInt32(vRow.Cells[ePosicionCol.IdVenta.GetHashCode()].Value);
-                            intIdProducto = Convert.ToInt32(vRow.Cells[ePosicionCol.IdProducto.GetHashCode()].Value);
+                            intIdVenta = Convert.ToInt32(vRow.Cells["IdVenta"].Value);
+                            intIdProducto = Convert.ToInt32(vRow.Cells["IdProducto"].Value);
                             intIdCliente = Convert.ToInt32(this.cmbClientes.SelectedValue);
                             oBEAmortizacionVenta = new BEAmortizacionVenta();
                             oBEAmortizacionVenta.Monto = decPagoCuenta;
@@ -477,7 +501,7 @@ namespace DGP.Presentation.Ventas {
                             oBEAmortizacionVenta.IdPersonal = (pIndicadorUsuario) ? int.Parse(cbUsuario.SelectedValue.ToString()) : VariablesSession.BEUsuarioSession.IdPersonal;
                             oBEAmortizacionVenta.BEUsuarioLogin = VariablesSession.BEUsuarioSession;
                             //tempCancelar = Convert.ToBoolean( vRow.Cells[ePosicionCol.Cancelar.GetHashCode()].Value );
-                            oBEAmortizacionVenta.CancelarVenta = Convert.ToBoolean(vRow.Cells[ePosicionCol.Cancelar.GetHashCode()].Value);
+                            oBEAmortizacionVenta.CancelarVenta = Convert.ToBoolean(vRow.Cells["CancelarVenta"].Value);
                             vLista.Add(oBEAmortizacionVenta);
                         }
                     }
@@ -680,6 +704,140 @@ namespace DGP.Presentation.Ventas {
                 MostrarMensaje("Error Controlado: " + ex.Message , MessageBoxIcon.Error);
             }
         }
+
+        private void dgrvAmortizacion_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if ((e.ColumnIndex == this.dgrvAmortizacion.Columns["ImgPagoInfo"].Index) && e.Value != null)
+            {
+                DataGridViewCell cell = this.dgrvAmortizacion.Rows[e.RowIndex].Cells[e.ColumnIndex];
+                //if (VariablesSession.Privilegios.Find(x => x.IdPrivilegio == DGP.Entities.Seguridad.BEPrivilegio.Visualizar_Precios_compra) != null)
+                //{
+                cell.ToolTipText = this.dgrvAmortizacion.Rows[e.RowIndex].Cells["DocumentoPagoInfo"].Value.ToString();
+
+                //}
+            }
+        }
+
+        //private void dtpFechaPago_ValueChanged(object sender, EventArgs e)
+        //{
+
+        //}
+
+        //private void textBox1_TextChanged(object sender, EventArgs e)
+        //{
+
+        //}
+
+        //private void textBox2_TextChanged(object sender, EventArgs e)
+        //{
+
+        //}
+
+        //private void label11_Click(object sender, EventArgs e)
+        //{
+
+        //}
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="pValor"></param>
+        private void CargarTipoDocumentoPago()
+        {
+            List<BEParametroDetalle> vLista = new List<BEParametroDetalle>();
+            
+            BEParametroDetalle oBEParametroDetalle = new BEParametroDetalle();
+            oBEParametroDetalle.IdParametro = eParametro.TipoAmortizacion.GetHashCode();
+            vLista = new BLParametroDetalle().Listar(oBEParametroDetalle);
+            cmbTipoPago.DataSource = vLista;
+            cmbTipoPago.DisplayMember = "Texto";
+            cmbTipoPago.ValueMember = "Valor";
+
+        }
+
+        private void CargarFormaPago(BEParametroDetalle beTipoAmortizacion)
+        {
+            List<BEParametroDetalle> vLista = new List<BEParametroDetalle>();
+
+            BEParametroDetalle oBEParametroDetalle = new BEParametroDetalle();
+            oBEParametroDetalle.IdParametro = eParametro.FormaPago.GetHashCode();
+            oBEParametroDetalle.ParametroDetallePadre = beTipoAmortizacion.IdItem;
+
+            vLista = new BLParametroDetalle().Listar(oBEParametroDetalle);
+            this.cmbFormaPago.DataSource = vLista;
+            cmbFormaPago.DisplayMember = "Texto";
+            cmbFormaPago.ValueMember = "Valor";
+
+        }
+
+        private void CargarEntidadBancaria()
+        {
+            List<BEParametroDetalle> vLista = new List<BEParametroDetalle>();
+
+            BEParametroDetalle oBEParametroDetalle = new BEParametroDetalle();
+            oBEParametroDetalle.IdParametro = eParametro.EntidadBancaria.GetHashCode();
+            
+            vLista = new BLParametroDetalle().Listar(oBEParametroDetalle);
+            this.cmbBanco.DataSource = vLista;
+            cmbBanco.DisplayMember = "Texto";
+            cmbBanco.ValueMember = "Valor";
+
+        }
+
+        private void cmbTipoPago_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                BEParametroDetalle TipoPago = (BEParametroDetalle)this.cmbTipoPago.SelectedItem;
+                //BEParametroDetalle pBEParametroDetalle = new BEParametroDetalle()
+                //{
+                //    IdItem = 0,
+                //    ParametroDetallePadre = TipoPago.IdItem
+
+                //};
+                this.CargarFormaPago(TipoPago);
+
+            }
+            catch (Exception ex)
+            {
+                
+                throw;
+            }
+        }
+
+        private void cmbFormaPago_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                BEParametroDetalle formaPago = (BEParametroDetalle)this.cmbFormaPago.SelectedItem;
+
+                this.cmbBanco.SelectedIndex = (this.cmbBanco.Items.Count > 0) ? 0 : this.cmbBanco.SelectedIndex;
+                this.txtNumeroOperacion.Text = string.Empty;
+
+                if (formaPago.Valor == "CHQ" || formaPago.Valor == "DEP" || formaPago.Valor == "DET")
+                {
+                    this.cmbBanco.Enabled = true;
+                    this.txtNumeroOperacion.Enabled = true;
+
+
+                }
+                else {
+
+                    this.cmbBanco.Enabled = false;
+                    this.txtNumeroOperacion.Enabled = false;
+                }
+            }
+            catch (Exception ex)
+            {
+                
+                throw;
+            }
+        }
+
+        private void label10_Click(object sender, EventArgs e)
+        {
+
+        }
+
 
 
         

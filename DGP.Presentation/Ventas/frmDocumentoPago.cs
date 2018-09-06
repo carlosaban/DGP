@@ -94,9 +94,9 @@ namespace DGP.Presentation.Ventas
                 documento.BEUsuarioLogin = VariablesSession.BEUsuarioSession;
                 documento.Cliente.IdCliente = Cliente.IdCliente;
                 documento.Observacion = txtObservacion.Text;
-                documento.Banco.IdEntidadBancaria = (int)this.cmbEntidadBancaria.SelectedValue;
-                documento.CodigoReferencia = this.txtCodigoReferencia.Text;
-                documento.IdTipoPago = this.cmbTipoPago.SelectedItem.ToString();
+                //documento.Banco.IdEntidadBancaria = (int)this.cmbEntidadBancaria.SelectedValue;
+                documento.NumeroOperacion = this.txtCodigoReferencia.Text;
+                documento.IdFormaPago = this.cmbTipoPago.SelectedItem.ToString();
 
                 BLDP.ActualizarCabecera(documento);
             }

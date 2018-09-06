@@ -48,7 +48,7 @@ namespace DGP.DataAccess.Ventas {
 
                     while (oIDataReader.Read()) {
                         oVistaAmortizacion = new VistaAmortizacion();
-                        oVistaAmortizacion.IdAmortizacion = Convert.ToInt32(oIDataReader["intIdAmortizacion"]);
+                        oVistaAmortizacion.IdAmortizacion = (oIDataReader["intIdAmortizacion"] == (object)DBNull.Value) ? 0 : Convert.ToInt32(oIDataReader["intIdAmortizacion"]);
                         oVistaAmortizacion.IdVenta = Convert.ToInt32(oIDataReader["intIdVenta"]);
                         oVistaAmortizacion.TipoDocumento = oIDataReader["varTipoDocumento"].ToString();
                         oVistaAmortizacion.Producto = oIDataReader["varProducto"].ToString();
@@ -62,7 +62,7 @@ namespace DGP.DataAccess.Ventas {
                         oVistaAmortizacion.IdPersonal = (oIDataReader["intIdPersonal"] == (object)DBNull.Value) ? 0 : Convert.ToInt32(oIDataReader["intIdPersonal"].ToString() ); ;
                         oVistaAmortizacion.Personal = (oIDataReader["varPesonal"] == (object)DBNull.Value) ? string.Empty : oIDataReader["varPesonal"].ToString();
                         oVistaAmortizacion.IdEstado = (oIDataReader["varEstado"] == (object)DBNull.Value) ? string.Empty : oIDataReader["varEstado"].ToString();
-                        
+                        oVistaAmortizacion.DocumentoPagoInfo = (oIDataReader["DocumentoPagoInfo"] == (object)DBNull.Value) ? string.Empty : oIDataReader["DocumentoPagoInfo"].ToString();
                         oVistaAmortizacion.IncluyeCancelados = false;
                         
                         vLista.Add(oVistaAmortizacion);
@@ -148,6 +148,14 @@ namespace DGP.DataAccess.Ventas {
                     oDatabaseHelper.AddParameter("@IdCaja", beDocumento.BEUsuarioLogin.IdCaja);
                     oDatabaseHelper.AddParameter("@IdCliente", beDocumento.Cliente.IdCliente);
                     oDatabaseHelper.AddParameter("@IdPersonal", beDocumento.Personal.IdPersonal);
+
+                    oDatabaseHelper.AddParameter("@IdFormaPago", beDocumento.IdFormaPago);
+                    oDatabaseHelper.AddParameter("@observacion", beDocumento.Observacion);
+
+                    oDatabaseHelper.AddParameter("@NumeroRecibo", (beDocumento.NumeroReciboPago == string.Empty) ? DBNull.Value : (object)beDocumento.NumeroReciboPago);
+                    oDatabaseHelper.AddParameter("@IdBanco", (beDocumento.IdBanco == string.Empty) ? DBNull.Value : (object)beDocumento.IdBanco);
+                    oDatabaseHelper.AddParameter("@NumeroOperacion", (beDocumento.NumeroOperacion == string.Empty) ? DBNull.Value : (object)beDocumento.NumeroOperacion);
+                
 
                     object vResultado = oDatabaseHelper.ExecuteScalar("InsertarDocumento", CommandType.StoredProcedure, (pDatabaseHelper == null) ? DBHelper.ConnectionState.CloseOnExit : DBHelper.ConnectionState.KeepOpen);
                     beDocumento.IdDocumento = int.Parse(vResultado.ToString());

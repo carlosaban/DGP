@@ -66,11 +66,45 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle36 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.dgvLineaCompra = new System.Windows.Forms.DataGridView();
+            this.idLineaCompraDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pesoJavaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pesoBrutoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pesoTaraDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pesoNetoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cantidadJavasDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.esDevolucionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.esPesoTaraEditadoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.taraEditadaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.observacionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idEstadoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idCompraDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.accionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bEUsuarioLoginDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.flagJavaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.secuencialDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.unidadesDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bELineaCompraBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.dgvAmortizacion = new System.Windows.Forms.DataGridView();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.dgvDevolucion = new System.Windows.Forms.DataGridView();
+            this.idLineaCompraDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pesoJavaDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pesoBrutoDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pesoTaraDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pesoNetoDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cantidadJavasDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.esDevolucionDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.esPesoTaraEditadoDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.taraEditadaDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.observacionDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idEstadoDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idCompraDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.accionDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bEUsuarioLoginDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.flagJavaDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.secuencialDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.unidadesDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bELineaCompraBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.label9 = new System.Windows.Forms.Label();
@@ -158,40 +192,6 @@
             this.dataGridViewTextBoxColumn32 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn33 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn34 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.idLineaCompraDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.pesoJavaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.pesoBrutoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.pesoTaraDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.pesoNetoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cantidadJavasDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.esDevolucionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.esPesoTaraEditadoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.taraEditadaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.observacionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.idEstadoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.idCompraDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.accionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.bEUsuarioLoginDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.flagJavaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.secuencialDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.unidadesDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.idLineaCompraDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.pesoJavaDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.pesoBrutoDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.pesoTaraDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.pesoNetoDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cantidadJavasDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.esDevolucionDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.esPesoTaraEditadoDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.taraEditadaDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.observacionDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.idEstadoDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.idCompraDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.accionDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.bEUsuarioLoginDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.flagJavaDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.secuencialDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.unidadesDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn35 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn36 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn37 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -291,6 +291,108 @@
             this.dgvLineaCompra.Size = new System.Drawing.Size(779, 318);
             this.dgvLineaCompra.StandardTab = true;
             this.dgvLineaCompra.TabIndex = 15;
+            // 
+            // idLineaCompraDataGridViewTextBoxColumn
+            // 
+            this.idLineaCompraDataGridViewTextBoxColumn.DataPropertyName = "IdLineaCompra";
+            this.idLineaCompraDataGridViewTextBoxColumn.HeaderText = "IdLineaCompra";
+            this.idLineaCompraDataGridViewTextBoxColumn.Name = "idLineaCompraDataGridViewTextBoxColumn";
+            // 
+            // pesoJavaDataGridViewTextBoxColumn
+            // 
+            this.pesoJavaDataGridViewTextBoxColumn.DataPropertyName = "PesoJava";
+            this.pesoJavaDataGridViewTextBoxColumn.HeaderText = "PesoJava";
+            this.pesoJavaDataGridViewTextBoxColumn.Name = "pesoJavaDataGridViewTextBoxColumn";
+            // 
+            // pesoBrutoDataGridViewTextBoxColumn
+            // 
+            this.pesoBrutoDataGridViewTextBoxColumn.DataPropertyName = "PesoBruto";
+            this.pesoBrutoDataGridViewTextBoxColumn.HeaderText = "PesoBruto";
+            this.pesoBrutoDataGridViewTextBoxColumn.Name = "pesoBrutoDataGridViewTextBoxColumn";
+            // 
+            // pesoTaraDataGridViewTextBoxColumn
+            // 
+            this.pesoTaraDataGridViewTextBoxColumn.DataPropertyName = "PesoTara";
+            this.pesoTaraDataGridViewTextBoxColumn.HeaderText = "PesoTara";
+            this.pesoTaraDataGridViewTextBoxColumn.Name = "pesoTaraDataGridViewTextBoxColumn";
+            // 
+            // pesoNetoDataGridViewTextBoxColumn
+            // 
+            this.pesoNetoDataGridViewTextBoxColumn.DataPropertyName = "PesoNeto";
+            this.pesoNetoDataGridViewTextBoxColumn.HeaderText = "PesoNeto";
+            this.pesoNetoDataGridViewTextBoxColumn.Name = "pesoNetoDataGridViewTextBoxColumn";
+            // 
+            // cantidadJavasDataGridViewTextBoxColumn
+            // 
+            this.cantidadJavasDataGridViewTextBoxColumn.DataPropertyName = "CantidadJavas";
+            this.cantidadJavasDataGridViewTextBoxColumn.HeaderText = "CantidadJavas";
+            this.cantidadJavasDataGridViewTextBoxColumn.Name = "cantidadJavasDataGridViewTextBoxColumn";
+            // 
+            // esDevolucionDataGridViewTextBoxColumn
+            // 
+            this.esDevolucionDataGridViewTextBoxColumn.DataPropertyName = "EsDevolucion";
+            this.esDevolucionDataGridViewTextBoxColumn.HeaderText = "EsDevolucion";
+            this.esDevolucionDataGridViewTextBoxColumn.Name = "esDevolucionDataGridViewTextBoxColumn";
+            // 
+            // esPesoTaraEditadoDataGridViewTextBoxColumn
+            // 
+            this.esPesoTaraEditadoDataGridViewTextBoxColumn.DataPropertyName = "EsPesoTaraEditado";
+            this.esPesoTaraEditadoDataGridViewTextBoxColumn.HeaderText = "EsPesoTaraEditado";
+            this.esPesoTaraEditadoDataGridViewTextBoxColumn.Name = "esPesoTaraEditadoDataGridViewTextBoxColumn";
+            // 
+            // taraEditadaDataGridViewTextBoxColumn
+            // 
+            this.taraEditadaDataGridViewTextBoxColumn.DataPropertyName = "TaraEditada";
+            this.taraEditadaDataGridViewTextBoxColumn.HeaderText = "TaraEditada";
+            this.taraEditadaDataGridViewTextBoxColumn.Name = "taraEditadaDataGridViewTextBoxColumn";
+            // 
+            // observacionDataGridViewTextBoxColumn
+            // 
+            this.observacionDataGridViewTextBoxColumn.DataPropertyName = "Observacion";
+            this.observacionDataGridViewTextBoxColumn.HeaderText = "Observacion";
+            this.observacionDataGridViewTextBoxColumn.Name = "observacionDataGridViewTextBoxColumn";
+            // 
+            // idEstadoDataGridViewTextBoxColumn
+            // 
+            this.idEstadoDataGridViewTextBoxColumn.DataPropertyName = "IdEstado";
+            this.idEstadoDataGridViewTextBoxColumn.HeaderText = "IdEstado";
+            this.idEstadoDataGridViewTextBoxColumn.Name = "idEstadoDataGridViewTextBoxColumn";
+            // 
+            // idCompraDataGridViewTextBoxColumn
+            // 
+            this.idCompraDataGridViewTextBoxColumn.DataPropertyName = "IdCompra";
+            this.idCompraDataGridViewTextBoxColumn.HeaderText = "IdCompra";
+            this.idCompraDataGridViewTextBoxColumn.Name = "idCompraDataGridViewTextBoxColumn";
+            // 
+            // accionDataGridViewTextBoxColumn
+            // 
+            this.accionDataGridViewTextBoxColumn.DataPropertyName = "Accion";
+            this.accionDataGridViewTextBoxColumn.HeaderText = "Accion";
+            this.accionDataGridViewTextBoxColumn.Name = "accionDataGridViewTextBoxColumn";
+            // 
+            // bEUsuarioLoginDataGridViewTextBoxColumn
+            // 
+            this.bEUsuarioLoginDataGridViewTextBoxColumn.DataPropertyName = "BEUsuarioLogin";
+            this.bEUsuarioLoginDataGridViewTextBoxColumn.HeaderText = "BEUsuarioLogin";
+            this.bEUsuarioLoginDataGridViewTextBoxColumn.Name = "bEUsuarioLoginDataGridViewTextBoxColumn";
+            // 
+            // flagJavaDataGridViewTextBoxColumn
+            // 
+            this.flagJavaDataGridViewTextBoxColumn.DataPropertyName = "FlagJava";
+            this.flagJavaDataGridViewTextBoxColumn.HeaderText = "FlagJava";
+            this.flagJavaDataGridViewTextBoxColumn.Name = "flagJavaDataGridViewTextBoxColumn";
+            // 
+            // secuencialDataGridViewTextBoxColumn
+            // 
+            this.secuencialDataGridViewTextBoxColumn.DataPropertyName = "Secuencial";
+            this.secuencialDataGridViewTextBoxColumn.HeaderText = "Secuencial";
+            this.secuencialDataGridViewTextBoxColumn.Name = "secuencialDataGridViewTextBoxColumn";
+            // 
+            // unidadesDataGridViewTextBoxColumn
+            // 
+            this.unidadesDataGridViewTextBoxColumn.DataPropertyName = "Unidades";
+            this.unidadesDataGridViewTextBoxColumn.HeaderText = "Unidades";
+            this.unidadesDataGridViewTextBoxColumn.Name = "unidadesDataGridViewTextBoxColumn";
             // 
             // bELineaCompraBindingSource
             // 
@@ -399,6 +501,108 @@
             this.dgvDevolucion.Size = new System.Drawing.Size(700, 312);
             this.dgvDevolucion.StandardTab = true;
             this.dgvDevolucion.TabIndex = 16;
+            // 
+            // idLineaCompraDataGridViewTextBoxColumn1
+            // 
+            this.idLineaCompraDataGridViewTextBoxColumn1.DataPropertyName = "IdLineaCompra";
+            this.idLineaCompraDataGridViewTextBoxColumn1.HeaderText = "IdLineaCompra";
+            this.idLineaCompraDataGridViewTextBoxColumn1.Name = "idLineaCompraDataGridViewTextBoxColumn1";
+            // 
+            // pesoJavaDataGridViewTextBoxColumn1
+            // 
+            this.pesoJavaDataGridViewTextBoxColumn1.DataPropertyName = "PesoJava";
+            this.pesoJavaDataGridViewTextBoxColumn1.HeaderText = "PesoJava";
+            this.pesoJavaDataGridViewTextBoxColumn1.Name = "pesoJavaDataGridViewTextBoxColumn1";
+            // 
+            // pesoBrutoDataGridViewTextBoxColumn1
+            // 
+            this.pesoBrutoDataGridViewTextBoxColumn1.DataPropertyName = "PesoBruto";
+            this.pesoBrutoDataGridViewTextBoxColumn1.HeaderText = "PesoBruto";
+            this.pesoBrutoDataGridViewTextBoxColumn1.Name = "pesoBrutoDataGridViewTextBoxColumn1";
+            // 
+            // pesoTaraDataGridViewTextBoxColumn1
+            // 
+            this.pesoTaraDataGridViewTextBoxColumn1.DataPropertyName = "PesoTara";
+            this.pesoTaraDataGridViewTextBoxColumn1.HeaderText = "PesoTara";
+            this.pesoTaraDataGridViewTextBoxColumn1.Name = "pesoTaraDataGridViewTextBoxColumn1";
+            // 
+            // pesoNetoDataGridViewTextBoxColumn1
+            // 
+            this.pesoNetoDataGridViewTextBoxColumn1.DataPropertyName = "PesoNeto";
+            this.pesoNetoDataGridViewTextBoxColumn1.HeaderText = "PesoNeto";
+            this.pesoNetoDataGridViewTextBoxColumn1.Name = "pesoNetoDataGridViewTextBoxColumn1";
+            // 
+            // cantidadJavasDataGridViewTextBoxColumn1
+            // 
+            this.cantidadJavasDataGridViewTextBoxColumn1.DataPropertyName = "CantidadJavas";
+            this.cantidadJavasDataGridViewTextBoxColumn1.HeaderText = "CantidadJavas";
+            this.cantidadJavasDataGridViewTextBoxColumn1.Name = "cantidadJavasDataGridViewTextBoxColumn1";
+            // 
+            // esDevolucionDataGridViewTextBoxColumn1
+            // 
+            this.esDevolucionDataGridViewTextBoxColumn1.DataPropertyName = "EsDevolucion";
+            this.esDevolucionDataGridViewTextBoxColumn1.HeaderText = "EsDevolucion";
+            this.esDevolucionDataGridViewTextBoxColumn1.Name = "esDevolucionDataGridViewTextBoxColumn1";
+            // 
+            // esPesoTaraEditadoDataGridViewTextBoxColumn1
+            // 
+            this.esPesoTaraEditadoDataGridViewTextBoxColumn1.DataPropertyName = "EsPesoTaraEditado";
+            this.esPesoTaraEditadoDataGridViewTextBoxColumn1.HeaderText = "EsPesoTaraEditado";
+            this.esPesoTaraEditadoDataGridViewTextBoxColumn1.Name = "esPesoTaraEditadoDataGridViewTextBoxColumn1";
+            // 
+            // taraEditadaDataGridViewTextBoxColumn1
+            // 
+            this.taraEditadaDataGridViewTextBoxColumn1.DataPropertyName = "TaraEditada";
+            this.taraEditadaDataGridViewTextBoxColumn1.HeaderText = "TaraEditada";
+            this.taraEditadaDataGridViewTextBoxColumn1.Name = "taraEditadaDataGridViewTextBoxColumn1";
+            // 
+            // observacionDataGridViewTextBoxColumn1
+            // 
+            this.observacionDataGridViewTextBoxColumn1.DataPropertyName = "Observacion";
+            this.observacionDataGridViewTextBoxColumn1.HeaderText = "Observacion";
+            this.observacionDataGridViewTextBoxColumn1.Name = "observacionDataGridViewTextBoxColumn1";
+            // 
+            // idEstadoDataGridViewTextBoxColumn1
+            // 
+            this.idEstadoDataGridViewTextBoxColumn1.DataPropertyName = "IdEstado";
+            this.idEstadoDataGridViewTextBoxColumn1.HeaderText = "IdEstado";
+            this.idEstadoDataGridViewTextBoxColumn1.Name = "idEstadoDataGridViewTextBoxColumn1";
+            // 
+            // idCompraDataGridViewTextBoxColumn1
+            // 
+            this.idCompraDataGridViewTextBoxColumn1.DataPropertyName = "IdCompra";
+            this.idCompraDataGridViewTextBoxColumn1.HeaderText = "IdCompra";
+            this.idCompraDataGridViewTextBoxColumn1.Name = "idCompraDataGridViewTextBoxColumn1";
+            // 
+            // accionDataGridViewTextBoxColumn1
+            // 
+            this.accionDataGridViewTextBoxColumn1.DataPropertyName = "Accion";
+            this.accionDataGridViewTextBoxColumn1.HeaderText = "Accion";
+            this.accionDataGridViewTextBoxColumn1.Name = "accionDataGridViewTextBoxColumn1";
+            // 
+            // bEUsuarioLoginDataGridViewTextBoxColumn1
+            // 
+            this.bEUsuarioLoginDataGridViewTextBoxColumn1.DataPropertyName = "BEUsuarioLogin";
+            this.bEUsuarioLoginDataGridViewTextBoxColumn1.HeaderText = "BEUsuarioLogin";
+            this.bEUsuarioLoginDataGridViewTextBoxColumn1.Name = "bEUsuarioLoginDataGridViewTextBoxColumn1";
+            // 
+            // flagJavaDataGridViewTextBoxColumn1
+            // 
+            this.flagJavaDataGridViewTextBoxColumn1.DataPropertyName = "FlagJava";
+            this.flagJavaDataGridViewTextBoxColumn1.HeaderText = "FlagJava";
+            this.flagJavaDataGridViewTextBoxColumn1.Name = "flagJavaDataGridViewTextBoxColumn1";
+            // 
+            // secuencialDataGridViewTextBoxColumn1
+            // 
+            this.secuencialDataGridViewTextBoxColumn1.DataPropertyName = "Secuencial";
+            this.secuencialDataGridViewTextBoxColumn1.HeaderText = "Secuencial";
+            this.secuencialDataGridViewTextBoxColumn1.Name = "secuencialDataGridViewTextBoxColumn1";
+            // 
+            // unidadesDataGridViewTextBoxColumn1
+            // 
+            this.unidadesDataGridViewTextBoxColumn1.DataPropertyName = "Unidades";
+            this.unidadesDataGridViewTextBoxColumn1.HeaderText = "Unidades";
+            this.unidadesDataGridViewTextBoxColumn1.Name = "unidadesDataGridViewTextBoxColumn1";
             // 
             // bELineaCompraBindingSource1
             // 
@@ -881,6 +1085,7 @@
             this.bindingNavigatorDeleteItem.RightToLeftAutoMirrorImage = true;
             this.bindingNavigatorDeleteItem.Size = new System.Drawing.Size(23, 22);
             this.bindingNavigatorDeleteItem.Text = "Delete";
+            this.bindingNavigatorDeleteItem.MouseDown += new System.Windows.Forms.MouseEventHandler(this.bindingNavigatorDeleteItem_MouseDown);
             this.bindingNavigatorDeleteItem.Click += new System.EventHandler(this.bindingNavigatorDeleteItem_Click);
             // 
             // bindingNavigatorMoveFirstItem
@@ -1417,210 +1622,6 @@
             this.dataGridViewTextBoxColumn34.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.dataGridViewTextBoxColumn34.Visible = false;
             this.dataGridViewTextBoxColumn34.Width = 95;
-            // 
-            // idLineaCompraDataGridViewTextBoxColumn
-            // 
-            this.idLineaCompraDataGridViewTextBoxColumn.DataPropertyName = "IdLineaCompra";
-            this.idLineaCompraDataGridViewTextBoxColumn.HeaderText = "IdLineaCompra";
-            this.idLineaCompraDataGridViewTextBoxColumn.Name = "idLineaCompraDataGridViewTextBoxColumn";
-            // 
-            // pesoJavaDataGridViewTextBoxColumn
-            // 
-            this.pesoJavaDataGridViewTextBoxColumn.DataPropertyName = "PesoJava";
-            this.pesoJavaDataGridViewTextBoxColumn.HeaderText = "PesoJava";
-            this.pesoJavaDataGridViewTextBoxColumn.Name = "pesoJavaDataGridViewTextBoxColumn";
-            // 
-            // pesoBrutoDataGridViewTextBoxColumn
-            // 
-            this.pesoBrutoDataGridViewTextBoxColumn.DataPropertyName = "PesoBruto";
-            this.pesoBrutoDataGridViewTextBoxColumn.HeaderText = "PesoBruto";
-            this.pesoBrutoDataGridViewTextBoxColumn.Name = "pesoBrutoDataGridViewTextBoxColumn";
-            // 
-            // pesoTaraDataGridViewTextBoxColumn
-            // 
-            this.pesoTaraDataGridViewTextBoxColumn.DataPropertyName = "PesoTara";
-            this.pesoTaraDataGridViewTextBoxColumn.HeaderText = "PesoTara";
-            this.pesoTaraDataGridViewTextBoxColumn.Name = "pesoTaraDataGridViewTextBoxColumn";
-            // 
-            // pesoNetoDataGridViewTextBoxColumn
-            // 
-            this.pesoNetoDataGridViewTextBoxColumn.DataPropertyName = "PesoNeto";
-            this.pesoNetoDataGridViewTextBoxColumn.HeaderText = "PesoNeto";
-            this.pesoNetoDataGridViewTextBoxColumn.Name = "pesoNetoDataGridViewTextBoxColumn";
-            // 
-            // cantidadJavasDataGridViewTextBoxColumn
-            // 
-            this.cantidadJavasDataGridViewTextBoxColumn.DataPropertyName = "CantidadJavas";
-            this.cantidadJavasDataGridViewTextBoxColumn.HeaderText = "CantidadJavas";
-            this.cantidadJavasDataGridViewTextBoxColumn.Name = "cantidadJavasDataGridViewTextBoxColumn";
-            // 
-            // esDevolucionDataGridViewTextBoxColumn
-            // 
-            this.esDevolucionDataGridViewTextBoxColumn.DataPropertyName = "EsDevolucion";
-            this.esDevolucionDataGridViewTextBoxColumn.HeaderText = "EsDevolucion";
-            this.esDevolucionDataGridViewTextBoxColumn.Name = "esDevolucionDataGridViewTextBoxColumn";
-            // 
-            // esPesoTaraEditadoDataGridViewTextBoxColumn
-            // 
-            this.esPesoTaraEditadoDataGridViewTextBoxColumn.DataPropertyName = "EsPesoTaraEditado";
-            this.esPesoTaraEditadoDataGridViewTextBoxColumn.HeaderText = "EsPesoTaraEditado";
-            this.esPesoTaraEditadoDataGridViewTextBoxColumn.Name = "esPesoTaraEditadoDataGridViewTextBoxColumn";
-            // 
-            // taraEditadaDataGridViewTextBoxColumn
-            // 
-            this.taraEditadaDataGridViewTextBoxColumn.DataPropertyName = "TaraEditada";
-            this.taraEditadaDataGridViewTextBoxColumn.HeaderText = "TaraEditada";
-            this.taraEditadaDataGridViewTextBoxColumn.Name = "taraEditadaDataGridViewTextBoxColumn";
-            // 
-            // observacionDataGridViewTextBoxColumn
-            // 
-            this.observacionDataGridViewTextBoxColumn.DataPropertyName = "Observacion";
-            this.observacionDataGridViewTextBoxColumn.HeaderText = "Observacion";
-            this.observacionDataGridViewTextBoxColumn.Name = "observacionDataGridViewTextBoxColumn";
-            // 
-            // idEstadoDataGridViewTextBoxColumn
-            // 
-            this.idEstadoDataGridViewTextBoxColumn.DataPropertyName = "IdEstado";
-            this.idEstadoDataGridViewTextBoxColumn.HeaderText = "IdEstado";
-            this.idEstadoDataGridViewTextBoxColumn.Name = "idEstadoDataGridViewTextBoxColumn";
-            // 
-            // idCompraDataGridViewTextBoxColumn
-            // 
-            this.idCompraDataGridViewTextBoxColumn.DataPropertyName = "IdCompra";
-            this.idCompraDataGridViewTextBoxColumn.HeaderText = "IdCompra";
-            this.idCompraDataGridViewTextBoxColumn.Name = "idCompraDataGridViewTextBoxColumn";
-            // 
-            // accionDataGridViewTextBoxColumn
-            // 
-            this.accionDataGridViewTextBoxColumn.DataPropertyName = "Accion";
-            this.accionDataGridViewTextBoxColumn.HeaderText = "Accion";
-            this.accionDataGridViewTextBoxColumn.Name = "accionDataGridViewTextBoxColumn";
-            // 
-            // bEUsuarioLoginDataGridViewTextBoxColumn
-            // 
-            this.bEUsuarioLoginDataGridViewTextBoxColumn.DataPropertyName = "BEUsuarioLogin";
-            this.bEUsuarioLoginDataGridViewTextBoxColumn.HeaderText = "BEUsuarioLogin";
-            this.bEUsuarioLoginDataGridViewTextBoxColumn.Name = "bEUsuarioLoginDataGridViewTextBoxColumn";
-            // 
-            // flagJavaDataGridViewTextBoxColumn
-            // 
-            this.flagJavaDataGridViewTextBoxColumn.DataPropertyName = "FlagJava";
-            this.flagJavaDataGridViewTextBoxColumn.HeaderText = "FlagJava";
-            this.flagJavaDataGridViewTextBoxColumn.Name = "flagJavaDataGridViewTextBoxColumn";
-            // 
-            // secuencialDataGridViewTextBoxColumn
-            // 
-            this.secuencialDataGridViewTextBoxColumn.DataPropertyName = "Secuencial";
-            this.secuencialDataGridViewTextBoxColumn.HeaderText = "Secuencial";
-            this.secuencialDataGridViewTextBoxColumn.Name = "secuencialDataGridViewTextBoxColumn";
-            // 
-            // unidadesDataGridViewTextBoxColumn
-            // 
-            this.unidadesDataGridViewTextBoxColumn.DataPropertyName = "Unidades";
-            this.unidadesDataGridViewTextBoxColumn.HeaderText = "Unidades";
-            this.unidadesDataGridViewTextBoxColumn.Name = "unidadesDataGridViewTextBoxColumn";
-            // 
-            // idLineaCompraDataGridViewTextBoxColumn1
-            // 
-            this.idLineaCompraDataGridViewTextBoxColumn1.DataPropertyName = "IdLineaCompra";
-            this.idLineaCompraDataGridViewTextBoxColumn1.HeaderText = "IdLineaCompra";
-            this.idLineaCompraDataGridViewTextBoxColumn1.Name = "idLineaCompraDataGridViewTextBoxColumn1";
-            // 
-            // pesoJavaDataGridViewTextBoxColumn1
-            // 
-            this.pesoJavaDataGridViewTextBoxColumn1.DataPropertyName = "PesoJava";
-            this.pesoJavaDataGridViewTextBoxColumn1.HeaderText = "PesoJava";
-            this.pesoJavaDataGridViewTextBoxColumn1.Name = "pesoJavaDataGridViewTextBoxColumn1";
-            // 
-            // pesoBrutoDataGridViewTextBoxColumn1
-            // 
-            this.pesoBrutoDataGridViewTextBoxColumn1.DataPropertyName = "PesoBruto";
-            this.pesoBrutoDataGridViewTextBoxColumn1.HeaderText = "PesoBruto";
-            this.pesoBrutoDataGridViewTextBoxColumn1.Name = "pesoBrutoDataGridViewTextBoxColumn1";
-            // 
-            // pesoTaraDataGridViewTextBoxColumn1
-            // 
-            this.pesoTaraDataGridViewTextBoxColumn1.DataPropertyName = "PesoTara";
-            this.pesoTaraDataGridViewTextBoxColumn1.HeaderText = "PesoTara";
-            this.pesoTaraDataGridViewTextBoxColumn1.Name = "pesoTaraDataGridViewTextBoxColumn1";
-            // 
-            // pesoNetoDataGridViewTextBoxColumn1
-            // 
-            this.pesoNetoDataGridViewTextBoxColumn1.DataPropertyName = "PesoNeto";
-            this.pesoNetoDataGridViewTextBoxColumn1.HeaderText = "PesoNeto";
-            this.pesoNetoDataGridViewTextBoxColumn1.Name = "pesoNetoDataGridViewTextBoxColumn1";
-            // 
-            // cantidadJavasDataGridViewTextBoxColumn1
-            // 
-            this.cantidadJavasDataGridViewTextBoxColumn1.DataPropertyName = "CantidadJavas";
-            this.cantidadJavasDataGridViewTextBoxColumn1.HeaderText = "CantidadJavas";
-            this.cantidadJavasDataGridViewTextBoxColumn1.Name = "cantidadJavasDataGridViewTextBoxColumn1";
-            // 
-            // esDevolucionDataGridViewTextBoxColumn1
-            // 
-            this.esDevolucionDataGridViewTextBoxColumn1.DataPropertyName = "EsDevolucion";
-            this.esDevolucionDataGridViewTextBoxColumn1.HeaderText = "EsDevolucion";
-            this.esDevolucionDataGridViewTextBoxColumn1.Name = "esDevolucionDataGridViewTextBoxColumn1";
-            // 
-            // esPesoTaraEditadoDataGridViewTextBoxColumn1
-            // 
-            this.esPesoTaraEditadoDataGridViewTextBoxColumn1.DataPropertyName = "EsPesoTaraEditado";
-            this.esPesoTaraEditadoDataGridViewTextBoxColumn1.HeaderText = "EsPesoTaraEditado";
-            this.esPesoTaraEditadoDataGridViewTextBoxColumn1.Name = "esPesoTaraEditadoDataGridViewTextBoxColumn1";
-            // 
-            // taraEditadaDataGridViewTextBoxColumn1
-            // 
-            this.taraEditadaDataGridViewTextBoxColumn1.DataPropertyName = "TaraEditada";
-            this.taraEditadaDataGridViewTextBoxColumn1.HeaderText = "TaraEditada";
-            this.taraEditadaDataGridViewTextBoxColumn1.Name = "taraEditadaDataGridViewTextBoxColumn1";
-            // 
-            // observacionDataGridViewTextBoxColumn1
-            // 
-            this.observacionDataGridViewTextBoxColumn1.DataPropertyName = "Observacion";
-            this.observacionDataGridViewTextBoxColumn1.HeaderText = "Observacion";
-            this.observacionDataGridViewTextBoxColumn1.Name = "observacionDataGridViewTextBoxColumn1";
-            // 
-            // idEstadoDataGridViewTextBoxColumn1
-            // 
-            this.idEstadoDataGridViewTextBoxColumn1.DataPropertyName = "IdEstado";
-            this.idEstadoDataGridViewTextBoxColumn1.HeaderText = "IdEstado";
-            this.idEstadoDataGridViewTextBoxColumn1.Name = "idEstadoDataGridViewTextBoxColumn1";
-            // 
-            // idCompraDataGridViewTextBoxColumn1
-            // 
-            this.idCompraDataGridViewTextBoxColumn1.DataPropertyName = "IdCompra";
-            this.idCompraDataGridViewTextBoxColumn1.HeaderText = "IdCompra";
-            this.idCompraDataGridViewTextBoxColumn1.Name = "idCompraDataGridViewTextBoxColumn1";
-            // 
-            // accionDataGridViewTextBoxColumn1
-            // 
-            this.accionDataGridViewTextBoxColumn1.DataPropertyName = "Accion";
-            this.accionDataGridViewTextBoxColumn1.HeaderText = "Accion";
-            this.accionDataGridViewTextBoxColumn1.Name = "accionDataGridViewTextBoxColumn1";
-            // 
-            // bEUsuarioLoginDataGridViewTextBoxColumn1
-            // 
-            this.bEUsuarioLoginDataGridViewTextBoxColumn1.DataPropertyName = "BEUsuarioLogin";
-            this.bEUsuarioLoginDataGridViewTextBoxColumn1.HeaderText = "BEUsuarioLogin";
-            this.bEUsuarioLoginDataGridViewTextBoxColumn1.Name = "bEUsuarioLoginDataGridViewTextBoxColumn1";
-            // 
-            // flagJavaDataGridViewTextBoxColumn1
-            // 
-            this.flagJavaDataGridViewTextBoxColumn1.DataPropertyName = "FlagJava";
-            this.flagJavaDataGridViewTextBoxColumn1.HeaderText = "FlagJava";
-            this.flagJavaDataGridViewTextBoxColumn1.Name = "flagJavaDataGridViewTextBoxColumn1";
-            // 
-            // secuencialDataGridViewTextBoxColumn1
-            // 
-            this.secuencialDataGridViewTextBoxColumn1.DataPropertyName = "Secuencial";
-            this.secuencialDataGridViewTextBoxColumn1.HeaderText = "Secuencial";
-            this.secuencialDataGridViewTextBoxColumn1.Name = "secuencialDataGridViewTextBoxColumn1";
-            // 
-            // unidadesDataGridViewTextBoxColumn1
-            // 
-            this.unidadesDataGridViewTextBoxColumn1.DataPropertyName = "Unidades";
-            this.unidadesDataGridViewTextBoxColumn1.HeaderText = "Unidades";
-            this.unidadesDataGridViewTextBoxColumn1.Name = "unidadesDataGridViewTextBoxColumn1";
             // 
             // dataGridViewTextBoxColumn35
             // 

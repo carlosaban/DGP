@@ -13,7 +13,7 @@ namespace DGP.Entities.Ventas
         public string IdTipoDocumento { get; set; }
         public DateTime Fecha { get; set; }
         public string Observacion { get; set; }
-        public string IdTipoPago { get; set; }
+        public string IdFormaPago { get; set; }
        
         private decimal? _Monto; 
         public decimal Monto
@@ -52,9 +52,10 @@ namespace DGP.Entities.Ventas
         
         }
 
-        public BEEntidadBancaria Banco { get; set; }
-        public string CodigoReferencia { get; set; }
+        public string IdBanco { get; set; }
+        public string NumeroReciboPago { get; set; }
         public string ClienteNombre { get { return (Cliente != null) ? Cliente.Nombre : string.Empty; } }
+        public string NumeroOperacion { get; set; }
         
     }
 }

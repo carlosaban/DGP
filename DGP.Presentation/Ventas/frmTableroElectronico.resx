@@ -1488,11 +1488,59 @@
   <data name="&gt;&gt;tabPageRegistrarVenta.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <data name="comboBox1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>786, 18</value>
+  </data>
+  <data name="comboBox1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>121, 24</value>
+  </data>
+  <data name="comboBox1.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="&gt;&gt;comboBox1.Name" xml:space="preserve">
+    <value>comboBox1</value>
+  </data>
+  <data name="&gt;&gt;comboBox1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;comboBox1.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;comboBox1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="label11.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label11.Location" type="System.Drawing.Point, System.Drawing">
+    <value>721, 21</value>
+  </data>
+  <data name="label11.Size" type="System.Drawing.Size, System.Drawing">
+    <value>48, 16</value>
+  </data>
+  <data name="label11.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="label11.Text" xml:space="preserve">
+    <value>Cajero</value>
+  </data>
+  <data name="&gt;&gt;label11.Name" xml:space="preserve">
+    <value>label11</value>
+  </data>
+  <data name="&gt;&gt;label11.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label11.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;label11.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
   <data name="btnBuscar.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>Off</value>
   </data>
   <data name="btnBuscar.Location" type="System.Drawing.Point, System.Drawing">
-    <value>818, 18</value>
+    <value>950, 18</value>
   </data>
   <data name="btnBuscar.Size" type="System.Drawing.Size, System.Drawing">
     <value>113, 23</value>
@@ -1513,13 +1561,13 @@
     <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;btnBuscar.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>2</value>
   </data>
   <data name="cbClienteB.Location" type="System.Drawing.Point, System.Drawing">
-    <value>581, 18</value>
+    <value>559, 18</value>
   </data>
   <data name="cbClienteB.Size" type="System.Drawing.Size, System.Drawing">
-    <value>175, 24</value>
+    <value>125, 24</value>
   </data>
   <data name="cbClienteB.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -1534,7 +1582,7 @@
     <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;cbClienteB.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>3</value>
   </data>
   <data name="cbProductoB.Location" type="System.Drawing.Point, System.Drawing">
     <value>324, 18</value>
@@ -1555,7 +1603,7 @@
     <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;cbProductoB.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>4</value>
   </data>
   <data name="cbZonaB.Location" type="System.Drawing.Point, System.Drawing">
     <value>61, 18</value>
@@ -1576,7 +1624,7 @@
     <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;cbZonaB.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>5</value>
   </data>
   <data name="label8.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1585,7 +1633,7 @@
     <value>Off</value>
   </data>
   <data name="label8.Location" type="System.Drawing.Point, System.Drawing">
-    <value>526, 21</value>
+    <value>504, 21</value>
   </data>
   <data name="label8.Size" type="System.Drawing.Size, System.Drawing">
     <value>49, 16</value>
@@ -1606,7 +1654,7 @@
     <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;label8.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>6</value>
   </data>
   <data name="label7.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1636,7 +1684,7 @@
     <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;label7.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>7</value>
   </data>
   <data name="label5.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1666,13 +1714,13 @@
     <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;label5.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>8</value>
   </data>
   <data name="groupBox1.Location" type="System.Drawing.Point, System.Drawing">
     <value>8, 7</value>
   </data>
   <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>962, 54</value>
+    <value>1085, 54</value>
   </data>
   <data name="groupBox1.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -1843,7 +1891,7 @@
     <value>4, 4, 4, 4</value>
   </data>
   <data name="dgvListaVenta.Size" type="System.Drawing.Size, System.Drawing">
-    <value>962, 371</value>
+    <value>1085, 371</value>
   </data>
   <data name="dgvListaVenta.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -2580,6 +2628,108 @@
   <data name="&gt;&gt;Column09.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewButtonColumn, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;Seleccionado.Name" xml:space="preserve">
+    <value>Seleccionado</value>
+  </data>
+  <data name="&gt;&gt;Seleccionado.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewCheckBoxColumn, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;IdVenta.Name" xml:space="preserve">
+    <value>IdVenta</value>
+  </data>
+  <data name="&gt;&gt;IdVenta.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Fecha.Name" xml:space="preserve">
+    <value>Fecha</value>
+  </data>
+  <data name="&gt;&gt;Fecha.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Cliente.Name" xml:space="preserve">
+    <value>Cliente</value>
+  </data>
+  <data name="&gt;&gt;Cliente.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Producto.Name" xml:space="preserve">
+    <value>Producto</value>
+  </data>
+  <data name="&gt;&gt;Producto.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;TotalPesoBruto.Name" xml:space="preserve">
+    <value>TotalPesoBruto</value>
+  </data>
+  <data name="&gt;&gt;TotalPesoBruto.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;TotalPesoTara.Name" xml:space="preserve">
+    <value>TotalPesoTara</value>
+  </data>
+  <data name="&gt;&gt;TotalPesoTara.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;TotalDevolucion.Name" xml:space="preserve">
+    <value>TotalDevolucion</value>
+  </data>
+  <data name="&gt;&gt;TotalDevolucion.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;TotalPesoNeto.Name" xml:space="preserve">
+    <value>TotalPesoNeto</value>
+  </data>
+  <data name="&gt;&gt;TotalPesoNeto.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;MontoTotal.Name" xml:space="preserve">
+    <value>MontoTotal</value>
+  </data>
+  <data name="&gt;&gt;MontoTotal.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;TotalSaldo.Name" xml:space="preserve">
+    <value>TotalSaldo</value>
+  </data>
+  <data name="&gt;&gt;TotalSaldo.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Pago.Name" xml:space="preserve">
+    <value>Pago</value>
+  </data>
+  <data name="&gt;&gt;Pago.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;IdEstado.Name" xml:space="preserve">
+    <value>IdEstado</value>
+  </data>
+  <data name="&gt;&gt;IdEstado.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;IdCliente.Name" xml:space="preserve">
+    <value>IdCliente</value>
+  </data>
+  <data name="&gt;&gt;IdCliente.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;IdEsSobrante.Name" xml:space="preserve">
+    <value>IdEsSobrante</value>
+  </data>
+  <data name="&gt;&gt;IdEsSobrante.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;BtnVerCuenta.Name" xml:space="preserve">
+    <value>BtnVerCuenta</value>
+  </data>
+  <data name="&gt;&gt;BtnVerCuenta.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewButtonColumn, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;BtnPagar.Name" xml:space="preserve">
+    <value>BtnPagar</value>
+  </data>
+  <data name="&gt;&gt;BtnPagar.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewButtonColumn, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;bdsTipoGasto.Name" xml:space="preserve">
     <value>bdsTipoGasto</value>
   </data>
@@ -2873,108 +3023,6 @@
   </data>
   <data name="&gt;&gt;dataGridViewTextBoxColumn37.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Seleccionado.Name" xml:space="preserve">
-    <value>Seleccionado</value>
-  </data>
-  <data name="&gt;&gt;Seleccionado.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewCheckBoxColumn, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;IdVenta.Name" xml:space="preserve">
-    <value>IdVenta</value>
-  </data>
-  <data name="&gt;&gt;IdVenta.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Fecha.Name" xml:space="preserve">
-    <value>Fecha</value>
-  </data>
-  <data name="&gt;&gt;Fecha.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Cliente.Name" xml:space="preserve">
-    <value>Cliente</value>
-  </data>
-  <data name="&gt;&gt;Cliente.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Producto.Name" xml:space="preserve">
-    <value>Producto</value>
-  </data>
-  <data name="&gt;&gt;Producto.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;TotalPesoBruto.Name" xml:space="preserve">
-    <value>TotalPesoBruto</value>
-  </data>
-  <data name="&gt;&gt;TotalPesoBruto.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;TotalPesoTara.Name" xml:space="preserve">
-    <value>TotalPesoTara</value>
-  </data>
-  <data name="&gt;&gt;TotalPesoTara.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;TotalDevolucion.Name" xml:space="preserve">
-    <value>TotalDevolucion</value>
-  </data>
-  <data name="&gt;&gt;TotalDevolucion.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;TotalPesoNeto.Name" xml:space="preserve">
-    <value>TotalPesoNeto</value>
-  </data>
-  <data name="&gt;&gt;TotalPesoNeto.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;MontoTotal.Name" xml:space="preserve">
-    <value>MontoTotal</value>
-  </data>
-  <data name="&gt;&gt;MontoTotal.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;TotalSaldo.Name" xml:space="preserve">
-    <value>TotalSaldo</value>
-  </data>
-  <data name="&gt;&gt;TotalSaldo.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Pago.Name" xml:space="preserve">
-    <value>Pago</value>
-  </data>
-  <data name="&gt;&gt;Pago.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;IdEstado.Name" xml:space="preserve">
-    <value>IdEstado</value>
-  </data>
-  <data name="&gt;&gt;IdEstado.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;IdCliente.Name" xml:space="preserve">
-    <value>IdCliente</value>
-  </data>
-  <data name="&gt;&gt;IdCliente.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;IdEsSobrante.Name" xml:space="preserve">
-    <value>IdEsSobrante</value>
-  </data>
-  <data name="&gt;&gt;IdEsSobrante.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;BtnVerCuenta.Name" xml:space="preserve">
-    <value>BtnVerCuenta</value>
-  </data>
-  <data name="&gt;&gt;BtnVerCuenta.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewButtonColumn, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;BtnPagar.Name" xml:space="preserve">
-    <value>BtnPagar</value>
-  </data>
-  <data name="&gt;&gt;BtnPagar.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewButtonColumn, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>frmTableroElectronico</value>

@@ -1814,6 +1814,11 @@ namespace DGP.Presentation.Ventas {
                 throw ex;
                 
             }
+        }
+
+        private void tabPageListaVentas_Click(object sender, EventArgs e)
+        {
+
         } 
     }
 }

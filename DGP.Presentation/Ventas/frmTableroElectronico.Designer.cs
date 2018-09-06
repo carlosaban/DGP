@@ -41,6 +41,9 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -52,9 +55,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle25 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
             this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
             this.tcTableroElectronico = new System.Windows.Forms.TabControl();
             this.tabPageRegistrarVenta = new System.Windows.Forms.TabPage();
@@ -121,6 +121,23 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.dgvListaVenta = new System.Windows.Forms.DataGridView();
+            this.Seleccionado = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.IdVenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Fecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Cliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Producto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TotalPesoBruto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TotalPesoTara = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TotalDevolucion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TotalPesoNeto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MontoTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TotalSaldo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Pago = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IdEstado = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IdCliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IdEsSobrante = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.BtnVerCuenta = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.BtnPagar = new System.Windows.Forms.DataGridViewButtonColumn();
             this.tabPageGastos = new System.Windows.Forms.TabPage();
             this.dtFechaGasto = new System.Windows.Forms.DateTimePicker();
             this.cmbPersonal = new System.Windows.Forms.ComboBox();
@@ -180,23 +197,8 @@
             this.dataGridViewTextBoxColumn35 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn36 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn37 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Seleccionado = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.IdVenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Fecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Cliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Producto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TotalPesoBruto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TotalPesoTara = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TotalDevolucion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TotalPesoNeto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MontoTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TotalSaldo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Pago = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.IdEstado = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.IdCliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.IdEsSobrante = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.BtnVerCuenta = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.BtnPagar = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.label11 = new System.Windows.Forms.Label();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.toolStripContainer1.ContentPanel.SuspendLayout();
             this.toolStripContainer1.TopToolStripPanel.SuspendLayout();
             this.toolStripContainer1.SuspendLayout();
@@ -735,9 +737,12 @@
             resources.ApplyResources(this.tabPageListaVentas, "tabPageListaVentas");
             this.tabPageListaVentas.Name = "tabPageListaVentas";
             this.tabPageListaVentas.UseVisualStyleBackColor = true;
+            this.tabPageListaVentas.Click += new System.EventHandler(this.tabPageListaVentas_Click);
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.comboBox1);
+            this.groupBox1.Controls.Add(this.label11);
             this.groupBox1.Controls.Add(this.btnBuscar);
             this.groupBox1.Controls.Add(this.cbClienteB);
             this.groupBox1.Controls.Add(this.cbProductoB);
@@ -837,6 +842,154 @@
             this.dgvListaVenta.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvListaVenta.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvListaVenta_CellEndEdit);
             this.dgvListaVenta.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvListaVenta_CellContentClick);
+            // 
+            // Seleccionado
+            // 
+            resources.ApplyResources(this.Seleccionado, "Seleccionado");
+            this.Seleccionado.Name = "Seleccionado";
+            this.Seleccionado.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            // 
+            // IdVenta
+            // 
+            this.IdVenta.DataPropertyName = "IdVenta";
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.IdVenta.DefaultCellStyle = dataGridViewCellStyle11;
+            resources.ApplyResources(this.IdVenta, "IdVenta");
+            this.IdVenta.Name = "IdVenta";
+            this.IdVenta.ReadOnly = true;
+            this.IdVenta.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.IdVenta.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // Fecha
+            // 
+            this.Fecha.DataPropertyName = "Fecha";
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.Fecha.DefaultCellStyle = dataGridViewCellStyle12;
+            resources.ApplyResources(this.Fecha, "Fecha");
+            this.Fecha.Name = "Fecha";
+            this.Fecha.ReadOnly = true;
+            this.Fecha.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Fecha.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // Cliente
+            // 
+            this.Cliente.DataPropertyName = "Cliente";
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.Cliente.DefaultCellStyle = dataGridViewCellStyle13;
+            resources.ApplyResources(this.Cliente, "Cliente");
+            this.Cliente.Name = "Cliente";
+            this.Cliente.ReadOnly = true;
+            this.Cliente.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Cliente.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // Producto
+            // 
+            this.Producto.DataPropertyName = "Producto";
+            resources.ApplyResources(this.Producto, "Producto");
+            this.Producto.Name = "Producto";
+            this.Producto.ReadOnly = true;
+            this.Producto.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Producto.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // TotalPesoBruto
+            // 
+            this.TotalPesoBruto.DataPropertyName = "TotalPesoBruto";
+            resources.ApplyResources(this.TotalPesoBruto, "TotalPesoBruto");
+            this.TotalPesoBruto.Name = "TotalPesoBruto";
+            this.TotalPesoBruto.ReadOnly = true;
+            this.TotalPesoBruto.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.TotalPesoBruto.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // TotalPesoTara
+            // 
+            this.TotalPesoTara.DataPropertyName = "TotalPesoTara";
+            resources.ApplyResources(this.TotalPesoTara, "TotalPesoTara");
+            this.TotalPesoTara.Name = "TotalPesoTara";
+            this.TotalPesoTara.ReadOnly = true;
+            this.TotalPesoTara.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.TotalPesoTara.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // TotalDevolucion
+            // 
+            this.TotalDevolucion.DataPropertyName = "TotalDevolucion";
+            resources.ApplyResources(this.TotalDevolucion, "TotalDevolucion");
+            this.TotalDevolucion.Name = "TotalDevolucion";
+            this.TotalDevolucion.ReadOnly = true;
+            this.TotalDevolucion.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.TotalDevolucion.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // TotalPesoNeto
+            // 
+            this.TotalPesoNeto.DataPropertyName = "TotalPesoNeto";
+            resources.ApplyResources(this.TotalPesoNeto, "TotalPesoNeto");
+            this.TotalPesoNeto.Name = "TotalPesoNeto";
+            this.TotalPesoNeto.ReadOnly = true;
+            this.TotalPesoNeto.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.TotalPesoNeto.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // MontoTotal
+            // 
+            this.MontoTotal.DataPropertyName = "MontoTotal";
+            resources.ApplyResources(this.MontoTotal, "MontoTotal");
+            this.MontoTotal.Name = "MontoTotal";
+            this.MontoTotal.ReadOnly = true;
+            this.MontoTotal.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // TotalSaldo
+            // 
+            this.TotalSaldo.DataPropertyName = "TotalSaldo";
+            resources.ApplyResources(this.TotalSaldo, "TotalSaldo");
+            this.TotalSaldo.Name = "TotalSaldo";
+            this.TotalSaldo.ReadOnly = true;
+            this.TotalSaldo.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // Pago
+            // 
+            resources.ApplyResources(this.Pago, "Pago");
+            this.Pago.Name = "Pago";
+            this.Pago.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Pago.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // IdEstado
+            // 
+            this.IdEstado.DataPropertyName = "IdEstado";
+            resources.ApplyResources(this.IdEstado, "IdEstado");
+            this.IdEstado.Name = "IdEstado";
+            this.IdEstado.ReadOnly = true;
+            this.IdEstado.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.IdEstado.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // IdCliente
+            // 
+            this.IdCliente.DataPropertyName = "IdCliente";
+            resources.ApplyResources(this.IdCliente, "IdCliente");
+            this.IdCliente.Name = "IdCliente";
+            this.IdCliente.ReadOnly = true;
+            this.IdCliente.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.IdCliente.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // IdEsSobrante
+            // 
+            this.IdEsSobrante.DataPropertyName = "IdEsSobrante";
+            resources.ApplyResources(this.IdEsSobrante, "IdEsSobrante");
+            this.IdEsSobrante.Name = "IdEsSobrante";
+            this.IdEsSobrante.ReadOnly = true;
+            this.IdEsSobrante.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.IdEsSobrante.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // BtnVerCuenta
+            // 
+            resources.ApplyResources(this.BtnVerCuenta, "BtnVerCuenta");
+            this.BtnVerCuenta.Name = "BtnVerCuenta";
+            // 
+            // BtnPagar
+            // 
+            resources.ApplyResources(this.BtnPagar, "BtnPagar");
+            this.BtnPagar.Name = "BtnPagar";
+            this.BtnPagar.ReadOnly = true;
+            this.BtnPagar.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.BtnPagar.Text = "Pagar";
+            this.BtnPagar.UseColumnTextForButtonValue = true;
             // 
             // tabPageGastos
             // 
@@ -1342,153 +1495,17 @@
             resources.ApplyResources(this.dataGridViewTextBoxColumn37, "dataGridViewTextBoxColumn37");
             this.dataGridViewTextBoxColumn37.Name = "dataGridViewTextBoxColumn37";
             // 
-            // Seleccionado
+            // label11
             // 
-            resources.ApplyResources(this.Seleccionado, "Seleccionado");
-            this.Seleccionado.Name = "Seleccionado";
-            this.Seleccionado.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            resources.ApplyResources(this.label11, "label11");
+            this.label11.Name = "label11";
             // 
-            // IdVenta
+            // comboBox1
             // 
-            this.IdVenta.DataPropertyName = "IdVenta";
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.IdVenta.DefaultCellStyle = dataGridViewCellStyle11;
-            resources.ApplyResources(this.IdVenta, "IdVenta");
-            this.IdVenta.Name = "IdVenta";
-            this.IdVenta.ReadOnly = true;
-            this.IdVenta.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.IdVenta.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // Fecha
-            // 
-            this.Fecha.DataPropertyName = "Fecha";
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.Fecha.DefaultCellStyle = dataGridViewCellStyle12;
-            resources.ApplyResources(this.Fecha, "Fecha");
-            this.Fecha.Name = "Fecha";
-            this.Fecha.ReadOnly = true;
-            this.Fecha.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.Fecha.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // Cliente
-            // 
-            this.Cliente.DataPropertyName = "Cliente";
-            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.Cliente.DefaultCellStyle = dataGridViewCellStyle13;
-            resources.ApplyResources(this.Cliente, "Cliente");
-            this.Cliente.Name = "Cliente";
-            this.Cliente.ReadOnly = true;
-            this.Cliente.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.Cliente.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // Producto
-            // 
-            this.Producto.DataPropertyName = "Producto";
-            resources.ApplyResources(this.Producto, "Producto");
-            this.Producto.Name = "Producto";
-            this.Producto.ReadOnly = true;
-            this.Producto.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.Producto.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // TotalPesoBruto
-            // 
-            this.TotalPesoBruto.DataPropertyName = "TotalPesoBruto";
-            resources.ApplyResources(this.TotalPesoBruto, "TotalPesoBruto");
-            this.TotalPesoBruto.Name = "TotalPesoBruto";
-            this.TotalPesoBruto.ReadOnly = true;
-            this.TotalPesoBruto.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.TotalPesoBruto.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // TotalPesoTara
-            // 
-            this.TotalPesoTara.DataPropertyName = "TotalPesoTara";
-            resources.ApplyResources(this.TotalPesoTara, "TotalPesoTara");
-            this.TotalPesoTara.Name = "TotalPesoTara";
-            this.TotalPesoTara.ReadOnly = true;
-            this.TotalPesoTara.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.TotalPesoTara.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // TotalDevolucion
-            // 
-            this.TotalDevolucion.DataPropertyName = "TotalDevolucion";
-            resources.ApplyResources(this.TotalDevolucion, "TotalDevolucion");
-            this.TotalDevolucion.Name = "TotalDevolucion";
-            this.TotalDevolucion.ReadOnly = true;
-            this.TotalDevolucion.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.TotalDevolucion.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // TotalPesoNeto
-            // 
-            this.TotalPesoNeto.DataPropertyName = "TotalPesoNeto";
-            resources.ApplyResources(this.TotalPesoNeto, "TotalPesoNeto");
-            this.TotalPesoNeto.Name = "TotalPesoNeto";
-            this.TotalPesoNeto.ReadOnly = true;
-            this.TotalPesoNeto.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.TotalPesoNeto.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // MontoTotal
-            // 
-            this.MontoTotal.DataPropertyName = "MontoTotal";
-            resources.ApplyResources(this.MontoTotal, "MontoTotal");
-            this.MontoTotal.Name = "MontoTotal";
-            this.MontoTotal.ReadOnly = true;
-            this.MontoTotal.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // TotalSaldo
-            // 
-            this.TotalSaldo.DataPropertyName = "TotalSaldo";
-            resources.ApplyResources(this.TotalSaldo, "TotalSaldo");
-            this.TotalSaldo.Name = "TotalSaldo";
-            this.TotalSaldo.ReadOnly = true;
-            this.TotalSaldo.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // Pago
-            // 
-            resources.ApplyResources(this.Pago, "Pago");
-            this.Pago.Name = "Pago";
-            this.Pago.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.Pago.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // IdEstado
-            // 
-            this.IdEstado.DataPropertyName = "IdEstado";
-            resources.ApplyResources(this.IdEstado, "IdEstado");
-            this.IdEstado.Name = "IdEstado";
-            this.IdEstado.ReadOnly = true;
-            this.IdEstado.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.IdEstado.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // IdCliente
-            // 
-            this.IdCliente.DataPropertyName = "IdCliente";
-            resources.ApplyResources(this.IdCliente, "IdCliente");
-            this.IdCliente.Name = "IdCliente";
-            this.IdCliente.ReadOnly = true;
-            this.IdCliente.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.IdCliente.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // IdEsSobrante
-            // 
-            this.IdEsSobrante.DataPropertyName = "IdEsSobrante";
-            resources.ApplyResources(this.IdEsSobrante, "IdEsSobrante");
-            this.IdEsSobrante.Name = "IdEsSobrante";
-            this.IdEsSobrante.ReadOnly = true;
-            this.IdEsSobrante.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.IdEsSobrante.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // BtnVerCuenta
-            // 
-            resources.ApplyResources(this.BtnVerCuenta, "BtnVerCuenta");
-            this.BtnVerCuenta.Name = "BtnVerCuenta";
-            // 
-            // BtnPagar
-            // 
-            resources.ApplyResources(this.BtnPagar, "BtnPagar");
-            this.BtnPagar.Name = "BtnPagar";
-            this.BtnPagar.ReadOnly = true;
-            this.BtnPagar.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.BtnPagar.Text = "Pagar";
-            this.BtnPagar.UseColumnTextForButtonValue = true;
+            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox1.FormattingEnabled = true;
+            resources.ApplyResources(this.comboBox1, "comboBox1");
+            this.comboBox1.Name = "comboBox1";
             // 
             // frmTableroElectronico
             // 
@@ -1676,5 +1693,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn IdEsSobrante;
         private System.Windows.Forms.DataGridViewButtonColumn BtnVerCuenta;
         private System.Windows.Forms.DataGridViewButtonColumn BtnPagar;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Label label11;
     }
 }

@@ -20,7 +20,9 @@ namespace DGP.DataAccess {
                 try {
                     oDatabaseHelper.ClearParameter();
                     oDatabaseHelper.AddParameter("@intIdParametro", (pBEParametroDetalle.IdParametro <= 0) ? (object)DBNull.Value : pBEParametroDetalle.IdParametro);
-                    
+                    oDatabaseHelper.AddParameter("@IdParametroDetallePadre", (pBEParametroDetalle.ParametroDetallePadre <= 0) ? (object)DBNull.Value : pBEParametroDetalle.ParametroDetallePadre);
+
+
                     oIDataReader = oDatabaseHelper.ExecuteReader("DGP_Listar_DetalleMaestra", CommandType.StoredProcedure);
 
                     while (oIDataReader.Read()) {

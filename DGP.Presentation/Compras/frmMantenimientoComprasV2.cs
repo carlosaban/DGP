@@ -264,7 +264,7 @@ namespace DGP.Presentation.Compras
                     if (Convert.ToBoolean(dgvRow.Cells["Seleccionado"].Value).Equals(true))
                     {
                         BECompra beCompra = new BECompra();
-                        beCompra.IdCompra = Convert.ToInt32(dgvRow.Cells["idDocumentoDataGridViewTextBoxColumn"].Value.ToString());
+                        beCompra.IdCompra = Convert.ToInt32(dgvRow.Cells["IdCompra"].Value.ToString());
                         beCompra.BEUsuarioLogin = VariablesSession.BEUsuarioSession;
                         beCompra.Observacion = "Eliminado por :" + VariablesSession.BEUsuarioSession.Nombre;
                         BLDP.Eliminar(beCompra);
@@ -281,6 +281,12 @@ namespace DGP.Presentation.Compras
             }
 
 
+
+        }
+
+        private void dgrvCompras_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            this.dgrvCompras.EndEdit();
 
         }
 

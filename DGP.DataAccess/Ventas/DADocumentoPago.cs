@@ -181,9 +181,16 @@ namespace DGP.DataAccess.Ventas
                 oDatabaseHelper.AddParameter("@IdCaja", beDocumento.BEUsuarioLogin.IdCaja);
                 oDatabaseHelper.AddParameter("@IdCliente", beDocumento.Cliente.IdCliente);
                 oDatabaseHelper.AddParameter("@IdPersonal", beDocumento.Personal.IdPersonal);
-                oDatabaseHelper.AddParameter("@IdTipoPago", beDocumento.IdTipoPago);
-                oDatabaseHelper.AddParameter("@observacion", beDocumento.Observacion);
                 oDatabaseHelper.AddParameter("@Usuario", beDocumento.BEUsuarioLogin.IdPersonal);
+
+                oDatabaseHelper.AddParameter("@IdFormaPago", beDocumento.IdFormaPago);
+                oDatabaseHelper.AddParameter("@observacion", beDocumento.Observacion);
+
+                oDatabaseHelper.AddParameter("@NumeroRecibo", (beDocumento.NumeroReciboPago == string.Empty) ? DBNull.Value : (object)beDocumento.NumeroReciboPago);
+                oDatabaseHelper.AddParameter("@IdBanco", (beDocumento.IdBanco == string.Empty) ? DBNull.Value : (object)beDocumento.IdBanco);
+                oDatabaseHelper.AddParameter("@NumeroOperacion", (beDocumento.NumeroOperacion == string.Empty) ? DBNull.Value : (object)beDocumento.NumeroOperacion);
+                
+                
 
                 object vResultado = oDatabaseHelper.ExecuteScalar("InsertarDocumento", CommandType.StoredProcedure, (pDatabaseHelper == null) ? DBHelper.ConnectionState.CloseOnExit : DBHelper.ConnectionState.KeepOpen);
                 
@@ -301,7 +308,7 @@ namespace DGP.DataAccess.Ventas
                 oDatabaseHelper.AddParameter("@IdCaja", beDocumento.BEUsuarioLogin.IdCaja);
                 oDatabaseHelper.AddParameter("@IdCliente", beDocumento.Cliente.IdCliente);
                 oDatabaseHelper.AddParameter("@IdPersonal", beDocumento.Personal.IdPersonal);
-                oDatabaseHelper.AddParameter("@IdTipoPago", beDocumento.IdTipoPago);
+                oDatabaseHelper.AddParameter("@IdFormaPago", beDocumento.IdFormaPago);
                 oDatabaseHelper.AddParameter("@observacion", beDocumento.Observacion);
 
                 oDatabaseHelper.ExecuteScalar("ActualizarDocumento", CommandType.StoredProcedure, (pDatabaseHelper == null) ? DBHelper.ConnectionState.CloseOnExit : DBHelper.ConnectionState.KeepOpen);

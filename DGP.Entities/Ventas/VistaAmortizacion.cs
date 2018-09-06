@@ -120,7 +120,7 @@ namespace DGP.Entities.Ventas {
             get { return _idEstado; }
             set { _idEstado = value; }
         }
-
+        public string DocumentoPagoInfo { get; set; }
 	
 	
 	

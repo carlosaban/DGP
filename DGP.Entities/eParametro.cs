@@ -11,5 +11,9 @@ namespace DGP.Entities {
         ,Estado_Venta = 4
         ,Estado_LineaVenta = 5
         ,IGV_Venta = 6
+        ,TipoAmortizacion = 8
+        ,FormaPago = 7
+        ,EstadoAmortizacionVenta = 10
+        ,EntidadBancaria = 11
     }
 }

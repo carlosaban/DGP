@@ -14,6 +14,8 @@ namespace DGP.Entities {
         private int mOrden;
         BEPersonal mBEUsuarioLogin;
 
+        public int ParametroDetallePadre { get; set; }
+
         public BEParametroDetalle() { 
             mIdItem = 0;
             mIdParametro = 0;
