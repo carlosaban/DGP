@@ -99,6 +99,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DSHojaCobranza.xsd</DependentUpon>
     </Compile>
+    <Compile Include="DataSet\DSReporteCuentasPorCobrar.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DSReporteCuentasPorCobrar.xsd</DependentUpon>
+    </Compile>
     <Compile Include="DataSet\DSRptClientes.cs">
       <DependentUpon>DSRptClientes.xsd</DependentUpon>
       <SubType>Component</SubType>
@@ -181,6 +186,12 @@
       <DependentUpon>CRRendicion.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Reportes\CRSaldos.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CRSaldos.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Seguridad\BEPerfil.cs" />
     <Compile Include="Seguridad\BEPersonal.cs" />
     <Compile Include="BEProducto.cs" />
@@ -242,6 +253,17 @@
     </None>
     <None Include="DataSet\DSHojaCobranza.xss">
       <DependentUpon>DSHojaCobranza.xsd</DependentUpon>
+    </None>
+    <None Include="DataSet\DSReporteCuentasPorCobrar.xsc">
+      <DependentUpon>DSReporteCuentasPorCobrar.xsd</DependentUpon>
+    </None>
+    <None Include="DataSet\DSReporteCuentasPorCobrar.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DSReporteCuentasPorCobrar.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DataSet\DSReporteCuentasPorCobrar.xss">
+      <DependentUpon>DSReporteCuentasPorCobrar.xsd</DependentUpon>
     </None>
     <None Include="DataSet\DSRptClientes.xsc">
       <DependentUpon>DSRptClientes.xsd</DependentUpon>
@@ -332,6 +354,10 @@
     <EmbeddedResource Include="Reportes\CRRendicion.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>CRRendicion.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\CRSaldos.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CRSaldos.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

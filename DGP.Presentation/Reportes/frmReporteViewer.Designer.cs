@@ -51,6 +51,7 @@ namespace DGP.Presentation.Reportes
             this.Controls.Add(this.crViewer);
             this.Name = "frmReporteViewer";
             this.Text = "frmReporteViewer";
+            this.Load += new System.EventHandler(this.frmReporteViewer_Load);
             this.ResumeLayout(false);
 
         }

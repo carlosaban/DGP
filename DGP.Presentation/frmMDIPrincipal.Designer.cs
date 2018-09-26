@@ -53,6 +53,7 @@
             this.estadoDeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmSalir = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiSalirSistema = new System.Windows.Forms.ToolStripMenuItem();
+            this.reporteSaldosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.msMenuPrincipal.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -188,7 +189,8 @@
             this.tableroDeVentasToolStripMenuItem,
             this.cuadreCajaToolStripMenuItem,
             this.toolsToolStripMenuItem,
-            this.estadoDeToolStripMenuItem});
+            this.estadoDeToolStripMenuItem,
+            this.reporteSaldosToolStripMenuItem});
             this.reportesToolStripMenuItem.Name = "reportesToolStripMenuItem";
             this.reportesToolStripMenuItem.Size = new System.Drawing.Size(65, 20);
             this.reportesToolStripMenuItem.Text = "Reportes";
@@ -258,6 +260,13 @@
             this.tsmiSalirSistema.Size = new System.Drawing.Size(159, 22);
             this.tsmiSalirSistema.Text = "Salir del Sistema";
             // 
+            // reporteSaldosToolStripMenuItem
+            // 
+            this.reporteSaldosToolStripMenuItem.Name = "reporteSaldosToolStripMenuItem";
+            this.reporteSaldosToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
+            this.reporteSaldosToolStripMenuItem.Text = "Reporte de Saldos";
+            this.reporteSaldosToolStripMenuItem.Click += new System.EventHandler(this.reporteSaldosToolStripMenuItem_Click);
+            // 
             // frmMDIPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -305,6 +314,7 @@
         private System.Windows.Forms.ToolStripMenuItem aplicarVueltoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem mantenimientoDeDocPagosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem mantenimientoDeDocPagosCompraToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem reporteSaldosToolStripMenuItem;
 
 
     }

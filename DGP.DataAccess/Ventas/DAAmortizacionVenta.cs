@@ -64,6 +64,8 @@ namespace DGP.DataAccess.Ventas {
                         oVistaAmortizacion.IdEstado = (oIDataReader["varEstado"] == (object)DBNull.Value) ? string.Empty : oIDataReader["varEstado"].ToString();
                         oVistaAmortizacion.DocumentoPagoInfo = (oIDataReader["DocumentoPagoInfo"] == (object)DBNull.Value) ? string.Empty : oIDataReader["DocumentoPagoInfo"].ToString();
                         oVistaAmortizacion.IncluyeCancelados = false;
+                        oVistaAmortizacion.IdCliente = (oIDataReader["intIdCliente"] == (object)DBNull.Value) ? 0 : Convert.ToInt32(oIDataReader["intIdCliente"].ToString()); ;
+                        //[intIdCliente]
                         
                         vLista.Add(oVistaAmortizacion);
                         

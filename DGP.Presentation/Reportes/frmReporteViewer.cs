@@ -35,5 +35,10 @@ namespace DGP.Presentation.Reportes
             InitializeComponent();
             this.Reporte = oReportClass;
         }
+
+        private void frmReporteViewer_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

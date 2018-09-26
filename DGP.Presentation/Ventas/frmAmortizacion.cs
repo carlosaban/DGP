@@ -67,17 +67,8 @@ namespace DGP.Presentation.Ventas {
 
             private void cmbCliente_SelectedIndexChanged(object sender, EventArgs e) {
                 try {
-                    int intIdCliente = 0;
-                    if (cmbClientes.SelectedIndex > 0) {
-                        int.TryParse(cmbClientes.SelectedValue.ToString(), out intIdCliente);
-                        CargarProductoCliente(intIdCliente);
-                        DGP_Util.EnabledComboBox(cbProducto, true);
-                        CargarAmortizaciones(Convert.ToInt32(cmbClientes.SelectedValue), 0);
-                        DGP_Util.EnableControl(nudMontoDocumento, true);
-                        CargarAmortizacionesSinAplicar(intIdCliente);
-                    } else {
-                        ResetearFormulario();
-                    }
+                    //int intIdCliente = 0;
+                    
                 } catch (Exception ex) {
                     MostrarMensaje(ex.Message, MessageBoxIcon.Error);
                 }
@@ -126,6 +117,34 @@ namespace DGP.Presentation.Ventas {
 
                     }
                 }
+                //primero los registrados, luego los congelados,  falta el bucle para los congelados
+
+                
+
+                foreach (DataGridViewRow vRow in dgrvAmortizacion.Rows)
+                {
+
+                    if (montoAcarreo >= montoTotal) break;
+
+                    object oIndicador = vRow.Cells["Indicador"].Value;
+                    string sEstado = vRow.Cells["IdEstado"].Value.ToString();
+
+                    if (oIndicador.ToString() == "1" && sEstado == BEVenta.CONGELADO)
+                    {
+
+                        decimal montoSaldo = 0;
+                        bool okParse = decimal.TryParse(vRow.Cells["Saldo"].Value.ToString(), out montoSaldo);
+                        if (!okParse || montoSaldo < 0) continue; //excluir a los negativos
+                        decimal delta = montoTotal - montoAcarreo;
+
+                        decimal montoAmortizar = (delta >= montoSaldo) ? montoSaldo : montoTotal - montoAcarreo;
+                        vRow.Cells["Pago"].Value = montoAmortizar.ToString();
+                        montoAcarreo = montoAcarreo + montoAmortizar;
+
+
+                    }
+                }
+
             
             }
 
@@ -368,6 +387,7 @@ namespace DGP.Presentation.Ventas {
                 bool bExisteCancelar = false;
                 bool ExisteNegativos = false;
                 bool ExisteAmortizacionMayorSaldo = false;
+                bool ExisteOtroCliente = false;
                 foreach (DataGridViewRow vRow in dgrvAmortizacion.Rows) { 
                     // Obtener el indicador
                     object oIndicador = vRow.Cells["Indicador"].Value;
@@ -386,6 +406,8 @@ namespace DGP.Presentation.Ventas {
                         }
                         //obtener el checkbox cancelado
                         bExisteCancelar = bExisteCancelar || ((bool)vRow.Cells["CancelarVenta"].Value);
+
+                        ExisteOtroCliente = ExisteOtroCliente || (int.Parse(vRow.Cells["IdCliente"].Value.ToString()) != int.Parse(this.cmbClientes.SelectedValue.ToString()));
                         
                     }
                 }
@@ -419,6 +441,11 @@ namespace DGP.Presentation.Ventas {
                     pMensaje = "Debe Seleccionar un cliente";
                     boResultado = false;
                 }
+                //if (int.Parse(this.cmbClientes.SelectedValue.ToString()) > 0 && int.Parse(this.cmbClientes.SelectedValue.ToString()) != this.dgrvAmortizacion.Rows[0].Cells["IdCliente"])
+                //{
+                //    pMensaje = "Debe Seleccionar un cliente";
+                //    boResultado = false;
+                //}
                
                 return boResultado;
             }
@@ -647,13 +674,50 @@ namespace DGP.Presentation.Ventas {
 
         private void cmbClientes_Leave(object sender, EventArgs e)
         {
-            if (this.cmbClientes.SelectedIndex >= 0)
-            {
-                BEClienteProveedor oBEClienteProveedor = (BEClienteProveedor)this.cmbClientes.SelectedItem;
+            try 
+	        {
+                int intIdCliente = 0;
+                if (this.cmbClientes.SelectedIndex >= 0)
+                {
+                    BEClienteProveedor oBEClienteProveedor = (BEClienteProveedor)this.cmbClientes.SelectedItem;
 
-                //MostrarMensaje(oBEClienteProveedor.IdCliente.ToString() + oBEClienteProveedor.Nombre, MessageBoxIcon.Information);
+                    int.TryParse(cmbClientes.SelectedValue.ToString(), out intIdCliente);
+                    CargarProductoCliente(intIdCliente);
+                    DGP_Util.EnabledComboBox(cbProducto, true);
+                    CargarAmortizaciones(Convert.ToInt32(cmbClientes.SelectedValue), 0);
+                    DGP_Util.EnableControl(nudMontoDocumento, true);
+                    CargarAmortizacionesSinAplicar(intIdCliente);
 
-            }
+                    //if (cmbClientes.SelectedIndex > 0)
+                    //{
+                    //    int.TryParse(cmbClientes.SelectedValue.ToString(), out intIdCliente);
+                    //    CargarProductoCliente(intIdCliente);
+                    //    DGP_Util.EnabledComboBox(cbProducto, true);
+                    //    CargarAmortizaciones(Convert.ToInt32(cmbClientes.SelectedValue), 0);
+                    //    DGP_Util.EnableControl(nudMontoDocumento, true);
+                    //    CargarAmortizacionesSinAplicar(intIdCliente);
+                    //}
+                    //else
+                    //{
+                    //    ResetearFormulario();
+                    //}
+
+                    //MostrarMensaje(oBEClienteProveedor.IdCliente.ToString() + oBEClienteProveedor.Nombre, MessageBoxIcon.Information);
+
+                }
+                else
+                {
+
+                    ResetearFormulario();
+                }
+        		
+	        }
+	        catch (Exception)
+	        {
+        		
+		        throw;
+	        }
+            
         }
 
         private void groupBox2_Enter(object sender, EventArgs e)

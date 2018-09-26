@@ -377,5 +377,19 @@ namespace DGP.BusinessLogic.Ventas {
 
         #endregion
 
+
+        public DSReporteCuentasPorCobrar ReporteSaldos()
+        {
+            try
+            {
+                DAVenta daVenta = new DAVenta();
+                return daVenta.ReporteSaldos();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            
+        }
     }
 }

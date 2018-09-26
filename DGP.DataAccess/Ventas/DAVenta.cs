@@ -655,5 +655,29 @@ namespace DGP.DataAccess.Ventas {
         }
         #endregion
 
+
+        public DSReporteCuentasPorCobrar ReporteSaldos()
+        {
+            DatabaseHelper oDatabaseHelper = new DatabaseHelper();
+            DSReporteCuentasPorCobrar DSReporteCuentasPorCobrar = new DSReporteCuentasPorCobrar();
+
+            try
+            {
+                oDatabaseHelper.ClearParameter();
+                
+                DataSet ds = oDatabaseHelper.ExecuteDataSet("DGP_Reporte_Saldos", CommandType.StoredProcedure);
+
+                DSReporteCuentasPorCobrar.DTSaldos.Merge(ds.Tables[0], true, MissingSchemaAction.Ignore);
+                return DSReporteCuentasPorCobrar;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                oDatabaseHelper.Dispose();
+            }
+        }
     }
 }

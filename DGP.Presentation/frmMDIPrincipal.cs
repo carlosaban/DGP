@@ -9,6 +9,8 @@ using System.Windows.Forms;
 using DGP.Presentation.Ventas;
 using DGP.Presentation.Reportes;
 using DGP.Presentation.Compras;
+using DGP.Entities.DataSet;
+using DGP.BusinessLogic.Ventas;
 
 namespace DGP.Presentation {
 
@@ -210,6 +212,35 @@ namespace DGP.Presentation {
         private void mantenimientoDeDocPagosCompraToolStripMenuItem_Click(object sender, EventArgs e)
         {
         
+        }
+
+        private void reporteSaldosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                bool canInfoCompra = VariablesSession.Privilegios.Find(x => x.IdPrivilegio == DGP.Entities.Seguridad.BEPrivilegio.Visualizar_Precios_compra) != null;
+                
+                DSReporteCuentasPorCobrar oDSRpt = new BLVenta().ReporteSaldos();
+
+                DGP.Entities.Reportes.CRSaldos CRSaldos = new DGP.Entities.Reportes.CRSaldos();
+
+                CRSaldos.Refresh();
+                CRSaldos.SetDataSource(oDSRpt);
+                //CRSaldos.ReportSource = oCRptEstadoCuentaCliente;
+                //this.CRptEstadoCuentaCliente.Refresh();
+
+
+                frmReporteViewer formulario = new frmReporteViewer(CRSaldos);
+                formulario.MdiParent = this;
+                formulario.Show();
+
+            }
+            catch (Exception ex)
+            {
+                
+                throw;
+            }
+            
         }
 
         }   
