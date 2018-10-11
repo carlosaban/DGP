@@ -99,6 +99,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DSHojaCobranza.xsd</DependentUpon>
     </Compile>
+    <Compile Include="DataSet\DSReporteCuentasPorCobrar.cs">
+      <DependentUpon>DSReporteCuentasPorCobrar.xsd</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="DataSet\DSReporteCuentasPorCobrar.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

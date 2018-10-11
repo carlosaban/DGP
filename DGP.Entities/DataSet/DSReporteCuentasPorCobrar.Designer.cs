@@ -270,6 +270,24 @@ namespace DGP.Entities.DataSet {
             
             private global::System.Data.DataColumn columnTotal;
             
+            private global::System.Data.DataColumn columnultimaVenta;
+            
+            private global::System.Data.DataColumn columnPeriodoDeuda;
+            
+            private global::System.Data.DataColumn columnRango;
+            
+            private global::System.Data.DataColumn columndiffd4;
+            
+            private global::System.Data.DataColumn columndiffd3;
+            
+            private global::System.Data.DataColumn columndiffd2;
+            
+            private global::System.Data.DataColumn columndiffd1;
+            
+            private global::System.Data.DataColumn columndiffd0;
+            
+            private global::System.Data.DataColumn columnIncrementoSaldo;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public DTSaldosDataTable() {
                 this.TableName = "DTSaldos";
@@ -329,6 +347,69 @@ namespace DGP.Entities.DataSet {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn ultimaVentaColumn {
+                get {
+                    return this.columnultimaVenta;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn PeriodoDeudaColumn {
+                get {
+                    return this.columnPeriodoDeuda;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn RangoColumn {
+                get {
+                    return this.columnRango;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn diffd4Column {
+                get {
+                    return this.columndiffd4;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn diffd3Column {
+                get {
+                    return this.columndiffd3;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn diffd2Column {
+                get {
+                    return this.columndiffd2;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn diffd1Column {
+                get {
+                    return this.columndiffd1;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn diffd0Column {
+                get {
+                    return this.columndiffd0;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn IncrementoSaldoColumn {
+                get {
+                    return this.columnIncrementoSaldo;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -357,13 +438,22 @@ namespace DGP.Entities.DataSet {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public DTSaldosRow AddDTSaldosRow(string nombres, decimal VentaDia, decimal Saldo, decimal Total) {
+            public DTSaldosRow AddDTSaldosRow(string nombres, decimal VentaDia, decimal Saldo, decimal Total, System.DateTime ultimaVenta, int PeriodoDeuda, string Rango, decimal diffd4, decimal diffd3, decimal diffd2, decimal diffd1, decimal diffd0, decimal IncrementoSaldo) {
                 DTSaldosRow rowDTSaldosRow = ((DTSaldosRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         nombres,
                         VentaDia,
                         Saldo,
-                        Total};
+                        Total,
+                        ultimaVenta,
+                        PeriodoDeuda,
+                        Rango,
+                        diffd4,
+                        diffd3,
+                        diffd2,
+                        diffd1,
+                        diffd0,
+                        IncrementoSaldo};
                 rowDTSaldosRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowDTSaldosRow);
                 return rowDTSaldosRow;
@@ -392,6 +482,15 @@ namespace DGP.Entities.DataSet {
                 this.columnVentaDia = base.Columns["VentaDia"];
                 this.columnSaldo = base.Columns["Saldo"];
                 this.columnTotal = base.Columns["Total"];
+                this.columnultimaVenta = base.Columns["ultimaVenta"];
+                this.columnPeriodoDeuda = base.Columns["PeriodoDeuda"];
+                this.columnRango = base.Columns["Rango"];
+                this.columndiffd4 = base.Columns["diffd4"];
+                this.columndiffd3 = base.Columns["diffd3"];
+                this.columndiffd2 = base.Columns["diffd2"];
+                this.columndiffd1 = base.Columns["diffd1"];
+                this.columndiffd0 = base.Columns["diffd0"];
+                this.columnIncrementoSaldo = base.Columns["IncrementoSaldo"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -404,6 +503,24 @@ namespace DGP.Entities.DataSet {
                 base.Columns.Add(this.columnSaldo);
                 this.columnTotal = new global::System.Data.DataColumn("Total", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnTotal);
+                this.columnultimaVenta = new global::System.Data.DataColumn("ultimaVenta", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnultimaVenta);
+                this.columnPeriodoDeuda = new global::System.Data.DataColumn("PeriodoDeuda", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPeriodoDeuda);
+                this.columnRango = new global::System.Data.DataColumn("Rango", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnRango);
+                this.columndiffd4 = new global::System.Data.DataColumn("diffd4", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columndiffd4);
+                this.columndiffd3 = new global::System.Data.DataColumn("diffd3", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columndiffd3);
+                this.columndiffd2 = new global::System.Data.DataColumn("diffd2", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columndiffd2);
+                this.columndiffd1 = new global::System.Data.DataColumn("diffd1", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columndiffd1);
+                this.columndiffd0 = new global::System.Data.DataColumn("diffd0", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columndiffd0);
+                this.columnIncrementoSaldo = new global::System.Data.DataColumn("IncrementoSaldo", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnIncrementoSaldo);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -596,6 +713,141 @@ namespace DGP.Entities.DataSet {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public System.DateTime ultimaVenta {
+                get {
+                    try {
+                        return ((global::System.DateTime)(this[this.tableDTSaldos.ultimaVentaColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'ultimaVenta\' in table \'DTSaldos\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableDTSaldos.ultimaVentaColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public int PeriodoDeuda {
+                get {
+                    try {
+                        return ((int)(this[this.tableDTSaldos.PeriodoDeudaColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'PeriodoDeuda\' in table \'DTSaldos\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableDTSaldos.PeriodoDeudaColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public string Rango {
+                get {
+                    try {
+                        return ((string)(this[this.tableDTSaldos.RangoColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Rango\' in table \'DTSaldos\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableDTSaldos.RangoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public decimal diffd4 {
+                get {
+                    try {
+                        return ((decimal)(this[this.tableDTSaldos.diffd4Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'diffd4\' in table \'DTSaldos\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableDTSaldos.diffd4Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public decimal diffd3 {
+                get {
+                    try {
+                        return ((decimal)(this[this.tableDTSaldos.diffd3Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'diffd3\' in table \'DTSaldos\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableDTSaldos.diffd3Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public decimal diffd2 {
+                get {
+                    try {
+                        return ((decimal)(this[this.tableDTSaldos.diffd2Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'diffd2\' in table \'DTSaldos\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableDTSaldos.diffd2Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public decimal diffd1 {
+                get {
+                    try {
+                        return ((decimal)(this[this.tableDTSaldos.diffd1Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'diffd1\' in table \'DTSaldos\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableDTSaldos.diffd1Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public decimal diffd0 {
+                get {
+                    try {
+                        return ((decimal)(this[this.tableDTSaldos.diffd0Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'diffd0\' in table \'DTSaldos\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableDTSaldos.diffd0Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public decimal IncrementoSaldo {
+                get {
+                    try {
+                        return ((decimal)(this[this.tableDTSaldos.IncrementoSaldoColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'IncrementoSaldo\' in table \'DTSaldos\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableDTSaldos.IncrementoSaldoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public bool IsnombresNull() {
                 return this.IsNull(this.tableDTSaldos.nombresColumn);
             }
@@ -633,6 +885,96 @@ namespace DGP.Entities.DataSet {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public void SetTotalNull() {
                 this[this.tableDTSaldos.TotalColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsultimaVentaNull() {
+                return this.IsNull(this.tableDTSaldos.ultimaVentaColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetultimaVentaNull() {
+                this[this.tableDTSaldos.ultimaVentaColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsPeriodoDeudaNull() {
+                return this.IsNull(this.tableDTSaldos.PeriodoDeudaColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetPeriodoDeudaNull() {
+                this[this.tableDTSaldos.PeriodoDeudaColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsRangoNull() {
+                return this.IsNull(this.tableDTSaldos.RangoColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetRangoNull() {
+                this[this.tableDTSaldos.RangoColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool Isdiffd4Null() {
+                return this.IsNull(this.tableDTSaldos.diffd4Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void Setdiffd4Null() {
+                this[this.tableDTSaldos.diffd4Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool Isdiffd3Null() {
+                return this.IsNull(this.tableDTSaldos.diffd3Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void Setdiffd3Null() {
+                this[this.tableDTSaldos.diffd3Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool Isdiffd2Null() {
+                return this.IsNull(this.tableDTSaldos.diffd2Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void Setdiffd2Null() {
+                this[this.tableDTSaldos.diffd2Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool Isdiffd1Null() {
+                return this.IsNull(this.tableDTSaldos.diffd1Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void Setdiffd1Null() {
+                this[this.tableDTSaldos.diffd1Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool Isdiffd0Null() {
+                return this.IsNull(this.tableDTSaldos.diffd0Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void Setdiffd0Null() {
+                this[this.tableDTSaldos.diffd0Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsIncrementoSaldoNull() {
+                return this.IsNull(this.tableDTSaldos.IncrementoSaldoColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetIncrementoSaldoNull() {
+                this[this.tableDTSaldos.IncrementoSaldoColumn] = global::System.Convert.DBNull;
             }
         }
         
