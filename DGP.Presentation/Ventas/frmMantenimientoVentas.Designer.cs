@@ -30,10 +30,10 @@
         {
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMantenimientoVentas));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgrvVentas = new System.Windows.Forms.DataGridView();
-            this.bdVentas = new System.Windows.Forms.BindingSource(this.components);
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.chkTienePrecioVariable = new System.Windows.Forms.CheckBox();
             this.cmbClientes = new System.Windows.Forms.ComboBox();
@@ -56,7 +56,9 @@
             this.btnAplicar = new System.Windows.Forms.Button();
             this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.btnCaldulaPrecios = new System.Windows.Forms.Button();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bdVentas = new System.Windows.Forms.BindingSource(this.components);
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -93,6 +95,7 @@
             this.dataGridViewTextBoxColumn35 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn36 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TienePrecioVariable = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.JSTipoPrecio = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CompraInfo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.IdVenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fechaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -124,11 +127,11 @@
             this.totalUnidadesDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Margen = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgrvVentas)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bdVentas)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.gbCambiarPrecios.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bdVentas)).BeginInit();
             this.SuspendLayout();
             // 
             // dgrvVentas
@@ -149,6 +152,7 @@
             this.dgrvVentas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgrvVentas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.TienePrecioVariable,
+            this.JSTipoPrecio,
             this.CompraInfo,
             this.IdVenta,
             this.fechaDataGridViewTextBoxColumn,
@@ -191,10 +195,6 @@
             this.dgrvVentas.TabIndex = 0;
             this.dgrvVentas.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgrvVentas_CellDoubleClick);
             this.dgrvVentas.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgrvVentas_CellFormatting);
-            // 
-            // bdVentas
-            // 
-            this.bdVentas.DataSource = typeof(DGP.Entities.Ventas.VistaVenta);
             // 
             // groupBox1
             // 
@@ -357,7 +357,7 @@
             this.groupBox2.Size = new System.Drawing.Size(933, 286);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Ventas";
+            this.groupBox2.Text = " ";
             // 
             // panel1
             // 
@@ -371,6 +371,7 @@
             // 
             // gbCambiarPrecios
             // 
+            this.gbCambiarPrecios.Controls.Add(this.btnCaldulaPrecios);
             this.gbCambiarPrecios.Controls.Add(this.btnCambioPrecios);
             this.gbCambiarPrecios.Controls.Add(this.btnAplicar);
             this.gbCambiarPrecios.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -379,16 +380,16 @@
             this.gbCambiarPrecios.Size = new System.Drawing.Size(933, 72);
             this.gbCambiarPrecios.TabIndex = 2;
             this.gbCambiarPrecios.TabStop = false;
-            this.gbCambiarPrecios.Text = "Cambio de Precios";
+            this.gbCambiarPrecios.Text = resources.GetString("gbCambiarPrecios.Text");
             this.gbCambiarPrecios.Enter += new System.EventHandler(this.gbFooter_Enter);
             // 
             // btnCambioPrecios
             // 
-            this.btnCambioPrecios.Location = new System.Drawing.Point(288, 26);
+            this.btnCambioPrecios.Location = new System.Drawing.Point(156, 19);
             this.btnCambioPrecios.Name = "btnCambioPrecios";
             this.btnCambioPrecios.Size = new System.Drawing.Size(117, 23);
             this.btnCambioPrecios.TabIndex = 1;
-            this.btnCambioPrecios.Text = "Cambio de Precios";
+            this.btnCambioPrecios.Text = "C. de Precios Manual";
             this.btnCambioPrecios.UseVisualStyleBackColor = true;
             this.btnCambioPrecios.Click += new System.EventHandler(this.btnCambioPrecios_Click);
             // 
@@ -408,6 +409,16 @@
             this.dataGridViewImageColumn1.Image = global::DGP.Presentation.Properties.Resources.boton_rojo_info;
             this.dataGridViewImageColumn1.Name = "dataGridViewImageColumn1";
             // 
+            // btnCaldulaPrecios
+            // 
+            this.btnCaldulaPrecios.Location = new System.Drawing.Point(311, 26);
+            this.btnCaldulaPrecios.Name = "btnCaldulaPrecios";
+            this.btnCaldulaPrecios.Size = new System.Drawing.Size(117, 23);
+            this.btnCaldulaPrecios.TabIndex = 2;
+            this.btnCaldulaPrecios.Text = "Calcular Precios";
+            this.btnCaldulaPrecios.UseVisualStyleBackColor = true;
+            this.btnCaldulaPrecios.Click += new System.EventHandler(this.btnCaldulaPrecios_Click);
+            // 
             // dataGridViewTextBoxColumn1
             // 
             this.dataGridViewTextBoxColumn1.DataPropertyName = "IdVenta";
@@ -420,6 +431,10 @@
             this.dataGridViewTextBoxColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridViewTextBoxColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.dataGridViewTextBoxColumn1.Width = 50;
+            // 
+            // bdVentas
+            // 
+            this.bdVentas.DataSource = typeof(DGP.Entities.Ventas.VistaVenta);
             // 
             // dataGridViewTextBoxColumn2
             // 
@@ -761,6 +776,13 @@
             this.TienePrecioVariable.ReadOnly = true;
             this.TienePrecioVariable.Visible = false;
             // 
+            // JSTipoPrecio
+            // 
+            this.JSTipoPrecio.DataPropertyName = "JSTipoPrecio";
+            this.JSTipoPrecio.HeaderText = "JSTipoPrecio";
+            this.JSTipoPrecio.Name = "JSTipoPrecio";
+            this.JSTipoPrecio.ReadOnly = true;
+            // 
             // CompraInfo
             // 
             this.CompraInfo.DataPropertyName = "CompraInfo";
@@ -999,12 +1021,12 @@
             this.Text = "DGP - Mantenimiento Ventas";
             this.Load += new System.EventHandler(this.frmMantenimientoVentas_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgrvVentas)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bdVentas)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.gbCambiarPrecios.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.bdVentas)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1070,7 +1092,9 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn1;
         private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.Button btnCaldulaPrecios;
         private System.Windows.Forms.DataGridViewCheckBoxColumn TienePrecioVariable;
+        private System.Windows.Forms.DataGridViewTextBoxColumn JSTipoPrecio;
         private System.Windows.Forms.DataGridViewTextBoxColumn CompraInfo;
         private System.Windows.Forms.DataGridViewTextBoxColumn IdVenta;
         private System.Windows.Forms.DataGridViewTextBoxColumn fechaDataGridViewTextBoxColumn;

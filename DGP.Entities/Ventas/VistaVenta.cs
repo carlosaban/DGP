@@ -202,5 +202,7 @@ namespace DGP.Entities.Ventas {
         public bool TienePrecioVariable { get; set; }
 
         public string CompraInfo { get; set; }
+
+        public string  JSTipoPrecio { get; set; }
     }
 }

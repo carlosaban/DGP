@@ -360,6 +360,7 @@ namespace DGP.DataAccess.Ventas {
 
                         oVistaVenta.TienePrecioVariable = (oIDataReader["TienePrecioVariable"] == (object)DBNull.Value) ? false : bool.Parse( oIDataReader["TienePrecioVariable"].ToString());
                         oVistaVenta.CompraInfo = (oIDataReader["CompraInfo"] == (object)DBNull.Value) ? string.Empty : oIDataReader["CompraInfo"].ToString();
+                        oVistaVenta.JSTipoPrecio = (oIDataReader["JSTipoPrecio"] == (object)DBNull.Value) ? string.Empty : oIDataReader["JSTipoPrecio"].ToString();
                         
                         vLista.Add(oVistaVenta);
                     }
