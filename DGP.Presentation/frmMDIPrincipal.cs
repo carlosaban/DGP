@@ -21,7 +21,7 @@ namespace DGP.Presentation {
         private frmAmortizacion oVentas_frmAmortizacion = null;
         private frmPagoAdelanto oVentas_frmAdelanto = null;
         private frmDevoluciones oVentas_frmDevoluvion = null;
-        private frmReporteCobranza oReportes_frmReporteCobranza = null;
+        private frmReporteCobranzaV2 oReportes_frmReporteCobranza = null;
         private frmReporteFiltrosTablero oReportes_frmReporteFiltros = null;
         private frmActMasivaClientes ofrmActMasivaClientes = null;
         private frmMantenimientoCliente ofrmMantenimientoCliente = null;
@@ -65,9 +65,16 @@ namespace DGP.Presentation {
         }
 
         private void tsmiReporteCobranza_Click(object sender, EventArgs e) {
-            oReportes_frmReporteCobranza = new frmReporteCobranza();
+            
+            //oReportes_frmReporteCobranza = new frmReporteCobranza();
+            //oReportes_frmReporteCobranza.MdiParent = this;
+            //oReportes_frmReporteCobranza.Show();
+
+            oReportes_frmReporteCobranza = new frmReporteCobranzaV2();
             oReportes_frmReporteCobranza.MdiParent = this;
             oReportes_frmReporteCobranza.Show();
+
+
         }
         private void tsmiReporteFiltros_Click(object sender, EventArgs e)
         {

@@ -391,5 +391,21 @@ namespace DGP.BusinessLogic.Ventas {
             }
             
         }
+        public DSReporteCuentasPorCobrar ReporteHojaCobranzaV2()
+        {
+            try
+            {
+
+                DAVenta daVenta = new DAVenta();
+
+                return daVenta.ReporteHojaCobranzaV2();
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+        }
     }
 }

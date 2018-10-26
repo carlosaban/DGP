@@ -27,6 +27,8 @@ namespace DGP.Entities.DataSet {
         
         private DTSaldosDataTable tableDTSaldos;
         
+        private DTHojaCobranzaDataTable tableDTHojaCobranza;
+        
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -56,6 +58,9 @@ namespace DGP.Entities.DataSet {
                 if ((ds.Tables["DTSaldos"] != null)) {
                     base.Tables.Add(new DTSaldosDataTable(ds.Tables["DTSaldos"]));
                 }
+                if ((ds.Tables["DTHojaCobranza"] != null)) {
+                    base.Tables.Add(new DTHojaCobranzaDataTable(ds.Tables["DTHojaCobranza"]));
+                }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
                 this.Namespace = ds.Namespace;
@@ -80,6 +85,15 @@ namespace DGP.Entities.DataSet {
         public DTSaldosDataTable DTSaldos {
             get {
                 return this.tableDTSaldos;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.ComponentModel.Browsable(false)]
+        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
+        public DTHojaCobranzaDataTable DTHojaCobranza {
+            get {
+                return this.tableDTHojaCobranza;
             }
         }
         
@@ -145,6 +159,9 @@ namespace DGP.Entities.DataSet {
                 if ((ds.Tables["DTSaldos"] != null)) {
                     base.Tables.Add(new DTSaldosDataTable(ds.Tables["DTSaldos"]));
                 }
+                if ((ds.Tables["DTHojaCobranza"] != null)) {
+                    base.Tables.Add(new DTHojaCobranzaDataTable(ds.Tables["DTHojaCobranza"]));
+                }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
                 this.Namespace = ds.Namespace;
@@ -181,6 +198,12 @@ namespace DGP.Entities.DataSet {
                     this.tableDTSaldos.InitVars();
                 }
             }
+            this.tableDTHojaCobranza = ((DTHojaCobranzaDataTable)(base.Tables["DTHojaCobranza"]));
+            if ((initTable == true)) {
+                if ((this.tableDTHojaCobranza != null)) {
+                    this.tableDTHojaCobranza.InitVars();
+                }
+            }
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -192,10 +215,17 @@ namespace DGP.Entities.DataSet {
             this.SchemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
             this.tableDTSaldos = new DTSaldosDataTable();
             base.Tables.Add(this.tableDTSaldos);
+            this.tableDTHojaCobranza = new DTHojaCobranzaDataTable();
+            base.Tables.Add(this.tableDTHojaCobranza);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         private bool ShouldSerializeDTSaldos() {
+            return false;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        private bool ShouldSerializeDTHojaCobranza() {
             return false;
         }
         
@@ -253,6 +283,8 @@ namespace DGP.Entities.DataSet {
         }
         
         public delegate void DTSaldosRowChangeEventHandler(object sender, DTSaldosRowChangeEvent e);
+        
+        public delegate void DTHojaCobranzaRowChangeEventHandler(object sender, DTHojaCobranzaRowChangeEvent e);
         
         /// <summary>
         ///Represents the strongly named DataTable class.
@@ -639,6 +671,371 @@ namespace DGP.Entities.DataSet {
         }
         
         /// <summary>
+        ///Represents the strongly named DataTable class.
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "2.0.0.0")]
+        [global::System.Serializable()]
+        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class DTHojaCobranzaDataTable : global::System.Data.DataTable, global::System.Collections.IEnumerable {
+            
+            private global::System.Data.DataColumn columnnombres;
+            
+            private global::System.Data.DataColumn columnId_cliente;
+            
+            private global::System.Data.DataColumn columnZona;
+            
+            private global::System.Data.DataColumn columnFechaCobranza;
+            
+            private global::System.Data.DataColumn columnultimaVenta;
+            
+            private global::System.Data.DataColumn columnSALDO;
+            
+            private global::System.Data.DataColumn columnorden;
+            
+            private global::System.Data.DataColumn columnVENTA;
+            
+            private global::System.Data.DataColumn columnPAGOS;
+            
+            private global::System.Data.DataColumn columnACUMULADO;
+            
+            private global::System.Data.DataColumn columnProductos;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public DTHojaCobranzaDataTable() {
+                this.TableName = "DTHojaCobranza";
+                this.BeginInit();
+                this.InitClass();
+                this.EndInit();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            internal DTHojaCobranzaDataTable(global::System.Data.DataTable table) {
+                this.TableName = table.TableName;
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected DTHojaCobranzaDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
+                this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn nombresColumn {
+                get {
+                    return this.columnnombres;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn Id_clienteColumn {
+                get {
+                    return this.columnId_cliente;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn ZonaColumn {
+                get {
+                    return this.columnZona;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn FechaCobranzaColumn {
+                get {
+                    return this.columnFechaCobranza;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn ultimaVentaColumn {
+                get {
+                    return this.columnultimaVenta;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn SALDOColumn {
+                get {
+                    return this.columnSALDO;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn ordenColumn {
+                get {
+                    return this.columnorden;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn VENTAColumn {
+                get {
+                    return this.columnVENTA;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn PAGOSColumn {
+                get {
+                    return this.columnPAGOS;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn ACUMULADOColumn {
+                get {
+                    return this.columnACUMULADO;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn ProductosColumn {
+                get {
+                    return this.columnProductos;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public DTHojaCobranzaRow this[int index] {
+                get {
+                    return ((DTHojaCobranzaRow)(this.Rows[index]));
+                }
+            }
+            
+            public event DTHojaCobranzaRowChangeEventHandler DTHojaCobranzaRowChanging;
+            
+            public event DTHojaCobranzaRowChangeEventHandler DTHojaCobranzaRowChanged;
+            
+            public event DTHojaCobranzaRowChangeEventHandler DTHojaCobranzaRowDeleting;
+            
+            public event DTHojaCobranzaRowChangeEventHandler DTHojaCobranzaRowDeleted;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void AddDTHojaCobranzaRow(DTHojaCobranzaRow row) {
+                this.Rows.Add(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public DTHojaCobranzaRow AddDTHojaCobranzaRow(string nombres, int Id_cliente, string Zona, System.DateTime FechaCobranza, System.DateTime ultimaVenta, decimal SALDO, int orden, decimal VENTA, decimal PAGOS, decimal ACUMULADO, string Productos) {
+                DTHojaCobranzaRow rowDTHojaCobranzaRow = ((DTHojaCobranzaRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        nombres,
+                        Id_cliente,
+                        Zona,
+                        FechaCobranza,
+                        ultimaVenta,
+                        SALDO,
+                        orden,
+                        VENTA,
+                        PAGOS,
+                        ACUMULADO,
+                        Productos};
+                rowDTHojaCobranzaRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowDTHojaCobranzaRow);
+                return rowDTHojaCobranzaRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public virtual global::System.Collections.IEnumerator GetEnumerator() {
+                return this.Rows.GetEnumerator();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public override global::System.Data.DataTable Clone() {
+                DTHojaCobranzaDataTable cln = ((DTHojaCobranzaDataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected override global::System.Data.DataTable CreateInstance() {
+                return new DTHojaCobranzaDataTable();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            internal void InitVars() {
+                this.columnnombres = base.Columns["nombres"];
+                this.columnId_cliente = base.Columns["Id_cliente"];
+                this.columnZona = base.Columns["Zona"];
+                this.columnFechaCobranza = base.Columns["FechaCobranza"];
+                this.columnultimaVenta = base.Columns["ultimaVenta"];
+                this.columnSALDO = base.Columns["SALDO"];
+                this.columnorden = base.Columns["orden"];
+                this.columnVENTA = base.Columns["VENTA"];
+                this.columnPAGOS = base.Columns["PAGOS"];
+                this.columnACUMULADO = base.Columns["ACUMULADO"];
+                this.columnProductos = base.Columns["Productos"];
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            private void InitClass() {
+                this.columnnombres = new global::System.Data.DataColumn("nombres", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnnombres);
+                this.columnId_cliente = new global::System.Data.DataColumn("Id_cliente", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnId_cliente);
+                this.columnZona = new global::System.Data.DataColumn("Zona", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnZona);
+                this.columnFechaCobranza = new global::System.Data.DataColumn("FechaCobranza", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnFechaCobranza);
+                this.columnultimaVenta = new global::System.Data.DataColumn("ultimaVenta", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnultimaVenta);
+                this.columnSALDO = new global::System.Data.DataColumn("SALDO", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnSALDO);
+                this.columnorden = new global::System.Data.DataColumn("orden", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnorden);
+                this.columnVENTA = new global::System.Data.DataColumn("VENTA", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnVENTA);
+                this.columnPAGOS = new global::System.Data.DataColumn("PAGOS", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPAGOS);
+                this.columnACUMULADO = new global::System.Data.DataColumn("ACUMULADO", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnACUMULADO);
+                this.columnProductos = new global::System.Data.DataColumn("Productos", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnProductos);
+                this.columnId_cliente.Caption = "VentaDia";
+                this.columnZona.Caption = "Saldo";
+                this.columnFechaCobranza.Caption = "Total";
+                this.columnSALDO.Caption = "PeriodoDeuda";
+                this.columnorden.Caption = "Rango";
+                this.columnVENTA.Caption = "diffd4";
+                this.columnPAGOS.Caption = "diffd3";
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public DTHojaCobranzaRow NewDTHojaCobranzaRow() {
+                return ((DTHojaCobranzaRow)(this.NewRow()));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+                return new DTHojaCobranzaRow(builder);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected override global::System.Type GetRowType() {
+                return typeof(DTHojaCobranzaRow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.DTHojaCobranzaRowChanged != null)) {
+                    this.DTHojaCobranzaRowChanged(this, new DTHojaCobranzaRowChangeEvent(((DTHojaCobranzaRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.DTHojaCobranzaRowChanging != null)) {
+                    this.DTHojaCobranzaRowChanging(this, new DTHojaCobranzaRowChangeEvent(((DTHojaCobranzaRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.DTHojaCobranzaRowDeleted != null)) {
+                    this.DTHojaCobranzaRowDeleted(this, new DTHojaCobranzaRowChangeEvent(((DTHojaCobranzaRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.DTHojaCobranzaRowDeleting != null)) {
+                    this.DTHojaCobranzaRowDeleting(this, new DTHojaCobranzaRowChangeEvent(((DTHojaCobranzaRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void RemoveDTHojaCobranzaRow(DTHojaCobranzaRow row) {
+                this.Rows.Remove(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                DSReporteCuentasPorCobrar ds = new DSReporteCuentasPorCobrar();
+                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
+                any1.MinOccurs = new decimal(0);
+                any1.MaxOccurs = decimal.MaxValue;
+                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any1);
+                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
+                any2.MinOccurs = new decimal(1);
+                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any2);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute1.Name = "namespace";
+                attribute1.FixedValue = ds.Namespace;
+                type.Attributes.Add(attribute1);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute2.Name = "tableTypeName";
+                attribute2.FixedValue = "DTHojaCobranzaDataTable";
+                type.Attributes.Add(attribute2);
+                type.Particle = sequence;
+                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                if (xs.Contains(dsSchema.TargetNamespace)) {
+                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
+                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                    try {
+                        global::System.Xml.Schema.XmlSchema schema = null;
+                        dsSchema.Write(s1);
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
+                            s2.SetLength(0);
+                            schema.Write(s2);
+                            if ((s1.Length == s2.Length)) {
+                                s1.Position = 0;
+                                s2.Position = 0;
+                                for (; ((s1.Position != s1.Length) 
+                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                    ;
+                                }
+                                if ((s1.Position == s1.Length)) {
+                                    return type;
+                                }
+                            }
+                        }
+                    }
+                    finally {
+                        if ((s1 != null)) {
+                            s1.Close();
+                        }
+                        if ((s2 != null)) {
+                            s2.Close();
+                        }
+                    }
+                }
+                xs.Add(dsSchema);
+                return type;
+            }
+        }
+        
+        /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "2.0.0.0")]
@@ -979,6 +1376,296 @@ namespace DGP.Entities.DataSet {
         }
         
         /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "2.0.0.0")]
+        public partial class DTHojaCobranzaRow : global::System.Data.DataRow {
+            
+            private DTHojaCobranzaDataTable tableDTHojaCobranza;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            internal DTHojaCobranzaRow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tableDTHojaCobranza = ((DTHojaCobranzaDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public string nombres {
+                get {
+                    try {
+                        return ((string)(this[this.tableDTHojaCobranza.nombresColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'nombres\' in table \'DTHojaCobranza\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableDTHojaCobranza.nombresColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public int Id_cliente {
+                get {
+                    try {
+                        return ((int)(this[this.tableDTHojaCobranza.Id_clienteColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Id_cliente\' in table \'DTHojaCobranza\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableDTHojaCobranza.Id_clienteColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public string Zona {
+                get {
+                    try {
+                        return ((string)(this[this.tableDTHojaCobranza.ZonaColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Zona\' in table \'DTHojaCobranza\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableDTHojaCobranza.ZonaColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public System.DateTime FechaCobranza {
+                get {
+                    try {
+                        return ((global::System.DateTime)(this[this.tableDTHojaCobranza.FechaCobranzaColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'FechaCobranza\' in table \'DTHojaCobranza\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableDTHojaCobranza.FechaCobranzaColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public System.DateTime ultimaVenta {
+                get {
+                    try {
+                        return ((global::System.DateTime)(this[this.tableDTHojaCobranza.ultimaVentaColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'ultimaVenta\' in table \'DTHojaCobranza\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableDTHojaCobranza.ultimaVentaColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public decimal SALDO {
+                get {
+                    try {
+                        return ((decimal)(this[this.tableDTHojaCobranza.SALDOColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'SALDO\' in table \'DTHojaCobranza\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableDTHojaCobranza.SALDOColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public int orden {
+                get {
+                    try {
+                        return ((int)(this[this.tableDTHojaCobranza.ordenColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'orden\' in table \'DTHojaCobranza\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableDTHojaCobranza.ordenColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public decimal VENTA {
+                get {
+                    try {
+                        return ((decimal)(this[this.tableDTHojaCobranza.VENTAColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'VENTA\' in table \'DTHojaCobranza\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableDTHojaCobranza.VENTAColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public decimal PAGOS {
+                get {
+                    try {
+                        return ((decimal)(this[this.tableDTHojaCobranza.PAGOSColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'PAGOS\' in table \'DTHojaCobranza\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableDTHojaCobranza.PAGOSColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public decimal ACUMULADO {
+                get {
+                    try {
+                        return ((decimal)(this[this.tableDTHojaCobranza.ACUMULADOColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'ACUMULADO\' in table \'DTHojaCobranza\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableDTHojaCobranza.ACUMULADOColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public string Productos {
+                get {
+                    try {
+                        return ((string)(this[this.tableDTHojaCobranza.ProductosColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Productos\' in table \'DTHojaCobranza\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableDTHojaCobranza.ProductosColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsnombresNull() {
+                return this.IsNull(this.tableDTHojaCobranza.nombresColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetnombresNull() {
+                this[this.tableDTHojaCobranza.nombresColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsId_clienteNull() {
+                return this.IsNull(this.tableDTHojaCobranza.Id_clienteColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetId_clienteNull() {
+                this[this.tableDTHojaCobranza.Id_clienteColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsZonaNull() {
+                return this.IsNull(this.tableDTHojaCobranza.ZonaColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetZonaNull() {
+                this[this.tableDTHojaCobranza.ZonaColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsFechaCobranzaNull() {
+                return this.IsNull(this.tableDTHojaCobranza.FechaCobranzaColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetFechaCobranzaNull() {
+                this[this.tableDTHojaCobranza.FechaCobranzaColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsultimaVentaNull() {
+                return this.IsNull(this.tableDTHojaCobranza.ultimaVentaColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetultimaVentaNull() {
+                this[this.tableDTHojaCobranza.ultimaVentaColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsSALDONull() {
+                return this.IsNull(this.tableDTHojaCobranza.SALDOColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetSALDONull() {
+                this[this.tableDTHojaCobranza.SALDOColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsordenNull() {
+                return this.IsNull(this.tableDTHojaCobranza.ordenColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetordenNull() {
+                this[this.tableDTHojaCobranza.ordenColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsVENTANull() {
+                return this.IsNull(this.tableDTHojaCobranza.VENTAColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetVENTANull() {
+                this[this.tableDTHojaCobranza.VENTAColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsPAGOSNull() {
+                return this.IsNull(this.tableDTHojaCobranza.PAGOSColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetPAGOSNull() {
+                this[this.tableDTHojaCobranza.PAGOSColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsACUMULADONull() {
+                return this.IsNull(this.tableDTHojaCobranza.ACUMULADOColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetACUMULADONull() {
+                this[this.tableDTHojaCobranza.ACUMULADOColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsProductosNull() {
+                return this.IsNull(this.tableDTHojaCobranza.ProductosColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetProductosNull() {
+                this[this.tableDTHojaCobranza.ProductosColumn] = global::System.Convert.DBNull;
+            }
+        }
+        
+        /// <summary>
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "2.0.0.0")]
@@ -996,6 +1683,37 @@ namespace DGP.Entities.DataSet {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public DTSaldosRow Row {
+                get {
+                    return this.eventRow;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataRowAction Action {
+                get {
+                    return this.eventAction;
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Row event argument class
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "2.0.0.0")]
+        public class DTHojaCobranzaRowChangeEvent : global::System.EventArgs {
+            
+            private DTHojaCobranzaRow eventRow;
+            
+            private global::System.Data.DataRowAction eventAction;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public DTHojaCobranzaRowChangeEvent(DTHojaCobranzaRow row, global::System.Data.DataRowAction action) {
+                this.eventRow = row;
+                this.eventAction = action;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public DTHojaCobranzaRow Row {
                 get {
                     return this.eventRow;
                 }

@@ -148,6 +148,12 @@
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
     <Compile Include="Reportes\BEFiltroTablero.cs" />
+    <Compile Include="Reportes\CRHojaCobranzaV2.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CRHojaCobranzaV2.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Reportes\CRptEstadoCuentaCliente.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -331,6 +337,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Reportes\CRHojaCobranzaV2.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CRHojaCobranzaV2.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reportes\CRptEstadoCuentaCliente.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>CRptEstadoCuentaCliente.cs</LastGenOutput>

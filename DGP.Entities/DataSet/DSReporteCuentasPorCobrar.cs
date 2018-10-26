@@ -2,5 +2,8 @@
     
     
     public partial class DSReporteCuentasPorCobrar {
+        partial class DTHojaCobranzaDataTable
+        {
+        }
     }
 }

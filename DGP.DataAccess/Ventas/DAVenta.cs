@@ -679,5 +679,64 @@ namespace DGP.DataAccess.Ventas {
                 oDatabaseHelper.Dispose();
             }
         }
+
+        public DSReporteCuentasPorCobrar ReporteHojaCobranzaV2()
+        {
+            DatabaseHelper oDatabaseHelper = new DatabaseHelper();
+            DSReporteCuentasPorCobrar DSReporteCuentasPorCobrar = new DSReporteCuentasPorCobrar();
+
+            try
+            {
+                oDatabaseHelper.ClearParameter();
+
+                DataSet ds = oDatabaseHelper.ExecuteDataSet("DGP_Reporte_HojaCobranzaV2", CommandType.StoredProcedure);
+
+                DSReporteCuentasPorCobrar.DTHojaCobranza.Merge(ds.Tables[0], true, MissingSchemaAction.Ignore);
+                int idCliente = 0;
+                decimal acumulado = 0;
+
+                var itemsToRemove = DSReporteCuentasPorCobrar.DTHojaCobranza.Select("orden >0 AND VENTA = 0 AND PAGOS = 0");
+                foreach (var item in itemsToRemove)
+                {
+                    item.Delete();
+                }
+                DSReporteCuentasPorCobrar.DTHojaCobranza.AcceptChanges();
+                foreach (DSReporteCuentasPorCobrar.DTHojaCobranzaRow fila in DSReporteCuentasPorCobrar.DTHojaCobranza.Rows)
+                {
+                    if (idCliente != fila.Id_cliente)
+                    {
+
+                        acumulado = fila.ACUMULADO; 
+
+
+
+
+                        
+                    }
+                    else {
+                        acumulado = acumulado + fila.VENTA - fila.PAGOS;
+                        fila.ACUMULADO = acumulado;
+                    }
+
+                    idCliente = fila.Id_cliente;
+                
+                }
+                DSReporteCuentasPorCobrar.DTHojaCobranza.AcceptChanges();
+
+
+
+
+                return DSReporteCuentasPorCobrar;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                oDatabaseHelper.Dispose();
+            }
+        
+        }
     }
 }
