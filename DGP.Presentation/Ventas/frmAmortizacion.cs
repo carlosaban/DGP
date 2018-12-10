@@ -201,17 +201,23 @@ namespace DGP.Presentation.Ventas {
             private void btnGrabar_Click(object sender, EventArgs e) {
                 string strMensaje = string.Empty;
                 bool bCancelarVenta = false;
-                try {
-                    if (ValidarFormularioAmortizacion(ref strMensaje)) {
+                this.btnGrabar.Enabled = false;
+                
+                try
+                {
+                    if (ValidarFormularioAmortizacion(ref strMensaje))
+                    {
 
                         if (this.SumaAmortizaciones() == 0) this.AplicarMonto();
                         int intIdUsuario = 0;
                         bool boIndicador = true;
                         int.TryParse(cbUsuario.SelectedValue.ToString(), out intIdUsuario);
-                        if (intIdUsuario > 0 && intIdUsuario != VariablesSession.BEUsuarioSession.IdPersonal) {
+                        if (intIdUsuario > 0 && intIdUsuario != VariablesSession.BEUsuarioSession.IdPersonal)
+                        {
                             boIndicador = (MessageBox.Show("La amortización se va a registrar con otro usuario, desea continuar?", "DGP", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes);
                         }
-                        if (boIndicador) {
+                        if (boIndicador)
+                        {
                             // Obtener las Amortizaciones
 
                             List<BEAmortizacionVenta> vLista = ObtenerAmortizaciones(boIndicador);
@@ -221,14 +227,14 @@ namespace DGP.Presentation.Ventas {
                             documento.BEUsuarioLogin = VariablesSession.BEUsuarioSession;
                             documento.Fecha = this.dtpFechaPago.Value.Date;
                             documento.IdTipoDocumento = cmbTipoPago.SelectedValue.ToString();
-                            documento.Cliente.IdCliente = int.Parse( this.cmbClientes.SelectedValue.ToString() );
-                            documento.Personal.IdPersonal = int.Parse( cbUsuario.SelectedValue.ToString());
+                            documento.Cliente.IdCliente = int.Parse(this.cmbClientes.SelectedValue.ToString());
+                            documento.Personal.IdPersonal = int.Parse(cbUsuario.SelectedValue.ToString());
                             documento.delleAmortizacion = vLista;
                             documento.Monto = this.nudMontoDocumento.Value;
                             documento.IdFormaPago = this.cmbFormaPago.SelectedValue.ToString();
-                            documento.IdBanco = (this.cmbBanco.Enabled)?this.cmbBanco.SelectedValue.ToString(): string.Empty;
+                            documento.IdBanco = (this.cmbBanco.Enabled) ? this.cmbBanco.SelectedValue.ToString() : string.Empty;
                             documento.Observacion = this.txtObservacion.Text;
-                            documento.NumeroOperacion = (this.txtNumeroOperacion.Enabled)?this.txtNumeroOperacion.Text:string.Empty;
+                            documento.NumeroOperacion = (this.txtNumeroOperacion.Enabled) ? this.txtNumeroOperacion.Text : string.Empty;
                             documento.NumeroReciboPago = this.txtNumeroRecibo.Text;
 
                             //documento.IdTipoDocumento
@@ -242,15 +248,27 @@ namespace DGP.Presentation.Ventas {
                                 int intIdProducto = Convert.ToInt32(cbProducto.SelectedValue);
                                 LimpiarFormulario();
                                 CargarAmortizaciones(intIdCliente, intIdProducto);
-                            } else {
-                                MostrarMensaje("No se pudo registrar la venta, intentelo de nuevo", MessageBoxIcon.Exclamation);                        
-                            }                        
-                        }                        
-                    } else {
+                            }
+                            else
+                            {
+                                MostrarMensaje("No se pudo registrar la venta, intentelo de nuevo", MessageBoxIcon.Exclamation);
+                            }
+                        }
+                    }
+                    else
+                    {
                         MostrarMensaje(strMensaje, MessageBoxIcon.Exclamation);
                     }
-                } catch (Exception ex) {
+                }
+                catch (Exception ex)
+                {
                     MostrarMensaje(ex.Message, MessageBoxIcon.Error);
+                }
+                finally {
+
+                    this.btnGrabar.Enabled = true;
+                
+                
                 }
             }
 
@@ -278,8 +296,8 @@ namespace DGP.Presentation.Ventas {
                 DGP_Util.EnabledComboBox(cbProducto, false);
                 //DGP_Util.EnableControl(nudPrecioAmortizacion, false);
                 //DGP_Util.EnableControl(btnAplicarMonto, false);
-                DGP_Util.EnableControl(btnGrabar, false);
-                DGP_Util.EnableControl(btnCancelar, false);
+               // DGP_Util.EnableControl(btnGrabar, false);
+               // DGP_Util.EnableControl(btnCancelar, false);
                 LimpiarFormulario();
                 //CargarCliente();
                 // Definir al Usuario
@@ -308,8 +326,8 @@ namespace DGP.Presentation.Ventas {
                 DGP_Util.EnabledComboBox(cbProducto, false);
                 //DGP_Util.EnableControl(nudPrecioAmortizacion, false);
                 //DGP_Util.EnableControl(btnAplicarMonto, false);
-                DGP_Util.EnableControl(btnGrabar, false);
-                DGP_Util.EnableControl(btnCancelar, false);
+               // DGP_Util.EnableControl(btnGrabar, false);
+               // DGP_Util.EnableControl(btnCancelar, false);
                 DGP_Util.LiberarGridView(dgrvAmortizacion);
                 LimpiarFormulario();
             }
@@ -355,12 +373,15 @@ namespace DGP.Presentation.Ventas {
                 vLista = new BLAmortizacionVenta().Listar(oEntidad);
                 dgrvAmortizacion.DataSource = vLista;
                 // Validar Controles
-                if (vLista.Count > 0) {
-                    DGP_Util.EnableControl(btnGrabar, true);
-                    DGP_Util.EnableControl(btnCancelar, true);
-                } else {
-                    DGP_Util.EnableControl(btnGrabar, false);
-                    DGP_Util.EnableControl(btnCancelar, false);
+                if (vLista.Count > 0)
+                {
+                    //DGP_Util.EnableControl(btnGrabar, true);
+                    //DGP_Util.EnableControl(btnCancelar, true);
+                }
+                else
+                {
+                    //DGP_Util.EnableControl(btnGrabar, false);
+                    //DGP_Util.EnableControl(btnCancelar, false);
                 }
                 // Habilitar solamente las Ventas
                 oCeldaPagoCuenta = new DataGridViewCellStyle();
@@ -898,6 +919,11 @@ namespace DGP.Presentation.Ventas {
         }
 
         private void label10_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void nudVuelto_ValueChanged(object sender, EventArgs e)
         {
 
         }

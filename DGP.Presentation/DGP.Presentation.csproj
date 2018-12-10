@@ -521,6 +521,7 @@
     <None Include="Resources\icono camion.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Properties\DataSources\DGP.Entities.Compras.BECompraFilter1.datasource" />
     <None Include="Resources\reporte.png" />
   </ItemGroup>
   <ItemGroup>

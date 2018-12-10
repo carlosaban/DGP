@@ -172,9 +172,9 @@ namespace DGP.DataAccess.Compra
 
 
         }
-       
 
-        public List<BECompra> Listar(BECompraFilter pBECompra) 
+
+        public List<BECompraFilter> Listar(BECompraFilter pBECompra) 
         {
             DatabaseHelper oDatabaseHelper = new DatabaseHelper();
             try
@@ -195,11 +195,11 @@ namespace DGP.DataAccess.Compra
         
         }
 
-        public List<BECompra> Listar(BECompraFilter pBECompra, DatabaseHelper pDatabaseHelper)
+        public List<BECompraFilter> Listar(BECompraFilter pBECompra, DatabaseHelper pDatabaseHelper)
         {
             DatabaseHelper oDatabaseHelper = (pDatabaseHelper == null) ? new DatabaseHelper() : pDatabaseHelper;
-                
-            List<BECompra> lista = new List<BECompra>();
+
+            List<BECompraFilter> lista = new List<BECompraFilter>();
             IDataReader DRlista = null;
 
             try

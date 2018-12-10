@@ -67,6 +67,7 @@
     <Compile Include="BEParametroDetalle.cs" />
     <Compile Include="Compras\BEAmortizacionCompra.cs" />
     <Compile Include="Compras\BECompra.cs" />
+    <Compile Include="Compras\BECompraFilter.cs" />
     <Compile Include="Compras\BEDocumentoPagoCompra.cs" />
     <Compile Include="Compras\BELineaCompra.cs" />
     <Compile Include="Compras\eCompraEsSobrante.cs" />

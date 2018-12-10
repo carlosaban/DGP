@@ -20,7 +20,7 @@ namespace DGP.BusinessLogic.Compra
 
         public BLCompra(int  IdCompra)
         {
-            List<BECompra> result = this.Listar(new BECompraFilter() { IdCompra = IdCompra });
+            List<BECompraFilter> result = this.Listar(new BECompraFilter() { IdCompra = IdCompra });
             if (result.Count == 0)
             {
                 this.BECompra = new BECompra();
@@ -120,12 +120,13 @@ namespace DGP.BusinessLogic.Compra
                 throw new Exception(mensaje);
             }
         }
-       
-        public List<BECompra> Listar(BECompraFilter pBECompra)
+
+        public List<BECompraFilter> Listar(BECompraFilter pBECompra)
         {
             try
             {
-                return new DACompra().Listar(pBECompra);
+                List<BECompraFilter> resultado = new DACompra().Listar(pBECompra);
+                return resultado;
             }
             catch (Exception ex)
             {
