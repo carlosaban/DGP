@@ -113,6 +113,8 @@
             this.txtCodigoReferencia = new System.Windows.Forms.TextBox();
             this.txtCliente = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.txtCodigoOperacion = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator1)).BeginInit();
             this.bindingNavigator1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bsDocumentos)).BeginInit();
@@ -593,6 +595,7 @@
             this.txtObservacion.Name = "txtObservacion";
             this.txtObservacion.Size = new System.Drawing.Size(227, 75);
             this.txtObservacion.TabIndex = 19;
+            this.txtObservacion.TextChanged += new System.EventHandler(this.txtObservacion_TextChanged);
             // 
             // lblObservacion
             // 
@@ -733,7 +736,7 @@
             // lblEntidadBancaria
             // 
             this.lblEntidadBancaria.AutoSize = true;
-            this.lblEntidadBancaria.Location = new System.Drawing.Point(14, 249);
+            this.lblEntidadBancaria.Location = new System.Drawing.Point(16, 257);
             this.lblEntidadBancaria.Name = "lblEntidadBancaria";
             this.lblEntidadBancaria.Size = new System.Drawing.Size(88, 13);
             this.lblEntidadBancaria.TabIndex = 28;
@@ -757,7 +760,7 @@
             // lblCodigoReferencia
             // 
             this.lblCodigoReferencia.AutoSize = true;
-            this.lblCodigoReferencia.Location = new System.Drawing.Point(14, 292);
+            this.lblCodigoReferencia.Location = new System.Drawing.Point(16, 283);
             this.lblCodigoReferencia.Name = "lblCodigoReferencia";
             this.lblCodigoReferencia.Size = new System.Drawing.Size(95, 13);
             this.lblCodigoReferencia.TabIndex = 30;
@@ -765,7 +768,7 @@
             // 
             // txtCodigoReferencia
             // 
-            this.txtCodigoReferencia.Location = new System.Drawing.Point(122, 285);
+            this.txtCodigoReferencia.Location = new System.Drawing.Point(122, 276);
             this.txtCodigoReferencia.Name = "txtCodigoReferencia";
             this.txtCodigoReferencia.Size = new System.Drawing.Size(121, 20);
             this.txtCodigoReferencia.TabIndex = 31;
@@ -787,11 +790,29 @@
             this.label1.TabIndex = 32;
             this.label1.Text = "Cliente";
             // 
+            // txtCodigoOperacion
+            // 
+            this.txtCodigoOperacion.Location = new System.Drawing.Point(123, 302);
+            this.txtCodigoOperacion.Name = "txtCodigoOperacion";
+            this.txtCodigoOperacion.Size = new System.Drawing.Size(121, 20);
+            this.txtCodigoOperacion.TabIndex = 34;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(14, 309);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(92, 13);
+            this.label2.TabIndex = 35;
+            this.label2.Text = "Codigo Operacion";
+            // 
             // frmDocumentoPago
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(968, 462);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.txtCodigoOperacion);
             this.Controls.Add(this.txtCliente);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtCodigoReferencia);
@@ -919,5 +940,7 @@
         private System.Windows.Forms.ToolStripMenuItem subirImagenToolStripMenuItem;
         private System.Windows.Forms.TextBox txtCliente;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox txtCodigoOperacion;
+        private System.Windows.Forms.Label label2;
     }
 }

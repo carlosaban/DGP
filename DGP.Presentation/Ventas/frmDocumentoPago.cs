@@ -56,6 +56,8 @@ namespace DGP.Presentation.Ventas
                 txtIdDocumento.DataBindings.Add("Text", bsDocumentos, "IdDocumento");
                 dtFecha.DataBindings.Add("Text", bsDocumentos, "Fecha");
                 numMonto.DataBindings.Add("Text", bsDocumentos, "Monto");
+
+                
                 txtCliente.Text = Cliente.Nombre;
                 listarDetalle();
             }
@@ -310,6 +312,11 @@ namespace DGP.Presentation.Ventas
         }
 
         private void bindingNavigatorDeleteItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtObservacion_TextChanged(object sender, EventArgs e)
         {
 
         }
