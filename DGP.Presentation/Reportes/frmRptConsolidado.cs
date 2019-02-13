@@ -36,8 +36,8 @@ namespace DGP.Presentation.Reportes
                 DGP.Entities.Reportes.CRptEstadoCuentaCliente oCRptEstadoCuentaCliente = new DGP.Entities.Reportes.CRptEstadoCuentaCliente();
                 oCRptEstadoCuentaCliente.Refresh();
                 oCRptEstadoCuentaCliente.SetDataSource(oDSRptClientes);
-                this.CRptEstadoCuentaCliente.ReportSource = oCRptEstadoCuentaCliente;
-                this.CRptEstadoCuentaCliente.Refresh();
+                this.CRpt.ReportSource = oCRptEstadoCuentaCliente;
+                this.CRpt.Refresh();
 
             }
             catch (Exception ex)

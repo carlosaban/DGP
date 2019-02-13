@@ -30,14 +30,14 @@ namespace DGP.Presentation.Reportes
             {
                 //lbClientes.Items.to
 
-                bool canInfoCompra = VariablesSession.Privilegios.Find(x => x.IdPrivilegio == DGP.Entities.Seguridad.BEPrivilegio.Visualizar_Precios_compra)!= null;
-                DSRptClientes oDSRptClientes = null; //new BLVenta().ReporteEstadoCuentaCliente(dtpFechaInicial.Value.Date, getClientesList(this.lbClientes), canInfoCompra);
-                
-                DGP.Entities.Reportes.CRptEstadoCuentaCliente oCRptEstadoCuentaCliente = new DGP.Entities.Reportes.CRptEstadoCuentaCliente();
-                oCRptEstadoCuentaCliente.Refresh();
-                oCRptEstadoCuentaCliente.SetDataSource(oDSRptClientes);
-                this.CRptEstadoCuentaCliente.ReportSource = oCRptEstadoCuentaCliente;
-                this.CRptEstadoCuentaCliente.Refresh();
+               // bool canInfoCompra = VariablesSession.Privilegios.Find(x => x.IdPrivilegio == DGP.Entities.Seguridad.BEPrivilegio.Visualizar_Precios_compra)!= null;
+                DSRptClientes oDSRptClientes = new BLVenta().ReporteListaProveedor(dtpFechaInicial.Value.Date, dtpFechaFinal.Value.Date);
+
+                DGP.Entities.Reportes.CRptHojaPreciosProveedor oCRptHojaPreciosProveedor = new DGP.Entities.Reportes.CRptHojaPreciosProveedor();
+                oCRptHojaPreciosProveedor.Refresh();
+                oCRptHojaPreciosProveedor.SetDataSource(oDSRptClientes);
+                this.CRpt.ReportSource = oCRptHojaPreciosProveedor;
+                this.CRpt.Refresh();
 
             }
             catch (Exception ex)

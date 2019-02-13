@@ -738,5 +738,31 @@ namespace DGP.DataAccess.Ventas {
             }
         
         }
+
+        public DSRptClientes ReporteListaPreciosProveedor(DateTime dtfechaInicial, DateTime dtFechaFinal)
+        {
+            DatabaseHelper oDatabaseHelper = new DatabaseHelper();
+            DSRptClientes oDSTablero = new DSRptClientes();
+            
+            try
+            {
+                oDatabaseHelper.ClearParameter();
+                oDatabaseHelper.AddParameter("@dtFechaInicial", (dtfechaInicial == null) ? (object)DBNull.Value : dtfechaInicial);
+                oDatabaseHelper.AddParameter("@dtFechaFinal", (dtFechaFinal == null) ? (object)DBNull.Value : dtFechaFinal);
+
+                DataSet ds = oDatabaseHelper.ExecuteDataSet("DGP_Reporte_precios_proveedor", CommandType.StoredProcedure);
+
+                oDSTablero.DT_LISTA_PRECIOS.Merge(ds.Tables[0], true, MissingSchemaAction.Ignore);
+                return oDSTablero;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                oDatabaseHelper.Dispose();
+            }
+        }
     }
 }

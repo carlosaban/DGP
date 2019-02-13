@@ -407,5 +407,10 @@ namespace DGP.BusinessLogic.Ventas {
             }
 
         }
+
+        public DSRptClientes ReporteListaProveedor(DateTime dtfechaInicial, DateTime dtFechaFinal)
+        {
+            return new DAVenta().ReporteListaPreciosProveedor(dtfechaInicial, dtFechaFinal);
+        }
     }
 }

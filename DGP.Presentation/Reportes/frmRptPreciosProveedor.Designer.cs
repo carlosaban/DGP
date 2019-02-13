@@ -32,7 +32,7 @@
             this.btnRefresh = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dtpFechaFinal = new System.Windows.Forms.DateTimePicker();
-            this.CRptEstadoCuentaCliente = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
+            this.CRpt = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -77,24 +77,24 @@
             this.dtpFechaFinal.Size = new System.Drawing.Size(99, 20);
             this.dtpFechaFinal.TabIndex = 7;
             // 
-            // CRptEstadoCuentaCliente
+            // CRpt
             // 
-            this.CRptEstadoCuentaCliente.ActiveViewIndex = -1;
-            this.CRptEstadoCuentaCliente.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.CRptEstadoCuentaCliente.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.CRptEstadoCuentaCliente.Location = new System.Drawing.Point(0, 69);
-            this.CRptEstadoCuentaCliente.Name = "CRptEstadoCuentaCliente";
-            this.CRptEstadoCuentaCliente.SelectionFormula = "";
-            this.CRptEstadoCuentaCliente.Size = new System.Drawing.Size(646, 284);
-            this.CRptEstadoCuentaCliente.TabIndex = 8;
-            this.CRptEstadoCuentaCliente.ViewTimeSelectionFormula = "";
+            this.CRpt.ActiveViewIndex = -1;
+            this.CRpt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.CRpt.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.CRpt.Location = new System.Drawing.Point(0, 69);
+            this.CRpt.Name = "CRpt";
+            this.CRpt.SelectionFormula = "";
+            this.CRpt.Size = new System.Drawing.Size(646, 284);
+            this.CRpt.TabIndex = 8;
+            this.CRpt.ViewTimeSelectionFormula = "";
             // 
             // frmRptPreciosProveedor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(646, 353);
-            this.Controls.Add(this.CRptEstadoCuentaCliente);
+            this.Controls.Add(this.CRpt);
             this.Controls.Add(this.groupBox1);
             this.Name = "frmRptPreciosProveedor";
             this.Text = "Detalle Estado de Cuenta del Cliente";
@@ -109,7 +109,7 @@
         private System.Windows.Forms.DateTimePicker dtpFechaInicial;
         private System.Windows.Forms.Button btnRefresh;
         private System.Windows.Forms.GroupBox groupBox1;
-        private CrystalDecisions.Windows.Forms.CrystalReportViewer CRptEstadoCuentaCliente;
+        private CrystalDecisions.Windows.Forms.CrystalReportViewer CRpt;
         private System.Windows.Forms.DateTimePicker dtpFechaFinal;
     }
 }
