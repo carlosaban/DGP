@@ -162,6 +162,14 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\frmRptConsolidado.resx">
+      <DependentUpon>frmRptConsolidado.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\frmRptPreciosProveedor.resx">
+      <DependentUpon>frmRptPreciosProveedor.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reportes\frmReporteCobranzaV2.resx">
       <DependentUpon>frmReporteCobranzaV2.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -299,6 +307,18 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Reportes\frmRptConsolidado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reportes\frmRptConsolidado.Designer.cs">
+      <DependentUpon>frmRptConsolidado.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\frmRptPreciosProveedor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reportes\frmRptPreciosProveedor.Designer.cs">
+      <DependentUpon>frmRptPreciosProveedor.cs</DependentUpon>
     </Compile>
     <Compile Include="Reportes\frmReporteCobranzaV2.cs">
       <SubType>Form</SubType>

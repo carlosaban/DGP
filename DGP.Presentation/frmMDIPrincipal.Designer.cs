@@ -50,10 +50,12 @@
             this.toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.hojaTableroToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.listaDePreciosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.listaPreciosProveedoresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.estadoDeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.reporteSaldosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmSalir = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiSalirSistema = new System.Windows.Forms.ToolStripMenuItem();
-            this.reporteSaldosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.reporteConsolidadoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.msMenuPrincipal.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -190,7 +192,8 @@
             this.cuadreCajaToolStripMenuItem,
             this.toolsToolStripMenuItem,
             this.estadoDeToolStripMenuItem,
-            this.reporteSaldosToolStripMenuItem});
+            this.reporteSaldosToolStripMenuItem,
+            this.reporteConsolidadoToolStripMenuItem});
             this.reportesToolStripMenuItem.Name = "reportesToolStripMenuItem";
             this.reportesToolStripMenuItem.Size = new System.Drawing.Size(65, 20);
             this.reportesToolStripMenuItem.Text = "Reportes";
@@ -220,7 +223,8 @@
             // 
             this.toolsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.hojaTableroToolStripMenuItem,
-            this.listaDePreciosToolStripMenuItem});
+            this.listaDePreciosToolStripMenuItem,
+            this.listaPreciosProveedoresToolStripMenuItem});
             this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
             this.toolsToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
             this.toolsToolStripMenuItem.Text = "Herramientas";
@@ -228,16 +232,23 @@
             // hojaTableroToolStripMenuItem
             // 
             this.hojaTableroToolStripMenuItem.Name = "hojaTableroToolStripMenuItem";
-            this.hojaTableroToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
+            this.hojaTableroToolStripMenuItem.Size = new System.Drawing.Size(207, 22);
             this.hojaTableroToolStripMenuItem.Text = "Hoja de Tablero";
             this.hojaTableroToolStripMenuItem.Click += new System.EventHandler(this.hojaTableroToolStripMenuItem_Click);
             // 
             // listaDePreciosToolStripMenuItem
             // 
             this.listaDePreciosToolStripMenuItem.Name = "listaDePreciosToolStripMenuItem";
-            this.listaDePreciosToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
+            this.listaDePreciosToolStripMenuItem.Size = new System.Drawing.Size(207, 22);
             this.listaDePreciosToolStripMenuItem.Text = "Lista de Precios";
             this.listaDePreciosToolStripMenuItem.Click += new System.EventHandler(this.listaDePreciosToolStripMenuItem_Click);
+            // 
+            // listaPreciosProveedoresToolStripMenuItem
+            // 
+            this.listaPreciosProveedoresToolStripMenuItem.Name = "listaPreciosProveedoresToolStripMenuItem";
+            this.listaPreciosProveedoresToolStripMenuItem.Size = new System.Drawing.Size(207, 22);
+            this.listaPreciosProveedoresToolStripMenuItem.Text = "Lista Precios Proveedores";
+            this.listaPreciosProveedoresToolStripMenuItem.Click += new System.EventHandler(this.listaPreciosProveedoresToolStripMenuItem_Click);
             // 
             // estadoDeToolStripMenuItem
             // 
@@ -245,6 +256,13 @@
             this.estadoDeToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
             this.estadoDeToolStripMenuItem.Text = "Estado de Cuenta Cliente";
             this.estadoDeToolStripMenuItem.Click += new System.EventHandler(this.estadoDeToolStripMenuItem_Click);
+            // 
+            // reporteSaldosToolStripMenuItem
+            // 
+            this.reporteSaldosToolStripMenuItem.Name = "reporteSaldosToolStripMenuItem";
+            this.reporteSaldosToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
+            this.reporteSaldosToolStripMenuItem.Text = "Reporte de Saldos";
+            this.reporteSaldosToolStripMenuItem.Click += new System.EventHandler(this.reporteSaldosToolStripMenuItem_Click);
             // 
             // tsmSalir
             // 
@@ -260,12 +278,12 @@
             this.tsmiSalirSistema.Size = new System.Drawing.Size(159, 22);
             this.tsmiSalirSistema.Text = "Salir del Sistema";
             // 
-            // reporteSaldosToolStripMenuItem
+            // reporteConsolidadoToolStripMenuItem
             // 
-            this.reporteSaldosToolStripMenuItem.Name = "reporteSaldosToolStripMenuItem";
-            this.reporteSaldosToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
-            this.reporteSaldosToolStripMenuItem.Text = "Reporte de Saldos";
-            this.reporteSaldosToolStripMenuItem.Click += new System.EventHandler(this.reporteSaldosToolStripMenuItem_Click);
+            this.reporteConsolidadoToolStripMenuItem.Name = "reporteConsolidadoToolStripMenuItem";
+            this.reporteConsolidadoToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
+            this.reporteConsolidadoToolStripMenuItem.Text = "Reporte consolidado";
+            this.reporteConsolidadoToolStripMenuItem.Click += new System.EventHandler(this.reporteConsolidadoToolStripMenuItem_Click);
             // 
             // frmMDIPrincipal
             // 
@@ -315,6 +333,8 @@
         private System.Windows.Forms.ToolStripMenuItem mantenimientoDeDocPagosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem mantenimientoDeDocPagosCompraToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem reporteSaldosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem listaPreciosProveedoresToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem reporteConsolidadoToolStripMenuItem;
 
 
     }

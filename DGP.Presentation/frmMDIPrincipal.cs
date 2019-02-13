@@ -250,6 +250,23 @@ namespace DGP.Presentation {
             
         }
 
+        private void listaPreciosProveedoresToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmRptPreciosProveedor oReportes_frmRptFiltro = new frmRptPreciosProveedor();
+            oReportes_frmRptFiltro.MdiParent = this;
+            oReportes_frmRptFiltro.Show();
+
+        }
+
+        private void reporteConsolidadoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmRptConsolidado oReportes_frmRptFiltro = new frmRptConsolidado();
+            oReportes_frmRptFiltro.MdiParent = this;
+            oReportes_frmRptFiltro.Show();
+
+
+        }
+
         }   
 
     
