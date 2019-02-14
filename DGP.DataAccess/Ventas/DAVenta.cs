@@ -528,7 +528,7 @@ namespace DGP.DataAccess.Ventas {
                 oDatabaseHelper.AddParameter("@clientes", (string.IsNullOrEmpty(clientes)) ? (object)DBNull.Value : clientes);
                 oDatabaseHelper.AddParameter("@TienePermisoInfoCompra", CanInfoCompra);
                 
-                DataSet ds = oDatabaseHelper.ExecuteDataSet("DGP_Rpt_Estado_CuentaCliente_v3", CommandType.StoredProcedure);
+                DataSet ds = oDatabaseHelper.ExecuteDataSet("DGP_Rpt_Estado_CuentaCliente_v4", CommandType.StoredProcedure);
                 dSRptClientes.DGP_Rpt_Estado_CuentaCliente.Merge(ds.Tables[0], true, MissingSchemaAction.Ignore);
                 dSRptClientes.DGP_Rpt_Estado_CuentaCliente.GenerarAcumulado();
 
@@ -763,6 +763,34 @@ namespace DGP.DataAccess.Ventas {
             {
                 oDatabaseHelper.Dispose();
             }
+        }
+
+        public DSRptClientes ReporteConsolidado(DateTime dtfechaInicial, DateTime dtFechaFinal)
+        {
+            DatabaseHelper oDatabaseHelper = new DatabaseHelper();
+            DSRptClientes oDSTablero = new DSRptClientes();
+
+            try
+            {
+                oDatabaseHelper.ClearParameter();
+                oDatabaseHelper.AddParameter("@FechaDesde", (dtfechaInicial == null) ? (object)DBNull.Value : dtfechaInicial);
+                oDatabaseHelper.AddParameter("@FechaHasta", (dtFechaFinal == null) ? (object)DBNull.Value : dtFechaFinal);
+
+                DataSet ds = oDatabaseHelper.ExecuteDataSet("DGP_Reporte_Consolidado", CommandType.StoredProcedure);
+
+                oDSTablero.DGP_Rpt_Consolidado.Merge(ds.Tables[0], true, MissingSchemaAction.Ignore);
+                return oDSTablero;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                oDatabaseHelper.Dispose();
+            }
+
+
         }
     }
 }

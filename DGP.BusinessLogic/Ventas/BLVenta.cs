@@ -412,5 +412,11 @@ namespace DGP.BusinessLogic.Ventas {
         {
             return new DAVenta().ReporteListaPreciosProveedor(dtfechaInicial, dtFechaFinal);
         }
+
+        public DSRptClientes ReporteConsolidado(DateTime dtfechaInicial, DateTime dtFechaFinal)
+        {
+            return new DAVenta().ReporteConsolidado(dtfechaInicial, dtFechaFinal);
+
+        }
     }
 }

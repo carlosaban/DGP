@@ -322,7 +322,7 @@ namespace DGP.Presentation.Compras {
                 this.BLCompra.BECompra.IdCaja = VariablesSession.BEUsuarioSession.IdCaja;
                 this.BLCompra.BECompra.IdCompra = string.IsNullOrEmpty(this.lblIDCompra.Text) ? 0 : int.Parse (this.lblIDCompra.Text);
                 //this.BLCompra.BECompra.IdEmpresa = this.empre;
-                this.BLCompra.BECompra.IdEstado = BECompra.REGISTRADO;
+                this.BLCompra.BECompra.IdEstado = this.cbEstado.SelectedValue.ToString(); //BECompra.REGISTRADO;
                 this.BLCompra.BECompra.IdPersonal = VariablesSession.BEUsuarioSession.IdPersonal;
                 this.BLCompra.BECompra.IdProducto = (this.cmbProducto.SelectedValue == null) ? 0 : int.Parse(this.cmbProducto.SelectedValue.ToString());
                 this.BLCompra.BECompra.IdProveedor = (this.cmbClientes.SelectedValue == null) ? 0 : int.Parse(this.cmbClientes.SelectedValue.ToString());

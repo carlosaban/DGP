@@ -9,6 +9,10 @@ namespace DGP.Entities.DataSet {
     
     
     public partial class DSRptClientes {
+        partial class DGP_Rpt_ConsolidadoDataTable
+        {
+        }
+    
         partial class DGP_Rpt_Estado_CuentaClienteDataTable
         {
             public void GenerarAcumulado()

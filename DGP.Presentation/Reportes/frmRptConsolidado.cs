@@ -31,12 +31,12 @@ namespace DGP.Presentation.Reportes
                 //lbClientes.Items.to
 
                 bool canInfoCompra = VariablesSession.Privilegios.Find(x => x.IdPrivilegio == DGP.Entities.Seguridad.BEPrivilegio.Visualizar_Precios_compra)!= null;
-                DSRptClientes oDSRptClientes = null; //new BLVenta().ReporteEstadoCuentaCliente(dtpFechaInicial.Value.Date, getClientesList(this.lbClientes), canInfoCompra);
-                
-                DGP.Entities.Reportes.CRptEstadoCuentaCliente oCRptEstadoCuentaCliente = new DGP.Entities.Reportes.CRptEstadoCuentaCliente();
-                oCRptEstadoCuentaCliente.Refresh();
-                oCRptEstadoCuentaCliente.SetDataSource(oDSRptClientes);
-                this.CRpt.ReportSource = oCRptEstadoCuentaCliente;
+                DSRptClientes oDSRptClientes = new BLVenta().ReporteConsolidado(dtpFechaInicial.Value.Date, dtpFechaFinal.Value.Date);
+
+                DGP.Entities.Reportes.CRptConsolidado oCRptConsolidado = new DGP.Entities.Reportes.CRptConsolidado();
+                oCRptConsolidado.Refresh();
+                oCRptConsolidado.SetDataSource(oDSRptClientes);
+                this.CRpt.ReportSource = oCRptConsolidado;
                 this.CRpt.Refresh();
 
             }
