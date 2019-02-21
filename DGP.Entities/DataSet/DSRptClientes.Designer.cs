@@ -687,6 +687,8 @@ namespace DGP.Entities.DataSet {
             
             private global::System.Data.DataColumn columnVALOR;
             
+            private global::System.Data.DataColumn columnFECHA;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public DT_LISTA_PRECIOSDataTable() {
                 this.TableName = "DT_LISTA_PRECIOS";
@@ -753,6 +755,13 @@ namespace DGP.Entities.DataSet {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn FECHAColumn {
+                get {
+                    return this.columnFECHA;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -781,14 +790,15 @@ namespace DGP.Entities.DataSet {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public DT_LISTA_PRECIOSRow AddDT_LISTA_PRECIOSRow(int ORDEN, int ID_CLIENTE, string NOMBRES, string CONCEPTO, decimal VALOR) {
+            public DT_LISTA_PRECIOSRow AddDT_LISTA_PRECIOSRow(int ORDEN, int ID_CLIENTE, string NOMBRES, string CONCEPTO, decimal VALOR, System.DateTime FECHA) {
                 DT_LISTA_PRECIOSRow rowDT_LISTA_PRECIOSRow = ((DT_LISTA_PRECIOSRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         ORDEN,
                         ID_CLIENTE,
                         NOMBRES,
                         CONCEPTO,
-                        VALOR};
+                        VALOR,
+                        FECHA};
                 rowDT_LISTA_PRECIOSRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowDT_LISTA_PRECIOSRow);
                 return rowDT_LISTA_PRECIOSRow;
@@ -818,6 +828,7 @@ namespace DGP.Entities.DataSet {
                 this.columnNOMBRES = base.Columns["NOMBRES"];
                 this.columnCONCEPTO = base.Columns["CONCEPTO"];
                 this.columnVALOR = base.Columns["VALOR"];
+                this.columnFECHA = base.Columns["FECHA"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -832,6 +843,8 @@ namespace DGP.Entities.DataSet {
                 base.Columns.Add(this.columnCONCEPTO);
                 this.columnVALOR = new global::System.Data.DataColumn("VALOR", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnVALOR);
+                this.columnFECHA = new global::System.Data.DataColumn("FECHA", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnFECHA);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1924,6 +1937,21 @@ namespace DGP.Entities.DataSet {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public System.DateTime FECHA {
+                get {
+                    try {
+                        return ((global::System.DateTime)(this[this.tableDT_LISTA_PRECIOS.FECHAColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'FECHA\' in table \'DT_LISTA_PRECIOS\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableDT_LISTA_PRECIOS.FECHAColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public bool IsORDENNull() {
                 return this.IsNull(this.tableDT_LISTA_PRECIOS.ORDENColumn);
             }
@@ -1971,6 +1999,16 @@ namespace DGP.Entities.DataSet {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public void SetVALORNull() {
                 this[this.tableDT_LISTA_PRECIOS.VALORColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsFECHANull() {
+                return this.IsNull(this.tableDT_LISTA_PRECIOS.FECHAColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetFECHANull() {
+                this[this.tableDT_LISTA_PRECIOS.FECHAColumn] = global::System.Convert.DBNull;
             }
         }
         

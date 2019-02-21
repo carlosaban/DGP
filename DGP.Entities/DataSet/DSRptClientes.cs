@@ -9,6 +9,10 @@ namespace DGP.Entities.DataSet {
     
     
     public partial class DSRptClientes {
+        partial class DT_LISTA_PRECIOSDataTable
+        {
+        }
+    
         partial class DGP_Rpt_ConsolidadoDataTable
         {
         }
