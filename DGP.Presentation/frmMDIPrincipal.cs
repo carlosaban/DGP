@@ -19,7 +19,7 @@ namespace DGP.Presentation {
         private frmTableroElectronico oVentas_frmTablero = null;
         private frmMantenimientoVentas oVentas_frmDetalleVenta = null;
         private frmAmortizacion oVentas_frmAmortizacion = null;
-        private frmPagoAdelanto oVentas_frmAdelanto = null;
+        private _frmPagoAdelanto oVentas_frmAdelanto = null;
         private frmDevoluciones oVentas_frmDevoluvion = null;
         private frmReporteCobranzaV2 oReportes_frmReporteCobranza = null;
         private frmReporteFiltrosTablero oReportes_frmReporteFiltros = null;
@@ -47,7 +47,7 @@ namespace DGP.Presentation {
         }
 
         private void tsmiPagoAdelanto_Click(object sender, EventArgs e) {
-            oVentas_frmAdelanto = new frmPagoAdelanto();
+            oVentas_frmAdelanto = new _frmPagoAdelanto();
             oVentas_frmAdelanto.MdiParent = this;
             oVentas_frmAdelanto.Show();
         }

@@ -14,5 +14,10 @@ namespace DGP.Presentation.Compras
         {
             InitializeComponent();
         }
+
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

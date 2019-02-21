@@ -291,8 +291,12 @@ namespace DGP.Presentation.Compras {
                 if ( bOk && BLCompra.ValidarCompra(ref mensaje)){
 
                     this.LoadFormCompra();                
-                    bOk = BLCompra.Grabar(ref mensaje);                    
-                    if (bOk) this.lblIDCompra.Text = BLCompra.getCompra.IdCompra.ToString(); 
+                    bOk = BLCompra.Grabar(ref mensaje);
+                    if (bOk) this.lblIDCompra.Text = BLCompra.getCompra.IdCompra.ToString();
+
+
+                    this.bdSourceCompras.ResetBindings(false);
+
                 }
 
                 if (!bOk) MostrarMensaje(mensaje, MessageBoxIcon.Error);
@@ -398,6 +402,7 @@ namespace DGP.Presentation.Compras {
                         this.txtTotalNeto.Text = TotalNeto.ToString();
                         this.txtImporte.Text = Importe.ToString();
 
+                        this.bdSourceCompras.EndEdit();
 
 
 
@@ -495,7 +500,7 @@ namespace DGP.Presentation.Compras {
                 {
 
                     //BLDP.Eliminar(beCompra);
-
+                    
                     //this.bdSourceCompras.EndEdit();
                     this.bdnCompras.Refresh();
                 }

@@ -13,9 +13,9 @@ using DGP.Entities;
 
 namespace DGP.Presentation.Ventas {
 
-    public partial class frmPagoAdelanto : Form {
+    public partial class _frmPagoAdelanto : Form {
 
-        public frmPagoAdelanto() {
+        public _frmPagoAdelanto() {
             InitializeComponent();
             IniciarFormulario();
         }

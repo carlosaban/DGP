@@ -44,7 +44,23 @@ namespace DGP.DataAccess.Ventas
                             IdCliente = (int)oIDataReader["IdCliente"],
                             Nombre = oIDataReader["ClienteNombre"].ToString()
                         
-                        }
+                        },
+                        Personal = new DGP.Entities.Seguridad.BEPersonal{
+                            IdPersonal = (int)oIDataReader["IdPersonal"]
+                           
+                        
+                        },
+                        IdFormaPago = oIDataReader["IdFormaPago"].ToString()
+                        ,
+                        IdBanco = oIDataReader["IdBanco"].ToString()
+                        ,
+                        NumeroOperacion = oIDataReader["NumeroOperacion"].ToString()
+                        ,
+                        NumeroReciboPago = oIDataReader["NumeroRecibo"].ToString()
+                        ,
+                        Observacion = oIDataReader["Observacion"].ToString()
+
+
                     });
 
                 }
@@ -309,8 +325,17 @@ namespace DGP.DataAccess.Ventas
                 oDatabaseHelper.AddParameter("@IdCliente", beDocumento.Cliente.IdCliente);
                 oDatabaseHelper.AddParameter("@IdPersonal", beDocumento.Personal.IdPersonal);
                 oDatabaseHelper.AddParameter("@IdFormaPago", beDocumento.IdFormaPago);
+
+                oDatabaseHelper.AddParameter("@IdBanco", beDocumento.IdBanco);
+                oDatabaseHelper.AddParameter("@NumeroRecibo", beDocumento.NumeroReciboPago);
+                oDatabaseHelper.AddParameter("@NumeroOperacion", beDocumento.NumeroOperacion);
+
+
+
                 oDatabaseHelper.AddParameter("@observacion", beDocumento.Observacion);
 
+                oDatabaseHelper.AddParameter("@idPersonalAuditoria", beDocumento.BEUsuarioLogin.IdPersonal);
+                
                 oDatabaseHelper.ExecuteScalar("ActualizarDocumento", CommandType.StoredProcedure, (pDatabaseHelper == null) ? DBHelper.ConnectionState.CloseOnExit : DBHelper.ConnectionState.KeepOpen);
                 
                 return true;

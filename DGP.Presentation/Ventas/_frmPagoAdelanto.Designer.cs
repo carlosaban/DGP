@@ -1,6 +1,6 @@
 ﻿namespace DGP.Presentation.Ventas
 {
-    partial class frmPagoAdelanto
+    partial class _frmPagoAdelanto
     {
         /// <summary>
         /// Variable del diseñador requerida.

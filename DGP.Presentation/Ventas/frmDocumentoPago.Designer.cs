@@ -579,10 +579,8 @@
             // 
             // cmbTipoDocumento
             // 
+            this.cmbTipoDocumento.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbTipoDocumento.FormattingEnabled = true;
-            this.cmbTipoDocumento.Items.AddRange(new object[] {
-            "AMR",
-            "NCR"});
             this.cmbTipoDocumento.Location = new System.Drawing.Point(123, 107);
             this.cmbTipoDocumento.Name = "cmbTipoDocumento";
             this.cmbTipoDocumento.Size = new System.Drawing.Size(121, 21);
@@ -610,6 +608,7 @@
             // 
             this.cmbTipoPago.DataSource = this.bEParametroDetalleBindingSource;
             this.cmbTipoPago.DisplayMember = "Texto";
+            this.cmbTipoPago.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbTipoPago.FormattingEnabled = true;
             this.cmbTipoPago.Location = new System.Drawing.Point(123, 222);
             this.cmbTipoPago.Name = "cmbTipoPago";
@@ -727,6 +726,7 @@
             // 
             // cmbPersonal
             // 
+            this.cmbPersonal.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbPersonal.FormattingEnabled = true;
             this.cmbPersonal.Location = new System.Drawing.Point(123, 195);
             this.cmbPersonal.Name = "cmbPersonal";
@@ -746,6 +746,7 @@
             // 
             this.cmbEntidadBancaria.DataSource = this.bEEntidadBancariaBindingSource;
             this.cmbEntidadBancaria.DisplayMember = "Nombre";
+            this.cmbEntidadBancaria.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbEntidadBancaria.FormattingEnabled = true;
             this.cmbEntidadBancaria.Location = new System.Drawing.Point(123, 249);
             this.cmbEntidadBancaria.Name = "cmbEntidadBancaria";

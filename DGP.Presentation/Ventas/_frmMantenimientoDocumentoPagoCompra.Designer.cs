@@ -1,6 +1,6 @@
 ﻿namespace DGP.Presentation.Ventas
 {
-    partial class frmMantenimientoDocumentoPagoCompra
+    partial class _frmMantenimientoDocumentoPagoCompra
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMantenimientoDocumentoPagoCompra));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(_frmMantenimientoDocumentoPagoCompra));
             this.dgvDocumentoPago = new System.Windows.Forms.DataGridView();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.panel1 = new System.Windows.Forms.Panel();

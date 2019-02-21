@@ -25,7 +25,8 @@ namespace DGP.Presentation.Ventas
         public frmDocumentoPago(BindingSource bs,string accion,BEClienteProveedor cliente,int cell)
         {
             InitializeComponent();
-            
+
+            CargarTipoDocumento();
             CargarUsuarios();
             CargarFormaDePago();
             CargarEntidadBancaria();
@@ -56,9 +57,25 @@ namespace DGP.Presentation.Ventas
                 txtIdDocumento.DataBindings.Add("Text", bsDocumentos, "IdDocumento");
                 dtFecha.DataBindings.Add("Text", bsDocumentos, "Fecha");
                 numMonto.DataBindings.Add("Text", bsDocumentos, "Monto");
+                txtCliente.DataBindings.Add("Text", bsDocumentos, "ClienteNombre");
+                this.cmbTipoDocumento.DataBindings.Clear();
+                this.cmbTipoDocumento.DataBindings.Add("SelectedValue", this.bsDocumentos, "IdTipoDocumento", true, DataSourceUpdateMode.OnPropertyChanged);
 
+                this.cmbPersonal.DataBindings.Clear();
+                this.cmbPersonal.DataBindings.Add("SelectedValue", this.bsDocumentos, "IdPersonal", true, DataSourceUpdateMode.OnPropertyChanged);
+
+
+                this.cmbEntidadBancaria.DataBindings.Clear();
+                this.cmbEntidadBancaria.DataBindings.Add("SelectedValue", this.bsDocumentos, "IdBanco", true, DataSourceUpdateMode.OnPropertyChanged);
+
+                this.cmbTipoPago.DataBindings.Clear();
+                this.cmbTipoPago.DataBindings.Add("SelectedValue", this.bsDocumentos, "IdFormaPago", true, DataSourceUpdateMode.OnPropertyChanged);
+
+                txtCodigoOperacion.DataBindings.Add("Text", bsDocumentos, "NumeroOperacion");
+                txtCodigoReferencia.DataBindings.Add("Text", bsDocumentos, "NumeroReciboPago");
+                txtObservacion.DataBindings.Add("Text", bsDocumentos, "Observacion");
                 
-                txtCliente.Text = Cliente.Nombre;
+
                 listarDetalle();
             }
         }
@@ -87,6 +104,7 @@ namespace DGP.Presentation.Ventas
         {
             if (accion.Equals("actualizar"))
             {
+                
                 BLDocumentoPago BLDP = new BLDocumentoPago();
                 BEDocumento documento = new BEDocumento();
                 documento.IdDocumento = Convert.ToInt32(txtIdDocumento.Text);
@@ -96,10 +114,12 @@ namespace DGP.Presentation.Ventas
                 documento.BEUsuarioLogin = VariablesSession.BEUsuarioSession;
                 documento.Cliente.IdCliente = Cliente.IdCliente;
                 documento.Observacion = txtObservacion.Text;
-                //documento.Banco.IdEntidadBancaria = (int)this.cmbEntidadBancaria.SelectedValue;
+                documento.IdBanco  = this.cmbEntidadBancaria.SelectedValue.ToString() ;
                 documento.NumeroOperacion = this.txtCodigoReferencia.Text;
-                documento.IdFormaPago = this.cmbTipoPago.SelectedItem.ToString();
+                documento.NumeroReciboPago = this.txtCodigoOperacion.Text;
 
+                documento.IdFormaPago = this.cmbTipoPago.SelectedValue.ToString();
+                this.bsDetalle.EndEdit();
                 BLDP.ActualizarCabecera(documento);
             }
 
@@ -107,12 +127,17 @@ namespace DGP.Presentation.Ventas
             {
                 BLDocumentoPago BLDP = new BLDocumentoPago();
                 BEDocumento documento = new BEDocumento();
-                documento.IdTipoDocumento = cmbTipoDocumento.SelectedItem.ToString();
+                documento.IdTipoDocumento = cmbTipoDocumento.SelectedValue.ToString();
                 documento.Fecha = dtFecha.Value.Date;
                 documento.Monto = numMonto.Value;
                 documento.BEUsuarioLogin = VariablesSession.BEUsuarioSession;
                 documento.Cliente.IdCliente = Cliente.IdCliente;
                 documento.Observacion = txtObservacion.Text;
+                //documento.Banco.IdEntidadBancaria = (int)this.cmbEntidadBancaria.SelectedValue;
+                documento.NumeroOperacion = this.txtCodigoReferencia.Text;
+                documento.IdFormaPago = this.cmbTipoPago.SelectedItem.ToString();
+                this.bsDetalle.EndEdit();
+
                 BLDP.InsertarCabecera(documento);
             }
         }
@@ -165,9 +190,7 @@ namespace DGP.Presentation.Ventas
 
                 foreach (BEAmortizacionVenta amort in vLista)
                 {
-                    sumMonto += amort.Monto;
-
-
+                    sumMonto += amort.Monto;                
                 }
                 int idDocumento = Convert.ToInt32(txtIdDocumento.Text);
                 frmDocumentoPagoDetalle from = new frmDocumentoPagoDetalle(Cliente, numMonto.Value, sumMonto, idDocumento, (int)this.cmbPersonal.SelectedValue);

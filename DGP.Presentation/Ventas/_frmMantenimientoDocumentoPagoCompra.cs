@@ -8,9 +8,9 @@ using System.Windows.Forms;
 
 namespace DGP.Presentation.Ventas
 {
-    public partial class frmMantenimientoDocumentoPagoCompra : Form
+    public partial class _frmMantenimientoDocumentoPagoCompra : Form
     {
-        public frmMantenimientoDocumentoPagoCompra()
+        public _frmMantenimientoDocumentoPagoCompra()
         {
             InitializeComponent();
         }

@@ -56,6 +56,9 @@ namespace DGP.Entities.Ventas
         public string NumeroReciboPago { get; set; }
         public string ClienteNombre { get { return (Cliente != null) ? Cliente.Nombre : string.Empty; } }
         public string NumeroOperacion { get; set; }
-        
+
+        public int IdPersonal { get { return (this.Personal == null)?0: this.Personal.IdPersonal; } }
+
+        //public int IdPersonal { get { return (this.Personal == null) ? 0 : this.Personal.IdPersonal; } }
     }
 }
