@@ -169,6 +169,9 @@ namespace DGP.Presentation.Compras {
                     BEClienteProveedor oBEClienteProveedor = (BEClienteProveedor)this.cmbClientes.SelectedItem;
                 }
             }
+            
+        
+        
             private void CargarProducto()
             {
                 List<BEProducto> vLista = new List<BEProducto>();

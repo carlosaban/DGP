@@ -44,9 +44,6 @@
             this.bindingNavigatorMoveLastItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.btnAgregar = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSplitButton1 = new System.Windows.Forms.ToolStripSplitButton();
-            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.subirImagenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lblIdDocumento = new System.Windows.Forms.Label();
             this.txtIdDocumento = new System.Windows.Forms.TextBox();
             this.lblTipoDocumento = new System.Windows.Forms.Label();
@@ -88,7 +85,7 @@
             this.cmbTipoDocumento = new System.Windows.Forms.ComboBox();
             this.txtObservacion = new System.Windows.Forms.TextBox();
             this.lblObservacion = new System.Windows.Forms.Label();
-            this.cmbTipoPago = new System.Windows.Forms.ComboBox();
+            this.cmbFormaPago = new System.Windows.Forms.ComboBox();
             this.bEParametroDetalleBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.lblFormaPago = new System.Windows.Forms.Label();
             this.btnEliminar = new System.Windows.Forms.Button();
@@ -111,10 +108,10 @@
             this.bEEntidadBancariaBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.lblCodigoReferencia = new System.Windows.Forms.Label();
             this.txtCodigoReferencia = new System.Windows.Forms.TextBox();
-            this.txtCliente = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.txtCodigoOperacion = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.cmbClientes = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator1)).BeginInit();
             this.bindingNavigator1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bsDocumentos)).BeginInit();
@@ -143,8 +140,7 @@
             this.bindingNavigatorSeparator2,
             this.bindingNavigatorAddNewItem,
             this.bindingNavigatorDeleteItem,
-            this.btnAgregar,
-            this.toolStripSplitButton1});
+            this.btnAgregar});
             this.bindingNavigator1.Location = new System.Drawing.Point(0, 0);
             this.bindingNavigator1.MoveFirstItem = this.bindingNavigatorMoveFirstItem;
             this.bindingNavigator1.MoveLastItem = this.bindingNavigatorMoveLastItem;
@@ -157,6 +153,7 @@
             this.bindingNavigator1.TabStop = true;
             this.bindingNavigator1.Text = "bindingNavigator1";
             this.bindingNavigator1.RefreshItems += new System.EventHandler(this.bindingNavigator1_RefreshItems);
+            this.bindingNavigator1.ItemRemoved += new System.Windows.Forms.ToolStripItemEventHandler(this.bindingNavigator1_ItemRemoved);
             // 
             // bindingNavigatorAddNewItem
             // 
@@ -166,6 +163,7 @@
             this.bindingNavigatorAddNewItem.RightToLeftAutoMirrorImage = true;
             this.bindingNavigatorAddNewItem.Size = new System.Drawing.Size(23, 22);
             this.bindingNavigatorAddNewItem.Text = "Add new";
+            this.bindingNavigatorAddNewItem.Visible = false;
             this.bindingNavigatorAddNewItem.Click += new System.EventHandler(this.bindingNavigatorAddNewItem_Click);
             // 
             // bindingNavigatorCountItem
@@ -257,30 +255,6 @@
             this.btnAgregar.Size = new System.Drawing.Size(23, 22);
             this.btnAgregar.Text = "toolStripButton1";
             this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
-            // 
-            // toolStripSplitButton1
-            // 
-            this.toolStripSplitButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripSplitButton1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem1,
-            this.subirImagenToolStripMenuItem});
-            this.toolStripSplitButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripSplitButton1.Image")));
-            this.toolStripSplitButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripSplitButton1.Name = "toolStripSplitButton1";
-            this.toolStripSplitButton1.Size = new System.Drawing.Size(32, 22);
-            this.toolStripSplitButton1.Text = "toolStripSplitButton1";
-            // 
-            // toolStripMenuItem1
-            // 
-            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(144, 22);
-            this.toolStripMenuItem1.Text = "Ver Imagen";
-            // 
-            // subirImagenToolStripMenuItem
-            // 
-            this.subirImagenToolStripMenuItem.Name = "subirImagenToolStripMenuItem";
-            this.subirImagenToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
-            this.subirImagenToolStripMenuItem.Text = "Subir Imagen";
             // 
             // lblIdDocumento
             // 
@@ -585,6 +559,7 @@
             this.cmbTipoDocumento.Name = "cmbTipoDocumento";
             this.cmbTipoDocumento.Size = new System.Drawing.Size(121, 21);
             this.cmbTipoDocumento.TabIndex = 17;
+            this.cmbTipoDocumento.SelectedIndexChanged += new System.EventHandler(this.cmbTipoDocumento_SelectedIndexChanged);
             // 
             // txtObservacion
             // 
@@ -604,17 +579,18 @@
             this.lblObservacion.TabIndex = 18;
             this.lblObservacion.Text = "Observacion";
             // 
-            // cmbTipoPago
+            // cmbFormaPago
             // 
-            this.cmbTipoPago.DataSource = this.bEParametroDetalleBindingSource;
-            this.cmbTipoPago.DisplayMember = "Texto";
-            this.cmbTipoPago.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbTipoPago.FormattingEnabled = true;
-            this.cmbTipoPago.Location = new System.Drawing.Point(123, 222);
-            this.cmbTipoPago.Name = "cmbTipoPago";
-            this.cmbTipoPago.Size = new System.Drawing.Size(121, 21);
-            this.cmbTipoPago.TabIndex = 21;
-            this.cmbTipoPago.ValueMember = "Valor";
+            this.cmbFormaPago.DataSource = this.bEParametroDetalleBindingSource;
+            this.cmbFormaPago.DisplayMember = "Texto";
+            this.cmbFormaPago.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbFormaPago.FormattingEnabled = true;
+            this.cmbFormaPago.Location = new System.Drawing.Point(123, 222);
+            this.cmbFormaPago.Name = "cmbFormaPago";
+            this.cmbFormaPago.Size = new System.Drawing.Size(121, 21);
+            this.cmbFormaPago.TabIndex = 21;
+            this.cmbFormaPago.ValueMember = "Valor";
+            this.cmbFormaPago.SelectedIndexChanged += new System.EventHandler(this.cmbTipoPago_SelectedIndexChanged);
             // 
             // bEParametroDetalleBindingSource
             // 
@@ -774,14 +750,6 @@
             this.txtCodigoReferencia.Size = new System.Drawing.Size(121, 20);
             this.txtCodigoReferencia.TabIndex = 31;
             // 
-            // txtCliente
-            // 
-            this.txtCliente.Enabled = false;
-            this.txtCliente.Location = new System.Drawing.Point(123, 43);
-            this.txtCliente.Name = "txtCliente";
-            this.txtCliente.Size = new System.Drawing.Size(121, 20);
-            this.txtCliente.TabIndex = 33;
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -807,14 +775,26 @@
             this.label2.TabIndex = 35;
             this.label2.Text = "Codigo Operacion";
             // 
+            // cmbClientes
+            // 
+            this.cmbClientes.FormattingEnabled = true;
+            this.cmbClientes.Location = new System.Drawing.Point(123, 46);
+            this.cmbClientes.Name = "cmbClientes";
+            this.cmbClientes.Size = new System.Drawing.Size(124, 21);
+            this.cmbClientes.TabIndex = 36;
+            this.cmbClientes.SelectedIndexChanged += new System.EventHandler(this.cmbClientes_SelectedIndexChanged);
+            this.cmbClientes.Leave += new System.EventHandler(this.cmbClientes_Leave);
+            this.cmbClientes.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cmbClientes_KeyPress);
+            this.cmbClientes.KeyUp += new System.Windows.Forms.KeyEventHandler(this.cmbClientes_KeyUp);
+            // 
             // frmDocumentoPago
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(968, 462);
+            this.Controls.Add(this.cmbClientes);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtCodigoOperacion);
-            this.Controls.Add(this.txtCliente);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtCodigoReferencia);
             this.Controls.Add(this.lblCodigoReferencia);
@@ -824,7 +804,7 @@
             this.Controls.Add(this.lblPersonal);
             this.Controls.Add(this.btnActualizar);
             this.Controls.Add(this.btnEliminar);
-            this.Controls.Add(this.cmbTipoPago);
+            this.Controls.Add(this.cmbFormaPago);
             this.Controls.Add(this.lblFormaPago);
             this.Controls.Add(this.txtObservacion);
             this.Controls.Add(this.lblObservacion);
@@ -896,7 +876,7 @@
         private System.Windows.Forms.ComboBox cmbTipoDocumento;
         private System.Windows.Forms.TextBox txtObservacion;
         private System.Windows.Forms.Label lblObservacion;
-        private System.Windows.Forms.ComboBox cmbTipoPago;
+        private System.Windows.Forms.ComboBox cmbFormaPago;
         private System.Windows.Forms.Label lblFormaPago;
         private System.Windows.Forms.Button btnEliminar;
         private System.Windows.Forms.Button btnActualizar;
@@ -936,12 +916,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn cajaDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewCheckBoxColumn cancelarVentaDataGridViewCheckBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn idDocumentoDataGridViewTextBoxColumn;
-        private System.Windows.Forms.ToolStripSplitButton toolStripSplitButton1;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem subirImagenToolStripMenuItem;
-        private System.Windows.Forms.TextBox txtCliente;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtCodigoOperacion;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ComboBox cmbClientes;
     }
 }

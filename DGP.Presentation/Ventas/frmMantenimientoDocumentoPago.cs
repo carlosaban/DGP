@@ -139,6 +139,8 @@ namespace DGP.Presentation.Ventas
 
         private void dgvDocumentoPago_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
+            this.bsDocumentosPagoVenta.EndEdit();
+
             BEClienteProveedor cliente = new BEClienteProveedor();
             cliente.IdCliente = Convert.ToInt32(cmbClientes.SelectedValue);
             cliente.Nombre = cmbClientes.Text;
@@ -197,6 +199,7 @@ namespace DGP.Presentation.Ventas
         private void dgvDocumentoPago_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             this.dgvDocumentoPago.EndEdit();
+
         }
 
     }

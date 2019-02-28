@@ -59,6 +59,6 @@ namespace DGP.Entities.Ventas
 
         public int IdPersonal { get { return (this.Personal == null)?0: this.Personal.IdPersonal; } }
 
-        //public int IdPersonal { get { return (this.Personal == null) ? 0 : this.Personal.IdPersonal; } }
+        public int IdCliente { get { return (this.Cliente == null) ? 0 : this.Cliente.IdCliente; } }
     }
 }

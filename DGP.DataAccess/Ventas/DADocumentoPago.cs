@@ -209,6 +209,8 @@ namespace DGP.DataAccess.Ventas
                 
 
                 object vResultado = oDatabaseHelper.ExecuteScalar("InsertarDocumento", CommandType.StoredProcedure, (pDatabaseHelper == null) ? DBHelper.ConnectionState.CloseOnExit : DBHelper.ConnectionState.KeepOpen);
+
+                beDocumento.IdDocumento = (vResultado == null)?0 : int.Parse (vResultado.ToString());
                 
                 return true;
             }
