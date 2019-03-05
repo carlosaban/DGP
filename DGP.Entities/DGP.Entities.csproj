@@ -68,11 +68,8 @@
     <Compile Include="Compras\BEAmortizacionCompra.cs" />
     <Compile Include="Compras\BECompra.cs" />
     <Compile Include="Compras\BECompraFilter.cs" />
-    <Compile Include="Compras\BEDocumentoPagoCompra.cs" />
+    <Compile Include="Compras\BEDocumentoCompra.cs" />
     <Compile Include="Compras\BELineaCompra.cs" />
-    <Compile Include="Compras\eCompraEsSobrante.cs" />
-    <Compile Include="Compras\VistaAmortizacionCompra.cs" />
-    <Compile Include="Compras\VistaCompra.cs" />
     <Compile Include="DataSet\DSEntitiesCliente.cs">
       <DependentUpon>DSEntitiesCliente.xsd</DependentUpon>
       <SubType>Component</SubType>

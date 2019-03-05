@@ -34,7 +34,6 @@
             this.tsmiDetalleVenta = new System.Windows.Forms.ToolStripMenuItem();
             this.mantenimientoDeDocPagosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiAmortizacion = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiPagoAdelanto = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiDevoluciones = new System.Windows.Forms.ToolStripMenuItem();
             this.actPrecioVentaMasivoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mantenimientoDeClienteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -53,9 +52,9 @@
             this.listaPreciosProveedoresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.estadoDeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reporteSaldosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.reporteConsolidadoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmSalir = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiSalirSistema = new System.Windows.Forms.ToolStripMenuItem();
-            this.reporteConsolidadoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.msMenuPrincipal.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -79,7 +78,6 @@
             this.tsmiDetalleVenta,
             this.mantenimientoDeDocPagosToolStripMenuItem,
             this.tsmiAmortizacion,
-            this.tsmiPagoAdelanto,
             this.tsmiDevoluciones,
             this.actPrecioVentaMasivoToolStripMenuItem,
             this.mantenimientoDeClienteToolStripMenuItem,
@@ -116,14 +114,6 @@
             this.tsmiAmortizacion.Size = new System.Drawing.Size(267, 22);
             this.tsmiAmortizacion.Text = "Amortización";
             this.tsmiAmortizacion.Click += new System.EventHandler(this.tsmiPagoCuenta_Click);
-            // 
-            // tsmiPagoAdelanto
-            // 
-            this.tsmiPagoAdelanto.Name = "tsmiPagoAdelanto";
-            this.tsmiPagoAdelanto.Size = new System.Drawing.Size(267, 22);
-            this.tsmiPagoAdelanto.Text = "Pago Adelanto";
-            this.tsmiPagoAdelanto.Visible = false;
-            this.tsmiPagoAdelanto.Click += new System.EventHandler(this.tsmiPagoAdelanto_Click);
             // 
             // tsmiDevoluciones
             // 
@@ -264,6 +254,13 @@
             this.reporteSaldosToolStripMenuItem.Text = "Reporte de Saldos";
             this.reporteSaldosToolStripMenuItem.Click += new System.EventHandler(this.reporteSaldosToolStripMenuItem_Click);
             // 
+            // reporteConsolidadoToolStripMenuItem
+            // 
+            this.reporteConsolidadoToolStripMenuItem.Name = "reporteConsolidadoToolStripMenuItem";
+            this.reporteConsolidadoToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
+            this.reporteConsolidadoToolStripMenuItem.Text = "Reporte consolidado";
+            this.reporteConsolidadoToolStripMenuItem.Click += new System.EventHandler(this.reporteConsolidadoToolStripMenuItem_Click);
+            // 
             // tsmSalir
             // 
             this.tsmSalir.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -277,13 +274,6 @@
             this.tsmiSalirSistema.Name = "tsmiSalirSistema";
             this.tsmiSalirSistema.Size = new System.Drawing.Size(159, 22);
             this.tsmiSalirSistema.Text = "Salir del Sistema";
-            // 
-            // reporteConsolidadoToolStripMenuItem
-            // 
-            this.reporteConsolidadoToolStripMenuItem.Name = "reporteConsolidadoToolStripMenuItem";
-            this.reporteConsolidadoToolStripMenuItem.Size = new System.Drawing.Size(206, 22);
-            this.reporteConsolidadoToolStripMenuItem.Text = "Reporte consolidado";
-            this.reporteConsolidadoToolStripMenuItem.Click += new System.EventHandler(this.reporteConsolidadoToolStripMenuItem_Click);
             // 
             // frmMDIPrincipal
             // 
@@ -314,7 +304,6 @@
         private System.Windows.Forms.ToolStripMenuItem tstmiVentas_TableroElectronico;
         private System.Windows.Forms.ToolStripMenuItem tsmiDevoluciones;
         private System.Windows.Forms.ToolStripMenuItem tsmiAmortizacion;
-        private System.Windows.Forms.ToolStripMenuItem tsmiPagoAdelanto;
         private System.Windows.Forms.ToolStripMenuItem tsmiDetalleVenta;
         private System.Windows.Forms.ToolStripMenuItem reportesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem tsmiReporteCobranza;

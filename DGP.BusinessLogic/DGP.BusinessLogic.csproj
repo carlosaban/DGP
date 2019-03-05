@@ -48,6 +48,7 @@
     <Compile Include="BLProductoCliente.cs" />
     <Compile Include="BLZona.cs" />
     <Compile Include="Compra\BLCompra.cs" />
+    <Compile Include="Compra\BLDocumentoPagoCompra.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Reporte\ReporteWebGuia.cs" />
     <Compile Include="Seguridad\BLPerfil.cs" />

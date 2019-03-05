@@ -667,6 +667,7 @@ namespace DGP.DataAccess.Ventas {
                 
                 DataSet ds = oDatabaseHelper.ExecuteDataSet("DGP_Reporte_Saldos", CommandType.StoredProcedure);
 
+                
                 DSReporteCuentasPorCobrar.DTSaldos.Merge(ds.Tables[0], true, MissingSchemaAction.Ignore);
                 return DSReporteCuentasPorCobrar;
             }

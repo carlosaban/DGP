@@ -91,29 +91,23 @@
     <Compile Include="Compras\frmDetalleCompra.Designer.cs">
       <DependentUpon>frmDetalleCompra.cs</DependentUpon>
     </Compile>
+    <Compile Include="Compras\frmMantenimientoDocumentoPagoDetalle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Compras\frmMantenimientoDocumentoPagoDetalle.Designer.cs">
+      <DependentUpon>frmMantenimientoDocumentoPagoDetalle.cs</DependentUpon>
+    </Compile>
     <Compile Include="Compras\frmMantenimientoComprasV2.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Compras\frmMantenimientoComprasV2.Designer.cs">
       <DependentUpon>frmMantenimientoComprasV2.cs</DependentUpon>
     </Compile>
-    <Compile Include="Compras\frmAplicarPreciosGrupo.cs">
+    <Compile Include="Compras\frmMantenimientoDocumentoPago.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Compras\frmAplicarPreciosGrupo.Designer.cs">
-      <DependentUpon>frmAplicarPreciosGrupo.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Compras\frmMantenimientoCompras.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Compras\frmMantenimientoCompras.Designer.cs">
-      <DependentUpon>frmMantenimientoCompras.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Compras\frmMantenimientoDocumentoPagoCompra.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Compras\frmMantenimientoDocumentoPagoCompra.Designer.cs">
-      <DependentUpon>frmMantenimientoDocumentoPagoCompra.cs</DependentUpon>
+    <Compile Include="Compras\frmMantenimientoDocumentoPago.Designer.cs">
+      <DependentUpon>frmMantenimientoDocumentoPago.cs</DependentUpon>
     </Compile>
     <Compile Include="frmLogin.cs">
       <SubType>Form</SubType>
@@ -133,20 +127,16 @@
       <DependentUpon>frmDetalleCompra.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Compras\frmMantenimientoDocumentoPagoDetalle.resx">
+      <DependentUpon>frmMantenimientoDocumentoPagoDetalle.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Compras\frmMantenimientoComprasV2.resx">
       <DependentUpon>frmMantenimientoComprasV2.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Compras\frmAplicarPreciosGrupo.resx">
-      <DependentUpon>frmAplicarPreciosGrupo.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Compras\frmMantenimientoCompras.resx">
-      <DependentUpon>frmMantenimientoCompras.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Compras\frmMantenimientoDocumentoPagoCompra.resx">
-      <DependentUpon>frmMantenimientoDocumentoPagoCompra.cs</DependentUpon>
+    <EmbeddedResource Include="Compras\frmMantenimientoDocumentoPago.resx">
+      <DependentUpon>frmMantenimientoDocumentoPago.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="frmLogin.resx">
@@ -238,10 +228,6 @@
       <DependentUpon>frmDocumentoPago.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Ventas\_frmDocumentoPagoCompra.resx">
-      <DependentUpon>_frmDocumentoPagoCompra.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
     <EmbeddedResource Include="Ventas\frmDocumentoPagoDetalle.resx">
       <DependentUpon>frmDocumentoPagoDetalle.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -254,16 +240,8 @@
       <DependentUpon>frmMantenimientoDocumentoPago.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Ventas\_frmMantenimientoDocumentoPagoCompra.resx">
-      <DependentUpon>_frmMantenimientoDocumentoPagoCompra.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
     <EmbeddedResource Include="Ventas\frmMantenimientoVentas.resx">
       <DependentUpon>frmMantenimientoVentas.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Ventas\_frmPagoAdelanto.resx">
-      <DependentUpon>_frmPagoAdelanto.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Ventas\frmProductoCliente.resx">
@@ -422,12 +400,6 @@
     <Compile Include="Ventas\frmDocumentoPago.Designer.cs">
       <DependentUpon>frmDocumentoPago.cs</DependentUpon>
     </Compile>
-    <Compile Include="Ventas\_frmDocumentoPagoCompra.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Ventas\_frmDocumentoPagoCompra.Designer.cs">
-      <DependentUpon>_frmDocumentoPagoCompra.cs</DependentUpon>
-    </Compile>
     <Compile Include="Ventas\frmDocumentoPagoDetalle.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -446,23 +418,11 @@
     <Compile Include="Ventas\frmMantenimientoDocumentoPago.Designer.cs">
       <DependentUpon>frmMantenimientoDocumentoPago.cs</DependentUpon>
     </Compile>
-    <Compile Include="Ventas\_frmMantenimientoDocumentoPagoCompra.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Ventas\_frmMantenimientoDocumentoPagoCompra.Designer.cs">
-      <DependentUpon>_frmMantenimientoDocumentoPagoCompra.cs</DependentUpon>
-    </Compile>
     <Compile Include="Ventas\frmMantenimientoVentas.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Ventas\frmMantenimientoVentas.Designer.cs">
       <DependentUpon>frmMantenimientoVentas.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Ventas\_frmPagoAdelanto.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Ventas\_frmPagoAdelanto.Designer.cs">
-      <DependentUpon>_frmPagoAdelanto.cs</DependentUpon>
     </Compile>
     <Compile Include="Ventas\frmProductoCliente.cs">
       <SubType>Form</SubType>

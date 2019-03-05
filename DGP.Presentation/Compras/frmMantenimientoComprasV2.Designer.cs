@@ -76,7 +76,7 @@
             this.dataGridViewTextBoxColumn21 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn22 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Seleccionado = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.idCompraDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IdCompra = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Fecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.proveedorDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.productoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -167,7 +167,7 @@
             this.dgrvCompras.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgrvCompras.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Seleccionado,
-            this.idCompraDataGridViewTextBoxColumn,
+            this.IdCompra,
             this.Fecha,
             this.proveedorDataGridViewTextBoxColumn,
             this.productoDataGridViewTextBoxColumn,
@@ -561,12 +561,12 @@
             this.Seleccionado.HeaderText = "Seleccionado";
             this.Seleccionado.Name = "Seleccionado";
             // 
-            // idCompraDataGridViewTextBoxColumn
+            // IdCompra
             // 
-            this.idCompraDataGridViewTextBoxColumn.DataPropertyName = "IdCompra";
-            this.idCompraDataGridViewTextBoxColumn.HeaderText = "IdCompra";
-            this.idCompraDataGridViewTextBoxColumn.Name = "idCompraDataGridViewTextBoxColumn";
-            this.idCompraDataGridViewTextBoxColumn.ReadOnly = true;
+            this.IdCompra.DataPropertyName = "IdCompra";
+            this.IdCompra.HeaderText = "IdCompra";
+            this.IdCompra.Name = "IdCompra";
+            this.IdCompra.ReadOnly = true;
             // 
             // Fecha
             // 
@@ -860,7 +860,7 @@
         private System.Windows.Forms.ToolStripButton tsbEliminar;
         private System.Windows.Forms.BindingSource bdCompras;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Seleccionado;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idCompraDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IdCompra;
         private System.Windows.Forms.DataGridViewTextBoxColumn Fecha;
         private System.Windows.Forms.DataGridViewTextBoxColumn proveedorDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn productoDataGridViewTextBoxColumn;

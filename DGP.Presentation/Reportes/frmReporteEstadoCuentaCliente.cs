@@ -21,6 +21,15 @@ namespace DGP.Presentation.Reportes
         public frmReporteEstadoCuentaCliente()
         {
             InitializeComponent();
+            this.dtpFechaInicial.Value = DateTime.Now.Date.AddDays(-7);
+        }
+        public frmReporteEstadoCuentaCliente(BEClienteProveedor cli , int days )
+        {
+            InitializeComponent();
+            this.lbClientes.Items.Add(cli);
+            this.dtpFechaInicial.Value = DateTime.Now.Date.AddDays(-7);
+            btnRefresh_Click(null, null);
+
         }
 
 
@@ -28,8 +37,7 @@ namespace DGP.Presentation.Reportes
         {
             try
             {
-                //lbClientes.Items.to
-
+            
                 bool canInfoCompra = VariablesSession.Privilegios.Find(x => x.IdPrivilegio == DGP.Entities.Seguridad.BEPrivilegio.Visualizar_Precios_compra)!= null;
                 DSRptClientes oDSRptClientes = new BLVenta().ReporteEstadoCuentaCliente(dtpFechaInicial.Value.Date, getClientesList(this.lbClientes), canInfoCompra);
                 
@@ -145,8 +153,7 @@ namespace DGP.Presentation.Reportes
              {
                  BEClienteProveedor oBEClienteProveedor= (BEClienteProveedor)this.cmbClientes.SelectedItem;
                  this.lbClientes.Items.Add(oBEClienteProveedor);
-                 //MostrarMensaje(oBEClienteProveedor.IdCliente.ToString() + oBEClienteProveedor.Nombre, MessageBoxIcon.Information);
-                
+                 
              }
          }
 
@@ -157,7 +164,14 @@ namespace DGP.Presentation.Reportes
 
          private void frmReporteEstadoCuentaCliente_Load(object sender, EventArgs e)
          {
-             this.dtpFechaInicial.Value = new DateTime (2017,1,1);
+
+             
+
+         }
+
+         private void cmbClientes_SelectedIndexChanged(object sender, EventArgs e)
+         {
+
          }
 
     }
