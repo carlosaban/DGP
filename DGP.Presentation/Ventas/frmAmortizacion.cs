@@ -928,6 +928,19 @@ namespace DGP.Presentation.Ventas {
 
         }
 
+        private void btnEstadoCuenta_Click(object sender, EventArgs e)
+        {
+            BEClienteProveedor cliente = (BEClienteProveedor)this.cmbClientes.SelectedItem;
+            if (cliente != null)
+            {
+                Reportes.frmReporteEstadoCuentaCliente rpt = new DGP.Presentation.Reportes.frmReporteEstadoCuentaCliente(cliente, -4);
+                rpt.MdiParent = this.ParentForm;
+                rpt.Show();           
+            
+            }
+            
+        }
+
 
 
         

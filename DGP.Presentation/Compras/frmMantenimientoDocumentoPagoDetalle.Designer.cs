@@ -44,6 +44,7 @@
             this.bindingNavigatorMoveLastItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.btnAgregar = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.lblIdDocumento = new System.Windows.Forms.Label();
             this.txtIdDocumento = new System.Windows.Forms.TextBox();
             this.lblTipoDocumento = new System.Windows.Forms.Label();
@@ -140,7 +141,8 @@
             this.bindingNavigatorSeparator2,
             this.bindingNavigatorAddNewItem,
             this.bindingNavigatorDeleteItem,
-            this.btnAgregar});
+            this.btnAgregar,
+            this.toolStripButton1});
             this.bindingNavigator1.Location = new System.Drawing.Point(0, 0);
             this.bindingNavigator1.MoveFirstItem = this.bindingNavigatorMoveFirstItem;
             this.bindingNavigator1.MoveLastItem = this.bindingNavigatorMoveLastItem;
@@ -181,6 +183,7 @@
             this.bindingNavigatorDeleteItem.RightToLeftAutoMirrorImage = true;
             this.bindingNavigatorDeleteItem.Size = new System.Drawing.Size(23, 22);
             this.bindingNavigatorDeleteItem.Text = "Delete";
+            this.bindingNavigatorDeleteItem.Visible = false;
             this.bindingNavigatorDeleteItem.Click += new System.EventHandler(this.bindingNavigatorDeleteItem_Click);
             // 
             // bindingNavigatorMoveFirstItem
@@ -255,6 +258,16 @@
             this.btnAgregar.Size = new System.Drawing.Size(23, 22);
             this.btnAgregar.Text = "toolStripButton1";
             this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
+            // 
+            // toolStripButton1
+            // 
+            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton1.Image = global::DGP.Presentation.Properties.Resources.delete;
+            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton1.Name = "toolStripButton1";
+            this.toolStripButton1.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButton1.Text = "toolStripButton1";
+            this.toolStripButton1.Click += new System.EventHandler(this.bindingNavigatorDeleteItem_Click);
             // 
             // lblIdDocumento
             // 
@@ -591,6 +604,7 @@
             this.cmbFormaPago.TabIndex = 21;
             this.cmbFormaPago.ValueMember = "Valor";
             this.cmbFormaPago.SelectedIndexChanged += new System.EventHandler(this.cmbTipoPago_SelectedIndexChanged);
+            this.cmbFormaPago.BindingContextChanged += new System.EventHandler(this.cmbFormaPago_BindingContextChanged);
             // 
             // bEParametroDetalleBindingSource
             // 
@@ -787,7 +801,7 @@
             this.cmbClientes.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cmbClientes_KeyPress);
             this.cmbClientes.KeyUp += new System.Windows.Forms.KeyEventHandler(this.cmbClientes_KeyUp);
             // 
-            // frmDocumentoPago
+            // frmMantenimientoDocumentoPagoDetalle
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -819,7 +833,7 @@
             this.Controls.Add(this.txtIdDocumento);
             this.Controls.Add(this.lblIdDocumento);
             this.Controls.Add(this.bindingNavigator1);
-            this.Name = "frmDocumentoPago";
+            this.Name = "frmMantenimientoDocumentoPagoDetalle";
             this.Text = "frmDocumentoPago";
             this.Load += new System.EventHandler(this.frmDocumentoPago_Load);
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator1)).EndInit();
@@ -920,5 +934,6 @@
         private System.Windows.Forms.TextBox txtCodigoOperacion;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox cmbClientes;
+        private System.Windows.Forms.ToolStripButton toolStripButton1;
     }
 }

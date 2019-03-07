@@ -178,12 +178,22 @@ namespace DGP.Presentation.Ventas
 
         private void tsbAgregar_Click(object sender, EventArgs e)
         {
-            BindingSource bs = new BindingSource();
-            BEClienteProveedor cliente = new BEClienteProveedor();
-            cliente.IdCliente = Convert.ToInt32(cmbClientes.SelectedValue);
-            cliente.Nombre = cmbClientes.SelectedText;
-            frmDocumentoPago from = new frmDocumentoPago(bs, "insertar", cliente);
-            from.Show();
+            try
+            {
+                BindingSource bs = new BindingSource();
+                BEClienteProveedor cliente = new BEClienteProveedor();
+                cliente.IdCliente = Convert.ToInt32(cmbClientes.SelectedValue);
+                cliente.Nombre = cmbClientes.SelectedText;
+                frmDocumentoPago from = new frmDocumentoPago(bs, "insertar", cliente);
+                from.Show();
+
+            }
+            catch (Exception ex)
+            {
+                
+                throw;
+            }
+            
         }
 
         private void dgvDocumentoPago_CellEndEdit(object sender, DataGridViewCellEventArgs e)

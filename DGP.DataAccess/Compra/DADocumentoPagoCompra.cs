@@ -30,12 +30,12 @@ namespace DGP.DataAccess.Compra
                 oDatabaseHelper.AddParameter("@FechaInicio", FechaInicio);
                 oDatabaseHelper.AddParameter("@FechaFinal", FechaFinal);
                 oDatabaseHelper.AddParameter("@IdCliente", (codCliProv == 0) ? DBNull.Value : (object)codCliProv);
-                oIDataReader = oDatabaseHelper.ExecuteReader("ListarDocumento", CommandType.StoredProcedure);
+                oIDataReader = oDatabaseHelper.ExecuteReader("ListarDocumentoCompra", CommandType.StoredProcedure);
                 while (oIDataReader.Read())
                 {
                     vLista.Add(new BEDocumentoCompra()
                     {
-                        IdDocumentoCompra = (int)oIDataReader["IdDocumento"],
+                        IdDocumentoCompra = (int)oIDataReader["IdDocumentoCompra"],
                         Fecha = Convert.ToDateTime(oIDataReader["Fecha"]),
                         IdTipoDocumento = oIDataReader["IdTipoDocumento"].ToString(),
                         Monto = decimal.Parse(oIDataReader["Monto"].ToString()),
@@ -100,10 +100,10 @@ namespace DGP.DataAccess.Compra
                 oDatabaseHelper.AddParameter("@NumeroRecibo", (beDocumentoCompra.NumeroReciboPago == string.Empty) ? DBNull.Value : (object)beDocumentoCompra.NumeroReciboPago);
                 oDatabaseHelper.AddParameter("@IdBanco", (beDocumentoCompra.IdBanco == string.Empty) ? DBNull.Value : (object)beDocumentoCompra.IdBanco);
                 oDatabaseHelper.AddParameter("@NumeroOperacion", (beDocumentoCompra.NumeroOperacion == string.Empty) ? DBNull.Value : (object)beDocumentoCompra.NumeroOperacion);
-                
-                
 
-                object vResultado = oDatabaseHelper.ExecuteScalar("InsertarDocumento", CommandType.StoredProcedure, (pDatabaseHelper == null) ? DBHelper.ConnectionState.CloseOnExit : DBHelper.ConnectionState.KeepOpen);
+
+
+                object vResultado = oDatabaseHelper.ExecuteScalar("InsertarDocumentoCompra", CommandType.StoredProcedure, (pDatabaseHelper == null) ? DBHelper.ConnectionState.CloseOnExit : DBHelper.ConnectionState.KeepOpen);
 
                 beDocumentoCompra.IdDocumentoCompra = (vResultado == null)?0 : int.Parse (vResultado.ToString());
                 
@@ -137,7 +137,7 @@ namespace DGP.DataAccess.Compra
             try
             {
                 oDatabaseHelper.ClearParameter();
-                oDatabaseHelper.AddParameter("@IdDocumento", beDocumentoCompra.IdDocumentoCompra);
+                oDatabaseHelper.AddParameter("@IdDocumentoCompra", beDocumentoCompra.IdDocumentoCompra);
                 oDatabaseHelper.AddParameter("@IdTipoDocumento", beDocumentoCompra.IdTipoDocumento);
                 oDatabaseHelper.AddParameter("@Fecha", beDocumentoCompra.Fecha.Date);
                 oDatabaseHelper.AddParameter("@Monto", beDocumentoCompra.Monto);
@@ -155,8 +155,8 @@ namespace DGP.DataAccess.Compra
                 oDatabaseHelper.AddParameter("@observacion", beDocumentoCompra.Observacion);
 
                 oDatabaseHelper.AddParameter("@idPersonalAuditoria", beDocumentoCompra.BEUsuarioLogin.IdPersonal);
-                
-                oDatabaseHelper.ExecuteScalar("ActualizarDocumento", CommandType.StoredProcedure, (pDatabaseHelper == null) ? DBHelper.ConnectionState.CloseOnExit : DBHelper.ConnectionState.KeepOpen);
+
+                oDatabaseHelper.ExecuteScalar("ActualizarDocumentoCompra", CommandType.StoredProcedure, (pDatabaseHelper == null) ? DBHelper.ConnectionState.CloseOnExit : DBHelper.ConnectionState.KeepOpen);
                 
                 return true;
             }
@@ -179,11 +179,11 @@ namespace DGP.DataAccess.Compra
             try
             {
                 oDatabaseHelper.ClearParameter();
-                oDatabaseHelper.AddParameter("@IdDocumento", beDocumentoCompra.IdDocumentoCompra);
+                oDatabaseHelper.AddParameter("@IdDocumentoCompra", beDocumentoCompra.IdDocumentoCompra);
                 oDatabaseHelper.AddParameter("@Usuario", beDocumentoCompra.BEUsuarioLogin.IdPersonal);
                 oDatabaseHelper.AddParameter("@observacion", beDocumentoCompra.Observacion);
 
-                oDatabaseHelper.ExecuteScalar("EliminarDocumento", CommandType.StoredProcedure, DBHelper.ConnectionState.CloseOnExit);
+                oDatabaseHelper.ExecuteScalar("EliminarDocumentoCompra", CommandType.StoredProcedure, DBHelper.ConnectionState.CloseOnExit);
                 
                 return true;
             }

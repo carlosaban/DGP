@@ -7,9 +7,10 @@ using System.Text;
 using System.Windows.Forms;
 
 using DGP.Entities;
-using DGP.Entities.Ventas;
+//using DGP.Entities.Ventas;
 using DGP.BusinessLogic;
-using DGP.BusinessLogic.Ventas;
+//using DGP.BusinessLogic.Ventas;
+using DGP.BusinessLogic.Compra;
 using DGP.Entities.Seguridad;
 using DGP.BusinessLogic.Seguridad;
 using DGP.Entities.Compras;
@@ -19,13 +20,10 @@ namespace DGP.Presentation.Compras
     public partial class frmMantenimientoDocumentoPagoDetalle : Form
     {
 
-        //public static decimal montoAplicar;
-       // String accion;
-       // BEClienteProveedor Cliente;
-        
         public frmMantenimientoDocumentoPagoDetalle(BindingSource bs)
         {
             InitializeComponent();
+
 
             CargarTipoDocumento();
             CargarUsuarios();
@@ -34,36 +32,23 @@ namespace DGP.Presentation.Compras
             
             CargarEntidadBancaria();
 
-            //if (proveedor !=null ) cargarCliente(proveedor);
-
 
             this.bindingNavigator1.BindingSource = bs;
             this.bsDocumentos = bs;
-           // this.accion = accion;
-           // this.Cliente = cliente;
 
-            //this.cmbClientes.Enabled = (proveedor ==null);
+
+            BEDocumentoCompra documentoPago= (BEDocumentoCompra)this.bsDocumentos.Current;
+            if (documentoPago != null)
+            {
+                this.cargarCliente(new BEClienteProveedor() { IdCliente = documentoPago.IdCliente });
+                this.cmbClientes.Enabled = false;
+
+            }
+
+
+            
+         
         }
-        //public frmMantenimientoDocumentoPagoDetalle(BindingSource bs, string accion, BEClienteProveedor cliente)
-        //{
-        //    InitializeComponent();
-            
-        //    CargarTipoDocumento();
-        //    CargarUsuarios();
-
-        //    //BEParametroDetalle parametro = (BEParametroDetalle)this.cmbTipoPago.SelectedItem;
-        //    CargarFormaPago((BEParametroDetalle)this.cmbTipoDocumento.SelectedItem);
-        //    CargarEntidadBancaria();
-
-        //    cargarCliente(cliente);
-
-        //    this.bindingNavigator1.BindingSource = bs;
-        //    this.bsDocumentos = bs;
-            
-        //    this.accion = accion;
-        //    this.Cliente = cliente;
-        //}
-
         private void cargarCliente(BEClienteProveedor cliente)
         {
 
@@ -84,8 +69,12 @@ namespace DGP.Presentation.Compras
 
                //if (accion.Equals("actualizar)
                //{
-                txtIdDocumento.DataBindings.Add("Text", bsDocumentos, "IdDocumento");
+                this.txtIdDocumento.DataBindings.Clear();
+                txtIdDocumento.DataBindings.Add("Text", bsDocumentos, "IdDocumentoCompra");
+
+                this.dtFecha.DataBindings.Clear();
                 dtFecha.DataBindings.Add("Text", bsDocumentos, "Fecha");
+                this.numMonto.DataBindings.Clear();
                 numMonto.DataBindings.Add("Text", bsDocumentos, "Monto");
 
                 this.cmbClientes.DataBindings.Clear();
@@ -107,7 +96,9 @@ namespace DGP.Presentation.Compras
                 txtCodigoOperacion.DataBindings.Add("Text", bsDocumentos, "NumeroOperacion");
                 txtCodigoReferencia.DataBindings.Add("Text", bsDocumentos, "NumeroReciboPago");
                 txtObservacion.DataBindings.Add("Text", bsDocumentos, "Observacion");
-                
+
+
+
 
                 listarDetalle();
 
@@ -122,10 +113,12 @@ namespace DGP.Presentation.Compras
 
         private void listarDetalle()
         {
-            BLDocumentoPago BLDP = new BLDocumentoPago();
-            int idDocumento = Convert.ToInt32(txtIdDocumento.Text);
-            this.bsDetalle.DataSource = BLDP.ListarDetalle(idDocumento);
-            this.dgvDetalle.DataSource = this.bsDetalle;
+            BLDocumentoPagoCompra BLDP = new BLDocumentoPagoCompra();
+            
+            
+           // int idDocumento = txtIdDocumento.Text==string.Empty ? 0 :  Convert.ToInt32(txtIdDocumento.Text );
+           // this.bsDetalle.DataSource = BLDP.ListarDetalle(idDocumento);
+           // this.dgvDetalle.DataSource = this.bsDetalle;
         }
 
         private void btnAgregar_Click(object sender, EventArgs e)
@@ -141,7 +134,8 @@ namespace DGP.Presentation.Compras
             {
 
                 MostrarMensaje("Ocurrio un error:" + ex.Message , MessageBoxIcon.Error);
-            }        }
+            }        
+        }
 
 
         private void Actualizar()
@@ -150,8 +144,8 @@ namespace DGP.Presentation.Compras
 
             if (string.IsNullOrEmpty(this.txtIdDocumento.Text))
             {
-                BLDocumentoPago BLDP = new BLDocumentoPago();
-                BEDocumento documento = new BEDocumento();
+                DGP.BusinessLogic.Compra.BLDocumentoPagoCompra BLDP = new DGP.BusinessLogic.Compra.BLDocumentoPagoCompra();
+                DGP.Entities.Compras.BEDocumentoCompra documento = new BEDocumentoCompra();
 
                 documento.IdTipoDocumento = cmbTipoDocumento.SelectedValue.ToString();
                 documento.Fecha = dtFecha.Value.Date;
@@ -169,7 +163,7 @@ namespace DGP.Presentation.Compras
                 this.bsDetalle.EndEdit();
 
                 BLDP.InsertarCabecera(documento);
-                this.txtIdDocumento.Text = (documento.IdDocumento == 0) ? string.Empty : documento.IdDocumento.ToString();
+                this.txtIdDocumento.Text = (documento.IdDocumentoCompra == 0) ? string.Empty : documento.IdDocumentoCompra.ToString();
 
 
 
@@ -178,9 +172,9 @@ namespace DGP.Presentation.Compras
             }
             else
             {
-                BLDocumentoPago BLDP = new BLDocumentoPago();
-                BEDocumento documento = new BEDocumento();
-                documento.IdDocumento = Convert.ToInt32(txtIdDocumento.Text);
+                BLDocumentoPagoCompra BLDP = new BLDocumentoPagoCompra();
+                BEDocumentoCompra documento = new BEDocumentoCompra();
+                documento.IdDocumentoCompra = Convert.ToInt32(txtIdDocumento.Text);
                 documento.IdTipoDocumento = cmbTipoDocumento.SelectedValue.ToString();
                 documento.Fecha = dtFecha.Value.Date;
                 documento.Monto = numMonto.Value;
@@ -246,11 +240,11 @@ namespace DGP.Presentation.Compras
         {
             if (!txtIdDocumento.Text.Equals(""))
             {
-                List<BEAmortizacionVenta> vLista = ObtenerAmortizaciones();
+                List<BEAmortizacionCompra> vLista = ObtenerAmortizaciones();
 
                 decimal sumMonto = 0;
 
-                foreach (BEAmortizacionVenta amort in vLista)
+                foreach (BEAmortizacionCompra amort in vLista)
                 {
                     sumMonto += amort.Monto;                
                 }
@@ -279,11 +273,11 @@ namespace DGP.Presentation.Compras
                 if (!txtIdDocumento.Text.Equals(""))
                 {
 
-                    List<BEAmortizacionVenta> vLista = ObtenerAmortizaciones();
+                    List<BEAmortizacionCompra> vLista = ObtenerAmortizaciones();
 
                     decimal sumMonto = 0;
 
-                    foreach (BEAmortizacionVenta amort in vLista)
+                    foreach (BEAmortizacionCompra amort in vLista)
                     {
                         sumMonto += amort.Monto;
 
@@ -291,9 +285,9 @@ namespace DGP.Presentation.Compras
                     }
                     if (sumMonto <= numMonto.Value)
                     {
-                        foreach (BEAmortizacionVenta amort in vLista)
+                        foreach (BEAmortizacionCompra amort in vLista)
                         {
-                            bool bOk = new BLDocumentoPago().ActualizarAmortizacionVenta(amort);
+                            //bool bOk = new BLDocumentoPagoCompra().ActualizarAmortizacionVenta(amort);
 
 
                         }
@@ -317,22 +311,22 @@ namespace DGP.Presentation.Compras
             }
         }
 
-        private List<BEAmortizacionVenta> ObtenerAmortizaciones()
+        private List<BEAmortizacionCompra> ObtenerAmortizaciones()
         {
-            List<BEAmortizacionVenta> vLista = new List<BEAmortizacionVenta>();
-            BEAmortizacionVenta oBEAmortizacionVenta = null;
+            List<BEAmortizacionCompra> vLista = new List<BEAmortizacionCompra>();
+            BEAmortizacionCompra oBEAmortizacion = null;
 
             foreach (DataGridViewRow vRow in dgvDetalle.Rows)
             {
-                oBEAmortizacionVenta = new BEAmortizacionVenta();
-                oBEAmortizacionVenta.Monto = Convert.ToDecimal(vRow.Cells["Monto"].Value.ToString());
-                oBEAmortizacionVenta.NroDocumento = (vRow.Cells["NumeroDocumento"].Value == null) ? "" : vRow.Cells["NumeroDocumento"].Value.ToString();
-                oBEAmortizacionVenta.Observacion = vRow.Cells["Observacion"].Value.ToString();
-                oBEAmortizacionVenta.IdEstado = vRow.Cells["IdEstado"].Value.ToString();
-                oBEAmortizacionVenta.IdVenta = Convert.ToInt32(vRow.Cells["IdVenta"].Value.ToString());
-                oBEAmortizacionVenta.BEUsuarioLogin = VariablesSession.BEUsuarioSession;
-                oBEAmortizacionVenta.IdAmortizacionVenta = Convert.ToInt32(vRow.Cells["IdAmortizacionVenta"].Value.ToString());
-                vLista.Add(oBEAmortizacionVenta);
+                oBEAmortizacion = new BEAmortizacionCompra();
+                oBEAmortizacion.Monto = Convert.ToDecimal(vRow.Cells["Monto"].Value.ToString());
+                oBEAmortizacion.NroDocumento = (vRow.Cells["NumeroDocumento"].Value == null) ? "" : vRow.Cells["NumeroDocumento"].Value.ToString();
+                oBEAmortizacion.Observacion = vRow.Cells["Observacion"].Value.ToString();
+                oBEAmortizacion.IdEstado = vRow.Cells["IdEstado"].Value.ToString();
+               // oBEAmortizacion.is = Convert.ToInt32(vRow.Cells["IdVenta"].Value.ToString());
+                oBEAmortizacion.BEUsuarioLogin = VariablesSession.BEUsuarioSession;
+                //oBEAmortizacion.IdAmortizacionVenta = Convert.ToInt32(vRow.Cells["IdAmortizacionVenta"].Value.ToString());
+                vLista.Add(oBEAmortizacion);
 
 
             }
@@ -341,15 +335,15 @@ namespace DGP.Presentation.Compras
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-            BLDocumentoPago BLDP = new BLDocumentoPago();
+            BLDocumentoPagoCompra BLDP = new BLDocumentoPagoCompra();
 
             foreach (DataGridViewRow dgvRow in dgvDetalle.Rows)
             {
                 if (Convert.ToBoolean(dgvRow.Cells["Seleccionado"].Value).Equals(true))
                 {
-                    BEAmortizacionVenta beAmortiza = new BEAmortizacionVenta();
-                    beAmortiza.IdAmortizacionVenta = Convert.ToInt32(dgvRow.Cells["IdAmortizacionVenta"].Value.ToString());
-                    BLDP.EliminarAmortizacionVenta(beAmortiza);
+                    BEAmortizacionCompra beAmortiza = new BEAmortizacionCompra();
+                    //beAmortiza.IdAmortizacionVenta = Convert.ToInt32(dgvRow.Cells["IdAmortizacionVenta"].Value.ToString());
+                    //BLDP.EliminarAmortizacionVenta(beAmortiza);
                 }
             }
             MostrarMensaje("Se elimino la amortización correctamente", MessageBoxIcon.Information);
@@ -384,8 +378,8 @@ namespace DGP.Presentation.Compras
 
         private void CargarEntidadBancaria()
         {
-            List<BEEntidadBancaria> vLista = new BLEntidadBancaria().Listar(new BEEntidadBancaria());
-            vLista.Insert(0, new BEEntidadBancaria() { IdEntidadBancaria = 0, Nombre = "Seleccione", Siglas = "" });
+            List<DGP.Entities.Ventas.BEEntidadBancaria> vLista = new DGP.BusinessLogic.Ventas.BLEntidadBancaria().Listar(new DGP.Entities.Ventas.BEEntidadBancaria());
+            vLista.Insert(0, new DGP.Entities.Ventas.BEEntidadBancaria() { IdEntidadBancaria = 0, Nombre = "Seleccione", Siglas = "" });
 
             this.cmbEntidadBancaria.DataSource = vLista;
             cmbEntidadBancaria.DisplayMember = "Nombre";
@@ -406,10 +400,10 @@ namespace DGP.Presentation.Compras
         {
             try
             {
-                BLDocumentoPago BLDP = new BLDocumentoPago();
-                BEDocumento documento = new BEDocumento();
+                BLDocumentoPagoCompra BLDP = new BLDocumentoPagoCompra();
+                BEDocumentoCompra documento = new BEDocumentoCompra();
 
-                documento.IdDocumento = string.IsNullOrEmpty(this.txtIdDocumento.Text) ? 0 :int.Parse( this.txtIdDocumento.Text);
+                documento.IdDocumentoCompra = string.IsNullOrEmpty(this.txtIdDocumento.Text) ? 0 :int.Parse( this.txtIdDocumento.Text);
                 documento.BEUsuarioLogin = VariablesSession.BEUsuarioSession;
                 documento.Observacion = txtObservacion.Text;
                 
@@ -434,22 +428,23 @@ namespace DGP.Presentation.Compras
         
         private void cmbClientes_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //if (this.bsDocumentos != null )
-            //{
+            if (this.bsDocumentos != null)
+            {
 
-            //    BEDocumento compra = (BEDocumento)this.bsDocumentos.Current;
-            //    BEClienteProveedor oEntidad = new BEClienteProveedor();
-            //    oEntidad.IdCliente = (compra != null)?compra.Cliente.IdCliente: 0 ;
+                BEDocumentoCompra compra = (BEDocumentoCompra)this.bsDocumentos.Current;
 
-            //    List<BEClienteProveedor> vTemp = new BLClienteProveedor().Listar(oEntidad);
-            //    this.cmbClientes.DataSource = vTemp;
-            //    this.cmbClientes.DisplayMember = "Nombre";
-            //    this.cmbClientes.ValueMember = "IdCliente";
-            //    //MostrarMensaje(compra.Proveedor, MessageBoxIcon.Information);
+                if (compra == null) return;
 
+                BEClienteProveedor oEntidad = new BEClienteProveedor();
+                oEntidad.IdCliente = compra.IdCliente;
 
-            //}
-            
+                List<BEClienteProveedor> vTemp = new BLClienteProveedor().Listar(oEntidad);
+                this.cmbClientes.DataSource = vTemp;
+                this.cmbClientes.DisplayMember = "Nombre";
+                this.cmbClientes.ValueMember = "IdCliente";
+
+            }
+
 
 
         }
@@ -587,6 +582,9 @@ namespace DGP.Presentation.Compras
                     this.cmbEntidadBancaria.Enabled = false;
                     this.txtCodigoOperacion.Enabled = false;
                 }
+
+
+
             }
             catch (Exception ex)
             {
@@ -597,6 +595,12 @@ namespace DGP.Presentation.Compras
 
         private void bindingNavigator1_ItemRemoved(object sender, ToolStripItemEventArgs e)
         {
+
+        }
+
+        private void cmbFormaPago_BindingContextChanged(object sender, EventArgs e)
+        {
+            
 
         }
             

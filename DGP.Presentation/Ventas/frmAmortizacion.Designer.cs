@@ -103,6 +103,7 @@
             this.dataGridViewTextBoxColumn12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnEstadoCuenta = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudMontoAplicadoDocumento)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudVuelto)).BeginInit();
@@ -115,6 +116,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btnEstadoCuenta);
             this.groupBox1.Controls.Add(this.nudMontoAplicadoDocumento);
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.btnAplicarVuelto);
@@ -864,6 +866,16 @@
             this.dataGridViewTextBoxColumn14.Name = "dataGridViewTextBoxColumn14";
             this.dataGridViewTextBoxColumn14.Visible = false;
             // 
+            // btnEstadoCuenta
+            // 
+            this.btnEstadoCuenta.Location = new System.Drawing.Point(331, 55);
+            this.btnEstadoCuenta.Name = "btnEstadoCuenta";
+            this.btnEstadoCuenta.Size = new System.Drawing.Size(75, 23);
+            this.btnEstadoCuenta.TabIndex = 17;
+            this.btnEstadoCuenta.Text = "Est. Cuenta";
+            this.btnEstadoCuenta.UseVisualStyleBackColor = true;
+            this.btnEstadoCuenta.Click += new System.EventHandler(this.btnEstadoCuenta_Click);
+            // 
             // frmAmortizacion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -959,5 +971,6 @@
         private System.Windows.Forms.DataGridViewImageColumn ImgPagoInfo;
         private System.Windows.Forms.DataGridViewTextBoxColumn DocumentoPagoInfo;
         private System.Windows.Forms.DataGridViewTextBoxColumn IdCliente;
+        private System.Windows.Forms.Button btnEstadoCuenta;
     }
 }

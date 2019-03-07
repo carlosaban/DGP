@@ -27,7 +27,7 @@ namespace DGP.Presentation.Reportes
         {
             InitializeComponent();
             this.lbClientes.Items.Add(cli);
-            this.dtpFechaInicial.Value = DateTime.Now.Date.AddDays(-7);
+            this.dtpFechaInicial.Value = DateTime.Now.Date.AddDays(days);
             btnRefresh_Click(null, null);
 
         }

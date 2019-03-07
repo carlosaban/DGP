@@ -213,7 +213,21 @@ namespace DGP.Presentation {
 
         private void mantenimientoDeDocPagosCompraToolStripMenuItem_Click(object sender, EventArgs e)
         {
-        
+            try
+            {
+                //
+
+                DGP.Presentation.Compras.frmMantenimientoDocumentoPago frm = new DGP.Presentation.Compras.frmMantenimientoDocumentoPago();
+                frm.MdiParent = this;
+                frm.Show();
+
+
+            }
+            catch (Exception ex)
+            {
+                
+                throw;
+            }
         }
 
         private void reporteSaldosToolStripMenuItem_Click(object sender, EventArgs e)

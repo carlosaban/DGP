@@ -459,7 +459,6 @@ namespace DGP.Presentation.Compras {
             if (this.bdSourceCompras != null) {
 
                 BECompraFilter compra = (BECompraFilter)this.bdSourceCompras.Current;
-                //this.cmbClientes.Items.Insert(0,
                 BEClienteProveedor oEntidad = new BEClienteProveedor();
                 oEntidad.IdCliente = compra.IdProveedor;
 
@@ -467,12 +466,7 @@ namespace DGP.Presentation.Compras {
                 this.cmbClientes.DataSource = vTemp;
                 this.cmbClientes.DisplayMember = "Nombre";
                 this.cmbClientes.ValueMember = "IdCliente";
-                //MostrarMensaje(compra.Proveedor, MessageBoxIcon.Information);
-            
-                
-                        
-            
-            
+             
             }
             
 

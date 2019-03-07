@@ -32,9 +32,10 @@ namespace DGP.Presentation.Compras
 
         private void listarDocumentos()
         {
-            BLDocumentoPagoCompra BLDP = new BLDocumentoPagoCompra();
+           BLDocumentoPagoCompra BLDP = new BLDocumentoPagoCompra();
            int codigo = Convert.ToInt32(cmbClientes.SelectedValue);
-           this.bsDocumentosPago.DataSource = BLDP.Listar(codigo, dtFechaInicial.Value.Date, dtFechaFinal.Value.Date);
+           List<BEDocumentoCompra> lista = BLDP.Listar(codigo, dtFechaInicial.Value.Date, dtFechaFinal.Value.Date);
+           this.bsDocumentosPago.DataSource = lista;
            this.dgvDocumentoPago.DataSource = this.bsDocumentosPago;
         }
 
@@ -156,7 +157,7 @@ namespace DGP.Presentation.Compras
             {
                 if(Convert.ToBoolean(dgvRow.Cells["Seleccionado"].Value).Equals(true)){
                     BEDocumentoCompra beDocumento = new BEDocumentoCompra();
-                    beDocumento.IdDocumentoCompra = Convert.ToInt32(dgvRow.Cells["idDocumentoDataGridViewTextBoxColumn"].Value.ToString());
+                    beDocumento.IdDocumentoCompra = Convert.ToInt32(dgvRow.Cells["IdDocumentoCompra"].Value.ToString());
                     beDocumento.BEUsuarioLogin = VariablesSession.BEUsuarioSession;
                     beDocumento.Observacion = "";
                     BLDP.EliminarCabecera(beDocumento);
@@ -179,6 +180,8 @@ namespace DGP.Presentation.Compras
             //BEClienteProveedor cliente = new BEClienteProveedor();
             //cliente.IdCliente = Convert.ToInt32(cmbClientes.SelectedValue);
             //cliente.Nombre = cmbClientes.SelectedText;
+            //BindingSource bs = new BindingSource();
+            this.bsDocumentosPago.DataSource = new List<BEDocumentoCompra>();
             frmMantenimientoDocumentoPagoDetalle from = new frmMantenimientoDocumentoPagoDetalle(this.bsDocumentosPago);
             from.ShowDialog(this);
         }

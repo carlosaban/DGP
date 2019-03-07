@@ -163,7 +163,7 @@
             // mantenimientoDeComprasToolStripMenuItem
             // 
             this.mantenimientoDeComprasToolStripMenuItem.Name = "mantenimientoDeComprasToolStripMenuItem";
-            this.mantenimientoDeComprasToolStripMenuItem.Size = new System.Drawing.Size(280, 22);
+            this.mantenimientoDeComprasToolStripMenuItem.Size = new System.Drawing.Size(298, 22);
             this.mantenimientoDeComprasToolStripMenuItem.Text = "Mantenimiento de Compras";
             this.mantenimientoDeComprasToolStripMenuItem.Click += new System.EventHandler(this.mantenimientoDeComprasToolStripMenuItem_Click);
             // 
