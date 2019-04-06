@@ -10,6 +10,8 @@ namespace DGP.Entities.Ventas
         public const string TIPO_AMORTIZACION_AMR = "AMR";
         public const string TIPO_AMORTIZACION_VUELTO = "VLT";
         public const string TIPO_AMORTIZACION_REDONDEO = "RDO";
+        public const string TIPO_AMR_NCCOMPRA = "NCC";
+        public const string TIPO_DOC_NOTACREDITO = "NC";
         public string IdTipoDocumento { get; set; }
         public DateTime Fecha { get; set; }
         public string Observacion { get; set; }

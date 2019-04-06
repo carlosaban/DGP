@@ -59,6 +59,7 @@ namespace DGP.DataAccess.Compra
                 oDatabaseHelper.AddParameter("@TotalUnidades",bECompra.TotalUnidades );
                 oDatabaseHelper.AddParameter("@Usuario", (bECompra.Auditoria == null) ? (object)DBNull.Value : bECompra.Auditoria.IdPersonal);
                 oDatabaseHelper.AddParameter("@Fecha", bECompra.Fecha);
+                oDatabaseHelper.AddParameter("@IdNotaCreditoCompra", (bECompra.IdNotaCreditoCompra <= 0) ? (object)DBNull.Value : bECompra.IdNotaCreditoCompra);
                 
                 int filasAfectadas = oDatabaseHelper.ExecuteNonQuery("DGP_Insertar_Compra", CommandType.StoredProcedure, DBHelper.ConnectionState.KeepOpen, true);
 
@@ -116,7 +117,8 @@ namespace DGP.DataAccess.Compra
                 oDatabaseHelper.AddParameter("@IdProducto", bECompra.IdProducto);
                 oDatabaseHelper.AddParameter("@TotalUnidades", bECompra.TotalUnidades);
                 oDatabaseHelper.AddParameter("@Usuario", (bECompra.Auditoria == null) ? (object)DBNull.Value : bECompra.Auditoria.IdPersonal);
-
+                oDatabaseHelper.AddParameter("@IdNotaCreditoCompra", (bECompra.IdNotaCreditoCompra<=0) ? (object)DBNull.Value : bECompra.IdNotaCreditoCompra);
+               
                 int filasAfectadas = oDatabaseHelper.ExecuteNonQuery("DGP_Actualizar_Compra", CommandType.StoredProcedure, DBHelper.ConnectionState.KeepOpen, true);
 
                 if (pDatabaseHelper == null && filasAfectadas > 0) oDatabaseHelper.CommitTransaction();
@@ -139,7 +141,7 @@ namespace DGP.DataAccess.Compra
 
         public bool Eliminar(ref string pmensaje, BECompra bECompra)
         {
-            return this.Actualizar(ref pmensaje, bECompra, null);
+            return this.Eliminar(ref pmensaje, bECompra, null);
         }
         public bool Eliminar(ref string pmensaje, BECompra bECompra, DatabaseHelper pDatabaseHelper)
         {
@@ -241,6 +243,9 @@ namespace DGP.DataAccess.Compra
                     compra.Fecha = (DateTime)DRlista["Fecha"];
                     compra.TotalUnidades = (DRlista["TotalUnidades"] == DBNull.Value) ? 0 : (int)DRlista["TotalUnidades"];
                     compra.TotalJabas = (DRlista["TotalJabas"] == DBNull.Value) ? 0 : (int)DRlista["TotalJabas"];
+                    compra.IdNotaCreditoCompra = (DRlista["IdNotaCreditoCompra"] == DBNull.Value) ? 0 : (int)DRlista["IdNotaCreditoCompra"];
+                    compra.MontoTotalBD = (DRlista["MontoTotal"] == DBNull.Value) ? 0 : (decimal)DRlista["MontoTotal"];
+                    
                     lista.Add(compra);
                 }
 

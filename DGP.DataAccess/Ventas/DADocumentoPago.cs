@@ -187,6 +187,7 @@ namespace DGP.DataAccess.Ventas
         public bool InsertarCabeceraDocumento(BEDocumento beDocumento, DatabaseHelper pDatabaseHelper)
         {
             DatabaseHelper oDatabaseHelper = (pDatabaseHelper == null) ? new DatabaseHelper() : pDatabaseHelper;
+            bool bOk = false;
 
             try
             {
@@ -200,28 +201,42 @@ namespace DGP.DataAccess.Ventas
                 oDatabaseHelper.AddParameter("@Usuario", beDocumento.BEUsuarioLogin.IdPersonal);
 
                 oDatabaseHelper.AddParameter("@IdFormaPago", beDocumento.IdFormaPago);
-                oDatabaseHelper.AddParameter("@observacion", beDocumento.Observacion);
+                oDatabaseHelper.AddParameter("@observacion", (string.IsNullOrEmpty(beDocumento.Observacion)) ? DBNull.Value : (object)beDocumento.Observacion);
 
-                oDatabaseHelper.AddParameter("@NumeroRecibo", (beDocumento.NumeroReciboPago == string.Empty) ? DBNull.Value : (object)beDocumento.NumeroReciboPago);
-                oDatabaseHelper.AddParameter("@IdBanco", (beDocumento.IdBanco == string.Empty) ? DBNull.Value : (object)beDocumento.IdBanco);
-                oDatabaseHelper.AddParameter("@NumeroOperacion", (beDocumento.NumeroOperacion == string.Empty) ? DBNull.Value : (object)beDocumento.NumeroOperacion);
+                oDatabaseHelper.AddParameter("@NumeroRecibo", (string.IsNullOrEmpty(beDocumento.NumeroReciboPago)) ? DBNull.Value : (object)beDocumento.NumeroReciboPago);
+                oDatabaseHelper.AddParameter("@IdBanco", (string.IsNullOrEmpty (beDocumento.IdBanco) ) ? DBNull.Value : (object)beDocumento.IdBanco);
+                oDatabaseHelper.AddParameter("@NumeroOperacion", (string.IsNullOrEmpty ( beDocumento.NumeroOperacion) ) ? DBNull.Value : (object)beDocumento.NumeroOperacion);
                 
                 
 
                 object vResultado = oDatabaseHelper.ExecuteScalar("InsertarDocumento", CommandType.StoredProcedure, (pDatabaseHelper == null) ? DBHelper.ConnectionState.CloseOnExit : DBHelper.ConnectionState.KeepOpen);
 
                 beDocumento.IdDocumento = (vResultado == null)?0 : int.Parse (vResultado.ToString());
-                
-                return true;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-            finally
-            {
 
-                if (pDatabaseHelper == null) oDatabaseHelper.Dispose();
+                bOk = (beDocumento.IdDocumento > 0);
+
+                if (bOk)
+                {
+                    if (pDatabaseHelper == null) oDatabaseHelper.CommitTransaction();
+                }
+                else
+                {
+                    if (pDatabaseHelper == null) oDatabaseHelper.RollbackTransaction();
+                    throw new Exception("Error al registrar Amortización");
+
+                }
+
+
+
+
+                return true;
+            
+            } 
+            catch (Exception ex) {
+                    if (pDatabaseHelper == null)  oDatabaseHelper.RollbackTransaction();
+                    throw ex;
+            } finally {
+                    if (pDatabaseHelper == null) oDatabaseHelper.Dispose();
             }
 
         }
@@ -413,5 +428,69 @@ namespace DGP.DataAccess.Ventas
         }
 
         #endregion
+
+        public List<BEDocumento> Listar(BEDocumento bEDocumento, DatabaseHelper pDatabaseHelper)
+        {
+            DatabaseHelper oDatabaseHelper = (pDatabaseHelper == null) ? new DatabaseHelper() : pDatabaseHelper;
+
+            List<BEDocumento> vLista = new List<BEDocumento>();
+            IDataReader oIDataReader = null;
+
+            try
+            {
+                oDatabaseHelper.ClearParameter();
+                oDatabaseHelper.AddParameter("@IdDocumento", (bEDocumento.IdDocumento == 0) ? DBNull.Value : (object)bEDocumento.IdDocumento);
+                oIDataReader = oDatabaseHelper.ExecuteReader("ListarDocumento", CommandType.StoredProcedure);
+
+                while (oIDataReader.Read())
+                {
+                    vLista.Add(new BEDocumento()
+                    {
+                        IdDocumento = (int)oIDataReader["IdDocumento"],
+                        Fecha = Convert.ToDateTime(oIDataReader["Fecha"]),
+                        IdTipoDocumento = oIDataReader["IdTipoDocumento"].ToString(),
+                        Monto = decimal.Parse(oIDataReader["Monto"].ToString()),
+                        idEstado = oIDataReader["idEstado"].ToString(),
+                        Cliente = new DGP.Entities.BEClienteProveedor
+                        {
+                            IdCliente = (int)oIDataReader["IdCliente"],
+                            Nombre = oIDataReader["ClienteNombre"].ToString()
+
+                        },
+                        Personal = new DGP.Entities.Seguridad.BEPersonal
+                        {
+                            IdPersonal = (int)oIDataReader["IdPersonal"]
+
+
+                        },
+                        IdFormaPago = oIDataReader["IdFormaPago"].ToString()
+                        ,
+                        IdBanco = oIDataReader["IdBanco"].ToString()
+                        ,
+                        NumeroOperacion = oIDataReader["NumeroOperacion"].ToString()
+                        ,
+                        NumeroReciboPago = oIDataReader["NumeroRecibo"].ToString()
+                        ,
+                        Observacion = oIDataReader["Observacion"].ToString()
+
+
+                    });
+
+                }
+                return vLista;
+            }
+            catch (Exception ex)
+            {
+                if (pDatabaseHelper == null) oDatabaseHelper.Dispose();
+                throw ex;
+            }
+            finally
+            {
+                if (!oIDataReader.IsClosed) oIDataReader.Close();
+                oIDataReader.Dispose();
+                if (pDatabaseHelper == null) oDatabaseHelper.Dispose();
+            }
+            
+        }
     }
 }

@@ -65,6 +65,16 @@ namespace DGP.Entities.Compras
         public bool EsSobrante { get; set; }
         public int TotalJabas { get; set; }
         public DateTime Fecha { get; set; }
+        public decimal MontoTotalBD { get; set; }
+
+        public BECompra()
+        {
+            this.MontoSubTotal = 0;
+            this.MontoTotal = 0;
+        
+        
+        }
+        public int IdNotaCreditoCompra { get; set; }
     }
 
     

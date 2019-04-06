@@ -149,6 +149,7 @@
             this.aplicarVueltoToolStripMenuItem.Name = "aplicarVueltoToolStripMenuItem";
             this.aplicarVueltoToolStripMenuItem.Size = new System.Drawing.Size(267, 22);
             this.aplicarVueltoToolStripMenuItem.Text = "Aplicar Vueltos";
+            this.aplicarVueltoToolStripMenuItem.Visible = false;
             this.aplicarVueltoToolStripMenuItem.Click += new System.EventHandler(this.aplicarVueltoToolStripMenuItem_Click);
             // 
             // comprasToolStripMenuItem
@@ -163,7 +164,7 @@
             // mantenimientoDeComprasToolStripMenuItem
             // 
             this.mantenimientoDeComprasToolStripMenuItem.Name = "mantenimientoDeComprasToolStripMenuItem";
-            this.mantenimientoDeComprasToolStripMenuItem.Size = new System.Drawing.Size(298, 22);
+            this.mantenimientoDeComprasToolStripMenuItem.Size = new System.Drawing.Size(280, 22);
             this.mantenimientoDeComprasToolStripMenuItem.Text = "Mantenimiento de Compras";
             this.mantenimientoDeComprasToolStripMenuItem.Click += new System.EventHandler(this.mantenimientoDeComprasToolStripMenuItem_Click);
             // 

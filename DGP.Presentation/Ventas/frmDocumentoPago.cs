@@ -375,6 +375,7 @@ namespace DGP.Presentation.Ventas
             oBEParametroDetalle.ParametroDetallePadre = beTipoAmortizacion.IdItem;
 
             vLista = new BLParametroDetalle().Listar(oBEParametroDetalle);
+            vLista.Remove(vLista.Find(x => x.Valor == "NCC"));
             this.cmbFormaPago.DataSource = vLista;
             cmbFormaPago.DisplayMember = "Texto";
             cmbFormaPago.ValueMember = "Valor";

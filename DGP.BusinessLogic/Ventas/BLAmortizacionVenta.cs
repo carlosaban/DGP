@@ -144,5 +144,17 @@ namespace DGP.BusinessLogic.Ventas {
         {
             return new DAAmortizacionVenta().ObtenerAmortizacionSinAplicar(IdCliente);
         }
+
+        public bool Eliminar(BEAmortizacionVenta amort, DBHelper.DatabaseHelper dbh)
+        {
+            try
+            {
+                return new DAAmortizacionVenta().EliminarAmortizacionesVenta(amort, dbh);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }

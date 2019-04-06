@@ -298,13 +298,13 @@ namespace DGP.Presentation.Compras {
                     if (bOk) this.lblIDCompra.Text = BLCompra.getCompra.IdCompra.ToString();
 
 
-                    this.bdSourceCompras.ResetBindings(false);
+                    if (this.bdSourceCompras != null)  this.bdSourceCompras.ResetBindings(false);
 
                 }
 
                 if (!bOk) MostrarMensaje(mensaje, MessageBoxIcon.Error);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
                 MostrarMensaje("Error al cargar formulario", MessageBoxIcon.Error);
@@ -325,6 +325,7 @@ namespace DGP.Presentation.Compras {
         {
             try
             {
+                this.BLCompra.BECompra.BEUsuarioLogin = VariablesSession.BEUsuarioSession;
                 this.BLCompra.BECompra.Auditoria = VariablesSession.BEUsuarioSession;
                 this.BLCompra.BECompra.IdCaja = VariablesSession.BEUsuarioSession.IdCaja;
                 this.BLCompra.BECompra.IdCompra = string.IsNullOrEmpty(this.lblIDCompra.Text) ? 0 : int.Parse (this.lblIDCompra.Text);
@@ -342,17 +343,18 @@ namespace DGP.Presentation.Compras {
                 //this.BLCompra.BECompra.NumeroDocumento = ;
                 this.BLCompra.BECompra.Observacion = this.txtObservacion.Text;
                 this.BLCompra.BECompra.Precio = this.nudPrecio.Value;
-                this.BLCompra.BECompra.TotalDevolucion = decimal.Parse(this.txtTotalDevolucion.Text);
-                this.BLCompra.BECompra.TotalJabas = int.Parse(this.txtTotalJabas.Text);
-                this.BLCompra.BECompra.TotalPesoBruto = decimal.Parse(this.txtTotalBruto.Text);
-                this.BLCompra.BECompra.TotalPesoNeto = decimal.Parse(this.txtTotalNeto.Text);
-                this.BLCompra.BECompra.TotalPesoTara = decimal.Parse(this.txtTotalTara.Text);
-                this.BLCompra.BECompra.TotalUnidades = int.Parse(this.txtUnidades.Text);
+                this.BLCompra.BECompra.TotalDevolucion = decimal.Parse(string.IsNullOrEmpty(this.txtTotalDevolucion.Text) ? "0" : this.txtTotalDevolucion.Text);
+                this.BLCompra.BECompra.TotalJabas = int.Parse(string.IsNullOrEmpty(this.txtTotalJabas.Text) ? "0" : this.txtTotalJabas.Text);
+                this.BLCompra.BECompra.TotalJabas = int.Parse(string.IsNullOrEmpty(this.txtTotalJabas.Text) ? "0" : this.txtTotalJabas.Text);
+                this.BLCompra.BECompra.TotalPesoBruto = decimal.Parse(string.IsNullOrEmpty(this.txtTotalBruto.Text) ? "0" : this.txtTotalBruto.Text);
+                this.BLCompra.BECompra.TotalPesoNeto = decimal.Parse(string.IsNullOrEmpty(this.txtTotalNeto.Text) ? "0" : this.txtTotalNeto.Text);
+                this.BLCompra.BECompra.TotalPesoTara = decimal.Parse(string.IsNullOrEmpty(this.txtTotalTara.Text) ? "0" : this.txtTotalTara.Text);
+                this.BLCompra.BECompra.TotalUnidades = int.Parse(string.IsNullOrEmpty(this.txtUnidades.Text) ? "0" : this.txtUnidades.Text);
                 this.BLCompra.BECompra.Fecha = this.dtFecha.Value.Date;
 
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 
                 throw;
@@ -389,15 +391,14 @@ namespace DGP.Presentation.Compras {
                     decimal Unidades;
                     decimal Importe;
 
-                    if (validarFormulario(ref mensaje))
-                    {
-                        //TotalNeto = decimal.Parse(this.txtTotalNeto.Text);
-                        TotalBruto = decimal.Parse(this.txtTotalBruto.Text);
-                        TotalTara = decimal.Parse(this.txtTotalTara.Text);
-                        TotalDevolucion = decimal.Parse(this.txtTotalDevolucion.Text);
-                        TotalJabas = decimal.Parse(this.txtTotalJabas.Text);
-                        Unidades = decimal.Parse(this.txtUnidades.Text);
-                        //Importe = decimal.Parse(this.txtImporte.Text);
+                    //if (validarFormulario(ref mensaje))
+                    //{
+                        decimal.TryParse ( this.txtTotalBruto.Text , out TotalBruto);
+                        decimal.TryParse(this.txtTotalTara.Text, out TotalTara);
+                        decimal.TryParse(this.txtTotalDevolucion.Text, out TotalDevolucion);
+                        decimal.TryParse(this.txtTotalJabas.Text, out TotalJabas);
+                        decimal.TryParse(this.txtUnidades.Text, out Unidades);
+
                         TotalNeto = TotalBruto - TotalTara - TotalDevolucion;
                         Importe = TotalNeto * this.nudPrecio.Value;
 
@@ -405,21 +406,22 @@ namespace DGP.Presentation.Compras {
                         this.txtTotalNeto.Text = TotalNeto.ToString();
                         this.txtImporte.Text = Importe.ToString();
 
-                        this.bdSourceCompras.EndEdit();
+                        if (this.bdSourceCompras != null) this.bdSourceCompras.EndEdit();
 
 
 
-                    }
-                    else
-                    {
+                    //}
+                    //else
+                    //{
                         //MostrarMensaje(mensaje, MessageBoxIcon.Error);
+                    //throw new Exception(mensaje);
                     
-                    }
+                    //}
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
 
-                    throw;
+                    //throw ex;
                 }   
        
         
@@ -427,26 +429,33 @@ namespace DGP.Presentation.Compras {
         }
         private void nudPrecio_ValueChanged(object sender, EventArgs e)
         {
-            CalcularImportes();
+            try
+            {
+                
+                CalcularImportes();
+
+            }
+            catch (Exception ex)
+            {
+
+                MostrarMensaje(ex.Message, MessageBoxIcon.Error);
+            }
             
         }
 
         private void txtTotalBruto_TextChanged(object sender, EventArgs e)
         {
 
-            CalcularImportes();
         }
 
         private void txtTotalTara_TextChanged(object sender, EventArgs e)
         {
 
-            CalcularImportes();
         }
 
         private void txtTotalDevolucion_TextChanged(object sender, EventArgs e)
         {
 
-            CalcularImportes();
         }
 
         private void cmbClientes_BindingContextChanged(object sender, EventArgs e)
@@ -525,6 +534,82 @@ namespace DGP.Presentation.Compras {
         {
             
 
+        }
+
+        private void txtTotalBruto_Leave(object sender, EventArgs e)
+        {
+
+            try
+            {
+
+                CalcularImportes();
+
+            }
+            catch (Exception ex)
+            {
+
+                MostrarMensaje(ex.Message, MessageBoxIcon.Error);
+            }
+        }
+
+        private void txtTotalTara_Leave(object sender, EventArgs e)
+        {
+            try
+            {
+
+                CalcularImportes();
+
+            }
+            catch (Exception ex)
+            {
+
+                MostrarMensaje(ex.Message, MessageBoxIcon.Error);
+            }
+        }
+
+        private void txtTotalJabas_Leave(object sender, EventArgs e)
+        {
+            try
+            {
+
+                CalcularImportes();
+
+            }
+            catch (Exception ex)
+            {
+
+                MostrarMensaje(ex.Message, MessageBoxIcon.Error);
+            }
+        }
+
+        private void txtUnidades_Leave(object sender, EventArgs e)
+        {
+            try
+            {
+
+                CalcularImportes();
+
+            }
+            catch (Exception ex)
+            {
+
+                MostrarMensaje(ex.Message, MessageBoxIcon.Error);
+            }
+        }
+
+        private void txtTotalDevolucion_Leave(object sender, EventArgs e)
+        {
+            try
+            {
+
+                CalcularImportes();
+
+            }
+            catch (Exception ex)
+            {
+
+                MostrarMensaje(ex.Message, MessageBoxIcon.Error);
+            }
         }
 
         //private void CargarProducto()

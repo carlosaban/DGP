@@ -260,6 +260,41 @@ namespace DGP.DataAccess.Ventas {
                     oDatabaseHelper.Dispose();
                 }
             }
+
+            public bool EliminarAmortizacionesVenta(BEAmortizacionVenta beAmortizacionVenta)
+            {
+                return this.EliminarAmortizacionesVenta(beAmortizacionVenta, null);
+
+            }
+
+            public bool EliminarAmortizacionesVenta(BEAmortizacionVenta beAmortizacionVenta, DatabaseHelper pDatabaseHelper)
+            {
+                DatabaseHelper oDatabaseHelper = (pDatabaseHelper == null) ? new DatabaseHelper() : pDatabaseHelper;
+
+                try
+                {
+                    oDatabaseHelper.ClearParameter();
+                    oDatabaseHelper.AddParameter("@IdDocumento", beAmortizacionVenta.IdDocumento);
+                    oDatabaseHelper.AddParameter("@Usuario", beAmortizacionVenta.BEUsuarioLogin.IdPersonal);
+                    oDatabaseHelper.AddParameter("@observacion", (string.IsNullOrEmpty(beAmortizacionVenta.Observacion)) ? (object)DBNull.Value : beAmortizacionVenta.Observacion);
+
+
+                    oDatabaseHelper.ExecuteScalar("EliminarAmortizacionesVenta", CommandType.StoredProcedure, (pDatabaseHelper == null) ? DBHelper.ConnectionState.CloseOnExit : DBHelper.ConnectionState.KeepOpen);
+
+                    return true;
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+                finally
+                {
+
+                    if (pDatabaseHelper == null) oDatabaseHelper.Dispose();
+                }
+
+            }
+
         #endregion
 
            
