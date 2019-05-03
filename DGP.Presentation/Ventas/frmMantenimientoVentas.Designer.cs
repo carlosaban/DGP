@@ -93,13 +93,14 @@
             this.dataGridViewTextBoxColumn35 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn36 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TienePrecioVariable = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.PrecioCompra = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CompraInfo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.IdVenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fechaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clienteDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.productoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.estadoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.precioDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Precio = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NuevoPrecio = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Precios = new System.Windows.Forms.DataGridViewImageColumn();
             this.totalPesoNetoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -149,13 +150,14 @@
             this.dgrvVentas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgrvVentas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.TienePrecioVariable,
+            this.PrecioCompra,
             this.CompraInfo,
             this.IdVenta,
             this.fechaDataGridViewTextBoxColumn,
             this.clienteDataGridViewTextBoxColumn,
             this.productoDataGridViewTextBoxColumn,
             this.estadoDataGridViewTextBoxColumn,
-            this.precioDataGridViewTextBoxColumn,
+            this.Precio,
             this.NuevoPrecio,
             this.Precios,
             this.totalPesoNetoDataGridViewTextBoxColumn,
@@ -191,6 +193,7 @@
             this.dgrvVentas.TabIndex = 0;
             this.dgrvVentas.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgrvVentas_CellDoubleClick);
             this.dgrvVentas.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgrvVentas_CellFormatting);
+            this.dgrvVentas.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgrvVentas_CellContentClick);
             // 
             // bdVentas
             // 
@@ -419,6 +422,7 @@
             this.dataGridViewTextBoxColumn1.ReadOnly = true;
             this.dataGridViewTextBoxColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridViewTextBoxColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.dataGridViewTextBoxColumn1.Visible = false;
             this.dataGridViewTextBoxColumn1.Width = 50;
             // 
             // dataGridViewTextBoxColumn2
@@ -430,6 +434,7 @@
             this.dataGridViewTextBoxColumn2.ReadOnly = true;
             this.dataGridViewTextBoxColumn2.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridViewTextBoxColumn2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.dataGridViewTextBoxColumn2.Visible = false;
             this.dataGridViewTextBoxColumn2.Width = 150;
             // 
             // dataGridViewTextBoxColumn3
@@ -452,6 +457,7 @@
             this.dataGridViewTextBoxColumn4.ReadOnly = true;
             this.dataGridViewTextBoxColumn4.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridViewTextBoxColumn4.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.dataGridViewTextBoxColumn4.Visible = false;
             // 
             // dataGridViewTextBoxColumn5
             // 
@@ -761,6 +767,14 @@
             this.TienePrecioVariable.ReadOnly = true;
             this.TienePrecioVariable.Visible = false;
             // 
+            // PrecioCompra
+            // 
+            this.PrecioCompra.DataPropertyName = "PrecioCompra";
+            this.PrecioCompra.HeaderText = "PrecioCompra";
+            this.PrecioCompra.Name = "PrecioCompra";
+            this.PrecioCompra.ReadOnly = true;
+            this.PrecioCompra.Visible = false;
+            // 
             // CompraInfo
             // 
             this.CompraInfo.DataPropertyName = "CompraInfo";
@@ -803,12 +817,12 @@
             this.estadoDataGridViewTextBoxColumn.Name = "estadoDataGridViewTextBoxColumn";
             this.estadoDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // precioDataGridViewTextBoxColumn
+            // Precio
             // 
-            this.precioDataGridViewTextBoxColumn.DataPropertyName = "Precio";
-            this.precioDataGridViewTextBoxColumn.HeaderText = "Precio";
-            this.precioDataGridViewTextBoxColumn.Name = "precioDataGridViewTextBoxColumn";
-            this.precioDataGridViewTextBoxColumn.ReadOnly = true;
+            this.Precio.DataPropertyName = "Precio";
+            this.Precio.HeaderText = "Precio";
+            this.Precio.Name = "Precio";
+            this.Precio.ReadOnly = true;
             // 
             // NuevoPrecio
             // 
@@ -1071,13 +1085,14 @@
         private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn1;
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.DataGridViewCheckBoxColumn TienePrecioVariable;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PrecioCompra;
         private System.Windows.Forms.DataGridViewTextBoxColumn CompraInfo;
         private System.Windows.Forms.DataGridViewTextBoxColumn IdVenta;
         private System.Windows.Forms.DataGridViewTextBoxColumn fechaDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn clienteDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn productoDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn estadoDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn precioDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Precio;
         private System.Windows.Forms.DataGridViewTextBoxColumn NuevoPrecio;
         private System.Windows.Forms.DataGridViewImageColumn Precios;
         private System.Windows.Forms.DataGridViewTextBoxColumn totalPesoNetoDataGridViewTextBoxColumn;

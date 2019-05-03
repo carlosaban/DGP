@@ -356,7 +356,9 @@ namespace DGP.DataAccess.Ventas {
                         oVistaVenta.TotalSaldo = decimal.Parse(oIDataReader["Total_Saldo"].ToString());
                         oVistaVenta.Estado = (oIDataReader["Estado"] == (object)DBNull.Value) ? string.Empty : oIDataReader["Estado"].ToString();
                         oVistaVenta.TotalUnidades = (oIDataReader["TotalUnidades"] == (object)DBNull.Value) ? 0 : Convert.ToInt32(oIDataReader["TotalUnidades"].ToString());
-                        oVistaVenta.Margen = (oIDataReader["Margen"] == (object)DBNull.Value) ? (decimal)0.3 : decimal.Parse(oIDataReader["Margen"].ToString());
+                        oVistaVenta.Margen = (oIDataReader["Margen"] == (object)DBNull.Value) ? (decimal)0.4 : decimal.Parse(oIDataReader["Margen"].ToString());
+
+                        oVistaVenta.PrecioCompra = (oIDataReader["PrecioCompra"] == (object)DBNull.Value) ? (decimal)0 : decimal.Parse(oIDataReader["PrecioCompra"].ToString());
 
                         oVistaVenta.TienePrecioVariable = (oIDataReader["TienePrecioVariable"] == (object)DBNull.Value) ? false : bool.Parse( oIDataReader["TienePrecioVariable"].ToString());
                         oVistaVenta.CompraInfo = (oIDataReader["CompraInfo"] == (object)DBNull.Value) ? string.Empty : oIDataReader["CompraInfo"].ToString();

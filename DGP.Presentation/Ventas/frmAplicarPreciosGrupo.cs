@@ -31,7 +31,8 @@ namespace DGP.Presentation.Ventas
             }
             catch (Exception ex)
             {
-                throw;
+                this.MostrarMensaje(ex.Message, MessageBoxIcon.Error);
+                
             }
         }
 
@@ -91,7 +92,7 @@ namespace DGP.Presentation.Ventas
         {
             Dictionary<string , int   > lista = new Dictionary<string , int >();
             lista.Add("Todos", 1);
-            lista.Add("Precio Variable",2);
+            lista.Add("Precio con Redondeo",2);
             //cbProducto.Items.Add(new System.Collections.DictionaryEntry("Todos", 1));
             //cbProducto.Items.Add(new System.Collections.DictionaryEntry("Precio Variable", 2));
             cbFormaAplicar.DataSource = new BindingSource(lista, null);

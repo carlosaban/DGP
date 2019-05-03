@@ -262,12 +262,26 @@ namespace DGP.Presentation.Ventas {
                     if (producto.IdProducto == (int)item.Cells["IdProducto"].Value)
                     {
                         decimal margen = (string.IsNullOrEmpty(item.Cells["Margen"].Value.ToString())) ? Margen : decimal.Parse(item.Cells["Margen"].Value.ToString());
+                        decimal PrecioCompra = (string.IsNullOrEmpty(item.Cells["PrecioCompra"].Value.ToString())) ? precioBase : decimal.Parse(item.Cells["PrecioCompra"].Value.ToString());
+                        PrecioCompra *= 1.0000m;
+                        decimal PrecioVentaActual = (string.IsNullOrEmpty(item.Cells["Precio"].Value.ToString())) ? precioBase : decimal.Parse(item.Cells["Precio"].Value.ToString());
+
+
                         if (FormaAplicar == 2) //clientes precio variable
                         {
+                            PrecioCompra = (PrecioCompra <= 0) ? 0 : decimal.Round(PrecioCompra, 1,MidpointRounding.AwayFromZero);
                             bool tieneMargenVariable = false;
                             bool.TryParse(item.Cells["TienePrecioVariable"].Value.ToString(), out tieneMargenVariable);
-                            item.Cells["NuevoPrecio"].Value = (tieneMargenVariable) ? (precioBase + margen).ToString() : string.Empty;
 
+                            if (PrecioCompra != 0 && (PrecioVentaActual != PrecioCompra + margen) && (item.Cells["NuevoPrecio"].Value == null || string.IsNullOrEmpty(item.Cells["NuevoPrecio"].Value.ToString())))
+                            {
+
+                                item.Cells["NuevoPrecio"].Value = (tieneMargenVariable) ? (PrecioCompra + margen).ToString() : string.Empty;
+
+                                item.Cells["Precio"].Style.ForeColor = (PrecioVentaActual < PrecioCompra + margen) ? Color.Red :Color.Black;
+                                item.Cells["NuevoPrecio"].Style.ForeColor = (PrecioVentaActual < PrecioCompra + margen) ? Color.Red : Color.Black;
+                            }
+                                
                         }
                         else
                         {
@@ -354,6 +368,11 @@ namespace DGP.Presentation.Ventas {
                     
                     }
                 }
+            }
+
+            private void dgrvVentas_CellContentClick(object sender, DataGridViewCellEventArgs e)
+            {
+
             }
 
 
