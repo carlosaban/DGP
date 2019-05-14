@@ -733,10 +733,10 @@ namespace DGP.Presentation.Ventas {
                 }
         		
 	        }
-	        catch (Exception)
+	        catch (Exception ex  )
 	        {
         		
-		        throw;
+                this.MostrarMensaje("" + ex.Message, MessageBoxIcon.Error);
 	        }
             
         }
