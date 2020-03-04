@@ -298,6 +298,15 @@ namespace DBHelper {
             objConnection.Dispose();
             objCommand.Dispose();
         }
+        //public int SetTimeOut { 
+        //    get {
+        //        return this.objConnection.ConnectionTimeout;
+        //        } 
+        //    set {
+        //        this.objConnection.ConnectionTimeout = value;
+            
+        //    } 
+        //}
     }
 
     public enum Providers { SqlServer, OleDb, Oracle, ODBC, ConfigDefined }

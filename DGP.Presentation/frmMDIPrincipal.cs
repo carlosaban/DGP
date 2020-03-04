@@ -65,10 +65,7 @@ namespace DGP.Presentation {
             //oReportes_frmReporteCobranza.MdiParent = this;
             //oReportes_frmReporteCobranza.Show();
 
-            oReportes_frmReporteCobranza = new frmReporteCobranzaV2();
-            oReportes_frmReporteCobranza.MdiParent = this;
-            oReportes_frmReporteCobranza.Show();
-
+           
 
         }
         private void tsmiReporteFiltros_Click(object sender, EventArgs e)
@@ -273,6 +270,22 @@ namespace DGP.Presentation {
             oReportes_frmRptFiltro.MdiParent = this;
             oReportes_frmRptFiltro.Show();
 
+
+        }
+
+        private void hojaDeCobranzaDetalladoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmReporteCobranza frm = new frmReporteCobranza();
+            frm.MdiParent = this;
+            frm.Show();
+
+        }
+
+        private void hojaDeCobranzaEECCToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            oReportes_frmReporteCobranza = new frmReporteCobranzaV2();
+            oReportes_frmReporteCobranza.MdiParent = this;
+            oReportes_frmReporteCobranza.Show();
 
         }
 

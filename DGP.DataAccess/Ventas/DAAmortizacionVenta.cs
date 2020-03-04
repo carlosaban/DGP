@@ -96,6 +96,9 @@ namespace DGP.DataAccess.Ventas {
                     pDatabaseHelper.AddParameter("@intIdUsuarioCreacion", pBEAmortizacionVenta.BEUsuarioLogin.IdPersonal);
                     pDatabaseHelper.AddParameter("@intIdCaja", pBEAmortizacionVenta.BEUsuarioLogin.IdCaja);
                     pDatabaseHelper.AddParameter("@intIdDocumento", pBEDocumento.IdDocumento);
+                    pDatabaseHelper.AddParameter("@AplicarNotaCredito", pBEAmortizacionVenta.CancelarVenta);
+
+                    
                     
                     vResultado = pDatabaseHelper.ExecuteNonQuery("DGP_Insertar_AmortizacionVenta", CommandType.StoredProcedure, DBHelper.ConnectionState.KeepOpen);
                     return (vResultado>0);

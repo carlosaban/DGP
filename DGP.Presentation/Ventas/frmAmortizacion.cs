@@ -171,7 +171,7 @@ namespace DGP.Presentation.Ventas {
                     else
                     {
                         this.nudMontoAplicadoDocumento.Value = SumaAmortizaciones();
-
+                        this.nudMontoDocumento.Value = SumaAmortizaciones();
 
                     }
 
@@ -202,6 +202,7 @@ namespace DGP.Presentation.Ventas {
                 string strMensaje = string.Empty;
                 bool bCancelarVenta = false;
                 this.btnGrabar.Enabled = false;
+                bool CrearNotaDebito = false;
                 
                 try
                 {
@@ -209,6 +210,7 @@ namespace DGP.Presentation.Ventas {
                     {
 
                         if (this.SumaAmortizaciones() == 0) this.AplicarMonto();
+
                         int intIdUsuario = 0;
                         bool boIndicador = true;
                         int.TryParse(cbUsuario.SelectedValue.ToString(), out intIdUsuario);
@@ -216,6 +218,17 @@ namespace DGP.Presentation.Ventas {
                         {
                             boIndicador = (MessageBox.Show("La amortización se va a registrar con otro usuario, desea continuar?", "DGP", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes);
                         }
+                        if ( this.chkGenerarNotaDebito.Checked && this.nudMontoDocumento.Value > this.nudMontoAplicadoDocumento.Value)
+                        {
+                            
+                            boIndicador = boIndicador && (MessageBox.Show("Desea Generar Una nota de debito?", "DGP", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes);
+
+                            //validar temas adicionales de nota de debito
+                            CrearNotaDebito = true;
+
+                        
+                        }
+
                         if (boIndicador)
                         {
                             // Obtener las Amortizaciones
@@ -241,6 +254,46 @@ namespace DGP.Presentation.Ventas {
 
 
                             bool bOk = new BLAmortizacionVenta().Insertar(documento);
+
+                            if (bOk && CrearNotaDebito)
+                            {
+                                //crear nota de debito
+                                decimal vuelto = (new BLAmortizacionVenta()).ObtenerAmortizacionSinAplicar(documento.Cliente.IdCliente);
+                                BLVenta blVenta = new BLVenta();
+                                BECaja CajaNotaDebito = new BLCaja().ObtenerCaja(new BECaja() { Fecha = documento.Fecha 
+                                                                                        ,IdPersonal = documento.IdPersonal
+                                                                                        
+                                                                                        });
+                                BEVenta beVenta = new BEVenta() {
+                                    IdCliente = documento.IdCliente
+                                    ,IdProducto = BEVenta.ID_NOTA_DEBITO
+                                    ,IdCaja = CajaNotaDebito.IdCaja
+                                    ,Precio = 1
+                                    ,IdEmpresa = 1
+                                    ,BEUsuarioLogin = VariablesSession.BEUsuarioSession
+                                    , ListaLineaVenta = new List<BELineaVenta>()
+                                    , Observacion = "Nota de Debito Autogenerado por amortizacion"
+                                
+                                };
+
+                                beVenta.ListaLineaVenta.Add(new BELineaVenta()
+                                {
+                                    EsDevolucion = "N"
+
+                                                                                                        , EsPesoTaraEditado = "N"
+                                                                                                        ,IdEstado = BEVenta.REGISTRADO
+                                                                                                        ,Accion = eAccion.Agregar
+                                                                                                        ,PesoBruto = vuelto
+                                                                                                        , PesoNeto = vuelto
+                                    });
+                                    
+
+                                int IdNotaDebito = blVenta.RegistrarVentaInicialDependiente(beVenta, false, 0);
+
+
+                                //crear nota de debito
+                            }
+
                             if (bOk)
                             {
                                 MostrarMensaje("Se registró la amortización correctamente", MessageBoxIcon.Information);
@@ -780,6 +833,7 @@ namespace DGP.Presentation.Ventas {
                     int intIdCliente = Convert.ToInt32(cmbClientes.SelectedValue);
                     int intIdProducto = Convert.ToInt32(cbProducto.SelectedValue);
                     CargarAmortizaciones(intIdCliente, intIdProducto);
+                    CargarAmortizacionesSinAplicar(intIdCliente);
                 }
 
             }

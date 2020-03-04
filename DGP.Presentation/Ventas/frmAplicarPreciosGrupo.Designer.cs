@@ -67,20 +67,30 @@
             // nubMargenMinimo
             // 
             this.nubMargenMinimo.DecimalPlaces = 2;
+            this.nubMargenMinimo.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
             this.nubMargenMinimo.Location = new System.Drawing.Point(166, 160);
             this.nubMargenMinimo.Maximum = new decimal(new int[] {
             100000,
             0,
             0,
             0});
+            this.nubMargenMinimo.Minimum = new decimal(new int[] {
+            100,
+            0,
+            0,
+            -2147418112});
             this.nubMargenMinimo.Name = "nubMargenMinimo";
             this.nubMargenMinimo.Size = new System.Drawing.Size(120, 20);
             this.nubMargenMinimo.TabIndex = 2;
             this.nubMargenMinimo.Value = new decimal(new int[] {
-            2,
+            1,
             0,
             0,
-            65536});
+            -2147418112});
             // 
             // label1
             // 

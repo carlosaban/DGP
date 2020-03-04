@@ -53,17 +53,22 @@ namespace DGP.BusinessLogic.Ventas {
                     
                     foreach (BEAmortizacionVenta oEntidad in beDocumento.delleAmortizacion)
                     {
+                        
 
                         bOk = bOk && new DAAmortizacionVenta().InsertarDependiente(beDocumento , oEntidad, oDatabaseHelper);
                         BEVenta oBEVenta = new BEVenta(){
                                                             IdVenta=oEntidad.IdVenta,
                                                             BEUsuarioLogin=oEntidad.BEUsuarioLogin
                                                         };
+                        //////insertar documento de redondeo
+                        
 
-                        bOk = bOk && (new DAVenta().InsertarVentaFinal(oBEVenta, oDatabaseHelper)> 0 );
+                        /////
+
+                        bOk = (new DAVenta().InsertarVentaFinal(oBEVenta, oDatabaseHelper) > 0) && bOk;
 
                         // Opcional
-                        bOk = bOk &&(   new DAVenta().ActualizarEstado(oBEVenta.IdVenta, oDatabaseHelper, oEntidad.CancelarVenta)>0);
+                       // bOk = bOk &&(   new DAVenta().ActualizarEstado(oBEVenta.IdVenta, oDatabaseHelper, oEntidad.CancelarVenta)>0);
                     }
                     //
                     if (bOk)

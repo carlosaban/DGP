@@ -48,6 +48,34 @@ namespace DGP.BusinessLogic {
                 }
             }
 
+            public BECaja ObtenerCaja(BECaja pBECaja)
+            {
+                try
+                {
+                    BECaja result = null;
+                    BLCaja obLCaja = new BLCaja();
+                    // Verificar la caja
+
+                    List<BECaja> vListaCaja = obLCaja.Listar(pBECaja);
+
+                    if (vListaCaja.Count > 1) throw new Exception("Existe mas de una caja  para la misma fecha comunicarse con el administrador");
+                    if (vListaCaja.Count == 1) return  vListaCaja[0];
+
+
+                    result =   obLCaja.CrearCaja(pBECaja);
+
+                    return result;
+
+                     
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+           
+        
+
         #endregion
 
     }

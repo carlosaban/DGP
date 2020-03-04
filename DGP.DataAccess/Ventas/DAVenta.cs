@@ -666,7 +666,8 @@ namespace DGP.DataAccess.Ventas {
             try
             {
                 oDatabaseHelper.ClearParameter();
-                
+                oDatabaseHelper.Command.CommandTimeout = 1000;
+              
                 DataSet ds = oDatabaseHelper.ExecuteDataSet("DGP_Reporte_Saldos", CommandType.StoredProcedure);
 
                 

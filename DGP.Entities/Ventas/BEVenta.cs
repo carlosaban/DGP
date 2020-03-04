@@ -12,6 +12,7 @@ namespace DGP.Entities.Ventas {
         public const string ANULADO = "ANL";
         public const string CANCELADO = "CAN";
         public const int UNIDAD_JAVA = 8;
+        public const int NOTA_DEBITO = 1;
 
         private int mIdVenta;
         private string mNombreVenta;
@@ -43,6 +44,13 @@ namespace DGP.Entities.Ventas {
         private BEPersonal mBEUsuarioLogin;
         private string mFechaCreacion;
 
+        public static int ID_NOTA_DEBITO {
+            get { return int.Parse( System.Configuration.ConfigurationSettings.AppSettings["ID_NOTA_DEBITO"].ToString()) ; }
+        }
+        public static int ID_NOTA_DEBITO_AMR_COMPRA
+        {
+            get { return int.Parse(System.Configuration.ConfigurationSettings.AppSettings["ID_NOTA_DEBITO_AMR_COMPRA"].ToString()); }
+        }
         public BEVenta() { 
             mIdVenta = 0;
             mNombreVenta = string.Empty;

@@ -25,10 +25,28 @@ namespace DGP.Presentation.Reportes
         }
         public frmReporteEstadoCuentaCliente(BEClienteProveedor cli , int days )
         {
-            InitializeComponent();
-            this.lbClientes.Items.Add(cli);
-            this.dtpFechaInicial.Value = DateTime.Now.Date.AddDays(days);
-            btnRefresh_Click(null, null);
+            try
+            {
+                InitializeComponent();
+                //this.lbClientes.Items.Add(cli);
+                List<BEClienteProveedor> lista = new List<BEClienteProveedor>();
+                lista.Add(cli);
+                this.cmbClientes.ValueMember = "IdCliente";
+                cmbClientes.DisplayMember = "Nombre";
+                this.cmbClientes.DataSource = lista;
+                this.cmbClientes.SelectedItem = cli;
+
+
+                this.dtpFechaInicial.Value = DateTime.Now.Date.AddDays(days);
+                btnRefresh_Click(null, null);
+
+            }
+            catch (Exception ex)
+            {
+                
+                this.MostrarMensaje("Error en la carga del reporte: " + ex.Message ,MessageBoxIcon.Error);
+            }
+            
 
         }
 
@@ -39,7 +57,7 @@ namespace DGP.Presentation.Reportes
             {
             
                 bool canInfoCompra = VariablesSession.Privilegios.Find(x => x.IdPrivilegio == DGP.Entities.Seguridad.BEPrivilegio.Visualizar_Precios_compra)!= null;
-                DSRptClientes oDSRptClientes = new BLVenta().ReporteEstadoCuentaCliente(dtpFechaInicial.Value.Date, getClientesList(this.lbClientes), canInfoCompra);
+                DSRptClientes oDSRptClientes = new BLVenta().ReporteEstadoCuentaCliente(dtpFechaInicial.Value.Date, this.cmbClientes.SelectedValue.ToString(), canInfoCompra);
                 
                 DGP.Entities.Reportes.CRptEstadoCuentaCliente oCRptEstadoCuentaCliente = new DGP.Entities.Reportes.CRptEstadoCuentaCliente();
                 oCRptEstadoCuentaCliente.Refresh();
@@ -149,17 +167,17 @@ namespace DGP.Presentation.Reportes
          
          private void cmbClientes_Leave(object sender, EventArgs e)
          {
-             if (this.cmbClientes.SelectedIndex >= 0)
-             {
-                 BEClienteProveedor oBEClienteProveedor= (BEClienteProveedor)this.cmbClientes.SelectedItem;
-                 this.lbClientes.Items.Add(oBEClienteProveedor);
+             //if (this.cmbClientes.SelectedIndex >= 0)
+             //{
+             //    BEClienteProveedor oBEClienteProveedor= (BEClienteProveedor)this.cmbClientes.SelectedItem;
+             //    this.lbClientes.Items.Add(oBEClienteProveedor);
                  
-             }
+             //}
          }
 
          private void btnEliminarClienteLista_Click(object sender, EventArgs e)
          {
-             if (this.lbClientes.SelectedIndex>=0) this.lbClientes.Items.RemoveAt(this.lbClientes.SelectedIndex);
+             //if (this.lbClientes.SelectedIndex>=0) this.lbClientes.Items.RemoveAt(this.lbClientes.SelectedIndex);
          }
 
          private void frmReporteEstadoCuentaCliente_Load(object sender, EventArgs e)

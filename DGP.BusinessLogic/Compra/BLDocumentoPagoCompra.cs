@@ -6,6 +6,8 @@ using DGP.Entities;
 using DGP.DataAccess.Compra;
 using DBHelper;
 using DGP.Entities.Compras;
+using DGP.BusinessLogic.Ventas;
+using DGP.Entities.Ventas;
 
 namespace DGP.BusinessLogic.Compra
 {
@@ -48,15 +50,33 @@ namespace DGP.BusinessLogic.Compra
             }
         }
 
-        public bool InsertarCabecera(BEDocumentoCompra beDocumentoCompra)
+        
+        public bool InsertarCabecera(BEDocumentoCompra beDocumentoCompra){
+
+            return InsertarCabecera(beDocumentoCompra , null);
+        }
+        public bool InsertarCabecera(BEDocumentoCompra beDocumentoCompra, DatabaseHelper pDatabaseHelper)
         {
+
+            DatabaseHelper oDatabaseHelper = (pDatabaseHelper == null) ? new DatabaseHelper() : pDatabaseHelper;
+            bool bOk = true; 
             try
             {
-                return new DADocumentoPagoCompra().InsertarCabeceraDocumento(beDocumentoCompra);
+                bOk = bOk && new DADocumentoPagoCompra().InsertarCabeceraDocumento(beDocumentoCompra, oDatabaseHelper);
+                bOk = bOk && (new BLVenta().CrearDocumentoDebito(beDocumentoCompra.Monto ,  beDocumentoCompra.BEUsuarioLogin, beDocumentoCompra.Cliente.IdCliente, beDocumentoCompra.Fecha, beDocumentoCompra.IdPersonal, BEVenta.ID_NOTA_DEBITO_AMR_COMPRA) != null);
+
+
+
+
+                return bOk;
             }
             catch (Exception ex)
             {
                 throw ex;
+            }
+            finally {
+                if (pDatabaseHelper == null) oDatabaseHelper.Dispose();
+            
             }
         }
 

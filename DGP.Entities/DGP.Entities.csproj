@@ -146,6 +146,12 @@
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
     <Compile Include="Reportes\BEFiltroTablero.cs" />
+    <Compile Include="Reportes\CRGuiaVenta.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CRGuiaVenta.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Reportes\CRptConsolidado.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -347,6 +353,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Reportes\CRGuiaVenta.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CRGuiaVenta.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reportes\CRptConsolidado.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>CRptConsolidado.cs</LastGenOutput>

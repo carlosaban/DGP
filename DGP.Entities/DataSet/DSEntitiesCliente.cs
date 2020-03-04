@@ -61,3 +61,10 @@ namespace DGP.Entities.DataSet {
         }
     }
 }
+
+namespace DGP.Entities.DSEntitiesClienteTableAdapters {
+    
+    
+    public partial class Tb_Cliente_ProveedorTableAdapter {
+    }
+}

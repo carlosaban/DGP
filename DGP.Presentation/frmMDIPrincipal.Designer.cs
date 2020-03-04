@@ -55,6 +55,8 @@
             this.reporteConsolidadoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmSalir = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiSalirSistema = new System.Windows.Forms.ToolStripMenuItem();
+            this.hojaDeCobranzaDetalladoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.hojaDeCobranzaEECCToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.msMenuPrincipal.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -191,10 +193,12 @@
             // 
             // tsmiReporteCobranza
             // 
+            this.tsmiReporteCobranza.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.hojaDeCobranzaDetalladoToolStripMenuItem,
+            this.hojaDeCobranzaEECCToolStripMenuItem});
             this.tsmiReporteCobranza.Name = "tsmiReporteCobranza";
             this.tsmiReporteCobranza.Size = new System.Drawing.Size(206, 22);
             this.tsmiReporteCobranza.Text = "Hoja de Cobranza";
-            this.tsmiReporteCobranza.Click += new System.EventHandler(this.tsmiReporteCobranza_Click);
             // 
             // tableroDeVentasToolStripMenuItem
             // 
@@ -276,6 +280,20 @@
             this.tsmiSalirSistema.Size = new System.Drawing.Size(159, 22);
             this.tsmiSalirSistema.Text = "Salir del Sistema";
             // 
+            // hojaDeCobranzaDetalladoToolStripMenuItem
+            // 
+            this.hojaDeCobranzaDetalladoToolStripMenuItem.Name = "hojaDeCobranzaDetalladoToolStripMenuItem";
+            this.hojaDeCobranzaDetalladoToolStripMenuItem.Size = new System.Drawing.Size(218, 22);
+            this.hojaDeCobranzaDetalladoToolStripMenuItem.Text = "Hoja de cobranza detallado";
+            this.hojaDeCobranzaDetalladoToolStripMenuItem.Click += new System.EventHandler(this.hojaDeCobranzaDetalladoToolStripMenuItem_Click);
+            // 
+            // hojaDeCobranzaEECCToolStripMenuItem
+            // 
+            this.hojaDeCobranzaEECCToolStripMenuItem.Name = "hojaDeCobranzaEECCToolStripMenuItem";
+            this.hojaDeCobranzaEECCToolStripMenuItem.Size = new System.Drawing.Size(218, 22);
+            this.hojaDeCobranzaEECCToolStripMenuItem.Text = "Hoja de Cobranza EECC";
+            this.hojaDeCobranzaEECCToolStripMenuItem.Click += new System.EventHandler(this.hojaDeCobranzaEECCToolStripMenuItem_Click);
+            // 
             // frmMDIPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -325,6 +343,8 @@
         private System.Windows.Forms.ToolStripMenuItem reporteSaldosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem listaPreciosProveedoresToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem reporteConsolidadoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem hojaDeCobranzaDetalladoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem hojaDeCobranzaEECCToolStripMenuItem;
 
 
     }

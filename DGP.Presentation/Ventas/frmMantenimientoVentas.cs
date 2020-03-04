@@ -265,28 +265,57 @@ namespace DGP.Presentation.Ventas {
                         decimal PrecioCompra = (string.IsNullOrEmpty(item.Cells["PrecioCompra"].Value.ToString())) ? precioBase : decimal.Parse(item.Cells["PrecioCompra"].Value.ToString());
                         PrecioCompra *= 1.0000m;
                         decimal PrecioVentaActual = (string.IsNullOrEmpty(item.Cells["Precio"].Value.ToString())) ? precioBase : decimal.Parse(item.Cells["Precio"].Value.ToString());
-
-
-                        if (FormaAplicar == 2) //clientes precio variable
+                        bool tieneMargenVariable = false;
+                        switch (FormaAplicar)
                         {
-                            PrecioCompra = (PrecioCompra <= 0) ? 0 : decimal.Round(PrecioCompra, 1,MidpointRounding.AwayFromZero);
-                            bool tieneMargenVariable = false;
-                            bool.TryParse(item.Cells["TienePrecioVariable"].Value.ToString(), out tieneMargenVariable);
-
-                            if (PrecioCompra != 0 && (PrecioVentaActual != PrecioCompra + margen) && (item.Cells["NuevoPrecio"].Value == null || string.IsNullOrEmpty(item.Cells["NuevoPrecio"].Value.ToString())))
-                            {
-
-                                item.Cells["NuevoPrecio"].Value = (tieneMargenVariable) ? (PrecioCompra + margen).ToString() : string.Empty;
-
-                                item.Cells["Precio"].Style.ForeColor = (PrecioVentaActual < PrecioCompra + margen) ? Color.Red :Color.Black;
-                                item.Cells["NuevoPrecio"].Style.ForeColor = (PrecioVentaActual < PrecioCompra + margen) ? Color.Red : Color.Black;
-                            }
+                            case 0:
+                                PrecioCompra = PrecioCompra;
                                 
+                                bool.TryParse(item.Cells["TienePrecioVariable"].Value.ToString(), out tieneMargenVariable);
+
+                                if (PrecioCompra != 0 && (PrecioVentaActual != PrecioCompra + margen) && (item.Cells["NuevoPrecio"].Value == null || string.IsNullOrEmpty(item.Cells["NuevoPrecio"].Value.ToString())))
+                                {
+
+                                    item.Cells["NuevoPrecio"].Value = (tieneMargenVariable) ? (PrecioCompra + margen).ToString() : string.Empty;
+                                    item.Cells["Precio"].Style.ForeColor = (PrecioVentaActual < PrecioCompra + margen) ? Color.Red : Color.Black;
+                                    item.Cells["NuevoPrecio"].Style.ForeColor = (PrecioVentaActual < PrecioCompra + margen) ? Color.Red : Color.Black;
+                                }
+                                break;
+                            case 1:
+                                PrecioCompra = (PrecioCompra <= 0) ? 0 : decimal.Round(PrecioCompra, 1, MidpointRounding.AwayFromZero);
+                                
+                                bool.TryParse(item.Cells["TienePrecioVariable"].Value.ToString(), out tieneMargenVariable);
+
+                                if (PrecioCompra != 0 && (PrecioVentaActual != PrecioCompra + margen) && (item.Cells["NuevoPrecio"].Value == null || string.IsNullOrEmpty(item.Cells["NuevoPrecio"].Value.ToString())))
+                                {
+
+                                    item.Cells["NuevoPrecio"].Value = (tieneMargenVariable) ? (PrecioCompra + margen).ToString() : string.Empty;
+
+                                    item.Cells["Precio"].Style.ForeColor = (PrecioVentaActual < PrecioCompra + margen) ? Color.Red : Color.Black;
+                                    item.Cells["NuevoPrecio"].Style.ForeColor = (PrecioVentaActual < PrecioCompra + margen) ? Color.Red : Color.Black;
+                                }
+                                break;
+                            case 2:
+                                //TienePrecioVariable
+                               
+                                bool.TryParse(item.Cells["TienePrecioVariable"].Value.ToString(), out tieneMargenVariable);
+
+                                if (tieneMargenVariable) item.Cells["NuevoPrecio"].Value = decimal.Parse(item.Cells["Precio"].Value.ToString()) + Margen;
+                                
+                                break;
+                            default:
+                                item.Cells["NuevoPrecio"].Value = precioBase + margen;
+                                break;
                         }
-                        else
-                        {
-                            item.Cells["NuevoPrecio"].Value = precioBase + margen;
-                        }
+                        //if (FormaAplicar == 2) //clientes precio variable
+                        //{
+                            
+                                
+                        //}
+                        //else
+                        //{
+                        //    item.Cells["NuevoPrecio"].Value = precioBase + margen;
+                        //}
 
                     }
                     
