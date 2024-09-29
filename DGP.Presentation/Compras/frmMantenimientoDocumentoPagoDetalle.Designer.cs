@@ -45,6 +45,7 @@
             this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.btnAgregar = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.lblIdDocumento = new System.Windows.Forms.Label();
             this.txtIdDocumento = new System.Windows.Forms.TextBox();
             this.lblTipoDocumento = new System.Windows.Forms.Label();
@@ -142,7 +143,8 @@
             this.bindingNavigatorAddNewItem,
             this.bindingNavigatorDeleteItem,
             this.btnAgregar,
-            this.toolStripButton1});
+            this.toolStripButton1,
+            this.toolStripButton2});
             this.bindingNavigator1.Location = new System.Drawing.Point(0, 0);
             this.bindingNavigator1.MoveFirstItem = this.bindingNavigatorMoveFirstItem;
             this.bindingNavigator1.MoveLastItem = this.bindingNavigatorMoveLastItem;
@@ -150,8 +152,8 @@
             this.bindingNavigator1.MovePreviousItem = this.bindingNavigatorMovePreviousItem;
             this.bindingNavigator1.Name = "bindingNavigator1";
             this.bindingNavigator1.PositionItem = this.bindingNavigatorPositionItem;
-            this.bindingNavigator1.Size = new System.Drawing.Size(968, 25);
-            this.bindingNavigator1.TabIndex = 0;
+            this.bindingNavigator1.Size = new System.Drawing.Size(327, 25);
+            this.bindingNavigator1.TabIndex = 20;
             this.bindingNavigator1.TabStop = true;
             this.bindingNavigator1.Text = "bindingNavigator1";
             this.bindingNavigator1.RefreshItems += new System.EventHandler(this.bindingNavigator1_RefreshItems);
@@ -267,7 +269,18 @@
             this.toolStripButton1.Name = "toolStripButton1";
             this.toolStripButton1.Size = new System.Drawing.Size(23, 22);
             this.toolStripButton1.Text = "toolStripButton1";
+            this.toolStripButton1.Visible = false;
             this.toolStripButton1.Click += new System.EventHandler(this.bindingNavigatorDeleteItem_Click);
+            // 
+            // toolStripButton2
+            // 
+            this.toolStripButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton2.Image")));
+            this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton2.Name = "toolStripButton2";
+            this.toolStripButton2.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButton2.Text = "toolStripButton2";
+            this.toolStripButton2.Click += new System.EventHandler(this.toolStripButton2_Click);
             // 
             // lblIdDocumento
             // 
@@ -300,13 +313,13 @@
             this.numMonto.DecimalPlaces = 2;
             this.numMonto.Location = new System.Drawing.Point(122, 164);
             this.numMonto.Maximum = new decimal(new int[] {
-            1000000000,
-            0,
+            -727379968,
+            232,
             0,
             0});
             this.numMonto.Name = "numMonto";
             this.numMonto.Size = new System.Drawing.Size(120, 20);
-            this.numMonto.TabIndex = 8;
+            this.numMonto.TabIndex = 5;
             // 
             // lblFecha
             // 
@@ -360,10 +373,11 @@
             this.cancelarVentaDataGridViewCheckBoxColumn,
             this.idDocumentoDataGridViewTextBoxColumn});
             this.dgvDetalle.DataSource = this.bsDetalle;
-            this.dgvDetalle.Location = new System.Drawing.Point(268, 52);
+            this.dgvDetalle.Location = new System.Drawing.Point(455, 46);
             this.dgvDetalle.Name = "dgvDetalle";
-            this.dgvDetalle.Size = new System.Drawing.Size(647, 345);
+            this.dgvDetalle.Size = new System.Drawing.Size(484, 345);
             this.dgvDetalle.TabIndex = 14;
+            this.dgvDetalle.Visible = false;
             this.dgvDetalle.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDetalle_CellContentClick);
             // 
             // Seleccionado
@@ -552,7 +566,7 @@
             this.dtFecha.Location = new System.Drawing.Point(122, 134);
             this.dtFecha.Name = "dtFecha";
             this.dtFecha.Size = new System.Drawing.Size(122, 20);
-            this.dtFecha.TabIndex = 15;
+            this.dtFecha.TabIndex = 4;
             // 
             // btnDetalle
             // 
@@ -562,6 +576,7 @@
             this.btnDetalle.TabIndex = 16;
             this.btnDetalle.Text = "Agregar amortización";
             this.btnDetalle.UseVisualStyleBackColor = true;
+            this.btnDetalle.Visible = false;
             this.btnDetalle.Click += new System.EventHandler(this.btnDetalle_Click);
             // 
             // cmbTipoDocumento
@@ -571,7 +586,7 @@
             this.cmbTipoDocumento.Location = new System.Drawing.Point(123, 107);
             this.cmbTipoDocumento.Name = "cmbTipoDocumento";
             this.cmbTipoDocumento.Size = new System.Drawing.Size(121, 21);
-            this.cmbTipoDocumento.TabIndex = 17;
+            this.cmbTipoDocumento.TabIndex = 3;
             this.cmbTipoDocumento.SelectedIndexChanged += new System.EventHandler(this.cmbTipoDocumento_SelectedIndexChanged);
             // 
             // txtObservacion
@@ -580,8 +595,7 @@
             this.txtObservacion.Multiline = true;
             this.txtObservacion.Name = "txtObservacion";
             this.txtObservacion.Size = new System.Drawing.Size(227, 75);
-            this.txtObservacion.TabIndex = 19;
-            this.txtObservacion.TextChanged += new System.EventHandler(this.txtObservacion_TextChanged);
+            this.txtObservacion.TabIndex = 11;
             // 
             // lblObservacion
             // 
@@ -601,7 +615,7 @@
             this.cmbFormaPago.Location = new System.Drawing.Point(123, 222);
             this.cmbFormaPago.Name = "cmbFormaPago";
             this.cmbFormaPago.Size = new System.Drawing.Size(121, 21);
-            this.cmbFormaPago.TabIndex = 21;
+            this.cmbFormaPago.TabIndex = 7;
             this.cmbFormaPago.ValueMember = "Valor";
             this.cmbFormaPago.SelectedIndexChanged += new System.EventHandler(this.cmbTipoPago_SelectedIndexChanged);
             this.cmbFormaPago.BindingContextChanged += new System.EventHandler(this.cmbFormaPago_BindingContextChanged);
@@ -627,6 +641,7 @@
             this.btnEliminar.TabIndex = 24;
             this.btnEliminar.Text = "Eliminar Amortizacion";
             this.btnEliminar.UseVisualStyleBackColor = true;
+            this.btnEliminar.Visible = false;
             this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
             // btnActualizar
@@ -637,6 +652,7 @@
             this.btnActualizar.TabIndex = 25;
             this.btnActualizar.Text = "Actualizar Amortizacion";
             this.btnActualizar.UseVisualStyleBackColor = true;
+            this.btnActualizar.Visible = false;
             this.btnActualizar.Click += new System.EventHandler(this.btnActualizar_Click);
             // 
             // dataGridViewTextBoxColumn1
@@ -721,7 +737,8 @@
             this.cmbPersonal.Location = new System.Drawing.Point(123, 195);
             this.cmbPersonal.Name = "cmbPersonal";
             this.cmbPersonal.Size = new System.Drawing.Size(121, 21);
-            this.cmbPersonal.TabIndex = 27;
+            this.cmbPersonal.TabIndex = 6;
+            this.cmbPersonal.SelectedIndexChanged += new System.EventHandler(this.cmbPersonal_SelectedIndexChanged);
             // 
             // lblEntidadBancaria
             // 
@@ -741,7 +758,7 @@
             this.cmbEntidadBancaria.Location = new System.Drawing.Point(123, 249);
             this.cmbEntidadBancaria.Name = "cmbEntidadBancaria";
             this.cmbEntidadBancaria.Size = new System.Drawing.Size(121, 21);
-            this.cmbEntidadBancaria.TabIndex = 29;
+            this.cmbEntidadBancaria.TabIndex = 8;
             this.cmbEntidadBancaria.ValueMember = "Siglas";
             // 
             // bEEntidadBancariaBindingSource
@@ -762,7 +779,7 @@
             this.txtCodigoReferencia.Location = new System.Drawing.Point(122, 276);
             this.txtCodigoReferencia.Name = "txtCodigoReferencia";
             this.txtCodigoReferencia.Size = new System.Drawing.Size(121, 20);
-            this.txtCodigoReferencia.TabIndex = 31;
+            this.txtCodigoReferencia.TabIndex = 9;
             // 
             // label1
             // 
@@ -778,7 +795,8 @@
             this.txtCodigoOperacion.Location = new System.Drawing.Point(123, 302);
             this.txtCodigoOperacion.Name = "txtCodigoOperacion";
             this.txtCodigoOperacion.Size = new System.Drawing.Size(121, 20);
-            this.txtCodigoOperacion.TabIndex = 34;
+            this.txtCodigoOperacion.TabIndex = 10;
+            this.txtCodigoOperacion.TextChanged += new System.EventHandler(this.txtCodigoOperacion_TextChanged);
             // 
             // label2
             // 
@@ -795,7 +813,7 @@
             this.cmbClientes.Location = new System.Drawing.Point(123, 46);
             this.cmbClientes.Name = "cmbClientes";
             this.cmbClientes.Size = new System.Drawing.Size(124, 21);
-            this.cmbClientes.TabIndex = 36;
+            this.cmbClientes.TabIndex = 1;
             this.cmbClientes.SelectedIndexChanged += new System.EventHandler(this.cmbClientes_SelectedIndexChanged);
             this.cmbClientes.Leave += new System.EventHandler(this.cmbClientes_Leave);
             this.cmbClientes.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cmbClientes_KeyPress);
@@ -805,7 +823,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(968, 462);
+            this.ClientSize = new System.Drawing.Size(327, 462);
             this.Controls.Add(this.cmbClientes);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtCodigoOperacion);
@@ -836,6 +854,7 @@
             this.Name = "frmMantenimientoDocumentoPagoDetalle";
             this.Text = "frmDocumentoPago";
             this.Load += new System.EventHandler(this.frmDocumentoPago_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmMantenimientoDocumentoPagoDetalle_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator1)).EndInit();
             this.bindingNavigator1.ResumeLayout(false);
             this.bindingNavigator1.PerformLayout();
@@ -935,5 +954,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox cmbClientes;
         private System.Windows.Forms.ToolStripButton toolStripButton1;
+        private System.Windows.Forms.ToolStripButton toolStripButton2;
     }
 }

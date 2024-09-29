@@ -15,6 +15,8 @@ using DGP.Entities.DataSet;
 using DGP.Entities.DataSet.DSEntitiesTableroTableAdapters;
 using DGP.Util;
 using DGP.BusinessLogic.Reporte;
+using DGP.Entities.Seguridad;
+using DGP.BusinessLogic.Seguridad;
 
 namespace DGP.Presentation.Ventas {
 
@@ -770,6 +772,7 @@ namespace DGP.Presentation.Ventas {
 
             private void InicializarFormulario() {
                 // Cargar los Controles Iniciales
+                CargarCobrador();
                 CargarZona(cbZona);
                 CargarProducto(cbProducto, true);
                 CargarCliente(cbCliente, true, 0);
@@ -870,6 +873,15 @@ namespace DGP.Presentation.Ventas {
                     pComboBox.DataSource = null;
                     pComboBox.Items.Clear();
                 }
+            }
+            private void CargarCobrador()
+            {
+                List<BEPersonal> vLista = new BLPersonal().ListarPersonal(new BEPersonal());
+                cbCobrador.DataSource = vLista;
+                cbCobrador.DisplayMember = "Nombre";
+                cbCobrador.ValueMember = "IdPersonal";
+
+                cbCobrador.SelectedValue = VariablesSession.BEUsuarioSession.IdPersonal;
             }
 
             private void CargarVentaCliente(bool pValor, int pIdCliente, int pIdproducto) {
@@ -1008,6 +1020,7 @@ namespace DGP.Presentation.Ventas {
                 oBEVenta.IdCliente = (cbCliente.SelectedIndex <= 0) ? 0 : int.Parse(cbCliente.SelectedValue.ToString());
                 oBEVenta.ClienteEventual = (cbCliente.SelectedIndex <= 0) ? cbCliente.Text : string.Empty;
                 oBEVenta.BEUsuarioLogin = VariablesSession.BEUsuarioSession;
+                oBEVenta.IdCobrador = int.Parse(cbCobrador.SelectedValue.ToString());
                 oBEVenta.ListaLineaVenta = ObtenerLineaVentaFormulario();
                 return oBEVenta;
             }
@@ -1720,7 +1733,9 @@ namespace DGP.Presentation.Ventas {
         {
 
         }
-        public void AplicarPrivilegios() { 
+        public void AplicarPrivilegios() {
+            this.cbCobrador.Enabled = VariablesSession.Privilegios.Exists(t => t.IdPrivilegio == DGP.Entities.Seguridad.BEPrivilegio.Amortizacion_Cambio_Cobrador);
+     
         
             //17,18,19
             //if (VariablesSession.Privilegios.Exists(t => t.IdPrivilegio == DGP.Entities.Seguridad.BEPrivilegio.Tablero_Registrar_Venta)) this.tabPage1.Hide();
@@ -1833,6 +1848,7 @@ namespace DGP.Presentation.Ventas {
             }
             
 
-        } 
+        }
+       
     }
 }

@@ -40,7 +40,7 @@ namespace DGP.Presentation.Compras
             }
         }
 
-        private void CargarGrilla()
+        public void CargarGrilla()
         {
             BECompraFilter oBECompraFiltros = ObtenerCompraBusqueda();
 
@@ -261,7 +261,9 @@ namespace DGP.Presentation.Compras
 
                 foreach (DataGridViewRow dgvRow in this.dgrvCompras.Rows)
                 {
-                    if (Convert.ToBoolean(dgvRow.Cells["Seleccionado"].Value).Equals(true))
+                    DataGridViewCheckBoxCell seleccionado = (DataGridViewCheckBoxCell)dgvRow.Cells["Seleccionado"];
+                    object obj  = seleccionado.Value;
+                    if (Convert.ToBoolean(obj).Equals(true))
                     {
                         BECompra beCompra = new BECompra();
                         beCompra.IdCompra = Convert.ToInt32(dgvRow.Cells["IdCompra"].Value.ToString());
@@ -287,6 +289,11 @@ namespace DGP.Presentation.Compras
         private void dgrvCompras_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             this.dgrvCompras.EndEdit();
+
+        }
+
+        private void bdCompras_CurrentChanged(object sender, EventArgs e)
+        {
 
         }
 

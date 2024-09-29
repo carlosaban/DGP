@@ -19,6 +19,19 @@ namespace DGP.Presentation.Compras
 {
     public partial class frmMantenimientoDocumentoPagoDetalle : Form
     {
+        private Form ventanaPadre =null;
+        private BEDocumentoCompra __valoresPordefecto = null;
+        private BEDocumentoCompra _valoresPordefecto
+        {
+            get { return this.__valoresPordefecto; }
+            set{
+                __valoresPordefecto = value;
+                __valoresPordefecto.IdDocumentoCompra = 0;
+
+            } 
+        
+        }
+
 
         public frmMantenimientoDocumentoPagoDetalle(BindingSource bs)
         {
@@ -49,6 +62,30 @@ namespace DGP.Presentation.Compras
             
          
         }
+        public frmMantenimientoDocumentoPagoDetalle(BindingSource bs , Form ventanaPadre, BEDocumentoCompra valoresDefecto):this(bs)
+        {
+            try
+            {
+                this.ventanaPadre  = ventanaPadre;
+                //cargar valores por defecto
+                if (valoresDefecto!= null){
+                    this.cmbFormaPago.SelectedValue =  !string.IsNullOrEmpty(valoresDefecto.IdFormaPago)?valoresDefecto.IdFormaPago:BEAmortizacionCompra.FORMAPAGO_EFECTIVO;
+                    this.dtFecha.Value = valoresDefecto.Fecha;
+                    this.cmbPersonal.SelectedValue = valoresDefecto.IdPersonal;
+                    this.cmbClientes.SelectedValue = valoresDefecto.IdCliente;
+                    this.cmbEntidadBancaria.SelectedValue= valoresDefecto.IdBanco;
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MostrarMensaje("Error en la carga de valores por defecto", MessageBoxIcon.Error);
+            }
+            
+            
+        }
+        
         private void cargarCliente(BEClienteProveedor cliente)
         {
 
@@ -154,13 +191,15 @@ namespace DGP.Presentation.Compras
                 documento.Cliente.IdCliente = int.Parse (this.cmbClientes.SelectedValue.ToString());
                 documento.Observacion = txtObservacion.Text;
                 documento.IdBanco = this.cmbEntidadBancaria.SelectedValue.ToString();
-                documento.NumeroOperacion = this.txtCodigoReferencia.Text;
-                documento.NumeroReciboPago = this.txtCodigoOperacion.Text;
+                documento.NumeroOperacion = this.txtCodigoOperacion.Text;
+                documento.NumeroReciboPago = this.txtCodigoReferencia.Text;
                 documento.Personal.IdPersonal = (this.cmbPersonal.SelectedValue != null)? int.Parse(this.cmbPersonal.SelectedValue.ToString()):0;
                 documento.IdFormaPago = this.cmbFormaPago.SelectedValue.ToString();
 
 
                 this.bsDetalle.EndEdit();
+
+                this._valoresPordefecto = documento;
 
                 BLDP.InsertarCabecera(documento);
                 this.txtIdDocumento.Text = (documento.IdDocumentoCompra == 0) ? string.Empty : documento.IdDocumentoCompra.ToString();
@@ -182,14 +221,16 @@ namespace DGP.Presentation.Compras
                 documento.Cliente.IdCliente = int.Parse(this.cmbClientes.SelectedValue.ToString());
                 documento.Observacion = txtObservacion.Text;
                 documento.IdBanco = this.cmbEntidadBancaria.SelectedValue.ToString();
-                documento.NumeroOperacion = this.txtCodigoReferencia.Text;
-                documento.NumeroReciboPago = this.txtCodigoOperacion.Text;
+                documento.NumeroOperacion = this.txtCodigoOperacion.Text;
+                documento.NumeroReciboPago = this.txtCodigoReferencia.Text;
 
                 documento.Personal.IdPersonal = (this.cmbPersonal.SelectedValue != null) ? int.Parse(this.cmbPersonal.SelectedValue.ToString()) : 0;
                 
                 documento.IdFormaPago = this.cmbFormaPago.SelectedValue.ToString();
                 this.bsDetalle.EndEdit();
                 BLDP.ActualizarCabecera(documento);
+
+                this._valoresPordefecto = documento;
             
             
             }
@@ -351,7 +392,7 @@ namespace DGP.Presentation.Compras
 
         private void bindingNavigatorAddNewItem_Click(object sender, EventArgs e)
         {
-
+            this.Close();
         }
 
         private void CargarUsuarios()
@@ -389,7 +430,7 @@ namespace DGP.Presentation.Compras
         private void CargarTipoDocumento()
         {
             List<BEParametroDetalle> vLista = new BLParametroDetalle().Listar(new BEParametroDetalle() { IdParametro = 8 });
-            vLista.Insert(0, new BEParametroDetalle() { Texto = "Seleccione", Valor = "" });
+            //vLista.Insert(0, new BEParametroDetalle() { Texto = "Seleccione", Valor = "" });
             this.cmbTipoDocumento.DataSource = vLista;
             cmbTipoDocumento.DisplayMember = "Texto";
             cmbTipoDocumento.ValueMember = "Valor";
@@ -603,6 +644,43 @@ namespace DGP.Presentation.Compras
             
 
         }
+
+        private void txtCodigoOperacion_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cmbPersonal_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void frmMantenimientoDocumentoPagoDetalle_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyData == Keys.Enter)
+            {
+                SendKeys.Send("{TAB}");
+                
+            }
+        }
+
+        private void toolStripButton2_Click(object sender, EventArgs e)
+        {
+           
+            this.bsDocumentos.DataSource = new List<BEDocumentoCompra>();
+            
+            
+            frmMantenimientoDocumentoPagoDetalle from = new frmMantenimientoDocumentoPagoDetalle(this.bsDocumentos, this.ventanaPadre, this._valoresPordefecto);
+            this.Visible = false;
+            this.Close();
+            
+            from.ShowDialog(this.ventanaPadre);
+            
+            
+        }
+
+
+   
             
     }
     

@@ -97,9 +97,7 @@ namespace DGP.Presentation.Ventas
                 this.cmbPersonal.DataBindings.Add("SelectedValue", this.bsDocumentos, "IdPersonal", true, DataSourceUpdateMode.OnPropertyChanged);
 
 
-                this.cmbEntidadBancaria.DataBindings.Clear();
-                this.cmbEntidadBancaria.DataBindings.Add("SelectedValue", this.bsDocumentos, "IdBanco", true, DataSourceUpdateMode.OnPropertyChanged);
-
+                
                 this.cmbFormaPago.DataBindings.Clear();
                 this.cmbFormaPago.DataBindings.Add("SelectedValue", this.bsDocumentos, "IdFormaPago", true, DataSourceUpdateMode.OnPropertyChanged);
 
@@ -107,6 +105,9 @@ namespace DGP.Presentation.Ventas
                 txtCodigoReferencia.DataBindings.Add("Text", bsDocumentos, "NumeroReciboPago");
                 txtObservacion.DataBindings.Add("Text", bsDocumentos, "Observacion");
                 
+                this.cmbEntidadBancaria.DataBindings.Clear();
+                this.cmbEntidadBancaria.DataBindings.Add("SelectedValue", this.bsDocumentos, "IdBanco", true, DataSourceUpdateMode.OnPropertyChanged);
+
 
                 listarDetalle();
 
@@ -131,6 +132,8 @@ namespace DGP.Presentation.Ventas
         {
             try
             {
+                if (Cliente.IdCliente == 0) throw new Exception("Cliente no Asignado");
+
 
                 Actualizar(accion);
 
@@ -389,7 +392,7 @@ namespace DGP.Presentation.Ventas
 
             this.cmbEntidadBancaria.DataSource = vLista;
             cmbEntidadBancaria.DisplayMember = "Nombre";
-            cmbEntidadBancaria.ValueMember = "Siglas";
+            cmbEntidadBancaria.ValueMember = "IdBanco";
         }
 
         private void CargarTipoDocumento()

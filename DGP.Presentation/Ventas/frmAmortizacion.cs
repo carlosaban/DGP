@@ -93,11 +93,26 @@ namespace DGP.Presentation.Ventas {
             private void AplicarMonto() {
                 decimal montoTotal = this.nudMontoDocumento.Value;
                 decimal montoAcarreo = 0;
+                //
+                foreach (DataGridViewRow vRow in dgrvAmortizacion.Rows) {
+                    decimal tmpPago = 0;
+                    
+                    if (vRow.Cells["Pago"].Value != null && vRow.Cells["Pago"].Value.ToString() != string.Empty)
+                    {
+                        bool bOk = decimal.TryParse(vRow.Cells["Pago"].Value.ToString(), out  tmpPago);
+                        montoAcarreo += tmpPago;
+                    }
+                
+                
+                }
 
                 foreach (DataGridViewRow vRow in dgrvAmortizacion.Rows)
                 {
 
                     if (montoAcarreo >= montoTotal) break;
+
+
+                    if (vRow.Cells["Pago"].Value != null && vRow.Cells["Pago"].Value.ToString() != string.Empty) continue;
 
                     object oIndicador = vRow.Cells["Indicador"].Value;
                     string sEstado = vRow.Cells["IdEstado"].Value.ToString();
@@ -310,6 +325,7 @@ namespace DGP.Presentation.Ventas {
                     }
                     else
                     {
+                        if (!string.IsNullOrEmpty(strMensaje))
                         MostrarMensaje(strMensaje, MessageBoxIcon.Exclamation);
                     }
                 }
@@ -393,18 +409,18 @@ namespace DGP.Presentation.Ventas {
                 this.txtNumeroRecibo.Text = "";
                 this.txtNumeroOperacion.Text = string.Empty;
 
-                this.cmbBanco.SelectedIndex = (this.cmbBanco.Items.Count > 0) ? 0 : this.cmbBanco.SelectedIndex;
+               // this.cmbBanco.SelectedIndex = (this.cmbBanco.Items.Count > 0) ? 0 : this.cmbBanco.SelectedIndex;
                 this.cmbTipoPago.SelectedIndex = (this.cmbTipoPago.Items.Count > 0) ? 0 : this.cmbTipoPago.SelectedIndex; ;
-                this.cmbFormaPago.SelectedIndex = (this.cmbFormaPago.Items.Count > 0) ? 0 : this.cmbFormaPago.SelectedIndex; ;
+                //this.cmbFormaPago.SelectedIndex = (this.cmbFormaPago.Items.Count > 0) ? 0 : this.cmbFormaPago.SelectedIndex; ;
 
-                this.cmbBanco.Enabled = false;
-                this.txtNumeroOperacion.Enabled = false;
+                //this.cmbBanco.Enabled = false;
+                //this.txtNumeroOperacion.Enabled = false;
 
             }
 
             private void CargarProductoCliente(int pIdCliente) {
                 List<BEProducto> vLista = new List<BEProducto>();
-                vLista = new BLVenta().ListarProductoCliente(pIdCliente);
+                //vLista = new BLVenta().ListarProductoCliente(pIdCliente);
                 vLista.Insert(0, new BEProducto(0, "Todos"));
                 cbProducto.DataSource = vLista;
                 cbProducto.DisplayMember = "Nombre";
@@ -520,6 +536,24 @@ namespace DGP.Presentation.Ventas {
                 //    pMensaje = "Debe Seleccionar un cliente";
                 //    boResultado = false;
                 //}
+
+                BLDocumentoPago BLDocumentoPago = new BLDocumentoPago();
+                List<BEDocumento> documentos = BLDocumentoPago.Listar(new BEDocumentoView() { Cliente = new BEClienteProveedor() { IdCliente= (int)this.cmbClientes.SelectedValue }, Monto = this.nudMontoDocumento.Value, NumeroOperacion = this.txtNumeroOperacion.Text, NumeroReciboPago = this.txtNumeroRecibo.Text, fechaInicial = DateTime.Now.Date.AddDays(-6), fechaFinal = DateTime.Now.Date.AddDays(6) });
+                if (documentos.Count > 0)
+                {
+                    string strDocumentos = "Documentos Registrados: \n";
+                    documentos.ForEach(x => { strDocumentos += x.Fecha.ToShortDateString() + " "+ x.IdFormaPago + " "+ x.Monto.ToString() + " " + x.IdBanco + "-" + x.NumeroOperacion+"\n"; });
+                    strDocumentos += "\n Desea Continuar?";
+                    DialogResult dialogResult = MessageBox.Show(strDocumentos , "Documentos Pago Duplicado", MessageBoxButtons.YesNo);
+                    if (dialogResult == DialogResult.No)
+                    {
+                        //do something
+                        pMensaje = string.Empty; //strDocumentos;
+                        boResultado = false;
+                    }
+                    
+                    
+                }
                
                 return boResultado;
             }
@@ -756,7 +790,7 @@ namespace DGP.Presentation.Ventas {
                     BEClienteProveedor oBEClienteProveedor = (BEClienteProveedor)this.cmbClientes.SelectedItem;
 
                     int.TryParse(cmbClientes.SelectedValue.ToString(), out intIdCliente);
-                    CargarProductoCliente(intIdCliente);
+                    //CargarProductoCliente(intIdCliente);
                     DGP_Util.EnabledComboBox(cbProducto, true);
                     CargarAmortizaciones(Convert.ToInt32(cmbClientes.SelectedValue), 0);
                     DGP_Util.EnableControl(nudMontoDocumento, true);

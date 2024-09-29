@@ -176,13 +176,9 @@ namespace DGP.Presentation.Compras
 
         private void tsbAgregar_Click(object sender, EventArgs e)
         {
-            //BindingSource bs = this.bsDocumentosPago;
-            //BEClienteProveedor cliente = new BEClienteProveedor();
-            //cliente.IdCliente = Convert.ToInt32(cmbClientes.SelectedValue);
-            //cliente.Nombre = cmbClientes.SelectedText;
-            //BindingSource bs = new BindingSource();
+            
             this.bsDocumentosPago.DataSource = new List<BEDocumentoCompra>();
-            frmMantenimientoDocumentoPagoDetalle from = new frmMantenimientoDocumentoPagoDetalle(this.bsDocumentosPago);
+            frmMantenimientoDocumentoPagoDetalle from = new frmMantenimientoDocumentoPagoDetalle(this.bsDocumentosPago , this, null);
             from.ShowDialog(this);
         }
 

@@ -61,6 +61,8 @@
             this.montoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.idEstadoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.IdPersonal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IdBanco = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IdFormaPago = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDocumentoPago)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsDocumentosPagoVenta)).BeginInit();
@@ -168,7 +170,9 @@
             this.fechaDataGridViewTextBoxColumn,
             this.montoDataGridViewTextBoxColumn,
             this.idEstadoDataGridViewTextBoxColumn,
-            this.IdPersonal});
+            this.IdPersonal,
+            this.IdBanco,
+            this.IdFormaPago});
             this.dgvDocumentoPago.DataSource = this.bsDocumentosPagoVenta;
             this.dgvDocumentoPago.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvDocumentoPago.Location = new System.Drawing.Point(0, 132);
@@ -351,6 +355,20 @@
             this.IdPersonal.Name = "IdPersonal";
             this.IdPersonal.ReadOnly = true;
             // 
+            // IdBanco
+            // 
+            this.IdBanco.DataPropertyName = "IdBanco";
+            this.IdBanco.HeaderText = "IdBanco";
+            this.IdBanco.Name = "IdBanco";
+            this.IdBanco.ReadOnly = true;
+            // 
+            // IdFormaPago
+            // 
+            this.IdFormaPago.DataPropertyName = "IdFormaPago";
+            this.IdFormaPago.HeaderText = "IdFormaPago";
+            this.IdFormaPago.Name = "IdFormaPago";
+            this.IdFormaPago.ReadOnly = true;
+            // 
             // frmMantenimientoDocumentoPago
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -397,6 +415,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
         private System.Windows.Forms.ToolStripButton tsbEliminar;
         private System.Windows.Forms.BindingSource bsDocumentosPagoVenta;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Seleccionado;
         private System.Windows.Forms.DataGridViewTextBoxColumn IdCliente;
@@ -407,6 +426,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn montoDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn idEstadoDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn IdPersonal;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IdBanco;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IdFormaPago;
     }
 }

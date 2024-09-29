@@ -303,6 +303,12 @@ namespace DGP.Presentation.Compras {
                 }
 
                 if (!bOk) MostrarMensaje(mensaje, MessageBoxIcon.Error);
+                else
+                {
+                    MostrarMensaje("Se registro Compra", MessageBoxIcon.Exclamation);
+                    ((frmMantenimientoComprasV2)this.Owner.ActiveMdiChild).CargarGrilla();
+                    this.Close();
+                }
             }
             catch (Exception ex)
             {
